@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">Playing</string>
+    <string name="status_paused">Paused</string>
+    <string name="status_test_line">The connection works!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Discord presence</string>
+    <string name="svc_channel_desc">Shown while the app keeps your Discord status in sync with Poweramp</string>
+    <string name="svc_alert_channel_name">Alerts</string>
+    <string name="svc_alert_channel_desc">Problems that need your attention, e.g. when Android blocks the start in the background</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Showing on Discord</string>
+    <string name="svc_showing_paused">Paused – shown on Discord</string>
+    <string name="svc_hidden_paused">Paused – hidden on Discord</string>
+    <string name="svc_hidden">Nothing shown on Discord</string>
+    <string name="svc_testing">Test presence shown on Discord</string>
+    <string name="svc_sending">Sending to Discord…</string>
+    <string name="svc_update_rejected">Discord did not accept the presence – details in the app</string>
+    <string name="svc_connecting">Connecting to Discord…</string>
+    <string name="svc_waiting">Waiting for Poweramp…</string>
+    <string name="svc_not_connected">Not connected to Discord – retrying</string>
+    <string name="svc_discord_missing">The Discord app is not installed</string>
+    <string name="svc_rejected">Discord rejected the application ID</string>
+    <string name="svc_no_app_id">No Discord application ID configured</string>
+    <string name="svc_disabled">Discord Rich Presence is switched off</string>
+    <string name="svc_action_stop">Stop</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Discord presence could not start</string>
+    <string name="svc_bg_blocked_text">Android does not let the app start in the background. Tap to open the app and allow it to run in the background (battery optimization).</string>
+</resources>

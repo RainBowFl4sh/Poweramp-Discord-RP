@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Тексти екрана налаштувань / стану (UI) - українська. -->
+<resources>
+    <!-- Tabs -->
+    <string name="tab_status">Стан</string>
+    <string name="tab_display">Вигляд</string>
+    <string name="tab_cover">Обкладинка</string>
+    <string name="tab_sources">Джерела</string>
+    <string name="tab_advanced">Сервіс</string>
+    <string name="tab_about">Про застосунок</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">Інші параметри</string>
+    <string name="app_settings_title">Налаштування застосунку</string>
+    <string name="app_settings_theme">Тема</string>
+    <string name="theme_system">Як у системі</string>
+    <string name="theme_light">Світла</string>
+    <string name="theme_dark">Темна</string>
+    <string name="app_settings_amoled">Чорне тло (AMOLED)</string>
+    <string name="app_settings_amoled_on">Чисто чорне тло в темній темі — заощаджує заряд на OLED-екранах.</string>
+    <string name="app_settings_amoled_needs_dark">Лише в темній темі — виберіть «Темна» або ввімкніть темну тему в Android.</string>
+    <string name="app_settings_dynamic">Динамічні кольори (Material You)</string>
+    <string name="app_settings_dynamic_sub">Кольори з ваших шпалер. Вимк.: власні кольори застосунку в стилі Discord.</string>
+    <string name="common_close">Закрити</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Ваш статус у Discord показує, що грає в Poweramp</string>
+    <string name="master_off">Вимкнено — Discord нічого не показує</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Підключення</string>
+    <string name="conn_idle">Очікування — зараз нічого показувати</string>
+    <string name="conn_disabled">Вимкнено</string>
+    <string name="conn_no_app_id">ID застосунку Discord не задано</string>
+    <string name="conn_connecting">Підключення до Discord…</string>
+    <string name="conn_connected">Підключено до Discord</string>
+    <string name="conn_connected_as">Підключено до Discord як %1$s</string>
+    <string name="conn_testing">Показується тестовий статус.</string>
+    <string name="conn_test_waiting">Тестовий статус надсилається в Discord…</string>
+    <string name="conn_activity_error">Discord не прийняв останнє оновлення: %1$s</string>
+    <string name="conn_detail">Подробиці: %1$s</string>
+    <string name="conn_user">Обліковий запис Discord</string>
+    <string name="conn_app_id">ID застосунку</string>
+    <string name="conn_app_builtin">%1$s (вбудований)</string>
+    <string name="conn_app_own">%1$s (власний)</string>
+    <string name="conn_none">—</string>
+    <string name="conn_last_update">Останнє оновлення</string>
+    <string name="conn_never">ще немає</string>
+    <string name="conn_connections">Підключень</string>
+    <string name="conn_service">Фонова служба</string>
+    <string name="conn_service_running">працює</string>
+    <string name="conn_service_stopped">не працює</string>
+    <string name="conn_service_start">Запустити</string>
+    <string name="conn_service_stop">Зупинити</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Немає підключення до Discord — повторна спроба</string>
+    <string name="err_discord_missing">Застосунок Discord не встановлено</string>
+    <string name="err_bind_failed">Застосунок Discord не надає службу Rich Presence — оновіть Discord</string>
+    <string name="err_connect_failed">Discord не прийняв підключення — повторна спроба</string>
+    <string name="err_closed">Discord закрив з’єднання — перепідключення</string>
+    <string name="err_invalid_client_id">Discord відхилив ID застосунку — перевірте його на вкладці «Сервіс»</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Зараз грає</string>
+    <string name="now_nothing">У Poweramp нічого не грає.</string>
+    <string name="word_playing">Грає</string>
+    <string name="word_paused">Пауза</string>
+    <string name="hidden_no">Discord показує цей трек.</string>
+    <string name="hidden_disabled">Rich Presence вимкнено — Discord нічого не показує.</string>
+    <string name="hidden_stopped">Нічого не грає — Discord нічого не показує.</string>
+    <string name="hidden_stream">Інтернет-радіо / потоки приховуються (вкладка «Вигляд») — Discord нічого не показує.</string>
+    <string name="hidden_path">Цей файл приховано фільтром шляху (вкладка «Вигляд») — Discord нічого не показує.</string>
+    <string name="hidden_paused">Відтворення на паузі й вибрано «Приховувати» (вкладка «Вигляд»): Discord показує інші ваші активності.</string>
+    <string name="hidden_timeout">Пауза триває довше, ніж задано на вкладці «Вигляд», — статус прибрано.</string>
+    <string name="now_user_stopped">Зупинено вами — Discord нічого не показує, доки Poweramp знову не почне грати.</string>
+    <string name="now_rejected">Discord не прийняв цей статус — див. «Підключення».</string>
+    <string name="now_after_test">Discord зараз показує тестовий статус — цей трек з’явиться після нього.</string>
+    <string name="now_test_shown">Discord зараз показує тестовий статус.</string>
+    <string name="now_sending">Надсилається в Discord…</string>
+    <string name="now_not_connected">Discord поки його не показує — див. «Підключення».</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Тестовий статус</string>
+    <string name="btn_reconnect">Перепідключити</string>
+    <string name="btn_open_poweramp">Відкрити Poweramp</string>
+    <string name="btn_open_discord">Відкрити Discord</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Налаштування</string>
+    <string name="check_checking">Перевірка…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">Версія %1$s (збірка %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">Версія %1$s</string>
+    <string name="check_poweramp_old">Версія %1$s (збірка %2$d) застаріла — потрібна збірка %3$d або новіша.</string>
+    <string name="check_poweramp_missing">Poweramp не встановлено.</string>
+    <string name="check_poweramp_get">Встановити Poweramp</string>
+    <string name="check_poweramp_update">Оновити Poweramp</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Встановлено, служба Rich Presence доступна</string>
+    <string name="check_discord_no_rpc">Ця версія Discord не надає службу Rich Presence іншим застосункам. Оновіть Discord.</string>
+    <string name="check_discord_missing">Застосунок Discord не встановлено.</string>
+    <string name="check_discord_get">Встановити Discord</string>
+    <string name="check_discord_update">Оновити Discord</string>
+    <string name="check_appid_title">Застосунок Discord</string>
+    <string name="check_appid_own">Власний застосунок (ID %1$s)</string>
+    <string name="check_appid_missing">У цій збірці немає вбудованого ID застосунку. Створіть власний застосунок Discord і вкажіть його ID на вкладці «Сервіс».</string>
+    <string name="check_appid_invalid">Ваш ID застосунку недійсний (17–20 цифр), а вбудованого в цій збірці немає.</string>
+    <string name="check_appid_invalid_fallback">Ваш ID застосунку недійсний (17–20 цифр) — використовується вбудований застосунок (ID %1$s).</string>
+    <string name="check_appid_builtin_invalid">Вбудований у цю збірку ID застосунку (%1$s) недійсний (17–20 цифр). Створіть власний застосунок Discord і вкажіть його ID на вкладці «Сервіс».</string>
+    <string name="check_appid_both_invalid">Ваш ID застосунку недійсний (17–20 цифр), і вбудований у цю збірку (%1$s) теж.</string>
+    <string name="check_appid_fix">Налаштувати</string>
+    <string name="check_battery_title">Оптимізація батареї</string>
+    <string name="check_battery_ok">Вимкнена для цього застосунку — він може запускатися у фоні, коли Poweramp починає грати.</string>
+    <string name="check_battery_bad">Android може не дати застосунку запуститися, коли Poweramp починає грати, або зупинити його пізніше. Виключіть його з оптимізації батареї.</string>
+    <string name="check_battery_fix">Дозволити</string>
+    <string name="check_notif_title">Сповіщення</string>
+    <string name="check_notif_ok">Дозволені — сповіщення про стан показує, що бачить Discord.</string>
+    <string name="check_notif_bad">Не дозволені — застосунок не може показувати сповіщення про стан, поки оновлює ваш статус.</string>
+    <string name="check_notif_fix">Дозволити</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Корисно знати</string>
+    <string name="hint_privacy_title">Діліться активністю в Discord</string>
+    <string name="hint_privacy">У Discord: Налаштування → Конфіденційність активності → увімкніть «Ділитися своєю активністю». Інакше ніхто не побачить, що ви слухаєте.</string>
+    <string name="hint_poweramp_title">Перший запуск</string>
+    <string name="hint_poweramp">Після встановлення цього застосунку один раз натисніть у Poweramp паузу й відтворення, щоб Poweramp помітив застосунок і почав надсилати йому дані про трек.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Надсилається тестовий статус — він буде видимий %1$d с.</string>
+    <string name="msg_reconnecting">Перепідключення…</string>
+    <string name="msg_stop_ended">Вашу зупинку скасовано — Discord знову показує Poweramp.</string>
+    <string name="msg_start_blocked">Android не дозволив запуск у фоні — дозвольте його в пункті «Оптимізація батареї».</string>
+    <string name="msg_service_started">Фонову службу запущено.</string>
+    <string name="msg_service_stopped">Зупинено до наступного відтворення в Poweramp.</string>
+    <string name="msg_cannot_open">Не знайдено застосунку, щоб відкрити це.</string>
+    <string name="msg_cover_cleared">Кеш обкладинок очищено.</string>
+    <string name="msg_exported">Налаштування збережено.</string>
+    <string name="msg_export_failed">Не вдалося зберегти налаштування.</string>
+    <string name="msg_imported">Налаштування імпортовано.</string>
+    <string name="msg_import_failed">Цей файл не містить налаштувань цього застосунку.</string>
+    <string name="msg_reset">Усі налаштування скинуто до типових.</string>
+    <string name="msg_log_copied">Журнал скопійовано.</string>
+    <string name="msg_up_to_date">У вас остання версія.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Попередній перегляд</string>
+    <string name="prev_listening">Слухає %1$s</string>
+    <string name="prev_playing">Грає в %1$s</string>
+    <string name="prev_app_own">ваш застосунок</string>
+    <string name="prev_you">Ви</string>
+    <string name="prev_elapsed">минуло %1$s</string>
+    <string name="prev_example">Приклад — зараз нічого не грає.</string>
+    <string name="prev_example_title">Приклад треку</string>
+    <string name="prev_example_artist">Приклад виконавця</string>
+    <string name="prev_example_album">Приклад альбому</string>
+    <string name="prev_icon_tip">Значок: %1$s</string>
+    <string name="prev_link">Посилання: %1$s</string>
+    <string name="prev_no_link">Назва без посилання</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Активність</string>
+    <string name="disp_type">Тип активності</string>
+    <string name="disp_type_listening">Слухає (зі смугою прогресу)</string>
+    <string name="disp_type_playing">Грає (лише час, що минув)</string>
+    <string name="disp_status_display">Текст статусу в Discord</string>
+    <string name="disp_status_name">Назва застосунку (Poweramp)</string>
+    <string name="disp_status_state">Другий рядок (виконавець)</string>
+    <string name="disp_status_details">Перший рядок (назва треку)</string>
+    <string name="disp_timestamps">Показувати смугу прогресу / час, що минув</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Тексти</string>
+    <string name="disp_details">Перший рядок</string>
+    <string name="disp_state">Другий рядок</string>
+    <string name="disp_large_text">Підказка обкладинки</string>
+    <string name="disp_small_text">Підказка значка</string>
+    <string name="disp_insert_into">Натисніть на підстановку, щоб вставити її в поле «%1$s»:</string>
+    <string name="disp_placeholders_help">Що означають підстановки</string>
+    <string name="disp_rotation_help" formatted="false">Поставте || між текстами, щоб вони чергувалися, наприклад %artist% || %title% (інтервал зміни нижче).</string>
+    <string name="ph_title">назва треку</string>
+    <string name="ph_artist">виконавець</string>
+    <string name="ph_album">альбом</string>
+    <string name="ph_filename">ім’я файлу без розширення</string>
+    <string name="ph_ext">розширення файлу (flac, mp3 …)</string>
+    <string name="ph_pos">поточна позиція (1:23)</string>
+    <string name="ph_dur">тривалість (3:45)</string>
+    <string name="ph_percent">прогрес у відсотках</string>
+    <string name="ph_bar">текстова смуга прогресу ▰▰▰▱▱▱</string>
+    <string name="ph_status">Грає / Пауза</string>
+    <string name="ph_codec">кодек (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">бітрейт (320 kbps)</string>
+    <string name="ph_samplerate">частота дискретизації (44.1 kHz)</string>
+    <string name="ph_bits">розрядність (24-bit)</string>
+    <string name="ph_track">позиція в поточному списку</string>
+    <string name="ph_listsize">кількість треків у списку</string>
+    <string name="ph_rating">оцінка ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">між варіантами, які чергуються, наприклад %artist% || %title%</string>
+    <string name="disp_small_icon">Показувати значок відтворення / паузи (мале зображення)</string>
+    <string name="disp_bar_length" formatted="false">Довжина %bar%</string>
+    <string name="disp_bar_length_value">%1$d симв.</string>
+    <string name="disp_refresh">Інтервал оновлення</string>
+    <string name="disp_refresh_value">%1$d с</string>
+    <string name="disp_refresh_note" formatted="false">Використовується, лише якщо текст містить %pos%, %bar% або %percent%. Discord приймає лише кілька оновлень на хвилину.</string>
+    <string name="disp_rotation">Інтервал зміни</string>
+    <string name="disp_rotation_value">%1$d с</string>
+    <string name="disp_rotation_note">Використовується, лише якщо текст містить ||. Кожен трек починається з першого варіанта, порожні пропускаються. Discord приймає лише 5 оновлень за 20 секунд, тому щонайменше 5 с.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Посилання в назві</string>
+    <string name="disp_title_link">Назва треку — посилання на пошук у YouTube (виконавець і трек)</string>
+    <string name="disp_own_link">Своє посилання</string>
+    <string name="disp_own_link_url">Посилання</string>
+    <string name="disp_own_link_hint" formatted="false">Підстановки працюють і тут, наприклад https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">Посилання має починатися з http:// або https://</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Пауза</string>
+    <string name="disp_paused">Під час паузи</string>
+    <string name="disp_paused_show">Показувати статус «Пауза»</string>
+    <string name="disp_paused_hide">Приховувати (видно інші активності)</string>
+    <string name="disp_clear_after">Прибирати статус після паузи через (хв)</string>
+    <string name="disp_clear_after_hint">0 = ніколи (лише якщо показується «Пауза»)</string>
+    <string name="disp_filters_title">Фільтри</string>
+    <string name="disp_hide_streams">Приховувати для інтернет-радіо / потоків</string>
+    <string name="disp_exclude_paths">Приховувати, якщо шлях до файлу містить</string>
+    <string name="disp_exclude_paths_hint">наприклад Аудіокниги;Подкасти</string>
+    <string name="disp_exclude_paths_note">Кілька частин через ; (регістр не важливий)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Показувати обкладинку альбому в Discord</string>
+    <string name="cov_info">Discord показує лише обкладинки з публічним посиланням. Обкладинку, яку показує Poweramp, можна завантажити (x0.at — без акаунта) або знайти в інтернеті (див. «Джерела»). Кожна обкладинка шукається один раз і зберігається.</string>
+    <string name="cov_local_title">Обкладинка Poweramp</string>
+    <string name="cov_local">Використовувати обкладинку, яку показує Poweramp</string>
+    <string name="cov_local_sub">Вбудована у файл, зображення в теці або завантажена Poweramp — завантажується, щоб отримати публічне посилання</string>
+    <string name="cov_upload">Завантажувати обкладинки на</string>
+    <string name="cov_upload_x0">x0.at (без акаунта)</string>
+    <string name="cov_upload_catbox">catbox.moe (без акаунта)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Вимк. (лише пошук)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Для Imgur потрібен Client-ID — без нього використовується інший сервіс.</string>
+    <string name="cov_imgur_get">Отримати Client-ID</string>
+    <string name="cov_prefer_local">Спершу обкладинка Poweramp</string>
+    <string name="cov_prefer_local_sub">Пошук в інтернеті лише для треків без обкладинки</string>
+    <string name="cov_size">Розмір завантажених обкладинок</string>
+    <string name="cov_size_px">%1$d × %1$d пікс.</string>
+    <string name="cov_public_note">Завантажені обкладинки бачить кожен, хто має посилання.</string>
+    <string name="cov_current_title">Поточна обкладинка</string>
+    <string name="cov_off">Обкладинки вимкнено — Discord показує логотип застосунку.</string>
+    <string name="cov_nothing">Нічого не відтворюється.</string>
+    <string name="cov_searching">Пошук обкладинки…</string>
+    <string name="cov_not_yet">Обкладинка шукатиметься, щойно Discord покаже цей трек.</string>
+    <string name="cov_none">Discord показує логотип застосунку: обкладинку не знайдено або Discord не зміг її завантажити.</string>
+    <string name="cov_source">Джерело: %1$s</string>
+    <string name="cov_src_cache">кеш обкладинок</string>
+    <string name="cov_src_online">знайдено на %1$s</string>
+    <string name="cov_src_poweramp">обкладинка Poweramp</string>
+    <string name="cov_src_uploaded">%1$s, завантажено на %2$s</string>
+    <string name="cov_open">Відкрити зображення</string>
+    <string name="cov_clear">Очистити кеш обкладинок</string>
+    <string name="cov_image_desc">Обкладинка альбому</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Пошук в інтернеті шукає виконавця / альбом і використовує публічне посилання на зображення напряму — нічого не завантажується. Джерела перевіряються згори вниз, використовується перший збіг.</string>
+    <string name="src_covers_off">Обкладинки вимкнено — пошук не виконується.</string>
+    <string name="src_open_cover_tab">Налаштування обкладинки</string>
+    <string name="src_prefer_local_note">Увімкнено «Спершу обкладинка Poweramp»: пошук використовується лише для треків без обкладинки.</string>
+    <string name="src_list_title">Онлайн-джерела</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Потрібен безкоштовний застосунок розробника (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Вкажіть Client ID і Secret, інакше Spotify пропускається.</string>
+    <string name="src_create_app">Створити застосунок</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Без ключа (неофіційний інтерфейс)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Потрібен безкоштовний особистий токен доступу</string>
+    <string name="src_token">Токен</string>
+    <string name="src_discogs_missing">Вкажіть токен, інакше Discogs пропускається.</string>
+    <string name="src_get_token">Отримати токен</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Без ключа</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Застосунок Discord</string>
+    <string name="adv_custom_app">Використовувати власний застосунок Discord</string>
+    <string name="adv_custom_app_sub">Discord показує його назву («Слухає …»)</string>
+    <string name="adv_app_id">ID застосунку</string>
+    <string name="adv_app_id_hint">Developer Portal → ваш застосунок → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">ID застосунку складається з 17–20 цифр.</string>
+    <string name="adv_portal">Відкрити Developer Portal</string>
+    <string name="adv_assets_note">У розділі Rich Presence → Art Assets завантажте зображення з іменами «poweramp» (логотип), «play» і «pause».</string>
+    <string name="adv_effective">ID застосунку, що використовується</string>
+    <string name="adv_effective_none">немає — у цій збірці немає вбудованого ID, використайте власний застосунок</string>
+    <string name="adv_compat_title">Сумісність</string>
+    <string name="adv_seconds">Надсилати час у секундах</string>
+    <string name="adv_seconds_sub">Лише якщо Discord показує неправильний час або немає смуги прогресу</string>
+    <string name="adv_log_title">Журнал</string>
+    <string name="adv_log_empty">Записів поки немає.</string>
+    <string name="adv_log_copy">Копіювати</string>
+    <string name="adv_log_share">Поділитися</string>
+    <string name="adv_log_clear">Очистити</string>
+    <string name="adv_log_share_subject">Журнал Poweramp Discord RP</string>
+    <string name="adv_settings_title">Файл налаштувань</string>
+    <string name="adv_settings_info">Збережіть усі налаштування у файл або завантажте їх із файлу (наприклад, на новому телефоні). У файлі також зберігаються ключі, введені для обкладинок (Imgur, Spotify, Discogs).</string>
+    <string name="adv_export">Експорт…</string>
+    <string name="adv_import">Імпорт…</string>
+    <string name="adv_reset">Скинути налаштування</string>
+    <string name="adv_reset_confirm_title">Скинути всі налаштування?</string>
+    <string name="adv_reset_confirm_text">Усі налаштування повернуться до типових значень. Якщо хочете їх зберегти, спершу експортуйте.</string>
+    <string name="adv_reset_confirm">Скинути</string>
+    <string name="adv_export_keys_title">Експортувати разом із ключами?</string>
+    <string name="adv_export_keys_text">Файл міститиме ваші ключі для %1$s у відкритому вигляді. Зберігайте його лише в себе — не діліться ним і не додавайте його до повідомлень про помилки.</string>
+    <string name="adv_export_keys_confirm">Експортувати</string>
+    <string name="common_cancel">Скасувати</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">Версія %1$s</string>
+    <string name="about_by">автор: %1$s</string>
+    <string name="about_on_github">%1$s на GitHub</string>
+    <string name="cd_author_avatar">Фото профілю GitHub: %1$s</string>
+    <string name="about_github">Сторінка на GitHub</string>
+    <string name="about_releases">Усі версії</string>
+    <string name="about_issues">Звіт про помилку</string>
+    <string name="about_disclaimer">Незалежний проєкт — не пов’язаний із Discord чи Poweramp і не підтримується ними.</string>
+    <string name="about_updates_title">Оновлення</string>
+    <string name="about_update_check">Перевіряти оновлення</string>
+    <string name="about_update_freq">Як часто</string>
+    <string name="upd_every_start">під час кожного запуску</string>
+    <string name="upd_daily">раз на день</string>
+    <string name="upd_weekly">раз на тиждень</string>
+    <string name="upd_monthly">раз на місяць</string>
+    <string name="about_check_now">Перевірити</string>
+    <string name="upd_never">Перевірка ще не виконувалася.</string>
+    <string name="upd_checking">Перевірка оновлень…</string>
+    <string name="upd_latest">У вас остання версія (остання перевірка: %1$s).</string>
+    <string name="upd_available">Доступна версія %1$s.</string>
+    <string name="upd_failed">Не вдалося перевірити оновлення: немає з’єднання з GitHub.</string>
+    <string name="upd_rate_limited">GitHub зараз обмежує запити — спробуйте пізніше.</string>
+    <string name="upd_no_release">Ще не опубліковано жодної версії.</string>
+    <string name="upd_bad_answer">Не вдалося перевірити оновлення: відповідь GitHub не вдалося прочитати.</string>
+    <string name="upd_download">Завантажити %1$s</string>
+    <string name="upd_whats_new">Що нового?</string>
+    <string name="about_update_privacy">Перевірка лише запитує в GitHub останню версію — більше нічого не надсилається.</string>
+    <string name="about_credits_title">Подяки</string>
+    <string name="about_credit_poweramp">Poweramp API від Max MP</string>
+    <string name="about_credit_discord">RPC-інтерфейс Discord Social SDK через antisocialcord-kt від Nightdavisao (ліцензія MIT)</string>
+    <string name="about_credit_covers">Обкладинки: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz і Cover Art Archive</string>
+    <string name="about_credit_aimp">Android-версія «Discord Rich Presence для AIMP» того ж автора</string>
+    <string name="about_changelog_title">Список змін</string>
+    <string name="about_changelog_version">Версія %1$s</string>
+    <string name="about_installed">(встановлена)</string>
+    <string name="about_translation_note">Примітка: український переклад зроблено за допомогою ШІ, він може містити помилки. Виправлення вітаються на GitHub («Звіт про помилку»).</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">OK</string>
+    <string name="cd_info">Примітка</string>
+    <string name="cd_warning">Попередження</string>
+    <string name="cd_error">Проблема</string>
+    <string name="field_show">Показати</string>
+    <string name="field_hide">Сховати</string>
+    <string name="field_range">Допустимо: від %1$d до %2$d</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Themed (monochrome) launcher icon, Android 13+: the foreground glyph, scaled up a little (like Poweramp does
+     with its triangle); the system tints it. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:pivotX="54"
+        android:pivotY="54"
+        android:scaleX="1.1"
+        android:scaleY="1.1">
+        <!-- the speech bubble (the status); the three equalizer bars (the music playing right now) are cut out of it
+             with evenOdd, so the tinted background shows through them -->
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:fillType="evenOdd"
+            android:pathData="M47.1,42H62.9A6.5,6.5 0,0 1 69.4,48.5V57.5A6.5,6.5 0,0 1 62.9,64H53.4L42.6,71.3Q41.6,72 42,70.9L44.6,64A4,4 0,0 1 40.6,60V48.5A6.5,6.5 0,0 1 47.1,42Z
+                M46,51H47.6A1.6,1.6 0,0 1 49.2,52.6V59.4A0.8,0.8 0,0 1 48.4,60.2H45.2A0.8,0.8 0,0 1 44.4,59.4V52.6A1.6,1.6 0,0 1 46,51Z
+                M54.2,45.8H55.8A1.6,1.6 0,0 1 57.4,47.4V59.4A0.8,0.8 0,0 1 56.6,60.2H53.4A0.8,0.8 0,0 1 52.6,59.4V47.4A1.6,1.6 0,0 1 54.2,45.8Z
+                M62.4,48.6H64A1.6,1.6 0,0 1 65.6,50.2V59.4A0.8,0.8 0,0 1 64.8,60.2H61.6A0.8,0.8 0,0 1 60.8,59.4V50.2A1.6,1.6 0,0 1 62.4,48.6Z" />
+    </group>
+</vector>
