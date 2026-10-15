@@ -1,4 +1,4 @@
-# Poweramp Discord Rich Presence 1.0.0 for Android
+# Poweramp Discord Rich Presence 1.1.0 for Android
 
 Shows the song [Poweramp](https://powerampapp.com) is playing on your phone as Discord Rich Presence -
 **"Listening to Poweramp"** with Discord's own progress bar, the album cover and a clickable song title. It works
@@ -12,25 +12,37 @@ same features, same cover sources, same settings where they make sense on a phon
 
 | File (on the [Releases](https://github.com/RainBowFl4sh/Poweramp-Discord-RP/releases) page) | |
 |---|---|
-| `PowerampDiscordRP-v1.0.0.apk` | the app - Android 8.0 or newer, any CPU |
-| `PowerampDiscordRP-v1.0.0.apk.sha256` | SHA-256 checksum of the APK |
+| `PowerampDiscordRP-v1.1.0.apk` | the app - Android 8.0 or newer, any CPU |
+| `PowerampDiscordRP-v1.1.0.apk.sha256` | SHA-256 checksum of the APK |
 
 Author: **Fl4sh**
 
 ## Preview
 
-What your Discord profile shows while a song plays:
+What your Discord profile shows while a song plays - Discord's own progress bar, the cover with the small
+play / pause icon, and the clickable song title:
 
-```
-LISTENING TO POWERAMP
-+----------+  Song title              <- clickable: YouTube search for artist + title
-|  cover   |  Artist
-|        > |  Album                   (> = small play / pause icon)
-+----------+  1:23 ======o------ 4:05  (Discord's own progress bar, runs by itself)
-```
+<p align="center">
+  <img src="docs/screenshots/discord-listening.jpg" width="600" alt="Discord profile: Listening to Poweramp with cover, title, artist, album and progress bar">
+</p>
+<p align="center">
+  <img src="docs/screenshots/discord-paused.jpg" width="600" alt="Discord profile: paused, with the pause icon on the cover">
+</p>
 
 In the member list: *Listening to &lt;artist&gt;* by default - or *Listening to Poweramp* (the application name)
-or the song title instead (*Display* tab).
+or the song title instead (*Display* tab):
+
+<p align="center">
+  <img src="docs/screenshots/discord-member-list.jpg" width="420" alt="Discord member list entry with the song title">
+</p>
+
+### The app
+
+| *Display*: live preview | *Display*: texts, placeholders, `\|\|` rotation | *Cover art* | *Sources* |
+|:---:|:---:|:---:|:---:|
+| <img src="docs/screenshots/app-display-preview.jpg" width="190" alt="Live preview of the Discord card"> | <img src="docs/screenshots/app-display-texts.jpg" width="190" alt="Text templates with placeholder chips"> | <img src="docs/screenshots/app-cover-art.jpg" width="190" alt="Cover art settings with the current cover"> | <img src="docs/screenshots/app-sources.jpg" width="190" alt="Online cover sources"> |
+
+The app follows the phone's language (here: English).
 
 ## Features
 
@@ -388,6 +400,10 @@ the version comes from the tag or title, the download is the first attached `.ap
 
 The full list of changes is in [CHANGELOG.md](CHANGELOG.md) (also in [Deutsch](CHANGELOG.de.md)) and on the app's
 *About* tab.
+
+**1.1.0** - New Poweramp-style app icon, rotating texts with `||` (e.g. `%artist% || %title%`), app settings
+(Follow system / Light / Dark theme, AMOLED black, Material You colors), the author's GitHub picture on the *About* tab
+and a much smoother app (R8-optimized release with a baseline profile).
 
 **1.0.0** - First version: Poweramp (stable and beta) as Discord Rich Presence through the official Discord app,
 with covers, clickable title, live preview, setup checklist and update check - in English, German, Russian and

@@ -1,4 +1,4 @@
-# Poweramp Discord Rich Presence 1.0.0 für Android
+# Poweramp Discord Rich Presence 1.1.0 für Android
 
 Zeigt den Song, den [Poweramp](https://powerampapp.com) auf deinem Handy spielt, als Discord Rich Presence an -
 **„Hört Poweramp“** mit Discords eigenem Fortschrittsbalken, dem Album-Cover und einem anklickbaren Songtitel.
@@ -13,25 +13,37 @@ dieselben Funktionen, dieselben Cover-Quellen, dieselben Einstellungen, soweit s
 
 | Datei (auf der Seite [Releases](https://github.com/RainBowFl4sh/Poweramp-Discord-RP/releases)) | |
 |---|---|
-| `PowerampDiscordRP-v1.0.0.apk` | die App - Android 8.0 oder neuer, jede CPU |
-| `PowerampDiscordRP-v1.0.0.apk.sha256` | SHA-256-Prüfsumme der APK |
+| `PowerampDiscordRP-v1.1.0.apk` | die App - Android 8.0 oder neuer, jede CPU |
+| `PowerampDiscordRP-v1.1.0.apk.sha256` | SHA-256-Prüfsumme der APK |
 
 Autor: **Fl4sh**
 
 ## Vorschau
 
-Das zeigt dein Discord-Profil, während ein Song läuft:
+Das zeigt dein Discord-Profil, während ein Song läuft - Discords eigener Fortschrittsbalken, das Cover mit dem
+kleinen Play-/Pause-Symbol und der anklickbare Songtitel:
 
-```
-HÖRT POWERAMP
-+----------+  Songtitel               <- anklickbar: YouTube-Suche nach Interpret + Titel
-|  Cover   |  Interpret
-|        > |  Album                   (> = kleines Play-/Pause-Symbol)
-+----------+  1:23 ======o------ 4:05  (Discords eigener Fortschrittsbalken, läuft von selbst)
-```
+<p align="center">
+  <img src="docs/screenshots/discord-listening.jpg" width="600" alt="Discord-Profil: Hört Poweramp mit Cover, Titel, Interpret, Album und Fortschrittsbalken">
+</p>
+<p align="center">
+  <img src="docs/screenshots/discord-paused.jpg" width="600" alt="Discord-Profil: pausiert, mit Pause-Symbol auf dem Cover">
+</p>
 
 In der Mitgliederliste: standardmäßig *Hört &lt;Interpret&gt;* - oder stattdessen *Hört Poweramp* (der Name der
-Anwendung) bzw. der Songtitel (Tab *Anzeige*).
+Anwendung) bzw. der Songtitel (Tab *Anzeige*):
+
+<p align="center">
+  <img src="docs/screenshots/discord-member-list.jpg" width="420" alt="Eintrag in der Discord-Mitgliederliste mit dem Songtitel">
+</p>
+
+### Die App
+
+| *Anzeige*: Live-Vorschau | *Anzeige*: Texte, Platzhalter, `\|\|`-Wechsel | *Cover* | *Quellen* |
+|:---:|:---:|:---:|:---:|
+| <img src="docs/screenshots/app-display-preview.jpg" width="190" alt="Live-Vorschau der Discord-Karte"> | <img src="docs/screenshots/app-display-texts.jpg" width="190" alt="Textvorlagen mit Platzhalter-Chips"> | <img src="docs/screenshots/app-cover-art.jpg" width="190" alt="Cover-Einstellungen mit dem aktuellen Cover"> | <img src="docs/screenshots/app-sources.jpg" width="190" alt="Online-Coverquellen"> |
+
+Die Screenshots zeigen die App auf Englisch; sie folgt der Sprache des Handys.
 
 ## Funktionen
 
@@ -407,6 +419,10 @@ angeboten): Die Version stammt aus dem Tag oder Titel, der Download ist die erst
 
 Alle Änderungen stehen in [CHANGELOG.de.md](CHANGELOG.de.md) (auch auf [English](CHANGELOG.md)) und im Tab *Über*
 der App.
+
+**1.1.0** - Neues App-Symbol im Poweramp-Stil, wechselnde Texte mit `||` (z. B. `%artist% || %title%`),
+App-Einstellungen (Design wie im System / hell / dunkel, AMOLED-Schwarz, Material-You-Farben), das GitHub-Bild des
+Autors im Tab *Über* und eine deutlich flüssigere App (mit R8 optimierte Release-Version mit Baseline-Profil).
 
 **1.0.0** - Erste Version: Poweramp (Stable und Beta) als Discord Rich Presence über die offizielle Discord-App, mit
 Covern, anklickbarem Titel, Live-Vorschau, Einrichtungs-Checkliste und Update-Check - auf Deutsch, Englisch,
