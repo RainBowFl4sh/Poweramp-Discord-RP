@@ -28,6 +28,10 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
+      # --- HIER EINGEFÜGT: Behebt den "Permission denied" Fehler ---
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
       # The Android SDK is preinstalled on ubuntu-latest; the Gradle plugin downloads missing parts itself.
       - name: Android SDK
         run: |
@@ -178,35 +182,4 @@ jobs:
       - name: Prepare APK + checksum
         run: |
           if [ ! -f release-apk/app-release.apk ]; then
-            echo "::error::The release APK is unsigned. Add the secrets SIGNING_KEYSTORE_BASE64, SIGNING_KEYSTORE_PASSWORD and SIGNING_KEY_ALIAS (see README, Publishing a release)."
-            exit 1
-          fi
-          apk="PowerampDiscordRP-${GITHUB_REF_NAME}.apk"
-          mv release-apk/app-release.apk "$apk"
-          sha256sum "$apk" > "$apk.sha256"
-          cat "$apk.sha256"
-          echo "APK=$apk" >> "$GITHUB_ENV"
-
-      # Release notes = the section of CHANGELOG.md for this version (the build job checked that it exists). The app
-      # does not show them: its About tab has its own changelog (app/src/main/res/raw*/changelog.md).
-      - name: Release notes
-        run: |
-          version="${GITHUB_REF_NAME#v}"
-          awk -v v="$version" '
-            /^## / { if (found) exit; h = $2; sub(/^v/, "", h); found = (h == v); next }
-            found
-          ' CHANGELOG.md > release-notes.md
-          if ! grep -q '[^[:space:]]' release-notes.md; then
-            echo "::error::The '## $version' section of CHANGELOG.md is missing or empty"
-            exit 1
-          fi
-          cat release-notes.md
-
-      - uses: softprops/action-gh-release@v2
-        with:
-          name: Poweramp Discord RP ${{ github.ref_name }}
-          body_path: release-notes.md
-          prerelease: ${{ contains(github.ref_name, '-') }}
-          files: |
-            ${{ env.APK }}
-            ${{ env.APK }}.sha256
+            echo "::error::The release APK is unsigned. Add the secrets SIGNING_KEYSTORE_BASE64, SIGNING_KEYSTORE_PASSWORD and"
