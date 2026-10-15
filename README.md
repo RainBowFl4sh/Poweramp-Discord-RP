@@ -363,13 +363,6 @@ are attached instead.
 
 ## Publishing a release
 
-> **Note for the maintainer:** the GitHub repository is currently **private**. Until it is public, the *Releases*
-> and issue links in this README and in the app, and the app's update check (an anonymous request to
-> `api.github.com`), get *404 Not Found* - the app then shows "No release has been published yet." and counts the
-> check as done until the next scheduled one. Releases of a private repository are private as well: to publish only
-> the releases, they would have to come from a separate public repository, and `GITHUB_REPO` in
-> `app/build.gradle.kts` (plus the links in this README) would have to name it.
-
 1. Once: create the [Discord application](docs/discord-application.md) and a signing key, e.g.
 
    ```
