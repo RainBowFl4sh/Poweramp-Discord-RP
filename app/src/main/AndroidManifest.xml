@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- Package visibility (Android 11+): Poweramp (version, launch, album art provider) and the Discord app (RPC service) -->
+    <queries>
+        <package android:name="com.maxmpz.audioplayer" />
+        <package android:name="com.discord" />
+        <intent>
+            <action android:name="com.discord.socialsdk.rpc.IDiscordRpcService" />
+        </intent>
+        <intent>
+            <action android:name="android.settings.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+            <data android:scheme="package" />
+        </intent>
+    </queries>
+
+    <!-- No backups: the settings hold the Spotify secret, Discogs token and Imgur client ID, and the runtime state
+         (user stop, cover cache) belongs to this installation. Export / Import moves the settings. -->
+    <application
+        android:name=".App"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PowerampDiscordRP">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".service.PresenceService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Keeps the connection to the Discord app open to show the music playing in Poweramp as Discord Rich Presence" />
+        </service>
+
+        <!-- Poweramp sends the *_EXPLICIT broadcasts with setPackage() to every app whose manifest receiver matches,
+             also when this app is not running. The plain (sticky) names are listed too; they only arrive while registered
+             at runtime, but do no harm here. -->
+        <receiver
+            android:name=".poweramp.PowerampReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.maxmpz.audioplayer.TRACK_CHANGED_EXPLICIT" />
+                <action android:name="com.maxmpz.audioplayer.STATUS_CHANGED_EXPLICIT" />
+                <action android:name="com.maxmpz.audioplayer.TRACK_CHANGED" />
+                <action android:name="com.maxmpz.audioplayer.STATUS_CHANGED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

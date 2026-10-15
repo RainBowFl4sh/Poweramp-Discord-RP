@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texte des Einstellungs- / Statusbildschirms (UI) - Deutsch. -->
+<resources>
+    <!-- Tabs -->
+    <string name="tab_status">Status</string>
+    <string name="tab_display">Anzeige</string>
+    <string name="tab_cover">Cover</string>
+    <string name="tab_sources">Quellen</string>
+    <string name="tab_advanced">Erweitert</string>
+    <string name="tab_about">Über</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">Weitere Optionen</string>
+    <string name="app_settings_title">App-Einstellungen</string>
+    <string name="app_settings_theme">Design</string>
+    <string name="theme_system">Wie im System</string>
+    <string name="theme_light">Hell</string>
+    <string name="theme_dark">Dunkel</string>
+    <string name="app_settings_amoled">AMOLED-Schwarz</string>
+    <string name="app_settings_amoled_on">Rein schwarzer Hintergrund im dunklen Design – spart Akku bei OLED-Displays.</string>
+    <string name="app_settings_amoled_needs_dark">Nur im dunklen Design – wähle „Dunkel“ oder stelle Android auf das dunkle Design um.</string>
+    <string name="app_settings_dynamic">Dynamische Farben (Material You)</string>
+    <string name="app_settings_dynamic_sub">Farben aus deinem Hintergrundbild. Aus: die eigenen Discord-ähnlichen Farben der App.</string>
+    <string name="common_close">Schließen</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Dein Discord-Status zeigt, was Poweramp spielt</string>
+    <string name="master_off">Ausgeschaltet – Discord zeigt nichts</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Verbindung</string>
+    <string name="conn_idle">Warte – gerade gibt es nichts anzuzeigen</string>
+    <string name="conn_disabled">Ausgeschaltet</string>
+    <string name="conn_no_app_id">Keine Discord Application ID eingestellt</string>
+    <string name="conn_connecting">Verbinde mit Discord …</string>
+    <string name="conn_connected">Mit Discord verbunden</string>
+    <string name="conn_connected_as">Mit Discord verbunden als %1$s</string>
+    <string name="conn_testing">Die Test-Presence wird angezeigt.</string>
+    <string name="conn_test_waiting">Die Test-Presence wird an Discord gesendet …</string>
+    <string name="conn_activity_error">Discord hat die letzte Aktualisierung nicht angenommen: %1$s</string>
+    <string name="conn_detail">Details: %1$s</string>
+    <string name="conn_user">Discord-Konto</string>
+    <string name="conn_app_id">Application ID</string>
+    <string name="conn_app_builtin">%1$s (eingebaut)</string>
+    <string name="conn_app_own">%1$s (eigene)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">Letzte Aktualisierung</string>
+    <string name="conn_never">noch keine</string>
+    <string name="conn_connections">Verbindungen</string>
+    <string name="conn_service">Hintergrunddienst</string>
+    <string name="conn_service_running">läuft</string>
+    <string name="conn_service_stopped">läuft nicht</string>
+    <string name="conn_service_start">Starten</string>
+    <string name="conn_service_stop">Stoppen</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Nicht mit Discord verbunden – neuer Versuch läuft</string>
+    <string name="err_discord_missing">Die Discord-App ist nicht installiert</string>
+    <string name="err_bind_failed">Die Discord-App bietet den Rich-Presence-Dienst nicht an – bitte Discord aktualisieren</string>
+    <string name="err_connect_failed">Discord hat die Verbindung nicht angenommen – neuer Versuch läuft</string>
+    <string name="err_closed">Discord hat die Verbindung getrennt – verbinde neu</string>
+    <string name="err_invalid_client_id">Discord hat die Application ID abgelehnt – prüfe sie im Tab „Erweitert“</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Läuft gerade</string>
+    <string name="now_nothing">In Poweramp läuft nichts.</string>
+    <string name="word_playing">Wiedergabe</string>
+    <string name="word_paused">Pausiert</string>
+    <string name="hidden_no">Discord zeigt diesen Titel.</string>
+    <string name="hidden_disabled">Rich Presence ist ausgeschaltet – Discord zeigt nichts.</string>
+    <string name="hidden_stopped">Es läuft nichts – Discord zeigt nichts.</string>
+    <string name="hidden_stream">Internetradio / Streams werden ausgeblendet (Tab „Anzeige“) – Discord zeigt nichts.</string>
+    <string name="hidden_path">Diese Datei wird vom Pfadfilter ausgeblendet (Tab „Anzeige“) – Discord zeigt nichts.</string>
+    <string name="hidden_paused">Die Wiedergabe ist pausiert und „Ausblenden“ ist gewählt (Tab „Anzeige“): Discord zeigt deine anderen Aktivitäten.</string>
+    <string name="hidden_timeout">Länger pausiert als im Tab „Anzeige“ eingestellt – die Presence wurde entfernt.</string>
+    <string name="now_user_stopped">Von dir gestoppt – Discord zeigt nichts, bis Poweramp wieder spielt.</string>
+    <string name="now_rejected">Discord hat diese Presence nicht angenommen – siehe „Verbindung“.</string>
+    <string name="now_after_test">Discord zeigt gerade die Test-Presence – danach folgt dieser Titel.</string>
+    <string name="now_test_shown">Discord zeigt gerade die Test-Presence.</string>
+    <string name="now_sending">Wird an Discord gesendet …</string>
+    <string name="now_not_connected">Discord zeigt ihn noch nicht – siehe „Verbindung“.</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Test-Presence senden</string>
+    <string name="btn_reconnect">Neu verbinden</string>
+    <string name="btn_open_poweramp">Poweramp öffnen</string>
+    <string name="btn_open_discord">Discord öffnen</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Einrichtung</string>
+    <string name="check_checking">Prüfe …</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">Version %1$s (Build %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">Version %1$s</string>
+    <string name="check_poweramp_old">Version %1$s (Build %2$d) ist zu alt – diese App braucht Build %3$d oder neuer.</string>
+    <string name="check_poweramp_missing">Poweramp ist nicht installiert.</string>
+    <string name="check_poweramp_get">Poweramp holen</string>
+    <string name="check_poweramp_update">Poweramp aktualisieren</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Installiert, Rich-Presence-Dienst verfügbar</string>
+    <string name="check_discord_no_rpc">Diese Discord-Version bietet anderen Apps den Rich-Presence-Dienst nicht an. Bitte aktualisiere Discord.</string>
+    <string name="check_discord_missing">Die Discord-App ist nicht installiert.</string>
+    <string name="check_discord_get">Discord holen</string>
+    <string name="check_discord_update">Discord aktualisieren</string>
+    <string name="check_appid_title">Discord-Anwendung</string>
+    <string name="check_appid_own">Eigene Anwendung (ID %1$s)</string>
+    <string name="check_appid_missing">In diesem Build ist keine Application ID eingebaut. Erstelle eine eigene Discord-Anwendung und trage ihre ID im Tab „Erweitert“ ein.</string>
+    <string name="check_appid_invalid">Deine eigene Application ID ist ungültig (17 bis 20 Ziffern), und dieser Build hat keine eingebaute.</string>
+    <string name="check_appid_invalid_fallback">Deine eigene Application ID ist ungültig (17 bis 20 Ziffern) – die eingebaute Anwendung (ID %1$s) wird verwendet.</string>
+    <string name="check_appid_builtin_invalid">Die in diesen Build eingebaute Application ID (%1$s) ist ungültig (17 bis 20 Ziffern). Erstelle eine eigene Discord-Anwendung und trage ihre ID im Tab „Erweitert“ ein.</string>
+    <string name="check_appid_both_invalid">Deine eigene Application ID ist ungültig (17 bis 20 Ziffern), und die in diesen Build eingebaute (%1$s) ebenfalls.</string>
+    <string name="check_appid_fix">Einrichten</string>
+    <string name="check_battery_title">Akku-Optimierung</string>
+    <string name="check_battery_ok">Für diese App aus – sie kann im Hintergrund starten, wenn Poweramp zu spielen beginnt.</string>
+    <string name="check_battery_bad">Android lässt die App womöglich nicht starten, wenn Poweramp zu spielen beginnt, oder beendet sie später. Nimm sie von der Akku-Optimierung aus.</string>
+    <string name="check_battery_fix">Erlauben</string>
+    <string name="check_notif_title">Benachrichtigungen</string>
+    <string name="check_notif_ok">Erlaubt – die Statusbenachrichtigung zeigt, was Discord sieht.</string>
+    <string name="check_notif_bad">Nicht erlaubt – die App kann ihre Statusbenachrichtigung nicht anzeigen, während sie deine Presence aktuell hält.</string>
+    <string name="check_notif_fix">Erlauben</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Gut zu wissen</string>
+    <string name="hint_privacy_title">Aktivität in Discord teilen</string>
+    <string name="hint_privacy">In Discord: Einstellungen → Aktivitäts-Privatsphäre → „Deine Aktivität teilen“ einschalten. Sonst sieht niemand, was du hörst.</string>
+    <string name="hint_poweramp_title">Erster Start</string>
+    <string name="hint_poweramp">Drücke nach der Installation dieser App in Poweramp einmal Pause und Play, damit Poweramp die App bemerkt und ihr die Titelinfos schickt.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Test-Presence wird gesendet – sie wird %1$d Sekunden angezeigt.</string>
+    <string name="msg_reconnecting">Verbinde neu …</string>
+    <string name="msg_stop_ended">Dein Stopp ist damit beendet – Discord zeigt Poweramp wieder an.</string>
+    <string name="msg_start_blocked">Android hat den Start im Hintergrund nicht erlaubt – erlaube ihn unter „Akku-Optimierung“.</string>
+    <string name="msg_service_started">Hintergrunddienst gestartet.</string>
+    <string name="msg_service_stopped">Gestoppt, bis Poweramp wieder spielt.</string>
+    <string name="msg_cannot_open">Keine App gefunden, die das öffnen kann.</string>
+    <string name="msg_cover_cleared">Cover-Cache geleert.</string>
+    <string name="msg_exported">Einstellungen gespeichert.</string>
+    <string name="msg_export_failed">Die Einstellungen konnten nicht gespeichert werden.</string>
+    <string name="msg_imported">Einstellungen importiert.</string>
+    <string name="msg_import_failed">Diese Datei enthält keine Einstellungen dieser App.</string>
+    <string name="msg_reset">Alle Einstellungen wurden auf die Standardwerte zurückgesetzt.</string>
+    <string name="msg_log_copied">Log kopiert.</string>
+    <string name="msg_up_to_date">Du hast die neueste Version.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Live-Vorschau</string>
+    <string name="prev_listening">Hört %1$s</string>
+    <string name="prev_playing">Spielt %1$s</string>
+    <string name="prev_app_own">deine App</string>
+    <string name="prev_you">Du</string>
+    <string name="prev_elapsed">%1$s vergangen</string>
+    <string name="prev_example">Beispiel – gerade läuft nichts.</string>
+    <string name="prev_example_title">Beispieltitel</string>
+    <string name="prev_example_artist">Beispielinterpret</string>
+    <string name="prev_example_album">Beispielalbum</string>
+    <string name="prev_icon_tip">Symbol: %1$s</string>
+    <string name="prev_link">Link: %1$s</string>
+    <string name="prev_no_link">Titel ohne Link</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Aktivität</string>
+    <string name="disp_type">Aktivitätstyp</string>
+    <string name="disp_type_listening">Hört (mit Fortschrittsbalken)</string>
+    <string name="disp_type_playing">Spielt (nur verstrichene Zeit)</string>
+    <string name="disp_status_display">Discord-Statustext zeigt</string>
+    <string name="disp_status_name">Anwendungsname (Poweramp)</string>
+    <string name="disp_status_state">Zweite Zeile (Interpret)</string>
+    <string name="disp_status_details">Erste Zeile (Titel)</string>
+    <string name="disp_timestamps">Fortschrittsbalken / verstrichene Zeit anzeigen</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Texte</string>
+    <string name="disp_details">Erste Zeile</string>
+    <string name="disp_state">Zweite Zeile</string>
+    <string name="disp_large_text">Cover-Tooltip</string>
+    <string name="disp_small_text">Symbol-Tooltip</string>
+    <string name="disp_insert_into">Tippe auf einen Platzhalter, um ihn in „%1$s“ einzufügen:</string>
+    <string name="disp_placeholders_help">Was die Platzhalter bedeuten</string>
+    <string name="disp_rotation_help" formatted="false">Mit || dazwischen wechseln sich Texte ab, z. B. %artist% || %title% (Wechselintervall unten).</string>
+    <string name="ph_title">Titel</string>
+    <string name="ph_artist">Interpret</string>
+    <string name="ph_album">Album</string>
+    <string name="ph_filename">Dateiname ohne Endung</string>
+    <string name="ph_ext">Dateiendung (flac, mp3 …)</string>
+    <string name="ph_pos">aktuelle Position (1:23)</string>
+    <string name="ph_dur">Länge (3:45)</string>
+    <string name="ph_percent">Fortschritt in Prozent</string>
+    <string name="ph_bar">Text-Fortschrittsbalken ▰▰▰▱▱▱</string>
+    <string name="ph_status">Wiedergabe / Pausiert</string>
+    <string name="ph_codec">Codec (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">Bitrate (320 kbps)</string>
+    <string name="ph_samplerate">Abtastrate (44.1 kHz)</string>
+    <string name="ph_bits">Bittiefe (24-bit)</string>
+    <string name="ph_track">Position in der aktuellen Liste</string>
+    <string name="ph_listsize">Anzahl der Titel in der Liste</string>
+    <string name="ph_rating">Bewertung ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">zwischen Alternativen, die sich abwechseln, z. B. %artist% || %title%</string>
+    <string name="disp_small_icon">Play-/Pause-Symbol anzeigen (kleines Bild)</string>
+    <string name="disp_bar_length" formatted="false">Länge von %bar%</string>
+    <string name="disp_bar_length_value">%1$d Zeichen</string>
+    <string name="disp_refresh">Aktualisierungsintervall</string>
+    <string name="disp_refresh_value">%1$d s</string>
+    <string name="disp_refresh_note" formatted="false">Nur wirksam, wenn ein Text %pos%, %bar% oder %percent% enthält. Discord nimmt nur wenige Aktualisierungen pro Minute an.</string>
+    <string name="disp_rotation">Wechselintervall</string>
+    <string name="disp_rotation_value">%1$d s</string>
+    <string name="disp_rotation_note">Nur wirksam, wenn ein Text || enthält. Jeder Titel beginnt mit der ersten Alternative, leere werden übersprungen. Discord nimmt nur 5 Aktualisierungen pro 20 Sekunden an, daher mindestens 5 s.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Anklickbarer Titel</string>
+    <string name="disp_title_link">Anklickbarer Songtitel (YouTube-Suche nach Interpret + Titel)</string>
+    <string name="disp_own_link">Eigener Link</string>
+    <string name="disp_own_link_url">Link</string>
+    <string name="disp_own_link_hint" formatted="false">Platzhalter funktionieren auch hier, z. B. https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">Der Link muss mit http:// oder https:// beginnen</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Pause</string>
+    <string name="disp_paused">Bei Pause</string>
+    <string name="disp_paused_show">Status „Pausiert“ anzeigen</string>
+    <string name="disp_paused_hide">Ausblenden (andere Aktivitäten sichtbar)</string>
+    <string name="disp_clear_after">Nach einer Pause entfernen nach (Minuten)</string>
+    <string name="disp_clear_after_hint">0 = nie (nur wenn „Pausiert“ angezeigt wird)</string>
+    <string name="disp_filters_title">Filter</string>
+    <string name="disp_hide_streams">Bei Internetradio / Streams ausblenden</string>
+    <string name="disp_exclude_paths">Ausblenden, wenn der Dateipfad enthält</string>
+    <string name="disp_exclude_paths_hint">z. B. Hörbücher;Podcasts</string>
+    <string name="disp_exclude_paths_note">Mehrere Teile mit ; trennen (Groß-/Kleinschreibung egal)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Album-Cover in Discord anzeigen</string>
+    <string name="cov_info">Discord zeigt nur Cover mit öffentlichem Link. Das Cover, das Poweramp anzeigt, kann hochgeladen werden (x0.at ohne Konto) oder wird online gesucht (siehe „Quellen“). Jedes Cover wird nur einmal gesucht und gespeichert.</string>
+    <string name="cov_local_title">Cover von Poweramp</string>
+    <string name="cov_local">Das Cover verwenden, das Poweramp anzeigt</string>
+    <string name="cov_local_sub">In der Datei eingebettet, Bild im Ordner oder von Poweramp heruntergeladen – wird hochgeladen, um einen öffentlichen Link zu bekommen</string>
+    <string name="cov_upload">Cover hochladen zu</string>
+    <string name="cov_upload_x0">x0.at (ohne Konto)</string>
+    <string name="cov_upload_catbox">catbox.moe (ohne Konto)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Aus (nur Online-Suche)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Imgur braucht eine Client-ID – ohne springt ein anderer Dienst ein.</string>
+    <string name="cov_imgur_get">Client-ID holen</string>
+    <string name="cov_prefer_local">Cover von Poweramp bevorzugen</string>
+    <string name="cov_prefer_local_sub">Online-Suche nur für Titel ohne Cover</string>
+    <string name="cov_size">Größe hochgeladener Cover</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">Hochgeladene Cover kann jeder sehen, der den Link hat.</string>
+    <string name="cov_current_title">Aktuelles Cover</string>
+    <string name="cov_off">Cover sind ausgeschaltet – Discord zeigt das App-Logo.</string>
+    <string name="cov_nothing">Es wird nichts abgespielt.</string>
+    <string name="cov_searching">Suche ein Cover …</string>
+    <string name="cov_not_yet">Das Cover wird gesucht, sobald Discord diesen Titel zeigt.</string>
+    <string name="cov_none">Discord zeigt das App-Logo: Es wurde kein Cover gefunden, oder Discord konnte es nicht laden.</string>
+    <string name="cov_source">Quelle: %1$s</string>
+    <string name="cov_src_cache">Cover-Cache</string>
+    <string name="cov_src_online">gefunden bei %1$s</string>
+    <string name="cov_src_poweramp">Cover von Poweramp</string>
+    <string name="cov_src_uploaded">%1$s, hochgeladen zu %2$s</string>
+    <string name="cov_open">Bild öffnen</string>
+    <string name="cov_clear">Cover-Cache leeren</string>
+    <string name="cov_image_desc">Album-Cover</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Die Online-Suche sucht nach Interpret / Album und nutzt direkt die öffentliche Bild-URL – es wird nichts hochgeladen. Die Quellen werden von oben nach unten probiert, der erste Treffer zählt.</string>
+    <string name="src_covers_off">Cover sind ausgeschaltet – es wird nichts gesucht.</string>
+    <string name="src_open_cover_tab">Cover-Einstellungen</string>
+    <string name="src_prefer_local_note">„Cover von Poweramp bevorzugen“ ist an: Die Suche wird nur für Titel ohne Cover genutzt.</string>
+    <string name="src_list_title">Online-Quellen</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Kostenlose Entwickler-App nötig (Client-ID + Secret)</string>
+    <string name="src_client_id">Client-ID</string>
+    <string name="src_client_secret">Client-Secret</string>
+    <string name="src_spotify_missing">Trage Client-ID und Secret ein, sonst wird Spotify übersprungen.</string>
+    <string name="src_create_app">App erstellen</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Kein Schlüssel nötig (inoffizielle Schnittstelle)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Kostenloses persönliches Zugriffstoken nötig</string>
+    <string name="src_token">Token</string>
+    <string name="src_discogs_missing">Trage ein Token ein, sonst wird Discogs übersprungen.</string>
+    <string name="src_get_token">Token holen</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Kein Schlüssel nötig</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Discord-Anwendung</string>
+    <string name="adv_custom_app">Eigene Discord-Anwendung verwenden</string>
+    <string name="adv_custom_app_sub">Discord zeigt ihren Namen („Hört …“)</string>
+    <string name="adv_app_id">Application ID</string>
+    <string name="adv_app_id_hint">Developer Portal → deine Anwendung → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">Eine Application ID hat 17 bis 20 Ziffern.</string>
+    <string name="adv_portal">Developer Portal öffnen</string>
+    <string name="adv_assets_note">Lade unter Rich Presence → Art Assets Bilder mit den Namen „poweramp“ (Logo), „play“ und „pause“ hoch.</string>
+    <string name="adv_effective">Verwendete Application ID</string>
+    <string name="adv_effective_none">keine – dieser Build hat keine eingebaute ID, verwende eine eigene Anwendung</string>
+    <string name="adv_compat_title">Kompatibilität</string>
+    <string name="adv_seconds">Zeitstempel in Sekunden senden</string>
+    <string name="adv_seconds_sub">Nur, wenn Discord eine falsche Zeit oder keinen Fortschrittsbalken zeigt</string>
+    <string name="adv_log_title">Letzte Log-Einträge</string>
+    <string name="adv_log_empty">Noch nichts protokolliert.</string>
+    <string name="adv_log_copy">Kopieren</string>
+    <string name="adv_log_share">Teilen</string>
+    <string name="adv_log_clear">Leeren</string>
+    <string name="adv_log_share_subject">Poweramp Discord RP – Log</string>
+    <string name="adv_settings_title">Einstellungsdatei</string>
+    <string name="adv_settings_info">Alle Einstellungen in einer Datei sichern oder aus einer laden (z. B. auf einem neuen Handy). Die Datei enthält auch die Schlüssel, die du für Cover eingegeben hast (Imgur, Spotify, Discogs).</string>
+    <string name="adv_export">Exportieren …</string>
+    <string name="adv_import">Importieren …</string>
+    <string name="adv_reset">Auf Standard zurücksetzen</string>
+    <string name="adv_reset_confirm_title">Alle Einstellungen zurücksetzen?</string>
+    <string name="adv_reset_confirm_text">Alle Einstellungen bekommen wieder ihre Standardwerte. Exportiere sie vorher, wenn du sie behalten möchtest.</string>
+    <string name="adv_reset_confirm">Zurücksetzen</string>
+    <string name="adv_export_keys_title">Mit deinen Schlüsseln exportieren?</string>
+    <string name="adv_export_keys_text">Die Datei enthält deine Schlüssel für %1$s im Klartext. Behalte sie für dich – teile sie nicht und hänge sie an keinen Fehlerbericht an.</string>
+    <string name="adv_export_keys_confirm">Exportieren</string>
+    <string name="common_cancel">Abbrechen</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_by">von %1$s</string>
+    <string name="about_on_github">%1$s auf GitHub</string>
+    <string name="cd_author_avatar">GitHub-Profilbild von %1$s</string>
+    <string name="about_github">GitHub-Seite</string>
+    <string name="about_releases">Alle Versionen</string>
+    <string name="about_issues">Problem melden</string>
+    <string name="about_disclaimer">Ein unabhängiges Projekt – nicht mit Discord oder Poweramp verbunden oder von ihnen unterstützt.</string>
+    <string name="about_updates_title">Updates</string>
+    <string name="about_update_check">Nach Updates suchen</string>
+    <string name="about_update_freq">Wie oft</string>
+    <string name="upd_every_start">bei jedem App-Start</string>
+    <string name="upd_daily">einmal am Tag</string>
+    <string name="upd_weekly">einmal pro Woche</string>
+    <string name="upd_monthly">einmal im Monat</string>
+    <string name="about_check_now">Jetzt suchen</string>
+    <string name="upd_never">Noch nicht gesucht.</string>
+    <string name="upd_checking">Suche nach Updates …</string>
+    <string name="upd_latest">Du hast die neueste Version (zuletzt geprüft: %1$s).</string>
+    <string name="upd_available">Version %1$s ist verfügbar.</string>
+    <string name="upd_failed">Update-Suche fehlgeschlagen: keine Verbindung zu GitHub.</string>
+    <string name="upd_rate_limited">GitHub begrenzt gerade die Anfragen – bitte später noch einmal versuchen.</string>
+    <string name="upd_no_release">Es wurde noch keine Version veröffentlicht.</string>
+    <string name="upd_bad_answer">Update-Suche fehlgeschlagen: Die Antwort von GitHub war nicht lesbar.</string>
+    <string name="upd_download">%1$s herunterladen</string>
+    <string name="upd_whats_new">Was ist neu?</string>
+    <string name="about_update_privacy">Die Suche fragt nur GitHub nach der neuesten Version – sonst wird nichts gesendet.</string>
+    <string name="about_credits_title">Danksagung</string>
+    <string name="about_credit_poweramp">Poweramp API von Max MP</string>
+    <string name="about_credit_discord">Discord-Social-SDK-RPC-Schnittstelle über antisocialcord-kt von Nightdavisao (MIT-Lizenz)</string>
+    <string name="about_credit_covers">Cover: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz und das Cover Art Archive</string>
+    <string name="about_credit_aimp">Das Android-Gegenstück zu „Discord Rich Presence für AIMP“ vom selben Autor</string>
+    <string name="about_changelog_title">Änderungen</string>
+    <string name="about_changelog_version">Version %1$s</string>
+    <string name="about_installed">(installiert)</string>
+    <string name="about_translation_note"></string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">OK</string>
+    <string name="cd_info">Hinweis</string>
+    <string name="cd_warning">Warnung</string>
+    <string name="cd_error">Problem</string>
+    <string name="field_show">Zeigen</string>
+    <string name="field_hide">Verbergen</string>
+    <string name="field_range">Erlaubt: %1$d bis %2$d</string>
+</resources>
