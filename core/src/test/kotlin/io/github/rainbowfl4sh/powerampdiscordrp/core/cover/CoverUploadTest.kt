@@ -359,7 +359,7 @@ class CoverUploadTest {
 
         val r = resolver.resolve(TRACK, UPLOAD_ONLY)
 
-        assertEquals(CoverResult("https://files.test/img/old.jpg", "poweramp|x0.at", clock.wall - fourDays), r)
+        assertEquals("verified now", CoverResult("https://files.test/img/old.jpg", "poweramp|x0.at", clock.wall), r)
         assertEquals(1, net.count("/img/old.jpg"))
         assertEquals(0, net.count("/x0/"))
         assertEquals("checked in this process", r, resolver.peekCache(TRACK))

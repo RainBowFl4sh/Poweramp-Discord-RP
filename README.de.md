@@ -1,10 +1,11 @@
-# Poweramp Discord Rich Presence 1.1.0 für Android
+# Poweramp Discord Rich Presence 1.2.0 für Android
 
 Zeigt den Song, den [Poweramp](https://powerampapp.com) auf deinem Handy spielt, als Discord Rich Presence an -
 **„Hört Poweramp“** mit Discords eigenem Fortschrittsbalken, dem Album-Cover und einem anklickbaren Songtitel.
 Funktioniert mit Poweramp **Stable und Beta** und spricht mit der **offiziellen Discord-App** auf demselben Handy:
-kein Login, kein Token, kein Self-Bot. Auf Deutsch, Englisch, Russisch und Ukrainisch, mit Einrichtungs-Checkliste,
-Live-Vorschau und Update-Check.
+kein Login, kein Token, kein Self-Bot. In 30 Sprachen, mit Einrichtungs-Checkliste,
+Live-Vorschau und Update-Check - und auf Wunsch mit deinem eigenen Discord-Namen und Profilbild in der Vorschau
+(optionale Konto-Verknüpfung).
 
 Das Android-Gegenstück zum [AIMP-Discord-Rich-Presence-Plugin](https://github.com/RainBowFl4sh/AIMP-Discord-RP-v4-v6--Win32_64Bit--Linux) -
 dieselben Funktionen, dieselben Cover-Quellen, dieselben Einstellungen, soweit sie auf einem Handy Sinn ergeben.
@@ -13,8 +14,8 @@ dieselben Funktionen, dieselben Cover-Quellen, dieselben Einstellungen, soweit s
 
 | Datei (auf der Seite [Releases](https://github.com/RainBowFl4sh/Poweramp-Discord-RP/releases)) | |
 |---|---|
-| `PowerampDiscordRP-v1.1.0.apk` | die App - Android 8.0 oder neuer, jede CPU |
-| `PowerampDiscordRP-v1.1.0.apk.sha256` | SHA-256-Prüfsumme der APK |
+| `PowerampDiscordRP-v1.2.0.apk` | die App - Android 8.0 oder neuer, jede CPU |
+| `PowerampDiscordRP-v1.2.0.apk.sha256` | SHA-256-Prüfsumme der APK |
 
 Autor: **Fl4sh**
 
@@ -43,7 +44,8 @@ Anwendung) bzw. der Songtitel (Tab *Anzeige*):
 |:---:|:---:|:---:|:---:|
 | <img src="docs/screenshots/app-display-preview.jpg" width="190" alt="Live-Vorschau der Discord-Karte"> | <img src="docs/screenshots/app-display-texts.jpg" width="190" alt="Textvorlagen mit Platzhalter-Chips"> | <img src="docs/screenshots/app-cover-art.jpg" width="190" alt="Cover-Einstellungen mit dem aktuellen Cover"> | <img src="docs/screenshots/app-sources.jpg" width="190" alt="Online-Coverquellen"> |
 
-Die Screenshots zeigen die App auf Englisch; sie folgt der Sprache des Handys.
+Die Screenshots zeigen die App auf Englisch; sie folgt der Sprache des Handys oder der in den *App-Einstellungen*
+gewählten.
 
 ## Funktionen
 
@@ -72,9 +74,14 @@ Die Screenshots zeigen die App auf Englisch; sie folgt der Sprache des Handys.
 - Textvorlagen mit Platzhaltern (siehe [Platzhalter](#platzhalter)), **wechselnde Texte** (`%artist% || %title%`,
   siehe [Wechselnde Texte](#wechselnde-texte)), Play-/Pause-Symbol, Text-Fortschrittsbalken
 - **Live-Vorschau** der Discord-Karte, während du die Texte bearbeitest
+- **Dein Discord-Name und Profilbild** in der Live-Vorschau und im Tab *Status*: einmal das Discord-Konto verknüpfen
+  (optional, siehe [Discord-Konto verknüpfen](#discord-konto-verknüpfen-optional)). Gelesen werden nur Name und
+  Bild, der Zugriff wird sofort widerrufen - die App speichert kein Token
 - **Status-Seite** mit Einrichtungs-Checkliste, Verbindungsstatus, *Test-Presence senden* und *Neu verbinden*
 - **Update-Check** über die GitHub-Releases (abschaltbar)
-- Deutsch, Englisch, Russisch und Ukrainisch - folgt der Sprache des Handys
+- **30 Sprachen** (siehe [Sprachen](#sprachen)) - folgt der Sprache des Handys, oder du wählst eine in den
+  *App-Einstellungen* (ab Android 13 auch unter *Einstellungen → Apps → Poweramp Discord RP → Sprache*). Arabisch
+  wird von rechts nach links angezeigt
 - Sparsam: läuft als kleiner Vordergrunddienst (mit Benachrichtigung) **nur, während Poweramp spielt**, und beendet
   sich selbst eine Minute, nachdem nichts mehr angezeigt wird
 
@@ -107,12 +114,47 @@ Die Screenshots zeigen die App auf Englisch; sie folgt der Sprache des Handys.
    Mitgliederliste standardmäßig den Interpreten). *Test-Presence senden* zeigt 15 Sekunden lang eine
    Test-Presence, auch wenn nichts läuft
 
+**Optional:** *Status -> Discord-Konto -> Discord-Konto verknüpfen* zeigt deinen eigenen Namen und dein Profilbild in
+der Live-Vorschau - siehe nächster Abschnitt.
+
 **Aktualisieren:** die neue APK einfach über die alte installieren - deine Einstellungen bleiben erhalten. Der Tab
 *Über* meldet, wenn es eine neue Version gibt.
 
 **Neues Handy:** Die Einstellungen sind nicht Teil der Android-Sicherung oder der Übertragung von Gerät zu Gerät
 (sie können deine Schlüssel für Spotify / Discogs / Imgur enthalten). Übertrage sie mit *Erweitert ->
 Einstellungsdatei -> Exportieren* auf dem alten und *Importieren* auf dem neuen Handy.
+
+## Discord-Konto verknüpfen (optional)
+
+Der Rich-Presence-Dienst der Discord-App verrät anderen Apps nicht, wer angemeldet ist - er meldet einen
+Platzhalter-Nutzer. Damit die Live-Vorschau (Eintrag in der Mitgliederliste) und der Tab *Status* **deinen** Namen
+und dein Profilbild zeigen, verknüpfe dein Konto einmal: *Status -> Discord-Konto -> Discord-Konto verknüpfen* (oder
+tippe auf den Hinweis unter dem Mitgliederlisten-Eintrag der Vorschau).
+
+1. Discords Autorisierungsseite öffnet sich - in der Discord-App, die discord.com-Links selbst öffnet, oder im
+   Browser. Sie fragt, ob **Poweramp** (die Discord-Anwendung) *auf deinen Benutzernamen, dein Profilbild und dein
+   Banner zugreifen* darf (Scope `identify` - keine E-Mail, keine Server, keine Nachrichten). Tippe auf *Autorisieren*
+2. Discord schickt dich zurück zur App, die deinen Namen und dein Bild zeigt
+
+Was dabei passiert: OAuth2 mit PKCE als *Public Client* (kein Client-Secret in der App). Die App tauscht den
+Einmal-Code gegen ein Zugriffstoken, liest dein öffentliches Profil (`users/@me`: ID, Benutzername, Anzeigename,
+Profilbild) und **widerruft das Token sofort**. Sie behält nur dieses Profil auf dem Handy (nicht in der
+Einstellungsdatei, nicht in Sicherungen) - nie ein Token. Die Presence selbst nutzt die Verknüpfung gar nicht.
+
+- **Aktualisieren** liest das Profil neu (wenn du Name oder Bild geändert hast): Discords Seite öffnet sich wieder -
+  tippe noch einmal auf *Autorisieren* (der Zugriff wurde widerrufen, also fragt Discord erneut)
+- **Verknüpfung lösen** löscht das Profil vom Handy. Bei Discord gibt es nichts zu entfernen: Der Zugriff wurde direkt
+  nach dem Lesen des Profils widerrufen, die App bleibt also nicht unter *Einstellungen -> Autorisierte Apps* (steht
+  sie dort doch, entfernt *Autorisierung aufheben* sie)
+- **Discords Seite ohne Antwort verlassen?** Solange die Karte auf Discord wartet, öffnet *Neu starten* die Seite mit
+  einer frischen Anmeldung (ebenso der Hinweis in der Live-Vorschau), und *Abbrechen* beendet das Warten
+- Eine Anmeldung wartet höchstens 10 Minuten auf Discords Antwort; eine Antwort, die nicht zu der von der App
+  gestarteten Anmeldung gehört, wird ignoriert
+
+**Für alle, denen die Discord-Anwendung gehört** (die eingebaute oder deine eigene): Die Verknüpfung braucht zwei
+Einstellungen im [Developer Portal](https://discord.com/developers/applications), einmalig - *OAuth2 -> Redirects* ->
+`powerampdiscordrp://auth/callback` hinzufügen, und *OAuth2 -> Public Client* einschalten. Siehe
+[docs/discord-application.de.md](docs/discord-application.de.md#5-für-die-konto-verknüpfung-oauth2-redirect-und-public-client).
 
 ## So funktioniert es
 
@@ -148,7 +190,8 @@ Einstellungsdatei -> Exportieren* auf dem alten und *Importieren* auf dem neuen 
 
 **Status** - die Einrichtungs-Checkliste (Poweramp installiert und neu genug, Discord-App mit Rich-Presence-Dienst,
 Benachrichtigungen, Akku-Optimierung, ID der Discord-Anwendung), der Verbindungsstatus, *Test-Presence senden*
-(15 s, auch wenn nichts läuft) und *Neu verbinden*
+(15 s, auch wenn nichts läuft) und *Neu verbinden*, und das verknüpfte **Discord-Konto** (Name, Bild,
+*Aktualisieren* / *Verknüpfung lösen* oder *Discord-Konto verknüpfen*)
 
 **Anzeige** - Aktivitätstyp (*Hört* mit Fortschrittsbalken / *Spielt*), was dein Status in der Mitgliederliste
 zeigt (Name der Anwendung, Interpret - der Standard - oder Songtitel), die Textvorlagen für beide Zeilen und die
@@ -170,7 +213,8 @@ das aktuelle Log, Export / Import aller Einstellungen und Zurücksetzen auf die 
 **Über** - Version, Autor mit GitHub-Bild, Links (GitHub, Releases, Problem melden), Update-Check (bei jedem
 Start, täglich, wöchentlich, monatlich oder aus; *Jetzt suchen*) und der Changelog
 
-**App-Einstellungen** (Drei-Punkte-Menü oben rechts) - Design *Wie im System* / *Hell* / *Dunkel*, **AMOLED-Schwarz**
+**App-Einstellungen** (Drei-Punkte-Menü oben rechts) - **Sprache** (*Systemstandard* oder eine der 30 Sprachen
+unter ihrem eigenen Namen; ab Android 13 dieselbe Einstellung wie die App-Sprache von Android), Design *Wie im System* / *Hell* / *Dunkel*, **AMOLED-Schwarz**
 (rein schwarzer Hintergrund im dunklen Modus) und dynamische **Material-You**-Farben ab Android 12 (aus = die eigenen,
 Discord-ähnlichen Farben der App). Bleiben getrennt von den Presence-Einstellungen auf dem Handy (nicht Teil von
 Export / Import)
@@ -265,6 +309,22 @@ probiert, und der erste plausible Treffer zählt. Wird nichts gefunden, erschein
   kann helfen - ob das nötig ist, ist nicht bestätigt
 - Immer noch nichts: Das Log im Tab *Erweitert* zeigt, was passiert ist (Verbindung, Antworten von Discord, Fehler)
 
+### Das Verknüpfen des Discord-Kontos klappt nicht
+
+Die Karte *Discord-Konto* im Tab *Status* sagt, was schiefging:
+
+- **Discord zeigt „Invalid OAuth2 redirect_uri“** (oder die Karte sagt, dass die Anwendung die Rücksprungadresse der
+  App nicht kennt): Der Discord-Anwendung fehlt der Redirect. Wem sie gehört, trägt
+  `powerampdiscordrp://auth/callback` im Developer Portal unter *OAuth2 -> Redirects* ein. Bei einer eigenen
+  Anwendung (Tab *Erweitert*) bist das du
+- **„Public Client“ ist nicht eingeschaltet:** Discord verlangt ein Client-Secret, das die App nicht hat. Wem die
+  Anwendung gehört, schaltet *OAuth2 -> Public Client* ein
+- **Abgebrochen:** Du hast es auf Discords Seite nicht erlaubt - tippe erneut auf *Discord-Konto verknüpfen*
+- **Zu lange gedauert / schon verwendet:** Eine Anmeldung wartet höchstens 10 Minuten - starte sie neu
+- **Nach *Autorisieren* passiert nichts:** Der Browser hat die Antwort nicht an die App übergeben. Öffne die App
+  wieder und tippe im Tab *Status* auf *Neu starten* (ist die Discord-App installiert, öffnet sie die Seite selbst)
+- Das Log im Tab *Erweitert* zeigt jeden Schritt (ohne Codes oder Tokens)
+
 ### Kein Cover / nur das Logo
 
 - **Upload-Dienst ausgefallen:** im Tab *Cover* ein anderes Upload-Ziel wählen. Ein ausgefallener Dienst wird
@@ -292,9 +352,12 @@ am Tag) - siehe *Akku-Optimierung* oben.
 ## Datenschutz und Netzwerk
 
 - Kein Discord-Login, kein Token: Die App übergibt die Aktivität an die Discord-App auf deinem Handy, die sie wie
-  jede andere Rich Presence anzeigt. Die Discord-App teilt ihr deinen Discord-Namen und dein Profilbild mit; die App
-  zeigt beides in der Vorschau (den Namen auch im Tab *Status*) und schreibt den Namen ins Log („Connected to
-  Discord as ...“). Beides bleibt auf dem Handy
+  jede andere Rich Presence anzeigt. Die Discord-App verrät der App nicht, wer du bist (sie meldet einen
+  Platzhalter-Nutzer, der nur im Log landet)
+- Dein Name und dein Bild erscheinen nur, wenn du **dein Discord-Konto verknüpfst** (optional): OAuth2 nur mit dem
+  Scope `identify`; mit dem Zugriffstoken wird einmal dein Profil gelesen, dann wird es sofort widerrufen. Die App behält dein
+  öffentliches Profil (ID, Benutzername, Anzeigename, Profilbild) auf dem Handy - nicht in der Einstellungsdatei,
+  nicht in Sicherungen -, bis du die Verknüpfung löst
 - Netzwerkzugriffe - das sind alle:
   - für Cover, die hochgeladen werden: das gewählte Upload-Ziel (x0.at, catbox.moe oder api.imgur.com) und, **wenn
     es ausfällt, x0.at oder catbox.moe** - automatisch. Wer das nicht möchte, schaltet den Upload im Tab *Cover* ab
@@ -303,10 +366,14 @@ am Tag) - siehe *Akku-Optimierung* oben.
     Die App lädt ein Cover, um zu prüfen, ob ein Upload geklappt hat bzw. noch da ist, und um es in der Vorschau und
     im Tab *Cover* zu zeigen
   - Discords Bildserver: `media.discordapp.net` (ein paar Sekunden nach einem neuen Cover: Kann Discord es laden?)
-    und `cdn.discordapp.com` (dein Profilbild und die Bilder der Application in der Vorschau)
+    und `cdn.discordapp.com` (die Bilder der Application in der Vorschau; das Profilbild des verknüpften Kontos in
+    der Vorschau und im Tab *Status*)
   - `discord.com/api` einmal pro Verbindung: der öffentliche Name und die Art-Asset-Liste der Discord-Application
     (ohne Login). Die Discord-App zeigt das kleine Play-/Pause-Bild und das Logo nur als Bild-URL, nicht über den
     Asset-Namen
+  - nur, wenn du dein Discord-Konto verknüpfst: Discords Autorisierungsseite `discord.com/oauth2/authorize` (in der
+    Discord-App oder im Browser), dann `discord.com/api` - `oauth2/token` (Code -> Token), `users/@me` (dein
+    öffentliches Profil) und `oauth2/token/revoke` (das Token wird sofort widerrufen)
   - `api.github.com` für den Update-Check (im Tab *Über* abschaltbar)
   - `avatars.githubusercontent.com`: das GitHub-Bild des Autors, nur solange der Tab *Über* angezeigt wird (im
     Speicher gehalten)
@@ -331,6 +398,8 @@ Pause-Symbol). Wer die APK baut oder veröffentlicht, legt sie **einmal** an:
    GitHub Actions als Secret `DISCORD_APPLICATION_ID` speichern
 4. *Rich Presence -> Art Assets*: die Bilder aus [`docs/assets/`](docs/assets) unter genau diesen Namen hochladen:
    `poweramp` (Logo), `play`, `pause`
+5. Für die optionale Konto-Verknüpfung: *OAuth2 -> Redirects* -> `powerampdiscordrp://auth/callback` hinzufügen und
+   *OAuth2 -> Public Client* einschalten (die App hat kein Client-Secret)
 
 Schritt für Schritt mit allen Details: [docs/discord-application.de.md](docs/discord-application.de.md)
 ([English](docs/discord-application.md)). Wer einen eigenen Namen oder eigene Bilder möchte, kann im Tab *Erweitert*
@@ -420,6 +489,12 @@ angeboten): Die Version stammt aus dem Tag oder Titel, der Download ist die erst
 Alle Änderungen stehen in [CHANGELOG.de.md](CHANGELOG.de.md) (auch auf [English](CHANGELOG.md)) und im Tab *Über*
 der App.
 
+**1.2.0** - Discord-Konto verknüpfen (dein echter Name und dein Bild in der Live-Vorschau und im Tab *Status*),
+26 weitere Sprachen (insgesamt 30) mit Sprachauswahl in den *App-Einstellungen* (auch als App-Sprache von Android 13),
+weniger Akku-, Netz- und Speicherverbrauch (Pausen-Zeitgrenze auch im Standby pünktlich, kein Aufwachen bei
+ausgeschalteter Presence oder fehlendem Discord, seltenere Cover-Prüfungen, Bilder im Hintergrund verworfen) und
+Fehlerbehebungen.
+
 **1.1.0** - Neues App-Symbol im Poweramp-Stil, wechselnde Texte mit `||` (z. B. `%artist% || %title%`),
 App-Einstellungen (Design wie im System / hell / dunkel, AMOLED-Schwarz, Material-You-Farben), das GitHub-Bild des
 Autors im Tab *Über* und eine deutlich flüssigere App (mit R8 optimierte Release-Version mit Baseline-Profil).
@@ -430,11 +505,45 @@ Russisch und Ukrainisch.
 
 ## Sprachen
 
-Deutsch, English, Русский, Українська - die App folgt der Sprache des Handys.
+Die App folgt der Sprache des Handys; in den *App-Einstellungen* (Drei-Punkte-Menü) lässt sich eine andere wählen -
+ab Android 13 ist das die App-Sprache des Systems (*Einstellungen → Apps → Poweramp Discord RP → Sprache*).
 
-> **Hinweis:** Die **russische** und die **ukrainische** Übersetzung wurden mit Hilfe von KI erstellt. Sie können
-> Fehler enthalten oder stellenweise unnatürlich klingen - Korrekturen von Muttersprachlern sind sehr willkommen
-> (Issue oder Pull Request).
+| Sprache | In der App | Übersetzung |
+|---|---|---|
+| Englisch | English | vom Autor |
+| Deutsch | Deutsch | vom Autor |
+| Russisch | Русский | KI |
+| Ukrainisch | Українська | KI |
+| Französisch | Français | KI |
+| Spanisch | Español | KI |
+| Portugiesisch (Brasilien) | Português (Brasil) | KI |
+| Italienisch | Italiano | KI |
+| Niederländisch | Nederlands | KI |
+| Dänisch | Dansk | KI |
+| Schwedisch | Svenska | KI |
+| Norwegisch (Bokmål) | Norsk bokmål | KI |
+| Finnisch | Suomi | KI |
+| Polnisch | Polski | KI |
+| Tschechisch | Čeština | KI |
+| Ungarisch | Magyar | KI |
+| Rumänisch | Română | KI |
+| Griechisch | Ελληνικά | KI |
+| Türkisch | Türkçe | KI |
+| Serbisch (Kyrillisch) | Српски | KI |
+| Serbisch (Lateinisch) | Srpski (latinica) | KI |
+| Arabisch | العربية | KI |
+| Hindi | हिन्दी | KI |
+| Indonesisch | Bahasa Indonesia | KI |
+| Vietnamesisch | Tiếng Việt | KI |
+| Thai | ไทย | KI |
+| Chinesisch (vereinfacht) | 简体中文 | KI |
+| Chinesisch (traditionell, Taiwan) | 繁體中文 | KI |
+| Japanisch | 日本語 | KI |
+| Koreanisch | 한국어 | KI |
+
+> **Hinweis:** Alle Sprachen außer **Englisch** und **Deutsch** sind **KI-Übersetzungen**. Sie können Fehler
+> enthalten oder stellenweise unnatürlich klingen - Korrekturen von Muttersprachlern sind sehr willkommen, über
+> *Problem melden* im Tab *Über* der App (ein GitHub-Issue) oder per Pull Request.
 
 ## Danksagung
 

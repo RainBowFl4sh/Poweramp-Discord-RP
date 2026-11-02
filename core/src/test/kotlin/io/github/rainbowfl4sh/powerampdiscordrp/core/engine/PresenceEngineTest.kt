@@ -14,8 +14,10 @@ import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.Hidden
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.StatusStrings
 import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.RpcTransport
 import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.TransportError
+import io.github.rainbowfl4sh.powerampdiscordrp.core.util.Clock
 import io.github.rainbowfl4sh.powerampdiscordrp.core.util.Logger
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.runCurrent
@@ -40,6 +42,7 @@ class PresenceEngineTest {
     private val logLines = mutableListOf<String>()
     private var config = Config()
     private var configReads = 0   // the actor reads the settings once per wakeup
+    private var sleptMs = 0L      // deep sleep: the engine's clock (elapsedRealtime) ran on, the test dispatcher's delays did not
 
     /** The engine's log helps a lot when a timing test fails. */
     @get:Rule
@@ -65,7 +68,11 @@ class PresenceEngineTest {
         strings = { StatusStrings() },
         scope = backgroundScope,
         ioDispatcher = io,
-        clock = FakeClock(testScheduler),
+        clock = object : Clock {
+            val fake = FakeClock(testScheduler)
+            override fun nowMs() = fake.nowMs() + sleptMs
+            override fun wallMs() = fake.wallMs() + sleptMs
+        },
         log = Logger { synchronized(logLines) { logLines += it } },
         pid = PID,
         version = "1.0.0",
@@ -150,7 +157,8 @@ class PresenceEngineTest {
         assertEquals(Kind.CONNECTED, st.kind)
         assertEquals(TransportError.NONE, st.error)
         assertEquals(1, st.connects)
-        assertEquals("rainbow", st.user?.username)
+        // the Discord app's READY user is a placeholder: in the log only, not in the status the screens show
+        assertTrue(synchronized(logLines) { logLines.any { it == "Connected to Discord (READY user: rainbow)" } })
         assertTrue(st.visible)
         assertEquals(FakeClock.WALL_BASE + 1_000, st.lastSentWallMs)
     }
@@ -284,6 +292,88 @@ class PresenceEngineTest {
         assertEquals(Kind.CONNECTING, engine.st.kind)
         assertEquals(TransportError.NONE, engine.st.error)
         assertFalse(engine.idle.value)
+    }
+
+    @Test
+    fun `missing Discord app is not retried and goes idle until reconnect`() = runTest {
+        val engine = newEngine()
+        engine.submit(playing())
+        engine.start()
+        runCurrent()
+        transport.close(TransportError.DISCORD_NOT_INSTALLED, -1, "the Discord app is not installed")
+        runCurrent()
+        assertEquals(Kind.NOT_CONNECTED, engine.st.kind)
+        assertEquals(TransportError.DISCORD_NOT_INSTALLED, engine.st.error)
+        val logged = logLines.size
+
+        // another track changes nothing: still no retry, the service may stop after the grace period
+        advance(30_000)
+        engine.submit(playing(OTHER))
+        runCurrent()
+        advance(10 * 60_000L)
+        assertEquals(1, transport.connects.size)
+        assertEquals(Kind.NOT_CONNECTED, engine.st.kind)
+        assertEquals(TransportError.DISCORD_NOT_INSTALLED, engine.st.error)
+        assertTrue("nothing can be shown without Discord", engine.idle.value)
+        assertTrue("no retry lines", logLines.drop(logged).none { "Connecting" in it || "retrying" in it })
+
+        engine.reconnect()
+        runCurrent()
+        assertEquals(2, transport.connects.size)
+        assertEquals(Kind.CONNECTING, engine.st.kind)
+        assertFalse(engine.idle.value)
+    }
+
+    @Test
+    fun `missing Discord app is looked for again after a settings change, a test or a restart`() = runTest {
+        val engine = newEngine()
+        engine.submit(playing())
+        engine.start()
+        runCurrent()
+        transport.close(TransportError.DISCORD_NOT_INSTALLED)
+        runCurrent()
+        advance(60_000)
+        assertEquals(1, transport.connects.size)
+
+        engine.refresh()
+        runCurrent()
+        assertEquals(2, transport.connects.size)
+        transport.close(TransportError.DISCORD_NOT_INSTALLED)
+        runCurrent()
+        advance(60_000)
+        assertEquals(2, transport.connects.size)
+
+        engine.sendTest()
+        runCurrent()
+        assertEquals(3, transport.connects.size)
+        transport.close(TransportError.DISCORD_NOT_INSTALLED)
+        runCurrent()
+        advance(PresenceEngine.TEST_DURATION_MS + 60_000)
+        assertEquals(3, transport.connects.size)
+
+        // not remembered like a rejected ID: the next start (Discord was installed meanwhile) connects at once
+        engine.stop()
+        runCurrent()
+        engine.start()
+        runCurrent()
+        assertEquals(4, transport.connects.size)
+    }
+
+    @Test
+    fun `a Discord that does not answer is still retried`() = runTest {
+        val engine = newEngine()
+        engine.submit(playing())
+        engine.start()
+        runCurrent()
+        transport.close(TransportError.DISCORD_NOT_INSTALLED)
+        runCurrent()
+        engine.reconnect()
+        runCurrent()
+        // Discord may only be starting or updating: the other errors keep the backoff
+        transport.close(TransportError.CONNECT_FAILED)
+        runCurrent()
+        advance(5_000)
+        assertEquals(3, transport.connects.size)
     }
 
     @Test
@@ -747,6 +837,68 @@ class PresenceEngineTest {
         advance(1)
         assertEquals(4, transport.frames.size)
         assertNull(transport.lastActivity)
+    }
+
+    @Test
+    fun `wakeupAt names the paused timeout and the idle grace after it`() = runTest {
+        config = Config(pausedBehavior = Config.PAUSED_SHOW, clearAfterPausedMin = 5)
+        val engine = connectedEngine()
+        assertNull("playing: nothing that has to wake the device", engine.wakeupAt.value)
+
+        advance(3_000)
+        engine.submit(paused())
+        runCurrent()
+        assertEquals(3_000 + 5 * 60_000L, engine.wakeupAt.value)
+
+        advance(5 * 60_000L)
+        assertNull(transport.lastActivity)
+        assertEquals("then the idle grace", 3_000 + 5 * 60_000L + 60_000, engine.wakeupAt.value)
+        advance(60_000)
+        assertTrue(engine.idle.value)
+        assertNull(engine.wakeupAt.value)
+
+        engine.submit(playing())
+        runCurrent()
+        assertNull("playing again", engine.wakeupAt.value)
+        engine.submit(paused())
+        runCurrent()
+        assertTrue(engine.wakeupAt.value != null)
+        engine.stop()
+        runCurrent()
+        assertNull("stopped", engine.wakeupAt.value)
+    }
+
+    @Test
+    fun `wakeUp clears a paused presence whose time ran out while the device slept`() = runTest {
+        config = Config(pausedBehavior = Config.PAUSED_SHOW, clearAfterPausedMin = 5)
+        val engine = connectedEngine()
+        advance(3_000)
+        engine.submit(paused())
+        runCurrent()
+        assertEquals(2, transport.frames.size)
+
+        // the device slept 10 minutes: the actor's delay stood still, the alarm for wakeupAt fires
+        sleptMs = 10 * 60_000L
+        var done = false
+        backgroundScope.launch {
+            engine.wakeUp()
+            done = true
+        }
+        runCurrent()
+        assertTrue(done)
+        assertEquals(3, transport.frames.size)
+        assertNull(transport.lastActivity)
+        assertEquals(Hidden.PAUSED_TIMEOUT, engine.texts.value.hidden)
+
+        engine.stop()
+        runCurrent()
+        done = false
+        backgroundScope.launch {
+            engine.wakeUp()
+            done = true
+        }
+        runCurrent()
+        assertTrue("no session: returns at once", done)
     }
 
     @Test

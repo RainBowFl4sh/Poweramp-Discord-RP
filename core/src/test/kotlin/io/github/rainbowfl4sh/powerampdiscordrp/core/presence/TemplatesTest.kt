@@ -192,6 +192,9 @@ class TemplatesTest {
         assertTrue(PresenceTexts.needsPeriodicRefresh(c.copy(state = "x %Bar%")))
         assertTrue(PresenceTexts.needsPeriodicRefresh(c.copy(largeText = "%percent%%")))
         assertTrue(PresenceTexts.needsPeriodicRefresh(c.copy(smallText = "%pos%")))
+        // the small icon's text is not shown without the small icon: no refresh for it
+        assertFalse(PresenceTexts.needsPeriodicRefresh(c.copy(smallText = "%pos%", showSmallIcon = false)))
+        assertTrue(PresenceTexts.needsPeriodicRefresh(c.copy(smallText = "%pos%", details = "%bar%", showSmallIcon = false)))
     }
 
     private fun utf8(s: String) = s.toByteArray(Charsets.UTF_8).size

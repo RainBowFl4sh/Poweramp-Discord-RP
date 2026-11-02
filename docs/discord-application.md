@@ -12,8 +12,10 @@ Every Rich Presence belongs to a *Discord application*. It decides two things:
 APK, so end users install the app and are done. Users who want a different name or other images can enter their
 own application on the app's *Advanced* tab - the steps are the same.
 
-Nothing else is needed from Discord: no bot, no OAuth2, no client secret, no token. The Application ID is public
-information (Discord shows it to anyone who looks at the presence), so it is fine in `gradle.properties`.
+For the presence nothing else is needed from Discord: no bot, no client secret, no token. The Application ID is
+public information (Discord shows it to anyone who looks at the presence), so it is fine in `gradle.properties`. The
+optional account link - users see their own Discord name and picture in the app - needs two OAuth2 settings, see
+[step 5](#5-for-the-account-link-oauth2-redirect-and-public-client).
 
 ## 1. Create the application
 
@@ -63,7 +65,28 @@ although everything else is right, enable the Social SDK for the application: in
 **Discord Social SDK -> Getting Started** and fill in the short form. Whether this is necessary is **not
 confirmed** - it is a step to try, not a requirement.
 
-## 5. Put the ID into the build
+## 5. For the account link: OAuth2 redirect and Public Client
+
+The Discord app's Rich Presence service does not tell the app who is logged in, so users can link their Discord
+account (*Status -> Discord account -> Link Discord account*) to see their own name and picture in the live preview.
+The app logs in through OAuth2 with PKCE as a **public client** - it has no client secret - asks only for the scope
+`identify`, reads the public profile once and revokes the token at once. For this the application needs:
+
+1. In the left menu open **OAuth2**
+2. Under **Redirects** click **Add Redirect** and enter exactly
+
+   ```
+   powerampdiscordrp://auth/callback
+   ```
+
+3. Switch on **Public Client** (a switch on the same page) and click **Save Changes**
+
+Without the redirect Discord shows *Invalid OAuth2 redirect_uri* instead of its authorization page; without
+*Public Client* Discord refuses to hand out a token without the client secret (the app says so on the *Status* tab).
+Neither setting affects the presence. Leave *Requires OAuth2 Code Grant* off, and never put the client secret into
+the app - it is not needed.
+
+## 6. Put the ID into the build
 
 Use one of these:
 
@@ -87,13 +110,15 @@ Use one of these:
 Without an ID the app still builds (except for a release on GitHub Actions); its *Status* tab then says that no
 application ID is configured, and users have to enter their own on the *Advanced* tab.
 
-## 6. Check it
+## 7. Check it
 
 1. Install the APK, open the app, and go through the setup on the *Status* tab (see the
    [README](../README.md#install-and-setup))
 2. *Status -> Send test presence*: for 15 seconds Discord shows a test presence of **Poweramp** ("Test - Poweramp
    Discord Rich Presence ...") with the logo
 3. Play a song in Poweramp: the cover appears (or the logo) with the play icon in its corner
+4. Optional: *Status -> Discord account -> Link Discord account*, allow it on Discord's page - the card and the live
+   preview show your name and picture
 
 If the name is right but the images are missing, the asset names do not match or Discord has not picked them up
 yet (see step 3). If nothing appears at all, see [Troubleshooting](../README.md#troubleshooting).
@@ -104,3 +129,5 @@ yet (see step 3). If nothing appears at all, see [Troubleshooting](../README.md#
    assets `poweramp`, `play` and `pause`
 2. In the app: *Advanced -> own Discord application*, switch it on and paste the Application ID
 3. The app reconnects with the new ID; *Send test presence* on the *Status* tab shows the result
+4. To link your Discord account with it (your name and picture in the app): add the redirect and switch on *Public
+   Client* as in [step 5](#5-for-the-account-link-oauth2-redirect-and-public-client)

@@ -1,5 +1,38 @@
 # Changelog
 
+## 1.2.0
+
+### New
+- **Link your Discord account** (optional, *Discord account* card on the *Status* tab): the live preview and the
+  *Status* tab show your real Discord name and profile picture instead of "You". The Discord app only tells
+  the presence connection a placeholder user, so the app asks Discord once (OAuth2 with PKCE, scope `identify` only):
+  only the public profile (ID, user name, display name, picture) is kept, the access is revoked right away and nothing
+  is part of the settings export or of backups. *Refresh*, *Unlink* and plain-word errors included. Whoever owns the
+  Discord application sets it up once in the Developer Portal (redirect `powerampdiscordrp://auth/callback`,
+  *Public Client* on) - see the README
+- **26 more languages**: French, Spanish, Portuguese (Brazil), Italian, Dutch, Danish, Swedish, Norwegian Bokmål,
+  Finnish, Polish, Czech, Hungarian, Romanian, Greek, Turkish, Serbian (Cyrillic and Latin), Arabic (right to left),
+  Hindi, Indonesian, Vietnamese, Thai, Chinese (Simplified and Traditional), Japanese and Korean - 30 in all. Every
+  language except English and German is an AI translation; corrections are welcome via *Report a problem*
+- **Language picker** in *App settings* (three-dot menu): *System default* or any of the 30 languages by its own name.
+  On Android 13+ it is the system's per-app language, the same as *Settings → Apps → Poweramp Discord RP → Language*;
+  on Android 8-12 the app applies it to its screens and notifications
+
+### Improved
+- **Battery**: the paused timeout ("remove after a pause") uses an inexact Android alarm, so "Paused" disappears on
+  time while the phone sleeps instead of whenever it wakes up next
+- **Battery and network**: without the Discord app installed, Poweramp no longer starts and stops the presence service
+  with every track; while the presence is switched off, the app no longer wakes up for Poweramp's broadcasts at all;
+  reconnects to Discord back off instead of retrying at a fixed pace
+- **Network**: a cover uploaded earlier is checked again only every few days (the check is remembered across restarts),
+  and an album no source knows is not looked up online again for 12 hours; checks of Discord's image proxy are
+  bounded
+- **Memory**: pictures of the screens take at most 4 MB and are dropped as soon as the app is in the background (the
+  presence service keeps the process alive for hours); several screens asking for one picture share its download
+- **Fixes**: settings with unknown or out-of-range values (e.g. from an import) are corrected when they are loaded, so
+  the screens and the presence agree; stopped from Android's task manager while paused, one press of play brings
+  the presence back; the notification keeps the last error during a retry instead of switching to "Connecting"
+
 ## 1.1.0
 
 ### New

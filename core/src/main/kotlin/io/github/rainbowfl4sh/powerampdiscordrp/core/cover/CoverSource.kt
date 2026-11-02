@@ -10,7 +10,7 @@ import io.github.rainbowfl4sh.powerampdiscordrp.core.model.TrackInfo
 data class CoverResult(
     val url: String = "",
     val source: String = "",
-    val storedWallMs: Long = 0,   // when it was cached (uploaded covers are checked again when older than 3 days)
+    val storedWallMs: Long = 0,   // when it was cached; uploads: last verified (checked again 3 days later)
 ) {
     val isEmpty: Boolean get() = url.isEmpty()
     val isUploaded: Boolean get() = source.contains('|')

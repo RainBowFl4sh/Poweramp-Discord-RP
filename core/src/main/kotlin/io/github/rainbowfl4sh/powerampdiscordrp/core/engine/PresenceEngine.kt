@@ -14,7 +14,6 @@ import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.Hidden
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.PresenceTexts
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.StatusStrings
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.TextRotation
-import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.DiscordUser
 import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.RpcMessage
 import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.RpcProtocol
 import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.RpcTransport
@@ -30,6 +29,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.selects.SelectBuilder
@@ -42,6 +42,7 @@ import kotlinx.serialization.json.longOrNull
 import java.util.UUID
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicLong
 import kotlin.math.abs
 
 /** Connection / presence state shown on the status page. */
@@ -49,7 +50,6 @@ data class EngineStatus(
     val kind: Kind = Kind.IDLE,
     val error: TransportError = TransportError.NONE,
     val errorDetail: String = "",          // why the connection failed: Discord's own message (English) or exception text
-    val user: DiscordUser? = null,
     val clientId: String = "",             // application ID in use ("" = none configured)
     val lastSentWallMs: Long = 0,          // unix ms of the last SET_ACTIVITY
     val connects: Int = 0,                 // successful connections so far
@@ -83,6 +83,8 @@ data class EngineStatus(
  *   engine heard of it for another track or when playback starts again after a stop. Every step refreshes %pos% as well;
  *   a periodic refresh that would come less than ROTATION_MIN_SECONDS before the next step is left to that step
  * - paused with clearAfterPausedMin > 0 -> hidden when the time is over (counted from the snapshot's stamp of the pause)
+ * - [wakeupAt]: the deadlines that must also pass while the device sleeps (paused timeout, idle grace), for an alarm that
+ *   calls [wakeUp]: the actor's own timers are delays that stand still in deep sleep
  * - cover repair (like AIMP): ActivitySet answer with large_image "mp:external/<x>" -> 4 s later check
  *   https://media.discordapp.net/external/<x> with covers.probe; BROKEN -> resend URL with "?r=1"/"?r=2",
  *   then covers.forget + resolve again, then show the logo for this track. UNKNOWN (our own network trouble) repairs
@@ -92,9 +94,11 @@ data class EngineStatus(
  *   sent again with the next change of the snapshot / settings
  * - lost connection -> reconnect with backoff 5 s, 10 s, 20 s, ... max 60 s while something is to be shown;
  *   TransportError.INVALID_CLIENT_ID -> no automatic retries until the application ID changes (also away and back) or
- *   [reconnect] / [sendTest]
+ *   [reconnect] / [sendTest]; TransportError.DISCORD_NOT_INSTALLED -> no automatic retries in this session until the
+ *   settings change or [reconnect] / [sendTest] (not remembered across [stop] / [start]: a new session tries again)
  * - [idle] becomes true when nothing has been shown for [idleGraceMs] (and no test runs): the Android service may stop then.
- *   "Nothing to show" includes a missing / rejected application ID: that only changes with the settings or a user action.
+ *   "Nothing to show" includes a missing / rejected application ID and a missing Discord app: that only changes with the
+ *   settings or a user action (or, for the Discord app, with the next start).
  *   A rejected ID is remembered across [stop] / [start], so a restarted service does not knock on Discord's door again,
  *   and is reported as NOT_CONNECTED + INVALID_CLIENT_ID all that time.
  * - [stop] clears the presence, disconnects and cancels all jobs
@@ -133,6 +137,14 @@ class PresenceEngine(
 
     val idle: StateFlow<Boolean> get() = _idle
 
+    private val _wakeupAt = MutableStateFlow<Long?>(null)
+
+    /**
+     * Next deadline (clock.nowMs) that must not wait for the device to wake up by itself: the paused timeout, the idle
+     * grace after it. null = none (also while no session runs). The Android service sets an inexact alarm for it.
+     */
+    val wakeupAt: StateFlow<Long?> get() = _wakeupAt
+
     // Requests from the public API. Flags (like the AIMP worker's atomics) rather than queued events: asking twice
     // before the actor got to it changes nothing, and nothing piles up while the engine is stopped.
     private val changed = AtomicBoolean(false)           // snapshot / settings changed: build the presence again
@@ -140,7 +152,10 @@ class PresenceEngine(
     private val freshCovers = AtomicBoolean(false)       // cover cache cleared: covers given up on get a new chance
     private val reconnectRequest = AtomicBoolean(false)
     private val testRequest = AtomicBoolean(false)
+    private val settingsChanged = AtomicBoolean(false)   // a missing Discord app is looked for again
     private val wake = Channel<Unit>(Channel.CONFLATED)
+    private val wakeTickets = AtomicLong()                // wakeUp() calls so far
+    private val wakeTicketsServed = MutableStateFlow(0L)  // tickets taken before the last finished evaluation started
 
     // Transport callbacks and results of background jobs: order matters, so these are real events.
     private val events = Channel<Event>(Channel.UNLIMITED)
@@ -225,11 +240,24 @@ class PresenceEngine(
         synchronized(snapshotLock) { computeTexts(cfg, strings(), clock.nowMs()) }
         resetCover.set(true)
         changed.set(true)
+        settingsChanged.set(true)
         whileResting {   // the status page shows what the new settings mean even while the service is stopped
             if (rejection?.clientId != cfg.effectiveClientId(defaultClientId)) rejection = null   // the ID was changed
             _status.update { restingStatus(it, cfg) }
         }
         wake.trySend(Unit)
+    }
+
+    /**
+     * The [wakeupAt] alarm: wakes the actor (its timers stood still while the device slept) and returns once it went
+     * through its deadlines and handed what is due to the transport. Returns at once if no session runs; callers bound
+     * it with a timeout (a session stopping meanwhile does not answer). Changes no request flags, unlike [refresh].
+     */
+    suspend fun wakeUp() {
+        if (synchronized(lifecycleLock) { stopFlag == null }) return
+        val ticket = wakeTickets.incrementAndGet()
+        wake.trySend(Unit)
+        wakeTicketsServed.first { it >= ticket }
     }
 
     fun clearCoverCache() {
@@ -379,6 +407,10 @@ class PresenceEngine(
         /** Discord rejected the application ID: no automatic retries. */
         private val invalidId: Boolean get() = currentId.isNotEmpty() && currentId == rejection?.clientId
 
+        // The Discord app (or its RPC service) is missing: no automatic retries in this session - each would only fail
+        // again (and keep the Android service running) until it is installed. Settings change / reconnect / test retry.
+        private var discordMissing = false
+
         // ---- presence
         private var dirty = true
         private var shown = false             // Discord may show a presence of ours (sent and not cleared)
@@ -421,13 +453,14 @@ class PresenceEngine(
         private var appInfoJob: Job? = null
 
         private var nextAt: Long? = null                // next timer deadline (clock.nowMs), null = none
+        private var sleepDeadline: Long? = null         // the part of nextAt that is published as wakeupAt
 
         suspend fun run() {
             try {
                 // callbacks of connections of an earlier run, unhandled when it stopped
                 while (events.tryReceive().isSuccess) Unit
                 if (stopRequested.get()) return
-                safely { evaluate() }
+                evaluateAll()
                 while (!stopRequested.get()) {
                     val waitMs = nextAt?.let { (it - clock.nowMs()).coerceAtLeast(1) }
                     select {
@@ -441,11 +474,18 @@ class PresenceEngine(
                         safely { handle(event) }
                     }
                     wake.tryReceive()
-                    safely { evaluate() }
+                    evaluateAll()
                 }
             } finally {
                 shutdown()
             }
+        }
+
+        /** [evaluate]; then every [wakeUp] made before it started has been served. */
+        private fun evaluateAll() {
+            val tickets = wakeTickets.get()
+            safely { evaluate() }
+            wakeTicketsServed.value = tickets
         }
 
         /** A failing component (cover resolver, settings) must not kill the actor: log and carry on. */
@@ -465,8 +505,16 @@ class PresenceEngine(
             if (current == null || at < current) nextAt = at
         }
 
+        /** [schedule] for a deadline that must also pass while the device sleeps (published as [wakeupAt]). */
+        private fun scheduleWakeup(at: Long) {
+            schedule(at)
+            val current = sleepDeadline
+            if (current == null || at < current) sleepDeadline = at
+        }
+
         private fun publish() {
             val logo = coverTrack != null && coverTrack == noCoverTrack   // Discord cannot show this cover
+            _wakeupAt.value = sleepDeadline
             _status.value = st.copy(
                 hidden = _texts.value.hidden,
                 // Discord keeps an earlier presence when it rejects an update: ours is not what it shows then
@@ -481,6 +529,7 @@ class PresenceEngine(
 
         private fun evaluate() {
             nextAt = null
+            sleepDeadline = null
             val now = clock.nowMs()
             val cfg = config()
             val words = strings()
@@ -495,7 +544,7 @@ class PresenceEngine(
             if (testing) schedule(testUntil)
             // the paused timeout hides the presence (texts, idle) also while not connected
             if (texts.hidden == Hidden.NO && view.snap.state == PlayState.PAUSED && cfg.clearAfterPausedMin > 0) {
-                schedule(view.pausedSinceMs + cfg.clearAfterPausedMin * 60_000L)
+                scheduleWakeup(view.pausedSinceMs + cfg.clearAfterPausedMin * 60_000L)
             }
             // the cover follows the track also while not connected (status page, live preview)
             updateCover(cfg, view.snap)
@@ -539,7 +588,7 @@ class PresenceEngine(
                 retryAt = now
                 st = st.copy(error = TransportError.NONE, errorDetail = "")
             }
-            trackIdle(now, active = wanted && !invalidId)
+            trackIdle(now, active = wanted && !invalidId && !discordMissing)
 
             if (conn == Conn.CONNECTING && now >= connectDeadline) {
                 connectionLost(TransportError.CONNECT_FAILED, -1, "Discord did not answer", now)
@@ -568,10 +617,15 @@ class PresenceEngine(
                 repairTrack = null
                 verifiedImage = ""
             }
+            if (settingsChanged.getAndSet(false) && discordMissing) {
+                discordMissing = false
+                retryAt = now
+            }
             if (reconnectRequest.getAndSet(false)) {
                 log.log("Reconnecting (requested)")
                 if (conn != Conn.NONE) dropConnection()
                 rejection = null
+                discordMissing = false
                 retryAt = now
                 backoffMs = FIRST_RETRY_MS
                 st = st.copy(error = TransportError.NONE, errorDetail = "")
@@ -579,6 +633,7 @@ class PresenceEngine(
             if (testRequest.getAndSet(false)) {
                 testUntil = now + TEST_DURATION_MS
                 testShown = false
+                discordMissing = false
                 retryAt = now   // asked for by the user: connect at once, also during a retry pause
                 retry = true
                 log.log("Test presence requested")
@@ -594,7 +649,7 @@ class PresenceEngine(
             }
             val since = inactiveSince ?: now.also { inactiveSince = it }
             if (now - since < idleGraceMs) {
-                schedule(since + idleGraceMs)
+                scheduleWakeup(since + idleGraceMs)
             } else if (!_idle.value) {
                 _idle.value = true
                 log.log("Nothing to show for ${idleGraceMs / 1000} s - idle")
@@ -610,6 +665,8 @@ class PresenceEngine(
                     kind = EngineStatus.Kind.NOT_CONNECTED, error = TransportError.INVALID_CLIENT_ID,
                     errorDetail = rejection?.reason.orEmpty(),
                 )
+                // the error (DISCORD_NOT_INSTALLED) stays until the user acts or the settings change
+                discordMissing -> st = st.copy(kind = EngineStatus.Kind.NOT_CONNECTED)
                 // only connect when there is something to show; a past failure stays visible on the status page
                 !wanted -> st = st.copy(
                     kind = if (st.error == TransportError.NONE) EngineStatus.Kind.IDLE else EngineStatus.Kind.NOT_CONNECTED,
@@ -632,7 +689,8 @@ class PresenceEngine(
                     } catch (e: Exception) {
                         connectionLost(TransportError.CONNECT_FAILED, -1, e.toString(), now)
                     }
-                    if (conn == Conn.CONNECTING) schedule(connectDeadline) else if (!invalidId) schedule(retryAt)
+                    if (conn == Conn.CONNECTING) schedule(connectDeadline)
+                    else if (!invalidId && !discordMissing) schedule(retryAt)
                 }
             }
         }
@@ -652,10 +710,12 @@ class PresenceEngine(
             backoffMs = FIRST_RETRY_MS
             st = st.copy(
                 kind = EngineStatus.Kind.CONNECTED, error = TransportError.NONE, errorDetail = "", activityError = "",
-                user = user, connects = st.connects + 1,
+                connects = st.connects + 1,
             )
+            // The Discord app reports a placeholder user, not the account: kept in the log only (diagnostics); the
+            // screens show the account the user linked (OAuth2) instead
             val name = user?.globalName?.ifEmpty { user.username }.orEmpty()
-            log.log(if (name.isEmpty()) "Connected to Discord" else "Connected to Discord as $name")
+            log.log(if (name.isEmpty()) "Connected to Discord" else "Connected to Discord (READY user: $name)")
         }
 
         /** Connection closed by Discord / failed. Retries with a growing pause unless the application ID was rejected. */
@@ -682,6 +742,9 @@ class PresenceEngine(
             if (err == TransportError.INVALID_CLIENT_ID) {
                 rejection = Rejection(currentId, reason)
                 log.log("$what ($detail): the application ID $currentId is not valid - no retries until the settings change")
+            } else if (err == TransportError.DISCORD_NOT_INSTALLED) {
+                discordMissing = true
+                log.log("$what ($detail) - no retries until the settings change or Reconnect / Test")
             } else {
                 retryAt = now + backoffMs
                 schedule(retryAt)   // also when lost while sending: nothing else would wake the actor in time
@@ -745,6 +808,7 @@ class PresenceEngine(
             coverUrl = ""
             coverSource = ""
             shown = false
+            sleepDeadline = null
             st = try {
                 restingStatus(st, config())
             } catch (e: Exception) {

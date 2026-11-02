@@ -9,7 +9,7 @@ import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonObject
 
-/** User reported by Discord's READY dispatch (the Android app may report a placeholder user). */
+/** User reported by Discord's READY dispatch - the Android app's RPC service reports a placeholder, not the account. */
 data class DiscordUser(
     val id: String = "",
     val username: String = "",

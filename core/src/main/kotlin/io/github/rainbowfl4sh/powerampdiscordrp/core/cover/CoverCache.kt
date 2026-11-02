@@ -7,8 +7,11 @@ import java.io.IOException
 
 /**
  * The resolver's cover cache on disk (AIMP: DiscordRPC_covers.tsv): one line per cover,
- * `key TAB url TAB source TAB storedWallMs`, appended when a cover is stored. A later line for the same key wins;
+ * `key TAB url TAB source TAB storedWallMs`, appended when a cover is stored (for uploads storedWallMs is when it was
+ * last verified: uploaded, or found still there by a later check). A later line for the same key wins;
  * a line with an empty URL removes the key (written by [remove], so a dropped cover does not come back after a restart).
+ * A line with the URL [MISS_URL] is a [Miss]: no source knew a cover for the key (`key TAB - TAB settings TAB storedWallMs`);
+ * older versions skip such lines (no usable URL).
  * Lines that cannot be read are skipped. More than [MAX_LINES] lines -> the file is rewritten with the newest [KEEP_LINES].
  * Keys are the resolver's track keys (16 hex digits) and its picture keys of uploads ("u<sha-1>-<size>").
  *
@@ -16,6 +19,7 @@ import java.io.IOException
  */
 internal class CoverCache(private val file: File, private val log: Logger) {
     private val entries = LinkedHashMap<String, CoverResult>()   // oldest first (an updated key moves to the end)
+    private val misses = LinkedHashMap<String, Miss>()           // same order
     private var fileLines = 0
 
     init {
@@ -26,7 +30,24 @@ internal class CoverCache(private val file: File, private val log: Logger) {
 
     operator fun get(key: String): CoverResult? = entries[key]
 
+    /**
+     * Every source answered "nothing found" for a key at [storedWallMs], with the lookup settings [settings] (a hash: other
+     * settings may find something).
+     */
+    data class Miss(val storedWallMs: Long, val settings: String)
+
+    fun miss(key: String): Miss? = misses[key]
+
+    /** Records a [Miss] (it replaces a cover of the key). */
+    fun putMiss(key: String, miss: Miss) {
+        entries.remove(key)
+        misses.remove(key)
+        misses[key] = miss
+        append(missLine(key, miss))
+    }
+
     fun put(key: String, result: CoverResult) {
+        misses.remove(key)
         entries.remove(key)
         entries[key] = result
         append(line(key, result))
@@ -34,7 +55,9 @@ internal class CoverCache(private val file: File, private val log: Logger) {
 
     /** Drops [key]; [persist] also records that in the file. */
     fun remove(key: String, persist: Boolean) {
-        if (entries.remove(key) != null && persist) append(line(key, CoverResult()))
+        val had = entries.remove(key) != null
+        val hadMiss = misses.remove(key) != null
+        if ((had || hadMiss) && persist) append(line(key, CoverResult()))
     }
 
     /** Drops every key whose cover is [url] (one upload can serve several keys); [persist] as for [remove]. */
@@ -43,8 +66,15 @@ internal class CoverCache(private val file: File, private val log: Logger) {
         for (key in keys) remove(key, persist)
     }
 
+    /** Marks every key whose cover is [url] as verified at [wallMs] (stored in the file too). */
+    fun touchUrl(url: String, wallMs: Long) {
+        val hits = entries.filterValues { it.url == url }
+        for ((key, result) in hits) put(key, result.copy(storedWallMs = wallMs))
+    }
+
     fun clear() {
         entries.clear()
+        misses.clear()
         fileLines = 0
         if (file.exists() && !file.delete()) log.log("Cover cache: cannot delete ${file.name}")
     }
@@ -66,7 +96,11 @@ internal class CoverCache(private val file: File, private val log: Logger) {
             val (key, result) = parse(raw.removeSuffix("\r")) ?: continue
             fileLines++
             entries.remove(key)
-            if (!result.isEmpty) entries[key] = result
+            misses.remove(key)
+            when {
+                result.url == MISS_URL -> misses[key] = Miss(result.storedWallMs, result.source)
+                !result.isEmpty -> entries[key] = result
+            }
         }
         if (fileLines > MAX_LINES) compact()
     }
@@ -83,12 +117,16 @@ internal class CoverCache(private val file: File, private val log: Logger) {
         if (fileLines > MAX_LINES) compact()
     }
 
-    /** Keeps the file small: rewritten with the newest [KEEP_LINES] covers (written to a temporary file first). */
+    /**
+     * Keeps the file small: rewritten with the newest [KEEP_LINES] covers and [KEEP_MISSES] misses (written to a
+     * temporary file first).
+     */
     private fun compact() {
-        val keep = entries.entries.toList().takeLast(KEEP_LINES)
+        val keep = entries.entries.toList().takeLast(KEEP_LINES).map { (k, r) -> line(k, r) } +
+            misses.entries.toList().takeLast(KEEP_MISSES).map { (k, m) -> missLine(k, m) }
         val tmp = File(file.path + ".tmp")
         try {
-            tmp.writeText(keep.joinToString("") { (k, r) -> line(k, r) }, Charsets.UTF_8)
+            tmp.writeText(keep.joinToString(""), Charsets.UTF_8)
             if (!tmp.renameTo(file)) {
                 file.delete()
                 if (!tmp.renameTo(file)) throw IOException("cannot replace ${file.name}")
@@ -103,17 +141,23 @@ internal class CoverCache(private val file: File, private val log: Logger) {
     companion object {
         const val MAX_LINES = 3000
         const val KEEP_LINES = 2000
+        const val KEEP_MISSES = 500
+
+        /** URL field of a [Miss] line (no URL an older version would take). */
+        const val MISS_URL = "-"
         private const val MAX_FILE_BYTES = 8L shl 20
 
         fun line(key: String, r: CoverResult) = "$key\t${r.url}\t${r.source}\t${r.storedWallMs}\n"
 
-        /** null for lines that are not cache entries (empty URL = removal marker). */
+        fun missLine(key: String, m: Miss) = "$key\t$MISS_URL\t${m.settings}\t${m.storedWallMs}\n"
+
+        /** null for lines that are not cache entries (empty URL = removal marker, [MISS_URL] = a [Miss]). */
         fun parse(line: String): Pair<String, CoverResult>? {
             val parts = line.split('\t')
             val key = parts[0]
             if (parts.size < 2 || key.isEmpty() || key.any { it.isWhitespace() }) return null
             val url = parts[1]
-            if (url.isNotEmpty() && !isUsableUrl(url)) return null
+            if (url.isNotEmpty() && url != MISS_URL && !isUsableUrl(url)) return null
             val source = parts.getOrElse(2) { "" }
             val stored = parts.getOrNull(3)?.trim()?.toLongOrNull() ?: 0
             return key to CoverResult(url, source, stored)

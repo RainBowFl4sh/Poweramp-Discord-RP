@@ -9,6 +9,7 @@ import io.github.rainbowfl4sh.powerampdiscordrp.core.cover.Samples.JPEG
 import io.github.rainbowfl4sh.powerampdiscordrp.core.cover.Samples.NO_SOURCES
 import io.github.rainbowfl4sh.powerampdiscordrp.core.cover.Samples.TRACK
 import io.github.rainbowfl4sh.powerampdiscordrp.core.cover.Samples.UPLOAD_ONLY
+import io.github.rainbowfl4sh.powerampdiscordrp.core.model.Config
 import io.github.rainbowfl4sh.powerampdiscordrp.core.model.TrackInfo
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -29,7 +30,9 @@ class CoverCacheTest {
     private val log = RecordingLogger()
     private val file get() = File(tmp.root, "covers.tsv")
 
-    private fun resolver() = CoverResolver(net.client, file, { JPEG }, { _, _ -> ENCODED_JPEG }, clock, log, net.endpoints())
+    private var localArt: ByteArray? = JPEG
+
+    private fun resolver() = CoverResolver(net.client, file, { localArt }, { _, _ -> ENCODED_JPEG }, clock, log, net.endpoints())
 
     private val deezer = NO_SOURCES.copy(srcDeezer = true)
     private val deezerCover = "https://cdn-images.dzcdn.net/images/cover/2e01/1000x1000-000000-80-0-0.jpg"
@@ -188,8 +191,10 @@ class CoverCacheTest {
     // ---------------------------------------------------------------- negative cache
 
     @Test
-    fun failedLookupsAreRetriedAfter10Minutes() {
-        serveNothing()
+    fun unclearMissesAreRetriedAfter10Minutes() {
+        // a rate limit says nothing about the album: not remembered beyond the 10 minutes
+        net.on("/deezer/search/album") { json("""{"data":[],"total":0}""") }
+        net.on("/deezer/search/track") { status(429, "too many requests") }
         val r = resolver()
 
         assertTrue(r.resolve(TRACK, deezer).isEmpty)
@@ -204,7 +209,124 @@ class CoverCacheTest {
         serveDeezer()
         assertEquals(deezerCover, r.resolve(TRACK, deezer).url)
         assertTrue(net.requests.size > asked)
-        assertFalse("nothing negative is written to the file", lines().any { it.contains("\t\t") })
+        assertFalse("no miss is written to the file", lines().any { it.contains("\t-\t") })
+    }
+
+    @Test
+    fun answersThatCannotBeReadAreNoCleanMiss() {
+        // an error page with status 200, and Deezer's quota limit (status 200 with an error object)
+        val answers = listOf("<html>maintenance</html>", """{"error":{"type":"Exception","message":"Quota limit exceeded","code":4}}""")
+        for ((i, answer) in answers.withIndex()) {
+            val track = Samples.album(10 + i)
+            net.on("/deezer/search/album") { text(answer) }
+            net.on("/deezer/search/track") { json("""{"data":[],"total":0}""") }
+
+            assertTrue(resolver().resolve(track, deezer).isEmpty)
+
+            assertFalse(answer, file.exists() && lines().any { it.contains("\t-\t") })
+            val before = net.requests.size
+            assertTrue("asked again after a restart", resolver().resolve(track, deezer).isEmpty)
+            assertTrue(net.requests.size > before)
+        }
+    }
+
+    @Test
+    fun aCleanMissIsRememberedAcrossRestartsFor12Hours() {
+        serveNothing()
+        assertTrue(resolver().resolve(TRACK, deezer).isEmpty)
+        val asked = net.requests.size
+        assertTrue(asked > 0)
+        assertTrue(lines().single().startsWith(CoverResolver.keyOf(TRACK) + "\t-\t"))
+        assertTrue("no cover for the cache", resolver().peekCache(TRACK).isEmpty)
+
+        // the app was restarted: no lookup for the album, also not for its other tracks
+        clock.advance(11 * 60 * 60 * 1000L)
+        serveDeezer()
+        assertTrue(resolver().resolve(TRACK, deezer).isEmpty)
+        assertTrue(resolver().resolve(TRACK.copy(title = "Aerodynamic"), deezer).isEmpty)
+        assertEquals("not asked again", asked, net.requests.size)
+
+        clock.advance(60 * 60 * 1000L)
+        assertEquals(deezerCover, resolver().resolve(TRACK, deezer).url)
+        assertEquals(deezerCover, resolver().peekCache(TRACK).url)
+    }
+
+    @Test
+    fun otherCoverSettingsIgnoreARememberedMiss() {
+        serveNothing()
+        val withKeys = deezer.copy(spotifyId = "my-spotify-id", spotifySecret = "my-spotify-secret")
+        assertTrue(resolver().resolve(TRACK, withKeys).isEmpty)
+        assertFalse("no key or secret in the file", lines().any { it.contains("my-spotify") })
+        net.on("/itunes/search") {
+            json("""{"resultCount":1,"results":[{"artistName":"Daft Punk","artworkUrl100":"https://is1-ssl.mzstatic.com/image/thumb/x/100x100bb.jpg"}]}""")
+        }
+
+        assertEquals("iTunes", resolver().resolve(TRACK, withKeys.copy(srcItunes = true)).source)
+    }
+
+    @Test
+    fun aRememberedMissStillLooksForALocalCover() {
+        val withUploads = deezer.copy(localCovers = true, uploadHost = Config.UPLOAD_X0)
+        serveNothing()
+        localArt = null
+        assertTrue(resolver().resolve(TRACK, withUploads).isEmpty)
+        val asked = net.requests.size
+
+        // a cover was added to the folder later: no online lookup, but the upload
+        localArt = JPEG
+        net.on("/x0/", "POST") { text("https://files.test/img/a.jpg\n") }
+        net.on("/img/a.jpg") { bytes(JPEG, code = 206) }
+        assertEquals("https://files.test/img/a.jpg", resolver().resolve(TRACK, withUploads).url)
+        assertEquals(0, net.requests.drop(asked).count { it.url.encodedPath.startsWith("/deezer") })
+        assertEquals("https://files.test/img/a.jpg", resolver().peekCache(TRACK).url)
+    }
+
+    @Test
+    fun aFailedUploadIsNoCleanMiss() {
+        val withUploads = deezer.copy(localCovers = true, uploadHost = Config.UPLOAD_X0)
+        serveNothing()
+        net.on("/x0/", "POST") { status(500) }
+        net.on("/catbox/user/api.php", "POST") { status(500) }
+
+        assertTrue(resolver().resolve(TRACK, withUploads).isEmpty)
+
+        assertFalse(file.exists() && lines().any { it.contains("\t-\t") })
+    }
+
+    @Test
+    fun clearCacheAndForgetDropARememberedMiss() {
+        serveNothing()
+        assertTrue(resolver().resolve(TRACK, deezer).isEmpty)
+        serveDeezer()
+        val r = resolver()
+        r.forget(TRACK)
+        assertEquals(deezerCover, resolver().resolve(TRACK, deezer).url)
+
+        serveNothing()
+        val other = Samples.album(3)
+        assertTrue(resolver().resolve(other, deezer).isEmpty)
+        val cleared = resolver()
+        cleared.clearCache()
+        net.on("/deezer/search/album") {
+            json("""{"data":[{"id":1,"title":"Album 3","cover_xl":"$deezerCover","artist":{"id":27,"name":"Daft Punk"},"type":"album"}],"total":1}""")
+        }
+        assertEquals(deezerCover, resolver().resolve(other, deezer).url)
+    }
+
+    @Test
+    fun rememberedMissesSurviveCompaction() {
+        serveNothing()
+        assertTrue(resolver().resolve(TRACK, deezer).isEmpty)
+        val miss = lines().single()
+        file.appendText((0 until 3100).joinToString("") { "%016x\thttps://c.example/%d.jpg\tDeezer\t%d\n".format(it, it, it) })
+
+        val r = resolver()
+        r.peekCache(TRACK)   // reads (and compacts) the file
+
+        assertEquals(miss, lines().last())
+        val asked = net.requests.size
+        assertTrue(r.resolve(TRACK, deezer).isEmpty)
+        assertEquals(asked, net.requests.size)
     }
 
     @Test
@@ -269,12 +391,47 @@ class CoverCacheTest {
         val res = r.resolve(TRACK, UPLOAD_ONLY)
 
         assertEquals("https://files.test/img/old.jpg", res.url)
-        assertEquals(clock.wall - fourDays, res.storedWallMs)
+        assertEquals("verified now", clock.wall, res.storedWallMs)
         assertEquals(1, net.count("/img/old.jpg"))
         assertEquals(0, net.count("/x0/"))
         assertEquals(res, r.peekCache(TRACK))
         r.resolve(TRACK, UPLOAD_ONLY)
         assertEquals("checked once per process", 1, net.count("/img/old.jpg"))
+    }
+
+    @Test
+    fun successfulCheckIsStoredSoTheNextStartDoesNotCheckAgain() {
+        writeUpload("https://files.test/img/old.jpg", fourDays)
+        net.on("/img/old.jpg") { bytes(JPEG, code = 206) }
+        assertEquals("https://files.test/img/old.jpg", resolver().resolve(TRACK, UPLOAD_ONLY).url)
+
+        // a new process two days later: shown at once, nothing probed
+        clock.wall += 2 * 24 * 3600 * 1000L
+        val next = resolver()
+        assertEquals("https://files.test/img/old.jpg", next.peekCache(TRACK).url)
+        assertEquals("https://files.test/img/old.jpg", next.resolve(TRACK, UPLOAD_ONLY).url)
+        assertEquals(1, net.count("/img/old.jpg"))
+
+        // more than 3 days after the check: checked again
+        clock.wall += 2 * 24 * 3600 * 1000L
+        val later = resolver()
+        assertTrue(later.peekCache(TRACK).isEmpty)
+        assertEquals("https://files.test/img/old.jpg", later.resolve(TRACK, UPLOAD_ONLY).url)
+        assertEquals(2, net.count("/img/old.jpg"))
+    }
+
+    @Test
+    fun successfulCheckMarksEveryKeyOfTheUpload() {
+        val other = TRACK.copy(album = "Homework")
+        file.writeText(
+            "${CoverResolver.keyOf(TRACK)}\thttps://files.test/img/old.jpg\tpoweramp|x0.at\t${clock.wall - fourDays}\n" +
+                "${CoverResolver.keyOf(other)}\thttps://files.test/img/old.jpg\tpoweramp|x0.at\t${clock.wall - fourDays}\n",
+        )
+        net.on("/img/old.jpg") { bytes(JPEG, code = 206) }
+        resolver().resolve(TRACK, UPLOAD_ONLY)
+
+        assertEquals("https://files.test/img/old.jpg", resolver().peekCache(other).url)
+        assertEquals(1, net.count("/img/old.jpg"))
     }
 
     @Test

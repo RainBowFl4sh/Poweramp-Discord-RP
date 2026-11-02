@@ -40,6 +40,27 @@ internal class Web(private val http: OkHttpClient, private val log: Logger) {
      */
     val networkErrors: Long get() = networkErrorCount.get()
 
+    private val troubleCount = AtomicLong()
+
+    /**
+     * Requests so far whose answer says nothing about the music: [networkErrors], answers other than 2xx / 404 (rate
+     * limits, server errors, a refused key), answers that could not be read and JSON that could not be parsed ([json]).
+     * A lookup without any of these got a real "nothing found" from every source. Counted over all threads like
+     * [networkErrors]: another lookup's trouble can only make a miss count as unclear.
+     */
+    val troubles: Long get() = troubleCount.get()
+
+    /**
+     * [parseJson] for the answer of a service API (always an object or array) that counts anything else as trouble: an
+     * error page with status 200, or an error object (Deezer answers its quota limit with 200 and {"error":{...}}).
+     */
+    fun json(text: String): JsonElement? {
+        val json = parseJson(text)
+        val ok = json is JsonArray || (json is JsonObject && "error" !in json && "errorMessage" !in json)
+        if (!ok) troubleCount.incrementAndGet()
+        return json
+    }
+
     /**
      * Builds a request with [build] and runs it with a whole-call timeout; [what] names the service in log lines.
      * Building is part of the call: a value OkHttp refuses (e.g. a pasted key with an invisible character in a header)
@@ -55,6 +76,7 @@ internal class Web(private val http: OkHttpClient, private val log: Logger) {
             Request.Builder().apply(build).build()
         } catch (e: IllegalArgumentException) {   // OkHttp leaves the values of secret headers out of the message
             log.log("$what: request cannot be built (${e.message ?: "no details"})")
+            troubleCount.incrementAndGet()
             return Reply(0, "")
         }
         val client = if (request.method == "GET") http else noRedirects
@@ -65,16 +87,21 @@ internal class Web(private val http: OkHttpClient, private val log: Logger) {
                 val body = readLimited(response.body, maxBytes)
                 if (body == null) {
                     log.log("$what: answer too big (more than ${maxBytes / 1024} KB) - ignored")
+                    troubleCount.incrementAndGet()
                     Reply(0, "")
                 } else {
+                    // 404: e.g. the Cover Art Archive has no picture for a release - an answer, no trouble
+                    if (response.code !in 200..299 && response.code != 404) troubleCount.incrementAndGet()
                     Reply(response.code, body, response.headers)
                 }
             }
         } catch (e: IOException) {   // no (complete) answer: offline, DNS, timeout, connection reset, interrupted call
             networkErrorCount.incrementAndGet()
+            troubleCount.incrementAndGet()
             log.log("$what: request failed (${e.javaClass.simpleName}: ${e.message ?: "no details"})")
             Reply(0, "", networkError = true)
         } catch (e: Exception) {
+            troubleCount.incrementAndGet()
             log.log("$what: request failed (${e.javaClass.simpleName}: ${e.message ?: "no details"})")
             Reply(0, "")
         }
@@ -109,6 +136,7 @@ internal class Web(private val http: OkHttpClient, private val log: Logger) {
             }
         } catch (e: Exception) {   // IOException, interrupted call, ...: we could not check it
             networkErrorCount.incrementAndGet()
+            troubleCount.incrementAndGet()
             log.log("Image check failed for $url (${e.javaClass.simpleName}: ${e.message ?: "no details"})")
             Probe.UNKNOWN
         }

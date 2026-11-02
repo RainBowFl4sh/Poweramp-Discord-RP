@@ -107,7 +107,7 @@ internal class OnlineLookups(
     private fun deezerQuery(type: String, q: String, artist: String): String {
         val r = get("${base(endpoints.deezer)}/search/$type?limit=1&q=${urlEncode(q)}", "Deezer")
         if (r.status != 200) return ""
-        val item = parseJson(r.body).at("data", 0) ?: return ""   // "data":[] = nothing found
+        val item = web.json(r.body).at("data", 0) ?: return ""   // "data":[] = nothing found
         // even the field searches answer with other artists ("Various Artists", tribute / cover bands)
         if (!plausible(item.at("artist", "name").text, artist)) return ""   // album: its artist, track: the track's
         val album = if (type == "track") item.at("album") else item
@@ -136,7 +136,7 @@ internal class OnlineLookups(
     private fun itunesQuery(entity: String, term: String, artist: String): String {
         val r = get("${base(endpoints.itunes)}/search?media=music&limit=1&entity=$entity&term=${urlEncode(term)}", "iTunes")
         if (r.status != 200) return ""
-        val item = parseJson(r.body).at("results", 0) ?: return ""
+        val item = web.json(r.body).at("results", 0) ?: return ""
         if (!plausible(item.at("artistName").text, artist)) return ""
         return item.at("artworkUrl100").text.replaceFirst("100x100", "600x600")
     }
@@ -164,7 +164,7 @@ internal class OnlineLookups(
             post(json.toByteArray(Charsets.UTF_8).toRequestBody("application/json".toMediaType()))
         }
         if (r.status != 200) return ""
-        val item = parseJson(r.body).at("auto", "results", 0) ?: return ""
+        val item = web.json(r.body).at("auto", "results", 0) ?: return ""
         if (!plausible(item.at("band_name").text, artist)) return ""
         val img = item.at("img").text                      // ..._3.jpg (100 px)
         val us = img.lastIndexOf('_')
@@ -198,7 +198,7 @@ internal class OnlineLookups(
         val headers = arrayOf("Accept" to "application/json", "User-Agent" to Web.USER_AGENT)
         val r = get(url, "MusicBrainz", *headers)
         if (r.status != 200) return ""
-        val json = parseJson(r.body)
+        val json = web.json(r.body)
         val item = if (byAlbum) json.at("release-groups", 0) else json.at("recordings", 0)
         if ((item.at("score").text.toLongOrNull() ?: -1) < 90) return ""   // a weak match is probably another record
 
@@ -207,7 +207,7 @@ internal class OnlineLookups(
         val caa = "${base(endpoints.coverArtArchive)}/${if (byAlbum) "release-group" else "release"}/$id"
         val c = get(caa, "Cover Art Archive", *headers)
         if (c.status != 200) return ""
-        val images = parseJson(c.body).at("images").array
+        val images = web.json(c.body).at("images").array
         val image = images.firstOrNull { it.at("front").text == "true" } ?: images.firstOrNull()
         var img = image.at("thumbnails", "500").text
         if (img.isEmpty()) img = image.at("thumbnails", "large").text
@@ -230,7 +230,7 @@ internal class OnlineLookups(
             if (r.status != 0) log.log("Discogs lookup failed (HTTP ${r.status})")
             return ""
         }
-        val item = parseJson(r.body).at("results", 0) ?: return ""
+        val item = web.json(r.body).at("results", 0) ?: return ""
         if (!plausible(item.at("title").text, q.artist)) return ""   // "Artist - Album"
         val img = item.at("cover_image").text
         if (img.contains("spacer.gif")) return ""
@@ -262,7 +262,7 @@ internal class OnlineLookups(
             log.log("Spotify token request failed (HTTP ${r.status})")
             return ""
         }
-        val json = parseJson(r.body)
+        val json = web.json(r.body)
         spotifyToken = json.at("access_token").text
         val sec = json.at("expires_in").text.toLongOrNull() ?: -1
         spotifyExpiresMs = clock.nowMs() + (if (sec > 120) sec - 60 else 3000) * 1000
@@ -278,7 +278,7 @@ internal class OnlineLookups(
             val r = get(url, "Spotify", "Authorization" to "Bearer $token")
             if (r.status == 401) return@repeat   // expired token -> fetch a new one once
             if (r.status != 200) return ""
-            val item = parseJson(r.body).at("${type}s", "items", 0) ?: return ""
+            val item = web.json(r.body).at("${type}s", "items", 0) ?: return ""
             if (!plausible(item.at("artists", 0, "name").text, artist)) return ""
             val images = if (type == "track") item.at("album", "images") else item.at("images")
             return images.at(0, "url").text   // first image = largest (640 px)

@@ -13,8 +13,11 @@ Jede Rich Presence gehört zu einer *Discord-Anwendung*. Sie legt zwei Dinge fes
 eingebaut; Nutzer installieren die App und sind fertig. Wer einen anderen Namen oder andere Bilder möchte, kann im
 Tab *Erweitert* der App eine eigene Anwendung eintragen - die Schritte sind dieselben.
 
-Mehr braucht es von Discord nicht: keinen Bot, kein OAuth2, kein Client Secret, keinen Token. Die Application ID ist
-öffentlich (Discord zeigt sie jedem, der sich die Presence ansieht) und darf daher in `gradle.properties` stehen.
+Für die Presence braucht es von Discord nichts weiter: keinen Bot, kein Client Secret, keinen Token. Die Application
+ID ist öffentlich (Discord zeigt sie jedem, der sich die Presence ansieht) und darf daher in `gradle.properties`
+stehen. Die optionale Konto-Verknüpfung - Nutzer sehen ihren eigenen Discord-Namen und ihr Profilbild in der App -
+braucht zwei OAuth2-Einstellungen, siehe
+[Schritt 5](#5-für-die-konto-verknüpfung-oauth2-redirect-und-public-client).
 
 ## 1. Anwendung anlegen
 
@@ -65,7 +68,29 @@ alles andere stimmt, schalte das Social SDK für die Anwendung frei: im linken M
 **Discord Social SDK -> Getting Started** öffnen und das kurze Formular ausfüllen. Ob das nötig ist, ist **nicht
 bestätigt** - ein Schritt zum Ausprobieren, keine Voraussetzung.
 
-## 5. Die ID in den Build eintragen
+## 5. Für die Konto-Verknüpfung: OAuth2-Redirect und Public Client
+
+Der Rich-Presence-Dienst der Discord-App verrät der App nicht, wer angemeldet ist. Deshalb können Nutzer ihr
+Discord-Konto verknüpfen (*Status -> Discord-Konto -> Discord-Konto verknüpfen*), um ihren eigenen Namen und ihr
+Profilbild in der Live-Vorschau zu sehen. Die App meldet sich über OAuth2 mit PKCE als **Public Client** an - sie hat
+kein Client Secret -, fragt nur den Scope `identify` an, liest das öffentliche Profil einmal und widerruft das Token
+sofort. Dafür braucht die Anwendung:
+
+1. Im linken Menü **OAuth2** öffnen
+2. Unter **Redirects** auf **Add Redirect** klicken und genau das eintragen:
+
+   ```
+   powerampdiscordrp://auth/callback
+   ```
+
+3. **Public Client** einschalten (ein Schalter auf derselben Seite) und **Save Changes** klicken
+
+Ohne den Redirect zeigt Discord *Invalid OAuth2 redirect_uri* statt seiner Autorisierungsseite; ohne *Public Client*
+gibt Discord ohne Client Secret kein Token heraus (die App sagt das im Tab *Status*). Keine der beiden Einstellungen
+wirkt sich auf die Presence aus. *Requires OAuth2 Code Grant* bleibt aus, und das Client Secret gehört nie in die App -
+es wird nicht gebraucht.
+
+## 6. Die ID in den Build eintragen
 
 Eine dieser Möglichkeiten:
 
@@ -90,13 +115,15 @@ Eine dieser Möglichkeiten:
 Ohne ID lässt sich die App trotzdem bauen (außer als Release über GitHub Actions); der Tab *Status* meldet dann,
 dass keine Application ID eingerichtet ist, und Nutzer müssen im Tab *Erweitert* eine eigene eintragen.
 
-## 6. Prüfen
+## 7. Prüfen
 
 1. APK installieren, App öffnen und die Einrichtung im Tab *Status* durchgehen (siehe
    [README](../README.de.md#installation-und-einrichtung))
 2. *Status -> Test-Presence senden*: Discord zeigt 15 Sekunden lang eine Test-Presence von **Poweramp**
    („Test - Poweramp Discord Rich Presence ...“) mit dem Logo
 3. Einen Song in Poweramp abspielen: Das Cover erscheint (oder das Logo) mit dem Play-Symbol in der Ecke
+4. Optional: *Status -> Discord-Konto -> Discord-Konto verknüpfen*, auf Discords Seite erlauben - die Karte und die
+   Live-Vorschau zeigen deinen Namen und dein Profilbild
 
 Stimmt der Name, fehlen aber die Bilder, passen die Namen der Assets nicht oder Discord hat sie noch nicht übernommen
 (siehe Schritt 3). Erscheint gar nichts, siehe [Fehlerbehebung](../README.de.md#fehlerbehebung).
@@ -107,3 +134,5 @@ Stimmt der Name, fehlen aber die Bilder, passen die Namen der Assets nicht oder 
    `poweramp`, `play` und `pause` hochladen
 2. In der App: *Erweitert -> eigene Discord-Anwendung* einschalten und die Application ID einfügen
 3. Die App verbindet sich mit der neuen ID neu; *Test-Presence senden* im Tab *Status* zeigt das Ergebnis
+4. Um dein Discord-Konto damit zu verknüpfen (dein Name und Profilbild in der App): den Redirect eintragen und
+   *Public Client* einschalten wie in [Schritt 5](#5-für-die-konto-verknüpfung-oauth2-redirect-und-public-client)

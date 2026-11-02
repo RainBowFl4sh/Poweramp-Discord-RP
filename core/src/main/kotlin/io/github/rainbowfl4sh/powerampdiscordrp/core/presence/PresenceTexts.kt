@@ -114,9 +114,12 @@ object PresenceTexts {
         return TextRotation.pick(TextRotation.alternatives(template).map { Templates.field(Templates.expand(it, vars)) }, step)
     }
 
-    /** True if a template uses %pos%, %bar% or %percent% (presence must be refreshed every refreshSeconds). */
+    /**
+     * True if a shown template uses %pos%, %bar% or %percent% (presence must be refreshed every refreshSeconds); the small
+     * icon's text counts only while the small icon is shown, as in [needsRotation].
+     */
     fun needsPeriodicRefresh(c: Config): Boolean =
-        listOf(c.details, c.state, c.largeText, c.smallText).any { template ->
+        listOfNotNull(c.details, c.state, c.largeText, c.smallText.takeIf { c.showSmallIcon }).any { template ->
             val l = template.lowercase(Locale.ROOT)
             "%pos%" in l || "%bar%" in l || "%percent%" in l
         }

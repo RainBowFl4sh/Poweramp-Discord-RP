@@ -48,7 +48,7 @@ data class Config(
     val spotifyId: String = "",
     val spotifySecret: String = "",
     val discogsToken: String = "",
-    val coverMaxPx: Int = 512,                      // uploaded covers are cropped to a square of this size (JPEG)
+    val coverMaxPx: Int = DEFAULT_COVER_PX,         // uploaded covers are cropped to a square of this size (JPEG)
 
     // --- Advanced
     val useCustomApp: Boolean = false,              // use an own Discord application
@@ -76,6 +76,25 @@ data class Config(
 
     /** [rotationSeconds] clamped to [ROTATION_MIN_SECONDS]..[ROTATION_MAX_SECONDS] (an imported / edited file may hold anything). */
     fun effectiveRotationSeconds(): Int = rotationSeconds.coerceIn(ROTATION_MIN_SECONDS, ROTATION_MAX_SECONDS)
+
+    /**
+     * The same settings with every choice and number inside what the UI offers. An imported / hand-edited file, or one
+     * of a newer version with more choices, may hold anything: the UI, the preview and the engine would each read such a
+     * value their own way (the UI showing "Hide while paused" while the engine shows "Paused"). Unknown choices fall
+     * back to their default, numbers are clamped.
+     */
+    fun sanitized(): Config = copy(
+        activityType = activityType.takeIf { it == ACTIVITY_PLAYING || it == ACTIVITY_LISTENING } ?: ACTIVITY_LISTENING,
+        statusDisplay = statusDisplay.coerceIn(STATUS_DISPLAY_NAME, STATUS_DISPLAY_DETAILS),
+        pausedBehavior = pausedBehavior.takeIf { it == PAUSED_SHOW || it == PAUSED_HIDE } ?: PAUSED_HIDE,
+        clearAfterPausedMin = clearAfterPausedMin.coerceIn(0, CLEAR_AFTER_PAUSED_MAX_MIN),
+        barLength = barLength.coerceIn(BAR_LENGTH_MIN, BAR_LENGTH_MAX),
+        refreshSeconds = refreshSeconds.coerceIn(REFRESH_MIN_SECONDS, REFRESH_MAX_SECONDS),
+        rotationSeconds = effectiveRotationSeconds(),
+        uploadHost = uploadHost.takeIf { it in UPLOAD_OFF..UPLOAD_X0 } ?: UPLOAD_X0,
+        coverMaxPx = coverMaxPx.takeIf { it in COVER_MIN_PX..COVER_MAX_PX } ?: DEFAULT_COVER_PX,
+        updateFrequency = updateFrequency.coerceIn(UPDATE_EVERY_START, UPDATE_MONTHLY),
+    )
 
     /** Settings for export: the update bookkeeping is not part of it. */
     fun forExport(): Config = copy(updateLastCheckMs = 0, updateLatest = "")
@@ -109,6 +128,16 @@ data class Config(
          */
         const val ROTATION_MIN_SECONDS = 5
         const val ROTATION_MAX_SECONDS = 60
+
+        // Ranges the UI offers (see sanitized)
+        const val BAR_LENGTH_MIN = 4
+        const val BAR_LENGTH_MAX = 30
+        const val REFRESH_MIN_SECONDS = 5
+        const val REFRESH_MAX_SECONDS = 120
+        const val CLEAR_AFTER_PAUSED_MAX_MIN = 1440
+        const val DEFAULT_COVER_PX = 512
+        const val COVER_MIN_PX = 64
+        const val COVER_MAX_PX = 2048
 
         const val DEFAULT_TITLE_LINK = "https://www.youtube.com/results?search_query=%artist%+%title%"
 

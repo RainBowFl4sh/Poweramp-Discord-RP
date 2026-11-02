@@ -1,5 +1,41 @@
 # Änderungen
 
+## 1.2.0
+
+### Neu
+- **Discord-Konto verknüpfen** (optional, Karte *Discord-Konto* im Tab *Status*): Die Live-Vorschau und der Tab *Status*
+  zeigen deinen echten Discord-Namen und dein Profilbild statt „Du“. Die Discord-App nennt der Presence-Verbindung nur
+  einen Platzhalter-Benutzer, deshalb fragt die App Discord einmal selbst (OAuth2 mit PKCE, nur der Scope `identify`):
+  Gespeichert wird nur das öffentliche Profil (ID, Benutzername, Anzeigename, Bild), der Zugriff wird sofort widerrufen,
+  und nichts davon landet im Einstellungs-Export oder in Backups. Mit *Aktualisieren*, *Trennen* und verständlichen
+  Fehlermeldungen. Wer die Discord-Application besitzt, richtet sie einmal im Developer Portal ein (Redirect
+  `powerampdiscordrp://auth/callback`, *Public Client* an) - siehe README
+- **26 weitere Sprachen**: Französisch, Spanisch, Portugiesisch (Brasilien), Italienisch, Niederländisch, Dänisch,
+  Schwedisch, Norwegisch (Bokmål), Finnisch, Polnisch, Tschechisch, Ungarisch, Rumänisch, Griechisch, Türkisch,
+  Serbisch (Kyrillisch und Lateinisch), Arabisch (von rechts nach links), Hindi, Indonesisch, Vietnamesisch, Thai,
+  Chinesisch (vereinfacht und traditionell), Japanisch und Koreanisch - insgesamt 30. Alle Sprachen außer Englisch und
+  Deutsch sind KI-Übersetzungen; Korrekturen sind über *Problem melden* willkommen
+- **Sprachauswahl** in den *App-Einstellungen* (Drei-Punkte-Menü): *Systemstandard* oder eine der 30 Sprachen unter
+  ihrem eigenen Namen. Ab Android 13 ist das die App-Sprache des Systems, dieselbe wie unter *Einstellungen → Apps →
+  Poweramp Discord RP → Sprache*; unter Android 8-12 wendet die App sie auf ihre Seiten und Benachrichtigungen an
+
+### Verbessert
+- **Akku**: Die Pausen-Zeitgrenze („nach einer Pause entfernen“) nutzt einen ungenauen Android-Wecker, damit „Pausiert“
+  auch im Standby pünktlich verschwindet statt erst beim nächsten Aufwachen
+- **Akku und Netz**: Ohne installierte Discord-App startet und stoppt Poweramp den Presence-Dienst nicht mehr bei jedem
+  Song; ist die Presence ausgeschaltet, wacht die App für Poweramps Broadcasts gar nicht mehr auf; neue Verbindungen
+  zu Discord warten immer länger, statt im festen Takt zu wiederholen
+- **Netz**: Ein früher hochgeladenes Cover wird nur alle paar Tage erneut geprüft (auch über Neustarts hinweg), und ein
+  Album, das keine Quelle kennt, wird 12 Stunden lang nicht erneut online gesucht; Prüfungen über Discords Bild-Proxy
+  sind begrenzt
+- **Speicher**: Die Bilder der Seiten belegen höchstens 4 MB und werden verworfen, sobald die App im Hintergrund ist
+  (der Presence-Dienst hält den Prozess stundenlang am Leben); fragen mehrere Seiten nach demselben Bild, wird es nur
+  einmal geladen
+- **Fehlerbehebungen**: Einstellungen mit unbekannten oder zu großen Werten (z. B. aus einem Import) werden beim Laden
+  korrigiert, sodass Seiten und Presence übereinstimmen; aus dem Task-Manager von Android während einer Pause beendet,
+  bringt ein Druck auf Play die Presence zurück; die Benachrichtigung zeigt während eines neuen Versuchs den letzten
+  Fehler statt „Verbinde“
+
 ## 1.1.0
 
 ### Neu

@@ -17,8 +17,11 @@ import java.security.MessageDigest
  *     (Poweramp has no album artist: "X" and "X feat. Y" tracks of an album have different keys).
  *  b) online lookups (Spotify, Deezer, iTunes, Bandcamp, Discogs, MusicBrainz + Cover Art Archive), first plausible hit wins
  *  Results are cached in [cacheFile] (one line per cover: key TAB url TAB source TAB storedWallMs); failed lookups are
- *  retried after 10 minutes (after a minute if a request got no answer, at once with other cover settings); uploaded
- *  covers older than 3 days are checked once per session and uploaded again if gone.
+ *  retried after 10 minutes (after a minute if a request got no answer, at once with other cover settings). A clean miss
+ *  - every source answered "nothing found", no local cover - is also written to the file and not looked up online again
+ *  for 12 hours (also after a restart); only the local cover is read again meanwhile. Uploaded covers not verified for
+ *  3 days are checked again (once per process while the check fails for lack of network) and uploaded again if gone;
+ *  a successful check is stored, so the next one is due 3 days later, not at the next start.
  *
  * [endpoints] lets tests point all hosts / APIs at a local MockWebServer.
  */
@@ -53,9 +56,14 @@ class CoverResolver(
     /** A failed lookup: not tried again before [retryAtMs] (clock.nowMs) - unless the cover [settings] changed since. */
     private class Failed(val retryAtMs: Long, val settings: List<Any>)
 
+    /** One resolve: [clean] = false once something failed that may have hidden a cover (see [Web.troubles]). */
+    private class Attempt {
+        var clean = true
+    }
+
     /**
-     * Fast, never touches the network. An uploaded cover older than 3 days that has not been checked in this process
-     * yet is not returned: the caller then calls [resolve], which checks it first (hosts delete files after a while).
+     * Fast, never touches the network. An uploaded cover not verified for 3 days that has not been checked in this
+     * process yet is not returned: the caller then calls [resolve], which checks it first (hosts delete files after a while).
      */
     override fun peekCache(track: TrackInfo): CoverResult {
         val key = keyOf(track)
@@ -117,29 +125,34 @@ class CoverResolver(
     }
 
     /**
-     * Checks an old upload again (hosts delete files - x0.at after a while - or break, like catbox.moe once): true = still
-     * usable. Gone -> dropped for every key that has it, only in memory: if nothing replaces it, the next start checks it
-     * again. Could not be checked (our network) -> used for now and checked again next time.
+     * Checks an old upload again (hosts delete files - x0.at after a while - or break, like catbox.moe once): the cover
+     * if still usable, else null. There -> stored as verified now for every key that has it (in the file too: the next
+     * check is due in 3 days, not at the next start). Gone -> dropped for every key that has it, only in memory: if
+     * nothing replaces it, the next start checks it again. Could not be checked (our network) -> used for now and checked
+     * again next time.
      */
-    private fun stillThere(cover: CoverResult): Boolean = when (probe(cover.url)) {
-        Probe.OK -> {
-            synchronized(lock) { checked += cover.url }
-            true
+    private fun stillThere(cover: CoverResult): CoverResult? = when (probe(cover.url)) {
+        Probe.OK -> synchronized(lock) {
+            checked += cover.url
+            cache.touchUrl(cover.url, clock.wallMs())
+            cover.copy(storedWallMs = clock.wallMs())
         }
         Probe.UNKNOWN -> {
             log.log("Cached cover cannot be checked now (${cover.url}) - kept")
-            true
+            cover
         }
         Probe.BROKEN -> {
             log.log("Cached cover is gone (${cover.url}) - looking it up again")
             synchronized(lock) { cache.removeUrl(cover.url, persist = false) }
-            false
+            null
         }
     }
 
     private fun resolveKey(key: String, track: TrackInfo, config: Config): CoverResult {
         val settings = lookupSettings(config)
+        val settingsHash = settingsHash(settings)
         val stale: CoverResult?
+        val knownMiss: Boolean
         synchronized(lock) {
             stale = cache[key]
             if (stale != null && !needsCheck(stale)) return stale
@@ -147,22 +160,34 @@ class CoverResolver(
             if (stale == null && failed != null && failed.settings == settings && clock.nowMs() < failed.retryAtMs) {
                 return CoverResult()
             }
+            knownMiss = stale == null && cache.miss(key)?.let { isFresh(it, settingsHash) } == true
         }
-        if (stale != null && stillThere(stale)) return stale
+        if (stale != null) stillThere(stale)?.let { return it }
 
         val networkErrorsBefore = web.networkErrors
-        val query = Query.of(track)
+        val troublesBefore = web.troubles
+        val attempt = Attempt()
         var res = CoverResult()
-        if (config.preferLocal) res = uploadLocal(track, config)
-        if (res.isEmpty) res = lookupOnline(query, config)
-        if (res.isEmpty && !config.preferLocal) res = uploadLocal(track, config)
-        if (!CoverCache.isUsableUrl(res.url)) res = CoverResult()   // Discord limit for image URLs: 256 characters
+        if (knownMiss) {
+            // no source knew this one a short while ago: only a local cover added since is looked for (no network without one)
+            res = uploadLocal(track, config, attempt)
+        } else {
+            val query = Query.of(track)
+            if (config.preferLocal) res = uploadLocal(track, config, attempt)
+            if (res.isEmpty) res = lookupOnline(query, config, attempt)
+            if (res.isEmpty && !config.preferLocal) res = uploadLocal(track, config, attempt)
+        }
+        if (!CoverCache.isUsableUrl(res.url)) {   // Discord limit for image URLs: 256 characters
+            if (!res.isEmpty) attempt.clean = false
+            res = CoverResult()
+        }
 
         synchronized(lock) {
             val now = clock.nowMs()
             if (web.networkErrors != networkErrorsBefore) networkTroubleAt = now
             if (!res.isEmpty) {
-                if (res.storedWallMs == 0L) res = res.copy(storedWallMs = clock.wallMs())   // a reused upload keeps its age
+                // a reused upload keeps the time it was last verified
+                if (res.storedWallMs == 0L) res = res.copy(storedWallMs = clock.wallMs())
                 cache.put(key, res)
                 negative.remove(key)
             } else if (!Thread.currentThread().isInterrupted) {   // a cancelled lookup is no reason to wait
@@ -170,28 +195,41 @@ class CoverResolver(
                 // may be why nothing was found: tried again soon
                 val trouble = networkTroubleAt?.let { now - it < NETWORK_RETRY_MS } ?: false
                 negative[key] = Failed(now + if (trouble) NETWORK_RETRY_MS else NEGATIVE_TTL_MS, settings)
+                // every source really answered "nothing found": that does not change within hours, also not after a
+                // restart of the app (a lookup costs about 8 requests to 4-5 hosts)
+                if (!knownMiss && attempt.clean && web.troubles == troublesBefore) {
+                    cache.putMiss(key, CoverCache.Miss(clock.wallMs(), settingsHash))
+                }
             }
         }
         return res
     }
 
+    // caller holds lock
+    private fun isFresh(miss: CoverCache.Miss, settingsHash: String): Boolean =
+        miss.settings == settingsHash && clock.wallMs() - miss.storedWallMs in 0 until MISS_TTL_MS
+
     // ---------------------------------------------------------------- a) local cover -> public upload host
 
-    private fun uploadLocal(track: TrackInfo, config: Config): CoverResult {
+    /** [attempt] is marked unclean when there is a local cover that could not be read or uploaded. */
+    private fun uploadLocal(track: TrackInfo, config: Config, attempt: Attempt): CoverResult {
         if (!config.localCovers || config.uploadHost == Config.UPLOAD_OFF || track.isStream) return CoverResult()
         val art = try {
             local.read(track)
         } catch (e: Exception) {
             log.log("Local cover cannot be read (${e.javaClass.simpleName}: ${e.message ?: "no details"})")
+            attempt.clean = false
             null
         }
         if (art == null || art.isEmpty()) return CoverResult()
+        attempt.clean = false   // a cover exists: if it ends up empty, the upload failed
         // the same picture (all tracks of an album, whatever their artist tags say) is uploaded once
         val pictureKey = pictureKey(art, config.coverMaxPx)
         return withKeyLock(pictureKey) {
             val known = synchronized(lock) { cache[pictureKey]?.let { it to needsCheck(it) } }
-            if (known != null && (!known.second || stillThere(known.first))) {
-                known.first
+            val usable = known?.let { (cover, check) -> if (check) stillThere(cover) else cover }
+            if (usable != null) {
+                usable
             } else {
                 val uploaded = upload(art, config)
                 if (uploaded != null) synchronized(lock) { cache.put(pictureKey, uploaded) }
@@ -262,13 +300,14 @@ class CoverResolver(
 
     // ---------------------------------------------------------------- b) public lookups - first hit wins
 
-    private fun lookupOnline(query: Query, config: Config): CoverResult {
+    private fun lookupOnline(query: Query, config: Config, attempt: Attempt): CoverResult {
         for (source in lookups.sources) {
             if (!source.enabled(config)) continue
             val url = try {
                 source.lookup(query, config)
             } catch (e: Exception) {   // only this source failed - the others are still asked
                 log.log("${source.name} lookup failed (${e.javaClass.simpleName}: ${e.message ?: "no details"})")
+                attempt.clean = false
                 ""
             }
             if (url.isNotEmpty() && CoverCache.isUsableUrl(url)) {
@@ -285,6 +324,12 @@ class CoverResolver(
 
         internal const val NEGATIVE_TTL_MS = 10 * 60 * 1000L
         internal const val NETWORK_RETRY_MS = 60 * 1000L
+
+        /**
+         * How long a clean miss is not looked up online again. The key is the album: another track of it could be found
+         * by a track search (a single listed on its own), which waits this long - a day would hide that too long.
+         */
+        internal const val MISS_TTL_MS = 12 * 60 * 60 * 1000L
         internal const val HOST_SKIP_MS = 30 * 60 * 1000L
         internal const val RECHECK_AFTER_MS = 3 * 24 * 60 * 60 * 1000L
         internal const val RAW_UPLOAD_MAX_BYTES = 5 shl 20
@@ -311,6 +356,10 @@ class CoverResolver(
             c.srcSpotify, credential(c.spotifyId), credential(c.spotifySecret), c.srcDeezer, c.srcItunes, c.srcBandcamp,
             c.srcDiscogs, credential(c.discogsToken), c.srcMusicBrainz,
         )
+
+        /** [lookupSettings] for the cache file: a hash, so no key or secret is written there. */
+        private fun settingsHash(settings: List<Any>): String =
+            fnv1a(settings.joinToString("\u0001")).toString(16).padStart(16, '0')
 
         // per UTF-16 unit like the AIMP plugin's towlower: the key never changes its length
         private fun lower(s: String): String = buildString(s.length) { for (c in s) append(c.lowercaseChar()) }
