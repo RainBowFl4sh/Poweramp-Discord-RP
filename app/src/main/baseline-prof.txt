@@ -15,6 +15,9 @@ HSPLio/github/rainbowfl4sh/powerampdiscordrp/core/util/**;->**(**)**
 HSPLio/github/rainbowfl4sh/powerampdiscordrp/core/engine/**;->**(**)**
 HSPLio/github/rainbowfl4sh/powerampdiscordrp/core/presence/**;->**(**)**
 HSPLio/github/rainbowfl4sh/powerampdiscordrp/core/assets/**;->**(**)**
+# the linked Discord account: the warm-up reads its store, the status page and the live preview show it
+HSPLio/github/rainbowfl4sh/powerampdiscordrp/account/**;->**(**)**
+HSPLio/github/rainbowfl4sh/powerampdiscordrp/core/account/**;->**(**)**
 # opening the app reads Poweramp's state (sticky broadcasts) and the service's flags
 HSPLio/github/rainbowfl4sh/powerampdiscordrp/poweramp/**;->**(**)**
 HSPLio/github/rainbowfl4sh/powerampdiscordrp/service/PresenceService$Companion;->**(**)**
