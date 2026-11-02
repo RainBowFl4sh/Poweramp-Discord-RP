@@ -1,5 +1,17 @@
 # Änderungen
 
+## 1.2.1
+
+### Verbessert
+- **Hintergrunddienst nur, während ein Titel spielt**: der Presence-Dienst startet jetzt erst, wenn Poweramp wirklich
+  einen Titel abspielt. Das Öffnen von Poweramp (es meldet seinen letzten Titel als pausiert) oder ein Titelwechsel
+  in der Pause startet ihn nicht mehr, auch nicht mit „Pausiert anzeigen“ - bisher konnte der Dienst im Hintergrund
+  laufen, ohne dass ein einziges Lied gespielt wurde. Ein laufender Dienst zeigt weiterhin „Pausiert“ und beendet
+  sich eine Minute, nachdem nichts mehr angezeigt wird, selbst - z. B. nach der Pausen-Zeitgrenze („nach einer Pause
+  entfernen“)
+- **Cover-Uploads**: jeder Upload bekommt einen zufälligen Dateinamen (10 Buchstaben / Ziffern, wie im AIMP-Plugin)
+  statt `cover.jpg` / `cover.png` - x0.at hatte Dateien mit diesem Namen abgelehnt („403 File type not allowed.“)
+
 ## 1.2.0
 
 ### Neu
