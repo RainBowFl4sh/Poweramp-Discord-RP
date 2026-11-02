@@ -124,7 +124,7 @@ jobs:
               echo "::warning::No Discord application ID (secret DISCORD_APPLICATION_ID or gradle.properties) - users must enter their own"
             fi
           fi
-          ./gradlew --stacktrace "${args[@]}" :core:test :app:testDebugUnitTest :app:assembleDebug :app:assembleRelease
+          bash ./gradlew --stacktrace "${args[@]}" :core:test :app:testDebugUnitTest :app:assembleDebug :app:assembleRelease
 
       - name: Verify release signature
         if: env.SIGNING_KEYSTORE_PATH != ''
