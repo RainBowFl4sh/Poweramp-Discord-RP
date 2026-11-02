@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">상태</string>
+    <string name="tab_display">표시</string>
+    <string name="tab_cover">앨범 커버</string>
+    <string name="tab_sources">소스</string>
+    <string name="tab_advanced">고급</string>
+    <string name="tab_about">정보</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">옵션 더보기</string>
+    <string name="app_settings_title">앱 설정</string>
+    <string name="app_settings_theme">테마</string>
+    <string name="theme_system">시스템 설정 따르기</string>
+    <string name="theme_light">라이트</string>
+    <string name="theme_dark">다크</string>
+    <string name="app_settings_amoled">AMOLED 블랙</string>
+    <string name="app_settings_amoled_on">다크 모드에서 완전한 검은색 배경을 사용합니다 – OLED 화면에서 배터리를 절약합니다.</string>
+    <string name="app_settings_amoled_needs_dark">다크 모드에서만 사용할 수 있습니다 – “다크”를 선택하거나 Android를 다크 모드로 전환하세요.</string>
+    <string name="app_settings_dynamic">동적 색상 (Material You)</string>
+    <string name="app_settings_dynamic_sub">배경화면에서 가져온 색상입니다. 끄면 앱 고유의 Discord 스타일 색상을 사용합니다.</string>
+    <string name="app_settings_language">언어</string>
+    <string name="language_system">시스템 기본값</string>
+    <string name="language_ai">AI 번역</string>
+    <string name="app_settings_language_note">Android 설정에서도 변경할 수 있습니다: 앱 → Poweramp Discord RP → 언어.</string>
+    <string name="common_close">닫기</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Discord 상태에 Poweramp에서 재생 중인 곡이 표시됩니다</string>
+    <string name="master_off">꺼짐 – Discord에 아무것도 표시되지 않습니다</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">연결</string>
+    <string name="conn_idle">대기 중 – 지금은 표시할 내용이 없습니다</string>
+    <string name="conn_disabled">꺼짐</string>
+    <string name="conn_no_app_id">Discord 애플리케이션 ID가 설정되지 않았습니다</string>
+    <string name="conn_connecting">Discord에 연결하는 중…</string>
+    <string name="conn_connected">Discord에 연결됨</string>
+    <string name="conn_testing">테스트 프레즌스가 표시되고 있습니다.</string>
+    <string name="conn_test_waiting">테스트 프레즌스를 Discord로 보내는 중…</string>
+    <string name="conn_activity_error">Discord가 마지막 업데이트를 받아들이지 않았습니다: %1$s</string>
+    <string name="conn_detail">세부정보: %1$s</string>
+    <string name="conn_user">Discord 계정</string>
+    <string name="conn_app_id">애플리케이션 ID</string>
+    <string name="conn_app_builtin">%1$s (내장)</string>
+    <string name="conn_app_own">%1$s (내 애플리케이션)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">마지막 업데이트</string>
+    <string name="conn_never">아직 없음</string>
+    <string name="conn_connections">연결 횟수</string>
+    <string name="conn_service">백그라운드 서비스</string>
+    <string name="conn_service_running">실행 중</string>
+    <string name="conn_service_stopped">실행되지 않음</string>
+    <string name="conn_service_start">시작</string>
+    <string name="conn_service_stop">중지</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">연결되지 않음</string>
+    <string name="acc_hint">Discord 계정을 연결하면 실시간 미리보기와 이곳에 내 이름과 프로필 사진이 표시됩니다.</string>
+    <string name="acc_link">Discord 계정 연결</string>
+    <string name="acc_refresh">새로고침</string>
+    <string name="acc_restart">다시 시작</string>
+    <string name="acc_unlink">연결 해제</string>
+    <string name="acc_waiting">Discord를 기다리는 중 – Discord에서 액세스를 허용한 후 이 앱으로 돌아오세요.</string>
+    <string name="acc_working">Discord에서 프로필을 불러오는 중…</string>
+    <string name="acc_privacy">이름과 프로필 사진만 읽습니다(Discord의 “identify” 권한). 액세스 권한은 즉시 취소되며 앱은 토큰을 보관하지 않습니다.</string>
+    <string name="acc_redirect_hint">Discord에 “Invalid OAuth2 redirect_uri”라고 표시되나요? Discord 애플리케이션 소유자가 Developer Portal의 OAuth2 → Redirects에 %1$s을(를) 추가해야 합니다.</string>
+    <string name="acc_no_app_id">Discord 애플리케이션 ID가 필요합니다(고급 탭).</string>
+    <string name="acc_err_cancelled">연결이 취소되었습니다 – 프로필 공유가 허용되지 않았습니다.</string>
+    <string name="acc_err_redirect">Discord 애플리케이션이 이 앱의 반환 주소를 알지 못합니다. 애플리케이션 소유자가 Developer Portal의 OAuth2 → Redirects에 %1$s을(를) 추가해야 합니다.</string>
+    <string name="acc_err_public_client">Discord가 클라이언트 시크릿을 요구합니다: Discord 애플리케이션에서 “Public Client”가 켜져 있지 않습니다(Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">로그인이 너무 오래 걸렸거나 이미 사용된 요청입니다 – 다시 시도하세요.</string>
+    <string name="acc_err_network">Discord에 연결할 수 없습니다 – 인터넷 연결을 확인하고 다시 시도하세요.</string>
+    <string name="acc_err_discord">Discord가 로그인을 거부했습니다 – 나중에 다시 시도하세요.</string>
+    <string name="acc_err_bad_answer">Discord에서 예상치 못한 응답을 보냈습니다 – 나중에 다시 시도하세요.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Discord에 연결되지 않음 – 다시 시도하는 중</string>
+    <string name="err_discord_missing">Discord 앱이 설치되어 있지 않습니다</string>
+    <string name="err_bind_failed">Discord 앱이 Rich Presence 서비스를 제공하지 않습니다 – Discord를 업데이트하세요</string>
+    <string name="err_connect_failed">Discord가 연결을 받아들이지 않았습니다 – 다시 시도하는 중</string>
+    <string name="err_closed">Discord가 연결을 종료했습니다 – 다시 연결하는 중</string>
+    <string name="err_invalid_client_id">Discord가 애플리케이션 ID를 거부했습니다 – 고급 탭에서 확인하세요</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">지금 재생 중</string>
+    <string name="now_nothing">Poweramp에서 재생 중인 곡이 없습니다.</string>
+    <string name="word_playing">재생 중</string>
+    <string name="word_paused">일시정지됨</string>
+    <string name="hidden_no">Discord에 이 곡이 표시됩니다.</string>
+    <string name="hidden_disabled">Rich Presence가 꺼져 있습니다 – Discord에 아무것도 표시되지 않습니다.</string>
+    <string name="hidden_stopped">재생 중인 곡이 없습니다 – Discord에 아무것도 표시되지 않습니다.</string>
+    <string name="hidden_stream">인터넷 라디오 / 스트림은 숨겨집니다(표시 탭) – Discord에 아무것도 표시되지 않습니다.</string>
+    <string name="hidden_path">이 파일은 경로 필터로 숨겨집니다(표시 탭) – Discord에 아무것도 표시되지 않습니다.</string>
+    <string name="hidden_paused">재생이 일시정지되었고 “숨기기”가 선택되어 있습니다(표시 탭): Discord에 다른 활동이 표시됩니다.</string>
+    <string name="hidden_timeout">표시 탭에서 설정한 시간보다 오래 일시정지되어 프레즌스가 제거되었습니다.</string>
+    <string name="now_user_stopped">사용자가 중지함 – Poweramp가 다시 재생할 때까지 Discord에 아무것도 표시되지 않습니다.</string>
+    <string name="now_rejected">Discord가 이 프레즌스를 받아들이지 않았습니다 – “연결”을 확인하세요.</string>
+    <string name="now_after_test">지금 Discord에 테스트 프레즌스가 표시되고 있습니다 – 그다음에 이 곡이 표시됩니다.</string>
+    <string name="now_test_shown">지금 Discord에 테스트 프레즌스가 표시되고 있습니다.</string>
+    <string name="now_sending">Discord로 보내는 중…</string>
+    <string name="now_not_connected">아직 Discord에 표시되지 않습니다 – “연결”을 확인하세요.</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">테스트 프레즌스 보내기</string>
+    <string name="btn_reconnect">다시 연결</string>
+    <string name="btn_open_poweramp">Poweramp 열기</string>
+    <string name="btn_open_discord">Discord 열기</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">설정 확인</string>
+    <string name="check_checking">확인하는 중…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">버전 %1$s(빌드 %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">버전 %1$s</string>
+    <string name="check_poweramp_old">버전 %1$s(빌드 %2$d)은(는) 너무 오래되었습니다 – 이 앱에는 빌드 %3$d 이상이 필요합니다.</string>
+    <string name="check_poweramp_missing">Poweramp가 설치되어 있지 않습니다.</string>
+    <string name="check_poweramp_get">Poweramp 받기</string>
+    <string name="check_poweramp_update">Poweramp 업데이트</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">설치됨, Rich Presence 서비스 사용 가능</string>
+    <string name="check_discord_no_rpc">이 Discord 버전은 다른 앱에 Rich Presence 서비스를 제공하지 않습니다. Discord를 업데이트하세요.</string>
+    <string name="check_discord_missing">Discord 앱이 설치되어 있지 않습니다.</string>
+    <string name="check_discord_get">Discord 받기</string>
+    <string name="check_discord_update">Discord 업데이트</string>
+    <string name="check_appid_title">Discord 애플리케이션</string>
+    <string name="check_appid_own">직접 만든 애플리케이션(ID %1$s)</string>
+    <string name="check_appid_missing">이 빌드에는 애플리케이션 ID가 내장되어 있지 않습니다. 직접 Discord 애플리케이션을 만들고 고급 탭에 ID를 입력하세요.</string>
+    <string name="check_appid_invalid">직접 입력한 애플리케이션 ID가 올바르지 않으며(17~20자리 숫자) 이 빌드에는 내장된 ID가 없습니다.</string>
+    <string name="check_appid_invalid_fallback">직접 입력한 애플리케이션 ID가 올바르지 않습니다(17~20자리 숫자) – 내장된 애플리케이션(ID %1$s)을 사용합니다.</string>
+    <string name="check_appid_builtin_invalid">이 빌드에 내장된 애플리케이션 ID(%1$s)가 올바르지 않습니다(17~20자리 숫자). 직접 Discord 애플리케이션을 만들고 고급 탭에 ID를 입력하세요.</string>
+    <string name="check_appid_both_invalid">직접 입력한 애플리케이션 ID가 올바르지 않으며(17~20자리 숫자) 이 빌드에 내장된 ID(%1$s)도 올바르지 않습니다.</string>
+    <string name="check_appid_fix">설정</string>
+    <string name="check_battery_title">배터리 최적화</string>
+    <string name="check_battery_ok">이 앱에는 적용되지 않음 – Poweramp가 재생을 시작하면 백그라운드에서 시작할 수 있습니다.</string>
+    <string name="check_battery_bad">Poweramp가 재생을 시작해도 Android가 앱 시작을 허용하지 않거나 나중에 앱을 중지할 수 있습니다. 배터리 최적화에서 이 앱을 제외하세요.</string>
+    <string name="check_battery_fix">허용</string>
+    <string name="check_notif_title">알림</string>
+    <string name="check_notif_ok">허용됨 – 상태 알림에 Discord에 표시되는 내용이 나타납니다.</string>
+    <string name="check_notif_bad">허용되지 않음 – 앱이 프레즌스를 최신 상태로 유지하는 동안 상태 알림을 표시할 수 없습니다.</string>
+    <string name="check_notif_fix">허용</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">알아두면 좋은 점</string>
+    <string name="hint_privacy_title">Discord에서 활동 공유하기</string>
+    <string name="hint_privacy">Discord에서 설정 → 활동 개인정보 보호 → “활동 상태 공유”를 켜세요. 그렇지 않으면 내가 듣는 음악을 아무도 볼 수 없습니다.</string>
+    <string name="hint_poweramp_title">처음 시작할 때</string>
+    <string name="hint_poweramp">이 앱을 설치한 후 Poweramp에서 일시정지와 재생을 한 번 눌러 주세요. 그래야 Poweramp가 이 앱을 인식하고 곡 정보를 보냅니다.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">테스트 프레즌스를 보내는 중 – %1$d초 동안 표시됩니다.</string>
+    <string name="msg_reconnecting">다시 연결하는 중…</string>
+    <string name="msg_stop_ended">중지가 해제되었습니다 – Discord에 다시 Poweramp가 표시됩니다.</string>
+    <string name="msg_start_blocked">Android가 백그라운드 시작을 허용하지 않았습니다 – “배터리 최적화”에서 허용하세요.</string>
+    <string name="msg_service_started">백그라운드 서비스가 시작되었습니다.</string>
+    <string name="msg_service_stopped">Poweramp가 다시 재생할 때까지 중지되었습니다.</string>
+    <string name="msg_cannot_open">이 항목을 열 수 있는 앱이 없습니다.</string>
+    <string name="msg_cover_cleared">커버 캐시를 삭제했습니다.</string>
+    <string name="msg_exported">설정을 저장했습니다.</string>
+    <string name="msg_export_failed">설정을 저장하지 못했습니다.</string>
+    <string name="msg_imported">설정을 가져왔습니다.</string>
+    <string name="msg_import_failed">이 파일에는 이 앱의 설정이 없습니다.</string>
+    <string name="msg_reset">모든 설정이 기본값으로 초기화되었습니다.</string>
+    <string name="msg_log_copied">로그를 복사했습니다.</string>
+    <string name="msg_up_to_date">최신 버전을 사용 중입니다.</string>
+    <string name="msg_account_linked">Discord 계정 연결됨: %1$s</string>
+    <string name="msg_account_failed">Discord 계정을 연결하지 못했습니다 – 자세한 내용은 상태 탭을 확인하세요.</string>
+    <string name="msg_account_unlinked">Discord 계정 연결을 해제했습니다.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">실시간 미리보기</string>
+    <string name="prev_listening">%1$s 듣는 중</string>
+    <string name="prev_playing">%1$s 하는 중</string>
+    <string name="prev_app_own">내 앱</string>
+    <string name="prev_you">나</string>
+    <string name="prev_elapsed">%1$s 경과</string>
+    <string name="prev_example">예시 – 지금 재생 중인 곡이 없습니다.</string>
+    <string name="prev_example_title">예시 제목</string>
+    <string name="prev_example_artist">예시 아티스트</string>
+    <string name="prev_example_album">예시 앨범</string>
+    <string name="prev_icon_tip">아이콘: %1$s</string>
+    <string name="prev_link">링크: %1$s</string>
+    <string name="prev_no_link">링크 없는 제목</string>
+    <string name="prev_link_account">Discord 계정을 연결하면 여기에 내 이름과 사진이 표시됩니다</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">활동</string>
+    <string name="disp_type">활동 유형</string>
+    <string name="disp_type_listening">“듣는 중”(진행 표시줄 표시)</string>
+    <string name="disp_type_playing">“하는 중”(경과 시간만 표시)</string>
+    <string name="disp_status_display">Discord 상태 텍스트에 표시할 내용</string>
+    <string name="disp_status_name">애플리케이션 이름(Poweramp)</string>
+    <string name="disp_status_state">두 번째 줄(아티스트)</string>
+    <string name="disp_status_details">첫 번째 줄(곡 제목)</string>
+    <string name="disp_timestamps">진행 표시줄 / 경과 시간 표시</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">텍스트</string>
+    <string name="disp_details">첫 번째 줄</string>
+    <string name="disp_state">두 번째 줄</string>
+    <string name="disp_large_text">커버 툴팁</string>
+    <string name="disp_small_text">아이콘 툴팁</string>
+    <string name="disp_insert_into">플레이스홀더를 탭하면 “%1$s”에 삽입됩니다:</string>
+    <string name="disp_placeholders_help">플레이스홀더 설명</string>
+    <string name="disp_rotation_help" formatted="false">텍스트 사이에 ||를 넣으면 번갈아 표시됩니다. 예: %artist% || %title% (전환 간격은 아래에서 설정).</string>
+    <string name="ph_title">곡 제목</string>
+    <string name="ph_artist">아티스트</string>
+    <string name="ph_album">앨범</string>
+    <string name="ph_filename">확장자를 뺀 파일 이름</string>
+    <string name="ph_ext">파일 확장자(flac, mp3 …)</string>
+    <string name="ph_pos">현재 위치(1:23)</string>
+    <string name="ph_dur">길이(3:45)</string>
+    <string name="ph_percent">진행률(퍼센트)</string>
+    <string name="ph_bar">텍스트 진행 표시줄 ▰▰▰▱▱▱</string>
+    <string name="ph_status">재생 중 / 일시정지됨</string>
+    <string name="ph_codec">코덱(FLAC, MP3 …)</string>
+    <string name="ph_bitrate">비트레이트(320 kbps)</string>
+    <string name="ph_samplerate">샘플링 레이트(44.1 kHz)</string>
+    <string name="ph_bits">비트 심도(24비트)</string>
+    <string name="ph_track">현재 목록에서의 위치</string>
+    <string name="ph_listsize">목록의 곡 수</string>
+    <string name="ph_rating">평점 ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">번갈아 표시할 항목 사이에 넣습니다. 예: %artist% || %title%</string>
+    <string name="disp_small_icon">재생 / 일시정지 아이콘 표시(작은 이미지)</string>
+    <string name="disp_bar_length" formatted="false">%bar% 길이</string>
+    <string name="disp_bar_length_value">%1$d자</string>
+    <string name="disp_refresh">새로고침 간격</string>
+    <string name="disp_refresh_value">%1$d초</string>
+    <string name="disp_refresh_note" formatted="false">텍스트에 %pos%, %bar% 또는 %percent%가 있을 때만 사용됩니다. Discord는 1분에 몇 번의 업데이트만 받아들입니다.</string>
+    <string name="disp_rotation">전환 간격</string>
+    <string name="disp_rotation_value">%1$d초</string>
+    <string name="disp_rotation_note">텍스트에 ||가 있을 때만 사용됩니다. 곡마다 첫 번째 항목부터 시작하며 빈 항목은 건너뜁니다. Discord는 20초에 5번의 업데이트만 받아들이므로 최소 5초입니다.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">클릭 가능한 제목</string>
+    <string name="disp_title_link">클릭 가능한 곡 제목(아티스트 + 제목으로 YouTube 검색)</string>
+    <string name="disp_own_link">사용자 지정 링크</string>
+    <string name="disp_own_link_url">링크</string>
+    <string name="disp_own_link_hint" formatted="false">여기서도 플레이스홀더를 사용할 수 있습니다. 예: https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">링크는 http:// 또는 https://로 시작해야 합니다</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">일시정지</string>
+    <string name="disp_paused">일시정지했을 때</string>
+    <string name="disp_paused_show">“일시정지됨” 상태 표시</string>
+    <string name="disp_paused_hide">숨기기(다른 활동이 표시됨)</string>
+    <string name="disp_clear_after">일시정지 후 제거까지 시간(분)</string>
+    <string name="disp_clear_after_hint">0 = 제거 안 함(“일시정지됨”이 표시될 때만)</string>
+    <string name="disp_filters_title">필터</string>
+    <string name="disp_hide_streams">인터넷 라디오 / 스트림 재생 시 프레즌스 숨기기</string>
+    <string name="disp_exclude_paths">파일 경로에 다음이 포함되면 숨기기</string>
+    <string name="disp_exclude_paths_hint">예: Audiobooks;Podcasts</string>
+    <string name="disp_exclude_paths_note">여러 항목은 ;로 구분합니다(대소문자 구분 안 함)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Discord에 앨범 커버 표시</string>
+    <string name="cov_info">Discord는 공개 링크가 있는 커버만 표시합니다. Poweramp에 표시되는 커버를 업로드하거나(x0.at은 계정 필요 없음) 온라인에서 검색할 수 있습니다(“소스” 참조). 모든 커버는 한 번만 찾아서 캐시에 저장됩니다.</string>
+    <string name="cov_local_title">Poweramp 커버</string>
+    <string name="cov_local">Poweramp에 표시되는 커버 사용</string>
+    <string name="cov_local_sub">파일에 포함된 이미지, 폴더의 이미지 또는 Poweramp가 다운로드한 이미지 – 공개 링크를 얻기 위해 업로드됩니다</string>
+    <string name="cov_upload">커버 업로드 대상</string>
+    <string name="cov_upload_x0">x0.at (계정 필요 없음)</string>
+    <string name="cov_upload_catbox">catbox.moe (계정 필요 없음)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">사용 안 함(온라인 검색만)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Imgur를 사용하려면 Client-ID가 필요합니다 – 없으면 다른 호스트를 대신 사용합니다.</string>
+    <string name="cov_imgur_get">Client-ID 받기</string>
+    <string name="cov_prefer_local">Poweramp 커버 우선 사용</string>
+    <string name="cov_prefer_local_sub">커버가 없는 곡만 온라인에서 검색합니다</string>
+    <string name="cov_size">업로드할 커버 크기</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">업로드된 커버는 링크를 가진 누구나 볼 수 있습니다.</string>
+    <string name="cov_current_title">현재 커버</string>
+    <string name="cov_off">커버가 꺼져 있습니다 – Discord에 앱 로고가 표시됩니다.</string>
+    <string name="cov_nothing">재생 중인 곡이 없습니다.</string>
+    <string name="cov_searching">커버를 찾는 중…</string>
+    <string name="cov_not_yet">Discord에 이 곡이 표시되면 커버를 찾습니다.</string>
+    <string name="cov_none">Discord에 앱 로고가 표시됩니다: 커버를 찾지 못했거나 Discord가 커버를 불러올 수 없습니다.</string>
+    <string name="cov_source">출처: %1$s</string>
+    <string name="cov_src_cache">커버 캐시</string>
+    <string name="cov_src_online">%1$s에서 찾음</string>
+    <string name="cov_src_poweramp">Poweramp 커버</string>
+    <string name="cov_src_uploaded">%1$s, %2$s에 업로드됨</string>
+    <string name="cov_open">이미지 열기</string>
+    <string name="cov_clear">커버 캐시 삭제</string>
+    <string name="cov_image_desc">앨범 커버</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">온라인 검색은 아티스트 / 앨범을 찾아 공개 이미지 링크를 그대로 사용합니다 – 아무것도 업로드하지 않습니다. 소스는 위에서 아래 순서로 시도하며, 처음 찾은 결과를 사용합니다.</string>
+    <string name="src_covers_off">커버가 꺼져 있습니다 – 검색하지 않습니다.</string>
+    <string name="src_open_cover_tab">앨범 커버 설정</string>
+    <string name="src_prefer_local_note">“Poweramp 커버 우선 사용”이 켜져 있습니다: 커버가 없는 곡에만 검색을 사용합니다.</string>
+    <string name="src_list_title">온라인 소스</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">무료 개발자 앱 필요(Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Client ID와 Secret을 입력하세요. 입력하지 않으면 Spotify를 건너뜁니다.</string>
+    <string name="src_create_app">앱 만들기</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">키 필요 없음(비공식 인터페이스)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">무료 개인 액세스 토큰 필요</string>
+    <string name="src_token">토큰</string>
+    <string name="src_discogs_missing">토큰을 입력하세요. 입력하지 않으면 Discogs를 건너뜁니다.</string>
+    <string name="src_get_token">토큰 받기</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">키 필요 없음</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Discord 애플리케이션</string>
+    <string name="adv_custom_app">내 Discord 애플리케이션 사용</string>
+    <string name="adv_custom_app_sub">Discord에 해당 애플리케이션 이름이 표시됩니다(“… 듣는 중”)</string>
+    <string name="adv_app_id">애플리케이션 ID</string>
+    <string name="adv_app_id_hint">Developer Portal → 내 애플리케이션 → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">애플리케이션 ID는 17~20자리 숫자입니다.</string>
+    <string name="adv_portal">Developer Portal 열기</string>
+    <string name="adv_assets_note">Rich Presence → Art Assets에서 “poweramp”(로고), “play”, “pause”라는 이름으로 이미지를 업로드하세요.</string>
+    <string name="adv_effective">사용 중인 애플리케이션 ID</string>
+    <string name="adv_effective_none">없음 – 이 빌드에는 내장된 ID가 없으니 직접 만든 애플리케이션을 사용하세요</string>
+    <string name="adv_compat_title">호환성</string>
+    <string name="adv_seconds">타임스탬프를 초 단위로 보내기</string>
+    <string name="adv_seconds_sub">Discord에 잘못된 시간이 표시되거나 진행 표시줄이 없을 때만 사용하세요</string>
+    <string name="adv_log_title">최근 로그</string>
+    <string name="adv_log_empty">아직 기록된 내용이 없습니다.</string>
+    <string name="adv_log_copy">복사</string>
+    <string name="adv_log_share">공유</string>
+    <string name="adv_log_clear">지우기</string>
+    <string name="adv_log_share_subject">Poweramp Discord RP 로그</string>
+    <string name="adv_settings_title">설정 파일</string>
+    <string name="adv_settings_info">모든 설정을 파일로 저장하거나 파일에서 불러옵니다(예: 새 휴대전화로 옮길 때). 파일에는 커버용으로 입력한 키(Imgur, Spotify, Discogs)도 포함됩니다.</string>
+    <string name="adv_export">내보내기…</string>
+    <string name="adv_import">가져오기…</string>
+    <string name="adv_reset">기본값으로 초기화</string>
+    <string name="adv_reset_confirm_title">모든 설정을 초기화할까요?</string>
+    <string name="adv_reset_confirm_text">모든 설정이 기본값으로 돌아갑니다. 설정을 보관하려면 먼저 내보내세요.</string>
+    <string name="adv_reset_confirm">초기화</string>
+    <string name="adv_export_keys_title">키를 포함해 내보낼까요?</string>
+    <string name="adv_export_keys_text">파일에 %1$s의 키가 일반 텍스트로 포함됩니다. 혼자만 보관하고 다른 사람과 공유하거나 버그 신고에 첨부하지 마세요.</string>
+    <string name="adv_export_keys_confirm">내보내기</string>
+    <string name="common_cancel">취소</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">버전 %1$s</string>
+    <string name="about_by">제작: %1$s</string>
+    <string name="about_on_github">GitHub의 %1$s</string>
+    <string name="cd_author_avatar">%1$s의 GitHub 프로필 사진</string>
+    <string name="cd_account_avatar">%1$s의 Discord 프로필 사진</string>
+    <string name="about_github">GitHub 페이지</string>
+    <string name="about_releases">모든 릴리스</string>
+    <string name="about_issues">문제 신고</string>
+    <string name="about_disclaimer">독립 프로젝트입니다 – Discord 또는 Poweramp와 제휴하거나 승인받지 않았습니다.</string>
+    <string name="about_updates_title">업데이트</string>
+    <string name="about_update_check">업데이트 확인</string>
+    <string name="about_update_freq">확인 주기</string>
+    <string name="upd_every_start">앱을 시작할 때마다</string>
+    <string name="upd_daily">하루에 한 번</string>
+    <string name="upd_weekly">일주일에 한 번</string>
+    <string name="upd_monthly">한 달에 한 번</string>
+    <string name="about_check_now">지금 확인</string>
+    <string name="upd_never">아직 확인하지 않았습니다.</string>
+    <string name="upd_checking">업데이트 확인 중…</string>
+    <string name="upd_latest">최신 버전을 사용 중입니다(마지막 확인: %1$s).</string>
+    <string name="upd_available">새 버전 %1$s을(를) 사용할 수 있습니다.</string>
+    <string name="upd_failed">업데이트 확인 실패: GitHub에 연결할 수 없습니다.</string>
+    <string name="upd_rate_limited">GitHub에서 현재 요청을 제한하고 있습니다 – 나중에 다시 시도하세요.</string>
+    <string name="upd_no_release">아직 게시된 릴리스가 없습니다.</string>
+    <string name="upd_bad_answer">업데이트 확인 실패: GitHub의 응답을 읽을 수 없습니다.</string>
+    <string name="upd_download">%1$s 다운로드</string>
+    <string name="upd_whats_new">새로운 기능</string>
+    <string name="about_update_privacy">확인할 때 GitHub에 최신 릴리스 정보만 요청하며, 그 외에는 아무것도 보내지 않습니다.</string>
+    <string name="about_credits_title">크레딧</string>
+    <string name="about_credit_poweramp">Poweramp API: Max MP</string>
+    <string name="about_credit_discord">Discord Social SDK RPC 인터페이스: Nightdavisao의 antisocialcord-kt(MIT 라이선스)</string>
+    <string name="about_credit_covers">커버: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz, Cover Art Archive</string>
+    <string name="about_credit_aimp">같은 제작자가 만든 “Discord Rich Presence for AIMP”의 Android 자매 앱</string>
+    <string name="about_changelog_title">변경 내역</string>
+    <string name="about_changelog_version">버전 %1$s</string>
+    <string name="about_installed">(설치됨)</string>
+    <string name="about_translation_note">이 한국어 번역은 AI로 작성되어 오류가 있을 수 있으며, 수정 제안은 GitHub의 “문제 신고”를 통해 언제든 환영합니다.</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">확인</string>
+    <string name="cd_info">참고</string>
+    <string name="cd_warning">경고</string>
+    <string name="cd_error">오류</string>
+    <string name="field_show">표시</string>
+    <string name="field_hide">숨기기</string>
+    <string name="field_range">허용 범위: %1$d~%2$d</string>
+</resources>

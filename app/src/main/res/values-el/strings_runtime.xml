@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">Αναπαραγωγή</string>
+    <string name="status_paused">Σε παύση</string>
+    <string name="status_test_line">Η σύνδεση λειτουργεί!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Παρουσία Discord</string>
+    <string name="svc_channel_desc">Εμφανίζεται όσο η εφαρμογή συγχρονίζει την κατάστασή σας στο Discord με το Poweramp</string>
+    <string name="svc_alert_channel_name">Ειδοποιήσεις προβλημάτων</string>
+    <string name="svc_alert_channel_desc">Προβλήματα που χρειάζονται την προσοχή σας, π.χ. όταν το Android εμποδίζει την εκκίνηση στο παρασκήνιο</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Εμφανίζεται στο Discord</string>
+    <string name="svc_showing_paused">Σε παύση – εμφανίζεται στο Discord</string>
+    <string name="svc_hidden_paused">Σε παύση – δεν εμφανίζεται στο Discord</string>
+    <string name="svc_hidden">Τίποτα δεν εμφανίζεται στο Discord</string>
+    <string name="svc_testing">Η δοκιμαστική παρουσία εμφανίζεται στο Discord</string>
+    <string name="svc_sending">Αποστολή στο Discord…</string>
+    <string name="svc_update_rejected">Το Discord δεν δέχτηκε την παρουσία – λεπτομέρειες στην εφαρμογή</string>
+    <string name="svc_connecting">Σύνδεση στο Discord…</string>
+    <string name="svc_waiting">Αναμονή για το Poweramp…</string>
+    <string name="svc_not_connected">Δεν υπάρχει σύνδεση με το Discord – νέα προσπάθεια</string>
+    <string name="svc_discord_missing">Η εφαρμογή Discord δεν είναι εγκατεστημένη</string>
+    <string name="svc_rejected">Το Discord απέρριψε το αναγνωριστικό εφαρμογής</string>
+    <string name="svc_no_app_id">Δεν έχει οριστεί αναγνωριστικό εφαρμογής Discord</string>
+    <string name="svc_disabled">Το Discord Rich Presence είναι απενεργοποιημένο</string>
+    <string name="svc_action_stop">Διακοπή</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Δεν ήταν δυνατή η εκκίνηση της παρουσίας Discord</string>
+    <string name="svc_bg_blocked_text">Το Android δεν επιτρέπει στην εφαρμογή να ξεκινήσει στο παρασκήνιο. Πατήστε για να ανοίξετε την εφαρμογή και να της επιτρέψετε να εκτελείται στο παρασκήνιο (βελτιστοποίηση μπαταρίας).</string>
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">Đang phát</string>
+    <string name="status_paused">Đã tạm dừng</string>
+    <string name="status_test_line">Kết nối hoạt động!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Trạng thái Discord</string>
+    <string name="svc_channel_desc">Hiển thị khi ứng dụng đồng bộ trạng thái Discord của bạn với Poweramp</string>
+    <string name="svc_alert_channel_name">Cảnh báo</string>
+    <string name="svc_alert_channel_desc">Các sự cố cần bạn chú ý, ví dụ khi Android chặn khởi động ở chế độ nền</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Đang hiển thị trên Discord</string>
+    <string name="svc_showing_paused">Đã tạm dừng – hiển thị trên Discord</string>
+    <string name="svc_hidden_paused">Đã tạm dừng – ẩn trên Discord</string>
+    <string name="svc_hidden">Không hiển thị gì trên Discord</string>
+    <string name="svc_testing">Đang hiển thị trạng thái thử trên Discord</string>
+    <string name="svc_sending">Đang gửi tới Discord…</string>
+    <string name="svc_update_rejected">Discord không chấp nhận trạng thái – xem chi tiết trong ứng dụng</string>
+    <string name="svc_connecting">Đang kết nối với Discord…</string>
+    <string name="svc_waiting">Đang chờ Poweramp…</string>
+    <string name="svc_not_connected">Chưa kết nối với Discord – đang thử lại</string>
+    <string name="svc_discord_missing">Chưa cài đặt ứng dụng Discord</string>
+    <string name="svc_rejected">Discord từ chối ID ứng dụng</string>
+    <string name="svc_no_app_id">Chưa cấu hình ID ứng dụng Discord</string>
+    <string name="svc_disabled">Discord Rich Presence đã tắt</string>
+    <string name="svc_action_stop">Dừng</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Không thể khởi động trạng thái Discord</string>
+    <string name="svc_bg_blocked_text">Android không cho ứng dụng khởi động ở chế độ nền. Chạm để mở ứng dụng và cho phép chạy ở chế độ nền (tối ưu hóa pin).</string>
+</resources>

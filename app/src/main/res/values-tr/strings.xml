@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">Durum</string>
+    <string name="tab_display">Görünüm</string>
+    <string name="tab_cover">Kapak</string>
+    <string name="tab_sources">Kaynaklar</string>
+    <string name="tab_advanced">Gelişmiş</string>
+    <string name="tab_about">Hakkında</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">Diğer seçenekler</string>
+    <string name="app_settings_title">Uygulama ayarları</string>
+    <string name="app_settings_theme">Tema</string>
+    <string name="theme_system">Sistemi takip et</string>
+    <string name="theme_light">Açık</string>
+    <string name="theme_dark">Koyu</string>
+    <string name="app_settings_amoled">AMOLED siyahı</string>
+    <string name="app_settings_amoled_on">Koyu modda tam siyah arka plan – OLED ekranlarda pil tasarrufu sağlar.</string>
+    <string name="app_settings_amoled_needs_dark">Yalnızca koyu modda – “Koyu”yu seçin veya Android’i koyu moda alın.</string>
+    <string name="app_settings_dynamic">Dinamik renkler (Material You)</string>
+    <string name="app_settings_dynamic_sub">Renkler duvar kağıdınızdan alınır. Kapalı: uygulamanın kendi Discord benzeri renkleri.</string>
+    <string name="app_settings_language">Dil</string>
+    <string name="language_system">Sistem varsayılanı</string>
+    <string name="language_ai">Yapay zekâ çevirisi</string>
+    <string name="app_settings_language_note">Android ayarlarında da var: Uygulamalar → Poweramp Discord RP → Dil.</string>
+    <string name="common_close">Kapat</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Discord durumunuz Poweramp’te çalanı gösteriyor</string>
+    <string name="master_off">Kapalı – Discord hiçbir şey göstermiyor</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Bağlantı</string>
+    <string name="conn_idle">Bekleniyor – şu anda gösterilecek bir şey yok</string>
+    <string name="conn_disabled">Kapalı</string>
+    <string name="conn_no_app_id">Discord uygulama kimliği ayarlanmamış</string>
+    <string name="conn_connecting">Discord’a bağlanılıyor…</string>
+    <string name="conn_connected">Discord’a bağlı</string>
+    <string name="conn_testing">Test durumu gösteriliyor.</string>
+    <string name="conn_test_waiting">Test durumu Discord’a gönderiliyor…</string>
+    <string name="conn_activity_error">Discord son güncellemeyi kabul etmedi: %1$s</string>
+    <string name="conn_detail">Ayrıntılar: %1$s</string>
+    <string name="conn_user">Discord hesabı</string>
+    <string name="conn_app_id">Uygulama kimliği</string>
+    <string name="conn_app_builtin">%1$s (yerleşik)</string>
+    <string name="conn_app_own">%1$s (kendi uygulamanız)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">Son güncelleme</string>
+    <string name="conn_never">henüz yok</string>
+    <string name="conn_connections">Bağlantılar</string>
+    <string name="conn_service">Arka plan hizmeti</string>
+    <string name="conn_service_running">çalışıyor</string>
+    <string name="conn_service_stopped">çalışmıyor</string>
+    <string name="conn_service_start">Başlat</string>
+    <string name="conn_service_stop">Durdur</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Bağlı değil</string>
+    <string name="acc_hint">Adınızı ve profil resminizi canlı önizlemede ve burada görmek için Discord hesabınızı bağlayın.</string>
+    <string name="acc_link">Discord hesabını bağla</string>
+    <string name="acc_refresh">Yenile</string>
+    <string name="acc_restart">Baştan başla</string>
+    <string name="acc_unlink">Bağlantıyı kaldır</string>
+    <string name="acc_waiting">Discord bekleniyor – orada erişime izin verin, sonra bu uygulamaya geri dönün.</string>
+    <string name="acc_working">Profiliniz Discord’dan okunuyor…</string>
+    <string name="acc_privacy">Yalnızca adınız ve profil resminiz okunur (Discord’un “identify” erişimi). Erişim hemen geri alınır – uygulama hiçbir token saklamaz.</string>
+    <string name="acc_redirect_hint">Discord “Invalid OAuth2 redirect_uri” mi diyor? Discord uygulamasının sahibi, Developer Portal’da OAuth2 → Redirects altına %1$s eklemelidir.</string>
+    <string name="acc_no_app_id">Bir Discord uygulama kimliği gerekir (Gelişmiş sekmesi).</string>
+    <string name="acc_err_cancelled">Bağlama iptal edildi – Discord’un profilinizi paylaşmasına izin verilmedi.</string>
+    <string name="acc_err_redirect">Discord uygulaması bu uygulamanın dönüş adresini tanımıyor. Uygulamanın sahibi, Developer Portal’da OAuth2 → Redirects altına %1$s eklemelidir.</string>
+    <string name="acc_err_public_client">Discord bir client secret istiyor: Discord uygulamasında “Public Client” açık değil (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">Giriş çok uzun sürdü veya zaten kullanıldı – lütfen tekrar deneyin.</string>
+    <string name="acc_err_network">Discord’a ulaşılamadı – internet bağlantısını kontrol edip tekrar deneyin.</string>
+    <string name="acc_err_discord">Discord girişi reddetti – lütfen daha sonra tekrar deneyin.</string>
+    <string name="acc_err_bad_answer">Discord beklenmeyen bir yanıt gönderdi – lütfen daha sonra tekrar deneyin.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Discord’a bağlı değil – yeniden deneniyor</string>
+    <string name="err_discord_missing">Discord uygulaması yüklü değil</string>
+    <string name="err_bind_failed">Discord uygulaması Rich Presence hizmetini sunmuyor – Discord’u güncelleyin</string>
+    <string name="err_connect_failed">Discord bağlantıyı kabul etmedi – yeniden deneniyor</string>
+    <string name="err_closed">Discord bağlantıyı kapattı – yeniden bağlanılıyor</string>
+    <string name="err_invalid_client_id">Discord uygulama kimliğini reddetti – Gelişmiş sekmesinden kontrol edin</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Şu an çalan</string>
+    <string name="now_nothing">Poweramp’te hiçbir şey çalmıyor.</string>
+    <string name="word_playing">Çalıyor</string>
+    <string name="word_paused">Duraklatıldı</string>
+    <string name="hidden_no">Discord bu parçayı gösteriyor.</string>
+    <string name="hidden_disabled">Rich Presence kapalı – Discord hiçbir şey göstermiyor.</string>
+    <string name="hidden_stopped">Hiçbir şey çalmıyor – Discord hiçbir şey göstermiyor.</string>
+    <string name="hidden_stream">İnternet radyosu / yayınlar gizleniyor (Görünüm sekmesi) – Discord hiçbir şey göstermiyor.</string>
+    <string name="hidden_path">Bu dosya yol filtresiyle gizleniyor (Görünüm sekmesi) – Discord hiçbir şey göstermiyor.</string>
+    <string name="hidden_paused">Çalma duraklatıldı ve “Gizle” seçili (Görünüm sekmesi): Discord diğer etkinliklerinizi gösteriyor.</string>
+    <string name="hidden_timeout">Görünüm sekmesinde ayarlanandan daha uzun süre duraklatıldı – durum kaldırıldı.</string>
+    <string name="now_user_stopped">Sizin tarafınızdan durduruldu – Poweramp yeniden çalana kadar Discord hiçbir şey göstermiyor.</string>
+    <string name="now_rejected">Discord bu durumu kabul etmedi – “Bağlantı”ya bakın.</string>
+    <string name="now_after_test">Discord şu anda test durumunu gösteriyor – bu parça ardından gelecek.</string>
+    <string name="now_test_shown">Discord şu anda test durumunu gösteriyor.</string>
+    <string name="now_sending">Discord’a gönderiliyor…</string>
+    <string name="now_not_connected">Discord bunu henüz göstermiyor – “Bağlantı”ya bakın.</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Test durumu gönder</string>
+    <string name="btn_reconnect">Yeniden bağlan</string>
+    <string name="btn_open_poweramp">Poweramp’i aç</string>
+    <string name="btn_open_discord">Discord’u aç</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Kurulum</string>
+    <string name="check_checking">Kontrol ediliyor…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">Sürüm %1$s (derleme %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">Sürüm %1$s</string>
+    <string name="check_poweramp_old">Sürüm %1$s (derleme %2$d) çok eski – bu uygulama için derleme %3$d veya daha yenisi gerekir.</string>
+    <string name="check_poweramp_missing">Poweramp yüklü değil.</string>
+    <string name="check_poweramp_get">Poweramp’i edinin</string>
+    <string name="check_poweramp_update">Poweramp’i güncelle</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Yüklü, Rich Presence hizmeti kullanılabilir</string>
+    <string name="check_discord_no_rpc">Bu Discord sürümü Rich Presence hizmetini diğer uygulamalara sunmuyor. Lütfen Discord’u güncelleyin.</string>
+    <string name="check_discord_missing">Discord uygulaması yüklü değil.</string>
+    <string name="check_discord_get">Discord’u edinin</string>
+    <string name="check_discord_update">Discord’u güncelle</string>
+    <string name="check_appid_title">Discord uygulaması</string>
+    <string name="check_appid_own">Kendi uygulamanız (kimlik %1$s)</string>
+    <string name="check_appid_missing">Bu derlemede yerleşik bir uygulama kimliği yok. Kendi Discord uygulamanızı oluşturun ve kimliğini Gelişmiş sekmesine girin.</string>
+    <string name="check_appid_invalid">Kendi uygulama kimliğiniz geçerli değil (17–20 basamak) ve bu derlemede yerleşik bir kimlik yok.</string>
+    <string name="check_appid_invalid_fallback">Kendi uygulama kimliğiniz geçerli değil (17–20 basamak) – yerleşik uygulama (kimlik %1$s) kullanılıyor.</string>
+    <string name="check_appid_builtin_invalid">Bu derlemedeki yerleşik uygulama kimliği (%1$s) geçerli değil (17–20 basamak). Kendi Discord uygulamanızı oluşturun ve kimliğini Gelişmiş sekmesine girin.</string>
+    <string name="check_appid_both_invalid">Kendi uygulama kimliğiniz geçerli değil (17–20 basamak) ve bu derlemedeki yerleşik kimlik (%1$s) de geçerli değil.</string>
+    <string name="check_appid_fix">Ayarla</string>
+    <string name="check_battery_title">Pil optimizasyonu</string>
+    <string name="check_battery_ok">Bu uygulama için kapalı – Poweramp çalmaya başladığında arka planda başlayabilir.</string>
+    <string name="check_battery_bad">Android, Poweramp çalmaya başladığında uygulamanın başlamasına izin vermeyebilir veya onu daha sonra durdurabilir. Uygulamayı pil optimizasyonundan hariç tutun.</string>
+    <string name="check_battery_fix">İzin ver</string>
+    <string name="check_notif_title">Bildirimler</string>
+    <string name="check_notif_ok">İzin verildi – durum bildirimi Discord’un ne gördüğünü gösterir.</string>
+    <string name="check_notif_bad">İzin verilmedi – uygulama, durumunuzu güncel tutarken durum bildirimini gösteremez.</string>
+    <string name="check_notif_fix">İzin ver</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Bilmekte fayda var</string>
+    <string name="hint_privacy_title">Etkinliğinizi Discord’da paylaşın</string>
+    <string name="hint_privacy">Discord’da: Ayarlar → Etkinlik gizliliği → “Etkinliğini paylaş”ı açın. Aksi halde kimse ne dinlediğinizi göremez.</string>
+    <string name="hint_poweramp_title">İlk başlatma</string>
+    <string name="hint_poweramp">Bu uygulamayı yükledikten sonra Poweramp’te bir kez duraklatıp yeniden çalın; böylece Poweramp uygulamayı fark eder ve ona parça bilgilerini gönderir.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Test durumu gönderiliyor – %1$d saniye görünür kalır.</string>
+    <string name="msg_reconnecting">Yeniden bağlanılıyor…</string>
+    <string name="msg_stop_ended">Durdurma sona erdi – Discord yeniden Poweramp’i gösteriyor.</string>
+    <string name="msg_start_blocked">Android arka planda başlatmaya izin vermedi – “Pil optimizasyonu” altından izin verin.</string>
+    <string name="msg_service_started">Arka plan hizmeti başlatıldı.</string>
+    <string name="msg_service_stopped">Poweramp yeniden çalana kadar durduruldu.</string>
+    <string name="msg_cannot_open">Bunu açacak uygulama bulunamadı.</string>
+    <string name="msg_cover_cleared">Kapak önbelleği temizlendi.</string>
+    <string name="msg_exported">Ayarlar kaydedildi.</string>
+    <string name="msg_export_failed">Ayarlar kaydedilemedi.</string>
+    <string name="msg_imported">Ayarlar içe aktarıldı.</string>
+    <string name="msg_import_failed">Bu dosya bu uygulamanın ayarlarını içermiyor.</string>
+    <string name="msg_reset">Tüm ayarlar varsayılanlarına sıfırlandı.</string>
+    <string name="msg_log_copied">Günlük kopyalandı.</string>
+    <string name="msg_up_to_date">En son sürümü kullanıyorsunuz.</string>
+    <string name="msg_account_linked">Discord hesabı bağlandı: %1$s</string>
+    <string name="msg_account_failed">Discord hesabı bağlanamadı – ayrıntılar Durum sekmesinde.</string>
+    <string name="msg_account_unlinked">Discord hesabının bağlantısı kaldırıldı.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Canlı önizleme</string>
+    <string name="prev_listening">%1$s dinliyor</string>
+    <string name="prev_playing">%1$s oynuyor</string>
+    <string name="prev_app_own">uygulamanız</string>
+    <string name="prev_you">Siz</string>
+    <string name="prev_elapsed">%1$s geçti</string>
+    <string name="prev_example">Örnek – şu anda hiçbir şey çalmıyor.</string>
+    <string name="prev_example_title">Örnek başlık</string>
+    <string name="prev_example_artist">Örnek sanatçı</string>
+    <string name="prev_example_album">Örnek albüm</string>
+    <string name="prev_icon_tip">Simge: %1$s</string>
+    <string name="prev_link">Bağlantı: %1$s</string>
+    <string name="prev_no_link">Bağlantısız başlık</string>
+    <string name="prev_link_account">Adınızı ve resminizi burada görmek için Discord hesabınızı bağlayın</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Etkinlik</string>
+    <string name="disp_type">Etkinlik türü</string>
+    <string name="disp_type_listening">Dinliyor (ilerleme çubuğu gösterir)</string>
+    <string name="disp_type_playing">Oynuyor (yalnızca geçen süre)</string>
+    <string name="disp_status_display">Discord durum metninde gösterilen</string>
+    <string name="disp_status_name">Uygulama adı (Poweramp)</string>
+    <string name="disp_status_state">İkinci satır (sanatçı)</string>
+    <string name="disp_status_details">İlk satır (parça adı)</string>
+    <string name="disp_timestamps">İlerleme çubuğunu / geçen süreyi göster</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Metinler</string>
+    <string name="disp_details">İlk satır</string>
+    <string name="disp_state">İkinci satır</string>
+    <string name="disp_large_text">Kapak ipucu</string>
+    <string name="disp_small_text">Simge ipucu</string>
+    <string name="disp_insert_into">“%1$s” alanına eklemek için bir yer tutucuya dokunun:</string>
+    <string name="disp_placeholders_help">Yer tutucuların anlamı</string>
+    <string name="disp_rotation_help" formatted="false">Metinlerin sırayla gösterilmesi için aralarına || koyun, örn. %artist% || %title% (değişim aralığı aşağıda).</string>
+    <string name="ph_title">parça adı</string>
+    <string name="ph_artist">sanatçı</string>
+    <string name="ph_album">albüm</string>
+    <string name="ph_filename">uzantısız dosya adı</string>
+    <string name="ph_ext">dosya uzantısı (flac, mp3 …)</string>
+    <string name="ph_pos">geçerli konum (1:23)</string>
+    <string name="ph_dur">süre (3:45)</string>
+    <string name="ph_percent">yüzde olarak ilerleme</string>
+    <string name="ph_bar">metin ilerleme çubuğu ▰▰▰▱▱▱</string>
+    <string name="ph_status">Çalıyor / Duraklatıldı</string>
+    <string name="ph_codec">codec (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">bit hızı (320 kbps)</string>
+    <string name="ph_samplerate">örnekleme hızı (44,1 kHz)</string>
+    <string name="ph_bits">bit derinliği (24 bit)</string>
+    <string name="ph_track">geçerli listedeki sıra</string>
+    <string name="ph_listsize">listedeki parça sayısı</string>
+    <string name="ph_rating">puan ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">sırayla gösterilen alternatiflerin arasına, örn. %artist% || %title%</string>
+    <string name="disp_small_icon">Oynat / duraklat simgesini göster (küçük resim)</string>
+    <string name="disp_bar_length" formatted="false">%bar% uzunluğu</string>
+    <string name="disp_bar_length_value">%1$d karakter</string>
+    <string name="disp_refresh">Yenileme aralığı</string>
+    <string name="disp_refresh_value">%1$d sn</string>
+    <string name="disp_refresh_note" formatted="false">Yalnızca bir metin %pos%, %bar% veya %percent% içerdiğinde kullanılır. Discord dakikada yalnızca birkaç güncelleme kabul eder.</string>
+    <string name="disp_rotation">Değişim aralığı</string>
+    <string name="disp_rotation_value">%1$d sn</string>
+    <string name="disp_rotation_note">Yalnızca bir metin || içerdiğinde kullanılır. Her parça ilk alternatifle başlar, boş olanlar atlanır. Discord 20 saniyede yalnızca 5 güncelleme kabul eder, bu yüzden en az 5 sn.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Tıklanabilir başlık</string>
+    <string name="disp_title_link">Tıklanabilir şarkı adı (sanatçı + başlık için YouTube araması)</string>
+    <string name="disp_own_link">Kendi bağlantınız</string>
+    <string name="disp_own_link_url">Bağlantı</string>
+    <string name="disp_own_link_hint" formatted="false">Yer tutucular burada da çalışır, örn. https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">Bağlantı http:// veya https:// ile başlamalıdır</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Duraklatma</string>
+    <string name="disp_paused">Duraklatıldığında</string>
+    <string name="disp_paused_show">“Duraklatıldı” durumunu göster</string>
+    <string name="disp_paused_hide">Gizle (diğer etkinlikler görünür)</string>
+    <string name="disp_clear_after">Duraklatıldıktan sonra kaldır (dakika)</string>
+    <string name="disp_clear_after_hint">0 = asla (yalnızca “Duraklatıldı” gösterilirken)</string>
+    <string name="disp_filters_title">Filtreler</string>
+    <string name="disp_hide_streams">İnternet radyosu / yayınlar için durumu gizle</string>
+    <string name="disp_exclude_paths">Dosya yolu şunları içeriyorsa gizle</string>
+    <string name="disp_exclude_paths_hint">örn. Sesli Kitaplar;Podcastler</string>
+    <string name="disp_exclude_paths_note">Birden fazla parça ; ile ayrılır (büyük / küçük harf fark etmez)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Albüm kapağını Discord’da göster</string>
+    <string name="cov_info">Discord yalnızca herkese açık bağlantısı olan kapakları gösterir. Poweramp’in gösterdiği kapak yüklenebilir (x0.at hesap gerektirmez) veya internette aranabilir (bkz. “Kaynaklar”). Her kapak bir kez çözümlenir ve önbelleğe alınır.</string>
+    <string name="cov_local_title">Poweramp’in kapağı</string>
+    <string name="cov_local">Poweramp’in gösterdiği kapağı kullan</string>
+    <string name="cov_local_sub">Dosyaya gömülü, klasördeki resim veya Poweramp’in indirdiği – herkese açık bağlantı için yüklenir</string>
+    <string name="cov_upload">Kapakların yükleneceği yer</string>
+    <string name="cov_upload_x0">x0.at (hesap gerekmez)</string>
+    <string name="cov_upload_catbox">catbox.moe (hesap gerekmez)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Kapalı (yalnızca çevrimiçi arama)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Imgur için bir Client-ID gerekir – yoksa başka bir sunucu kullanılır.</string>
+    <string name="cov_imgur_get">Client-ID edinin</string>
+    <string name="cov_prefer_local">Poweramp’in kapağını tercih et</string>
+    <string name="cov_prefer_local_sub">Çevrimiçi arama yalnızca kapağı olmayan parçalar için</string>
+    <string name="cov_size">Yüklenen kapakların boyutu</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">Yüklenen kapakları bağlantıya sahip herkes görebilir.</string>
+    <string name="cov_current_title">Geçerli kapak</string>
+    <string name="cov_off">Kapaklar kapalı – Discord uygulama logosunu gösteriyor.</string>
+    <string name="cov_nothing">Hiçbir şey çalmıyor.</string>
+    <string name="cov_searching">Kapak aranıyor…</string>
+    <string name="cov_not_yet">Kapak, Discord bu parçayı gösterdiğinde aranır.</string>
+    <string name="cov_none">Discord uygulama logosunu gösteriyor: kapak bulunamadı veya Discord onu yükleyemedi.</string>
+    <string name="cov_source">Kaynak: %1$s</string>
+    <string name="cov_src_cache">kapak önbelleği</string>
+    <string name="cov_src_online">%1$s üzerinde bulundu</string>
+    <string name="cov_src_poweramp">Poweramp’in kapağı</string>
+    <string name="cov_src_uploaded">%1$s, %2$s sitesine yüklendi</string>
+    <string name="cov_open">Resmi aç</string>
+    <string name="cov_clear">Kapak önbelleğini temizle</string>
+    <string name="cov_image_desc">Albüm kapağı</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Çevrimiçi aramalar sanatçıyı / albümü arar ve herkese açık resim bağlantısını doğrudan kullanır – hiçbir şey yüklenmez. Kaynaklar yukarıdan aşağıya denenir, ilk bulunan kullanılır.</string>
+    <string name="src_covers_off">Kapaklar kapalı – arama yapılmıyor.</string>
+    <string name="src_open_cover_tab">Kapak ayarları</string>
+    <string name="src_prefer_local_note">“Poweramp’in kapağını tercih et” açık: aramalar yalnızca kapağı olmayan parçalar için kullanılır.</string>
+    <string name="src_list_title">Çevrimiçi kaynaklar</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Ücretsiz bir geliştirici uygulaması gerekir (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Client ID ve Secret girin, aksi halde Spotify atlanır.</string>
+    <string name="src_create_app">Uygulama oluştur</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Anahtar gerekmez (resmî olmayan arayüz)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Ücretsiz bir kişisel erişim token’ı gerekir</string>
+    <string name="src_token">Token</string>
+    <string name="src_discogs_missing">Bir token girin, aksi halde Discogs atlanır.</string>
+    <string name="src_get_token">Token edinin</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Anahtar gerekmez</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Discord uygulaması</string>
+    <string name="adv_custom_app">Kendi Discord uygulamamı kullan</string>
+    <string name="adv_custom_app_sub">Discord onun adını gösterir (“… dinliyor”)</string>
+    <string name="adv_app_id">Uygulama kimliği</string>
+    <string name="adv_app_id_hint">Developer Portal → uygulamanız → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">Uygulama kimliği 17–20 basamaklıdır.</string>
+    <string name="adv_portal">Developer Portal’ı aç</string>
+    <string name="adv_assets_note">Rich Presence → Art Assets altında “poweramp” (logo), “play” ve “pause” adlı resimleri yükleyin.</string>
+    <string name="adv_effective">Kullanılan uygulama kimliği</string>
+    <string name="adv_effective_none">yok – bu derlemede yerleşik kimlik yok, kendi uygulamanızı kullanın</string>
+    <string name="adv_compat_title">Uyumluluk</string>
+    <string name="adv_seconds">Zaman damgalarını saniye olarak gönder</string>
+    <string name="adv_seconds_sub">Yalnızca Discord yanlış zaman gösteriyorsa veya ilerleme çubuğu göstermiyorsa</string>
+    <string name="adv_log_title">Son günlük kayıtları</string>
+    <string name="adv_log_empty">Henüz bir kayıt yok.</string>
+    <string name="adv_log_copy">Kopyala</string>
+    <string name="adv_log_share">Paylaş</string>
+    <string name="adv_log_clear">Temizle</string>
+    <string name="adv_log_share_subject">Poweramp Discord RP günlüğü</string>
+    <string name="adv_settings_title">Ayar dosyası</string>
+    <string name="adv_settings_info">Tüm ayarları bir dosyaya kaydedin veya bir dosyadan yükleyin (örn. yeni bir telefonda). Dosya, kapaklar için girdiğiniz anahtarları da (Imgur, Spotify, Discogs) içerir.</string>
+    <string name="adv_export">Dışa aktar…</string>
+    <string name="adv_import">İçe aktar…</string>
+    <string name="adv_reset">Varsayılanlara sıfırla</string>
+    <string name="adv_reset_confirm_title">Tüm ayarlar sıfırlansın mı?</string>
+    <string name="adv_reset_confirm_text">Tüm ayarlar varsayılanlarına döner. Saklamak istiyorsanız önce dışa aktarın.</string>
+    <string name="adv_reset_confirm">Sıfırla</string>
+    <string name="adv_export_keys_title">Anahtarlarınızla birlikte dışa aktarılsın mı?</string>
+    <string name="adv_export_keys_text">Dosya, %1$s için anahtarlarınızı düz metin olarak içerecek. Kendinize saklayın – paylaşmayın ve bir hata raporuna eklemeyin.</string>
+    <string name="adv_export_keys_confirm">Dışa aktar</string>
+    <string name="common_cancel">İptal</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">Sürüm %1$s</string>
+    <string name="about_by">Geliştiren: %1$s</string>
+    <string name="about_on_github">GitHub’da %1$s</string>
+    <string name="cd_author_avatar">%1$s adlı kullanıcının GitHub profil resmi</string>
+    <string name="cd_account_avatar">%1$s adlı kullanıcının Discord profil resmi</string>
+    <string name="about_github">GitHub sayfası</string>
+    <string name="about_releases">Tüm sürümler</string>
+    <string name="about_issues">Sorun bildir</string>
+    <string name="about_disclaimer">Bağımsız bir projedir – Discord veya Poweramp ile bağlantılı değildir ve onlar tarafından desteklenmemektedir.</string>
+    <string name="about_updates_title">Güncellemeler</string>
+    <string name="about_update_check">Güncellemeleri kontrol et</string>
+    <string name="about_update_freq">Sıklık</string>
+    <string name="upd_every_start">her uygulama açılışında</string>
+    <string name="upd_daily">günde bir kez</string>
+    <string name="upd_weekly">haftada bir kez</string>
+    <string name="upd_monthly">ayda bir kez</string>
+    <string name="about_check_now">Şimdi kontrol et</string>
+    <string name="upd_never">Henüz kontrol edilmedi.</string>
+    <string name="upd_checking">Güncellemeler kontrol ediliyor…</string>
+    <string name="upd_latest">En son sürümü kullanıyorsunuz (son kontrol: %1$s).</string>
+    <string name="upd_available">%1$s sürümü mevcut.</string>
+    <string name="upd_failed">Güncelleme kontrolü başarısız: GitHub’a bağlantı yok.</string>
+    <string name="upd_rate_limited">GitHub şu anda istekleri sınırlıyor – lütfen daha sonra tekrar deneyin.</string>
+    <string name="upd_no_release">Henüz hiçbir sürüm yayımlanmadı.</string>
+    <string name="upd_bad_answer">Güncelleme kontrolü başarısız: GitHub’ın yanıtı okunamadı.</string>
+    <string name="upd_download">%1$s sürümünü indir</string>
+    <string name="upd_whats_new">Yenilikler</string>
+    <string name="about_update_privacy">Kontrol sırasında GitHub’a yalnızca en yeni sürüm sorulur – başka hiçbir şey gönderilmez.</string>
+    <string name="about_credits_title">Teşekkürler</string>
+    <string name="about_credit_poweramp">Poweramp API: Max MP</string>
+    <string name="about_credit_discord">Discord Social SDK RPC arayüzü: Nightdavisao’nun antisocialcord-kt kütüphanesi (MIT lisansı)</string>
+    <string name="about_credit_covers">Kapaklar: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz ve Cover Art Archive</string>
+    <string name="about_credit_aimp">Aynı geliştiricinin “Discord Rich Presence for AIMP” uygulamasının Android kardeşi</string>
+    <string name="about_changelog_title">Değişiklik günlüğü</string>
+    <string name="about_changelog_version">Sürüm %1$s</string>
+    <string name="about_installed">(yüklü)</string>
+    <string name="about_translation_note">Bu Türkçe çeviri yapay zekâ ile yapılmıştır ve hatalar içerebilir; düzeltmelerinizi GitHub’da “Sorun bildir” üzerinden memnuniyetle karşılarız.</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">Tamam</string>
+    <string name="cd_info">Not</string>
+    <string name="cd_warning">Uyarı</string>
+    <string name="cd_error">Sorun</string>
+    <string name="field_show">Göster</string>
+    <string name="field_hide">Gizle</string>
+    <string name="field_range">İzin verilen: %1$d ile %2$d arası</string>
+</resources>

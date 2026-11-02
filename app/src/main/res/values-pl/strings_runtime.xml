@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">Odtwarzanie</string>
+    <string name="status_paused">Wstrzymano</string>
+    <string name="status_test_line">Połączenie działa!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Status w Discordzie</string>
+    <string name="svc_channel_desc">Wyświetlane, gdy aplikacja synchronizuje Twój status w Discordzie z Powerampem</string>
+    <string name="svc_alert_channel_name">Alerty</string>
+    <string name="svc_alert_channel_desc">Problemy wymagające Twojej uwagi, np. gdy Android blokuje uruchomienie w tle</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Widoczne w Discordzie</string>
+    <string name="svc_showing_paused">Wstrzymano – widoczne w Discordzie</string>
+    <string name="svc_hidden_paused">Wstrzymano – ukryte w Discordzie</string>
+    <string name="svc_hidden">Nic nie jest pokazywane w Discordzie</string>
+    <string name="svc_testing">Status testowy widoczny w Discordzie</string>
+    <string name="svc_sending">Wysyłanie do Discorda…</string>
+    <string name="svc_update_rejected">Discord nie przyjął statusu – szczegóły w aplikacji</string>
+    <string name="svc_connecting">Łączenie z Discordem…</string>
+    <string name="svc_waiting">Oczekiwanie na Powerampa…</string>
+    <string name="svc_not_connected">Brak połączenia z Discordem – ponawianie próby</string>
+    <string name="svc_discord_missing">Aplikacja Discord nie jest zainstalowana</string>
+    <string name="svc_rejected">Discord odrzucił ID aplikacji</string>
+    <string name="svc_no_app_id">Nie skonfigurowano ID aplikacji Discord</string>
+    <string name="svc_disabled">Discord Rich Presence jest wyłączone</string>
+    <string name="svc_action_stop">Zatrzymaj</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Nie udało się uruchomić statusu w Discordzie</string>
+    <string name="svc_bg_blocked_text">Android nie pozwala aplikacji uruchomić się w tle. Dotknij, aby otworzyć aplikację i zezwolić jej na działanie w tle (optymalizacja baterii).</string>
+</resources>

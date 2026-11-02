@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">Se redă</string>
+    <string name="status_paused">Întrerupt</string>
+    <string name="status_test_line">Conexiunea funcționează!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Prezență Discord</string>
+    <string name="svc_channel_desc">Afișată cât timp aplicația sincronizează starea dvs. din Discord cu Poweramp</string>
+    <string name="svc_alert_channel_name">Alerte</string>
+    <string name="svc_alert_channel_desc">Probleme care necesită atenția dvs., de ex. când Android blochează pornirea în fundal</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Afișat pe Discord</string>
+    <string name="svc_showing_paused">Întrerupt – afișat pe Discord</string>
+    <string name="svc_hidden_paused">Întrerupt – ascuns pe Discord</string>
+    <string name="svc_hidden">Nimic afișat pe Discord</string>
+    <string name="svc_testing">Prezența de test este afișată pe Discord</string>
+    <string name="svc_sending">Se trimite la Discord…</string>
+    <string name="svc_update_rejected">Discord nu a acceptat prezența – detalii în aplicație</string>
+    <string name="svc_connecting">Se conectează la Discord…</string>
+    <string name="svc_waiting">Se așteaptă Poweramp…</string>
+    <string name="svc_not_connected">Neconectat la Discord – se reîncearcă</string>
+    <string name="svc_discord_missing">Aplicația Discord nu este instalată</string>
+    <string name="svc_rejected">Discord a respins ID-ul aplicației</string>
+    <string name="svc_no_app_id">Nu este configurat niciun ID de aplicație Discord</string>
+    <string name="svc_disabled">Discord Rich Presence este dezactivat</string>
+    <string name="svc_action_stop">Opriți</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Prezența Discord nu a putut porni</string>
+    <string name="svc_bg_blocked_text">Android nu permite pornirea aplicației în fundal. Atingeți pentru a deschide aplicația și a-i permite să ruleze în fundal (optimizarea bateriei).</string>
+</resources>

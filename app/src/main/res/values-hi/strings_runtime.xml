@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- बैकग्राउंड हिस्से के टेक्स्ट (प्रेज़ेंस सेवा, सूचनाएं, प्रेज़ेंस में %status%) - हिन्दी। -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">चल रहा है</string>
+    <string name="status_paused">रुका हुआ</string>
+    <string name="status_test_line">कनेक्शन काम कर रहा है!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Discord प्रेज़ेंस</string>
+    <string name="svc_channel_desc">तब दिखती है जब ऐप आपके Discord स्टेटस को Poweramp के साथ सिंक रखता है</string>
+    <string name="svc_alert_channel_name">अलर्ट</string>
+    <string name="svc_alert_channel_desc">ऐसी समस्याएँ जिन पर आपका ध्यान चाहिए, जैसे जब Android बैकग्राउंड में शुरू होने से रोकता है</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Discord पर दिख रहा है</string>
+    <string name="svc_showing_paused">रुका हुआ – Discord पर दिख रहा है</string>
+    <string name="svc_hidden_paused">रुका हुआ – Discord पर छिपा है</string>
+    <string name="svc_hidden">Discord पर कुछ नहीं दिख रहा</string>
+    <string name="svc_testing">Discord पर टेस्ट प्रेज़ेंस दिख रही है</string>
+    <string name="svc_sending">Discord को भेजा जा रहा है…</string>
+    <string name="svc_update_rejected">Discord ने प्रेज़ेंस स्वीकार नहीं की – विवरण ऐप में</string>
+    <string name="svc_connecting">Discord से कनेक्ट हो रहा है…</string>
+    <string name="svc_waiting">Poweramp का इंतज़ार…</string>
+    <string name="svc_not_connected">Discord से कनेक्ट नहीं है – फिर से कोशिश हो रही है</string>
+    <string name="svc_discord_missing">Discord ऐप इंस्टॉल नहीं है</string>
+    <string name="svc_rejected">Discord ने ऐप्लिकेशन ID अस्वीकार कर दी</string>
+    <string name="svc_no_app_id">कोई Discord ऐप्लिकेशन ID सेट नहीं है</string>
+    <string name="svc_disabled">Discord Rich Presence बंद है</string>
+    <string name="svc_action_stop">रोकें</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Discord प्रेज़ेंस शुरू नहीं हो सकी</string>
+    <string name="svc_bg_blocked_text">Android ऐप को बैकग्राउंड में शुरू नहीं होने दे रहा। ऐप खोलने के लिए टैप करें और उसे बैकग्राउंड में चलने की अनुमति दें (बैटरी ऑप्टिमाइज़ेशन)।</string>
+</resources>

@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">الحالة</string>
+    <string name="tab_display">العرض</string>
+    <string name="tab_cover">الغلاف</string>
+    <string name="tab_sources">المصادر</string>
+    <string name="tab_advanced">متقدّم</string>
+    <string name="tab_about">حول</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">خيارات أخرى</string>
+    <string name="app_settings_title">إعدادات التطبيق</string>
+    <string name="app_settings_theme">المظهر</string>
+    <string name="theme_system">حسب النظام</string>
+    <string name="theme_light">فاتح</string>
+    <string name="theme_dark">داكن</string>
+    <string name="app_settings_amoled">أسود AMOLED</string>
+    <string name="app_settings_amoled_on">خلفية سوداء بالكامل في الوضع الداكن – توفّر البطارية على شاشات OLED.</string>
+    <string name="app_settings_amoled_needs_dark">في الوضع الداكن فقط – اختر «داكن» أو فعّل الوضع الداكن في Android.</string>
+    <string name="app_settings_dynamic">ألوان ديناميكية (Material You)</string>
+    <string name="app_settings_dynamic_sub">ألوان من خلفية الشاشة. عند الإيقاف: ألوان التطبيق الخاصة المشابهة لـ Discord.</string>
+    <string name="app_settings_language">اللغة</string>
+    <string name="language_system">لغة النظام</string>
+    <string name="language_ai">ترجمة بالذكاء الاصطناعي</string>
+    <string name="app_settings_language_note">متاحة أيضًا في إعدادات Android: التطبيقات ← Poweramp Discord RP ← اللغة.</string>
+    <string name="common_close">إغلاق</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">تعرض حالتك في Discord ما يشغّله Poweramp</string>
+    <string name="master_off">متوقّف – لا يعرض Discord شيئًا</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">الاتصال</string>
+    <string name="conn_idle">في الانتظار – لا شيء لعرضه الآن</string>
+    <string name="conn_disabled">متوقّف</string>
+    <string name="conn_no_app_id">لم يُعيَّن معرّف تطبيق Discord</string>
+    <string name="conn_connecting">جارٍ الاتصال بـ Discord…</string>
+    <string name="conn_connected">متصل بـ Discord</string>
+    <string name="conn_testing">يتم عرض الحالة التجريبية.</string>
+    <string name="conn_test_waiting">جارٍ إرسال الحالة التجريبية إلى Discord…</string>
+    <string name="conn_activity_error">لم يقبل Discord التحديث الأخير: %1$s</string>
+    <string name="conn_detail">التفاصيل: %1$s</string>
+    <string name="conn_user">حساب Discord</string>
+    <string name="conn_app_id">معرّف التطبيق</string>
+    <string name="conn_app_builtin">%1$s (مدمج)</string>
+    <string name="conn_app_own">%1$s (الخاص بك)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">آخر تحديث</string>
+    <string name="conn_never">ليس بعد</string>
+    <string name="conn_connections">الاتصالات</string>
+    <string name="conn_service">الخدمة في الخلفية</string>
+    <string name="conn_service_running">تعمل</string>
+    <string name="conn_service_stopped">لا تعمل</string>
+    <string name="conn_service_start">تشغيل</string>
+    <string name="conn_service_stop">إيقاف</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">غير مرتبط</string>
+    <string name="acc_hint">اربط حسابك في Discord لترى اسمك وصورتك هنا وفي المعاينة المباشرة.</string>
+    <string name="acc_link">ربط حساب Discord</string>
+    <string name="acc_refresh">تحديث</string>
+    <string name="acc_restart">البدء من جديد</string>
+    <string name="acc_unlink">إلغاء الربط</string>
+    <string name="acc_waiting">في انتظار Discord – اسمح بالوصول هناك، ثم عُد إلى هذا التطبيق.</string>
+    <string name="acc_working">جارٍ قراءة ملفك الشخصي من Discord…</string>
+    <string name="acc_privacy">تتم قراءة اسمك وصورة ملفك الشخصي فقط (صلاحية «identify» في Discord). يُلغى الوصول فورًا – لا يحتفظ التطبيق بأي رمز وصول.</string>
+    <string name="acc_redirect_hint">هل يقول Discord «Invalid OAuth2 redirect_uri»؟ على مالك تطبيق Discord للمطوّرين إضافة %1$s ضمن OAuth2 → Redirects في Developer Portal.</string>
+    <string name="acc_no_app_id">يلزم معرّف تطبيق Discord (تبويب «متقدّم»).</string>
+    <string name="acc_err_cancelled">أُلغي الربط – لم يُسمح لـ Discord بمشاركة ملفك الشخصي.</string>
+    <string name="acc_err_redirect">لا يعرف تطبيق Discord للمطوّرين عنوان العودة الخاص بهذا التطبيق. على مالكه إضافة %1$s ضمن OAuth2 → Redirects في Developer Portal.</string>
+    <string name="acc_err_public_client">يطلب Discord سرّ العميل (Client Secret): خيار «Public Client» غير مفعّل لتطبيق Discord للمطوّرين (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">استغرق تسجيل الدخول وقتًا طويلًا أو سبق استخدامه – يُرجى المحاولة مرة أخرى.</string>
+    <string name="acc_err_network">تعذّر الوصول إلى Discord – تحقّق من الاتصال بالإنترنت وحاول مرة أخرى.</string>
+    <string name="acc_err_discord">رفض Discord تسجيل الدخول – يُرجى المحاولة لاحقًا.</string>
+    <string name="acc_err_bad_answer">أرسل Discord ردًّا غير متوقّع – يُرجى المحاولة لاحقًا.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">غير متصل بـ Discord – جارٍ إعادة المحاولة</string>
+    <string name="err_discord_missing">تطبيق Discord غير مثبّت</string>
+    <string name="err_bind_failed">لا يوفّر تطبيق Discord خدمة Rich Presence – حدّث Discord</string>
+    <string name="err_connect_failed">لم يقبل Discord الاتصال – جارٍ إعادة المحاولة</string>
+    <string name="err_closed">أغلق Discord الاتصال – جارٍ إعادة الاتصال</string>
+    <string name="err_invalid_client_id">رفض Discord معرّف التطبيق – تحقّق منه في تبويب «متقدّم»</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">قيد التشغيل الآن</string>
+    <string name="now_nothing">لا شيء قيد التشغيل في Poweramp.</string>
+    <string name="word_playing">قيد التشغيل</string>
+    <string name="word_paused">متوقّف مؤقتًا</string>
+    <string name="hidden_no">يعرض Discord هذا المقطع.</string>
+    <string name="hidden_disabled">تم إيقاف Rich Presence – لا يعرض Discord شيئًا.</string>
+    <string name="hidden_stopped">لا شيء قيد التشغيل – لا يعرض Discord شيئًا.</string>
+    <string name="hidden_stream">الراديو عبر الإنترنت / البث مخفيّ (تبويب «العرض») – لا يعرض Discord شيئًا.</string>
+    <string name="hidden_path">هذا الملف مخفيّ بواسطة فلتر المسار (تبويب «العرض») – لا يعرض Discord شيئًا.</string>
+    <string name="hidden_paused">التشغيل متوقّف مؤقتًا وخيار «إخفاء» محدّد (تبويب «العرض»): يعرض Discord أنشطتك الأخرى.</string>
+    <string name="hidden_timeout">توقّف التشغيل مؤقتًا مدةً أطول من المحدّدة في تبويب «العرض» – أُزيلت الحالة.</string>
+    <string name="now_user_stopped">أوقفته بنفسك – لن يعرض Discord شيئًا حتى يعود Poweramp إلى التشغيل.</string>
+    <string name="now_rejected">لم يقبل Discord هذه الحالة – راجع «الاتصال».</string>
+    <string name="now_after_test">يعرض Discord الحالة التجريبية الآن – سيتبعها هذا المقطع.</string>
+    <string name="now_test_shown">يعرض Discord الحالة التجريبية الآن.</string>
+    <string name="now_sending">جارٍ الإرسال إلى Discord…</string>
+    <string name="now_not_connected">لا يعرضها Discord بعد – راجع «الاتصال».</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">إرسال حالة تجريبية</string>
+    <string name="btn_reconnect">إعادة الاتصال</string>
+    <string name="btn_open_poweramp">فتح Poweramp</string>
+    <string name="btn_open_discord">فتح Discord</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">الإعداد</string>
+    <string name="check_checking">جارٍ التحقّق…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">الإصدار %1$s (البنية %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">الإصدار %1$s</string>
+    <string name="check_poweramp_old">الإصدار %1$s (البنية %2$d) قديم جدًا – يحتاج هذا التطبيق إلى البنية %3$d أو أحدث.</string>
+    <string name="check_poweramp_missing">Poweramp غير مثبّت.</string>
+    <string name="check_poweramp_get">تنزيل Poweramp</string>
+    <string name="check_poweramp_update">تحديث Poweramp</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">مثبّت، وخدمة Rich Presence متاحة</string>
+    <string name="check_discord_no_rpc">لا يوفّر هذا الإصدار من Discord خدمة Rich Presence للتطبيقات الأخرى. يُرجى تحديث Discord.</string>
+    <string name="check_discord_missing">تطبيق Discord غير مثبّت.</string>
+    <string name="check_discord_get">تنزيل Discord</string>
+    <string name="check_discord_update">تحديث Discord</string>
+    <string name="check_appid_title">تطبيق Discord للمطوّرين</string>
+    <string name="check_appid_own">تطبيقك الخاص (المعرّف %1$s)</string>
+    <string name="check_appid_missing">لا يتضمّن هذا الإصدار معرّف تطبيق مدمجًا. أنشئ تطبيقك الخاص في Discord وأدخل معرّفه في تبويب «متقدّم».</string>
+    <string name="check_appid_invalid">معرّف تطبيقك الخاص غير صالح (من 17 إلى 20 رقمًا)، ولا يتضمّن هذا الإصدار معرّفًا مدمجًا.</string>
+    <string name="check_appid_invalid_fallback">معرّف تطبيقك الخاص غير صالح (من 17 إلى 20 رقمًا) – يُستخدم التطبيق المدمج (المعرّف %1$s).</string>
+    <string name="check_appid_builtin_invalid">معرّف التطبيق المدمج في هذا الإصدار (%1$s) غير صالح (من 17 إلى 20 رقمًا). أنشئ تطبيقك الخاص في Discord وأدخل معرّفه في تبويب «متقدّم».</string>
+    <string name="check_appid_both_invalid">معرّف تطبيقك الخاص غير صالح (من 17 إلى 20 رقمًا)، والمعرّف المدمج في هذا الإصدار (%1$s) غير صالح أيضًا.</string>
+    <string name="check_appid_fix">إعداد</string>
+    <string name="check_battery_title">تحسين البطارية</string>
+    <string name="check_battery_ok">متوقّف لهذا التطبيق – يمكنه البدء في الخلفية عندما يبدأ Poweramp التشغيل.</string>
+    <string name="check_battery_bad">قد لا يسمح Android للتطبيق بالبدء عندما يبدأ Poweramp التشغيل، أو قد يوقفه لاحقًا. استثنِ التطبيق من تحسين البطارية.</string>
+    <string name="check_battery_fix">سماح</string>
+    <string name="check_notif_title">الإشعارات</string>
+    <string name="check_notif_ok">مسموح بها – يعرض إشعار الحالة ما يراه Discord.</string>
+    <string name="check_notif_bad">غير مسموح بها – لا يمكن للتطبيق عرض إشعار الحالة أثناء تحديث حالتك.</string>
+    <string name="check_notif_fix">سماح</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">معلومات مفيدة</string>
+    <string name="hint_privacy_title">شارك نشاطك في Discord</string>
+    <string name="hint_privacy">في Discord: الإعدادات ← خصوصية النشاط ← فعّل «مشاركة نشاطك». وإلا فلن يرى أحد ما تستمع إليه.</string>
+    <string name="hint_poweramp_title">التشغيل الأول</string>
+    <string name="hint_poweramp">بعد تثبيت هذا التطبيق، اضغط على الإيقاف المؤقت ثم التشغيل مرة واحدة في Poweramp، حتى يتعرّف Poweramp على التطبيق ويرسل إليه معلومات المقطع.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">جارٍ إرسال حالة تجريبية – ستبقى لمدة %1$d ثانية.</string>
+    <string name="msg_reconnecting">جارٍ إعادة الاتصال…</string>
+    <string name="msg_stop_ended">انتهى الإيقاف – يعرض Discord ‏Poweramp مجددًا.</string>
+    <string name="msg_start_blocked">لم يسمح Android بالبدء في الخلفية – اسمح بذلك ضمن «تحسين البطارية».</string>
+    <string name="msg_service_started">بدأت الخدمة في الخلفية.</string>
+    <string name="msg_service_stopped">متوقّف حتى يعود Poweramp إلى التشغيل.</string>
+    <string name="msg_cannot_open">لم يُعثر على تطبيق لفتح هذا.</string>
+    <string name="msg_cover_cleared">تم مسح ذاكرة الأغلفة المؤقتة.</string>
+    <string name="msg_exported">تم حفظ الإعدادات.</string>
+    <string name="msg_export_failed">تعذّر حفظ الإعدادات.</string>
+    <string name="msg_imported">تم استيراد الإعدادات.</string>
+    <string name="msg_import_failed">لا يحتوي هذا الملف على إعدادات هذا التطبيق.</string>
+    <string name="msg_reset">تمت إعادة جميع الإعدادات إلى قيمها الافتراضية.</string>
+    <string name="msg_log_copied">تم نسخ السجل.</string>
+    <string name="msg_up_to_date">لديك أحدث إصدار.</string>
+    <string name="msg_account_linked">تم ربط حساب Discord: %1$s</string>
+    <string name="msg_account_failed">تعذّر ربط حساب Discord – التفاصيل في تبويب «الحالة».</string>
+    <string name="msg_account_unlinked">تم إلغاء ربط حساب Discord.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">معاينة مباشرة</string>
+    <string name="prev_listening">يستمع إلى %1$s</string>
+    <string name="prev_playing">يلعب %1$s</string>
+    <string name="prev_app_own">تطبيقك</string>
+    <string name="prev_you">أنت</string>
+    <string name="prev_elapsed">مضى %1$s</string>
+    <string name="prev_example">مثال – لا شيء قيد التشغيل الآن.</string>
+    <string name="prev_example_title">عنوان تجريبي</string>
+    <string name="prev_example_artist">فنان تجريبي</string>
+    <string name="prev_example_album">ألبوم تجريبي</string>
+    <string name="prev_icon_tip">الأيقونة: %1$s</string>
+    <string name="prev_link">الرابط: %1$s</string>
+    <string name="prev_no_link">عنوان بدون رابط</string>
+    <string name="prev_link_account">اربط حسابك في Discord لترى اسمك وصورتك هنا</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">النشاط</string>
+    <string name="disp_type">نوع النشاط</string>
+    <string name="disp_type_listening">يستمع (يعرض شريط التقدّم)</string>
+    <string name="disp_type_playing">يلعب (الوقت المنقضي فقط)</string>
+    <string name="disp_status_display">يعرض نص الحالة في Discord</string>
+    <string name="disp_status_name">اسم التطبيق (Poweramp)</string>
+    <string name="disp_status_state">السطر الثاني (الفنان)</string>
+    <string name="disp_status_details">السطر الأول (عنوان المقطع)</string>
+    <string name="disp_timestamps">عرض شريط التقدّم / الوقت المنقضي</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">النصوص</string>
+    <string name="disp_details">السطر الأول</string>
+    <string name="disp_state">السطر الثاني</string>
+    <string name="disp_large_text">تلميح الغلاف</string>
+    <string name="disp_small_text">تلميح الأيقونة</string>
+    <string name="disp_insert_into">اضغط على عنصر نائب لإدراجه في «%1$s»:</string>
+    <string name="disp_placeholders_help">معاني العناصر النائبة</string>
+    <string name="disp_rotation_help" formatted="false">ضع || بين النصوص لتتناوب، مثل %artist% || %title% (فترة التناوب أدناه).</string>
+    <string name="ph_title">عنوان المقطع</string>
+    <string name="ph_artist">الفنان</string>
+    <string name="ph_album">الألبوم</string>
+    <string name="ph_filename">اسم الملف بدون الامتداد</string>
+    <string name="ph_ext">امتداد الملف (flac، mp3 …)</string>
+    <string name="ph_pos">الموضع الحالي (1:23)</string>
+    <string name="ph_dur">المدة (3:45)</string>
+    <string name="ph_percent">التقدّم بالنسبة المئوية</string>
+    <string name="ph_bar">شريط تقدّم نصي ▰▰▰▱▱▱</string>
+    <string name="ph_status">قيد التشغيل / متوقّف مؤقتًا</string>
+    <string name="ph_codec">الترميز (FLAC، MP3 …)</string>
+    <string name="ph_bitrate">معدّل البت (320 kbps)</string>
+    <string name="ph_samplerate">معدّل العيّنات (44.1 kHz)</string>
+    <string name="ph_bits">عمق البت (24 بت)</string>
+    <string name="ph_track">الموضع في القائمة الحالية</string>
+    <string name="ph_listsize">عدد المقاطع في القائمة</string>
+    <string name="ph_rating">التقييم ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">بين بدائل تتناوب، مثل %artist% || %title%</string>
+    <string name="disp_small_icon">عرض أيقونة التشغيل / الإيقاف المؤقت (صورة صغيرة)</string>
+    <string name="disp_bar_length" formatted="false">طول %bar%</string>
+    <string name="disp_bar_length_value">عدد الأحرف: %1$d</string>
+    <string name="disp_refresh">فترة التحديث</string>
+    <string name="disp_refresh_value">%1$d ث</string>
+    <string name="disp_refresh_note" formatted="false">تُستخدم فقط عندما يحتوي نص على %pos% أو %bar% أو %percent%. يقبل Discord بضعة تحديثات فقط في الدقيقة.</string>
+    <string name="disp_rotation">فترة التناوب</string>
+    <string name="disp_rotation_value">%1$d ث</string>
+    <string name="disp_rotation_note">تُستخدم فقط عندما يحتوي نص على ||. يبدأ كل مقطع بالبديل الأول، ويتم تخطّي البدائل الفارغة. يقبل Discord خمسة تحديثات فقط كل 20 ثانية، لذا الحد الأدنى 5 ث.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">عنوان قابل للنقر</string>
+    <string name="disp_title_link">عنوان أغنية قابل للنقر (بحث YouTube عن الفنان + العنوان)</string>
+    <string name="disp_own_link">رابط مخصّص</string>
+    <string name="disp_own_link_url">الرابط</string>
+    <string name="disp_own_link_hint" formatted="false">تعمل العناصر النائبة هنا أيضًا، مثل https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">يجب أن يبدأ الرابط بـ http:// أو https://</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">الإيقاف المؤقت</string>
+    <string name="disp_paused">عند الإيقاف المؤقت</string>
+    <string name="disp_paused_show">عرض حالة «متوقّف مؤقتًا»</string>
+    <string name="disp_paused_hide">إخفاء (تظهر الأنشطة الأخرى)</string>
+    <string name="disp_clear_after">الإزالة بعد إيقاف مؤقت لمدة (دقائق)</string>
+    <string name="disp_clear_after_hint">0 = أبدًا (فقط عند عرض «متوقّف مؤقتًا»)</string>
+    <string name="disp_filters_title">الفلاتر</string>
+    <string name="disp_hide_streams">إخفاء الحالة للراديو عبر الإنترنت / البث</string>
+    <string name="disp_exclude_paths">الإخفاء عندما يحتوي مسار الملف على</string>
+    <string name="disp_exclude_paths_hint">مثل Audiobooks;Podcasts</string>
+    <string name="disp_exclude_paths_note">عدة أجزاء مفصولة بـ ; (لا فرق بين الأحرف الكبيرة والصغيرة)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">عرض غلاف الألبوم في Discord</string>
+    <string name="cov_info">لا يعرض Discord إلا الأغلفة التي لها رابط عام. يمكن رفع الغلاف الذي يعرضه Poweramp (لا يحتاج x0.at إلى حساب) أو البحث عنه عبر الإنترنت (راجع «المصادر»). يُجلب كل غلاف مرة واحدة ويُحفظ في الذاكرة المؤقتة.</string>
+    <string name="cov_local_title">غلاف Poweramp</string>
+    <string name="cov_local">استخدام الغلاف الذي يعرضه Poweramp</string>
+    <string name="cov_local_sub">مضمّن في الملف، أو صورة في المجلد، أو نزّله Poweramp – يُرفع للحصول على رابط عام</string>
+    <string name="cov_upload">رفع الأغلفة إلى</string>
+    <string name="cov_upload_x0">x0.at (بدون حساب)</string>
+    <string name="cov_upload_catbox">catbox.moe (بدون حساب)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">بدون رفع (البحث عبر الإنترنت فقط)</string>
+    <string name="cov_imgur_id">Client-ID لـ Imgur</string>
+    <string name="cov_imgur_missing">يحتاج Imgur إلى Client-ID – بدونه يُستخدم مضيف آخر بدلًا منه.</string>
+    <string name="cov_imgur_get">الحصول على Client-ID</string>
+    <string name="cov_prefer_local">تفضيل غلاف Poweramp</string>
+    <string name="cov_prefer_local_sub">البحث عبر الإنترنت فقط للمقاطع التي ليس لها غلاف</string>
+    <string name="cov_size">حجم الأغلفة المرفوعة</string>
+    <string name="cov_size_px">%1$d × %1$d بكسل</string>
+    <string name="cov_public_note">يمكن لأي شخص لديه الرابط رؤية الأغلفة المرفوعة.</string>
+    <string name="cov_current_title">الغلاف الحالي</string>
+    <string name="cov_off">عرض الأغلفة متوقّف – يعرض Discord شعار التطبيق.</string>
+    <string name="cov_nothing">لا شيء قيد التشغيل.</string>
+    <string name="cov_searching">جارٍ البحث عن غلاف…</string>
+    <string name="cov_not_yet">سيتم البحث عن الغلاف بمجرد أن يعرض Discord هذا المقطع.</string>
+    <string name="cov_none">يعرض Discord شعار التطبيق: لم يُعثر على غلاف، أو تعذّر على Discord تحميله.</string>
+    <string name="cov_source">المصدر: %1$s</string>
+    <string name="cov_src_cache">ذاكرة الأغلفة المؤقتة</string>
+    <string name="cov_src_online">عُثر عليه في %1$s</string>
+    <string name="cov_src_poweramp">غلاف Poweramp</string>
+    <string name="cov_src_uploaded">%1$s، مرفوع إلى %2$s</string>
+    <string name="cov_open">فتح الصورة</string>
+    <string name="cov_clear">مسح ذاكرة الأغلفة المؤقتة</string>
+    <string name="cov_image_desc">غلاف الألبوم</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">يتم البحث عبر الإنترنت عن الفنان / الألبوم واستخدام رابط الصورة العام مباشرةً – لا يُرفع أي شيء. تُجرَّب المصادر من الأعلى إلى الأسفل، وتُعتمد أول نتيجة.</string>
+    <string name="src_covers_off">عرض الأغلفة متوقّف – لا يُجرى أي بحث.</string>
+    <string name="src_open_cover_tab">إعدادات الغلاف</string>
+    <string name="src_prefer_local_note">خيار «تفضيل غلاف Poweramp» مفعّل: يُستخدم البحث فقط للمقاطع التي ليس لها غلاف.</string>
+    <string name="src_list_title">المصادر عبر الإنترنت</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">يحتاج إلى تطبيق مجاني للمطوّرين (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">أدخل Client ID وSecret، وإلا فسيتم تخطّي Spotify.</string>
+    <string name="src_create_app">إنشاء تطبيق</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">لا يلزم مفتاح (واجهة غير رسمية)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">يحتاج إلى رمز وصول شخصي مجاني (token)</string>
+    <string name="src_token">الرمز (Token)</string>
+    <string name="src_discogs_missing">أدخل رمزًا، وإلا فسيتم تخطّي Discogs.</string>
+    <string name="src_get_token">الحصول على رمز</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">لا يلزم مفتاح</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">تطبيق Discord للمطوّرين</string>
+    <string name="adv_custom_app">استخدام تطبيقي الخاص في Discord</string>
+    <string name="adv_custom_app_sub">يعرض Discord اسمه («يستمع إلى …»)</string>
+    <string name="adv_app_id">معرّف التطبيق</string>
+    <string name="adv_app_id_hint">Developer Portal ← تطبيقك ← General Information ← Application ID</string>
+    <string name="adv_app_id_invalid">يتكوّن معرّف التطبيق من 17 إلى 20 رقمًا.</string>
+    <string name="adv_portal">فتح Developer Portal</string>
+    <string name="adv_assets_note">ضمن Rich Presence → Art Assets، ارفع صورًا بالأسماء «poweramp» (الشعار) و«play» و«pause».</string>
+    <string name="adv_effective">معرّف التطبيق المستخدم</string>
+    <string name="adv_effective_none">لا يوجد – لا يتضمّن هذا الإصدار معرّفًا مدمجًا، استخدم تطبيقك الخاص</string>
+    <string name="adv_compat_title">التوافق</string>
+    <string name="adv_seconds">إرسال الطوابع الزمنية بالثواني</string>
+    <string name="adv_seconds_sub">فقط إذا عرض Discord وقتًا خاطئًا أو لم يعرض شريط التقدّم</string>
+    <string name="adv_log_title">السجل الأخير</string>
+    <string name="adv_log_empty">لم يُسجَّل شيء بعد.</string>
+    <string name="adv_log_copy">نسخ</string>
+    <string name="adv_log_share">مشاركة</string>
+    <string name="adv_log_clear">مسح</string>
+    <string name="adv_log_share_subject">سجل Poweramp Discord RP</string>
+    <string name="adv_settings_title">ملف الإعدادات</string>
+    <string name="adv_settings_info">احفظ جميع الإعدادات في ملف أو حمّلها منه (مثلًا على هاتف جديد). يحتوي الملف أيضًا على المفاتيح التي أدخلتها للأغلفة (Imgur وSpotify وDiscogs).</string>
+    <string name="adv_export">تصدير…</string>
+    <string name="adv_import">استيراد…</string>
+    <string name="adv_reset">استعادة الإعدادات الافتراضية</string>
+    <string name="adv_reset_confirm_title">إعادة ضبط جميع الإعدادات؟</string>
+    <string name="adv_reset_confirm_text">ستعود جميع الإعدادات إلى قيمها الافتراضية. صدّرها أولًا إذا أردت الاحتفاظ بها.</string>
+    <string name="adv_reset_confirm">إعادة الضبط</string>
+    <string name="adv_export_keys_title">التصدير مع مفاتيحك؟</string>
+    <string name="adv_export_keys_text">سيحتوي الملف على مفاتيحك لـ %1$s كنص عادي. احتفظ به لنفسك – لا تشاركه ولا ترفقه ببلاغ عن خطأ.</string>
+    <string name="adv_export_keys_confirm">تصدير</string>
+    <string name="common_cancel">إلغاء</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">الإصدار %1$s</string>
+    <string name="about_by">بواسطة %1$s</string>
+    <string name="about_on_github">%1$s على GitHub</string>
+    <string name="cd_author_avatar">صورة الملف الشخصي لـ %1$s على GitHub</string>
+    <string name="cd_account_avatar">صورة الملف الشخصي لـ %1$s على Discord</string>
+    <string name="about_github">صفحة GitHub</string>
+    <string name="about_releases">جميع الإصدارات</string>
+    <string name="about_issues">الإبلاغ عن مشكلة</string>
+    <string name="about_disclaimer">مشروع مستقل – غير تابع لـ Discord أو Poweramp وغير معتمد منهما.</string>
+    <string name="about_updates_title">التحديثات</string>
+    <string name="about_update_check">التحقّق من وجود تحديثات</string>
+    <string name="about_update_freq">التكرار</string>
+    <string name="upd_every_start">عند كل تشغيل للتطبيق</string>
+    <string name="upd_daily">مرة يوميًا</string>
+    <string name="upd_weekly">مرة أسبوعيًا</string>
+    <string name="upd_monthly">مرة شهريًا</string>
+    <string name="about_check_now">التحقّق الآن</string>
+    <string name="upd_never">لم يتم التحقّق بعد.</string>
+    <string name="upd_checking">جارٍ التحقّق من وجود تحديثات…</string>
+    <string name="upd_latest">لديك أحدث إصدار (آخر تحقّق: %1$s).</string>
+    <string name="upd_available">الإصدار %1$s متاح.</string>
+    <string name="upd_failed">فشل التحقّق من التحديثات: لا يوجد اتصال بـ GitHub.</string>
+    <string name="upd_rate_limited">يحدّ GitHub من الطلبات حاليًا – يُرجى المحاولة لاحقًا.</string>
+    <string name="upd_no_release">لم يُنشر أي إصدار بعد.</string>
+    <string name="upd_bad_answer">فشل التحقّق من التحديثات: تعذّرت قراءة ردّ GitHub.</string>
+    <string name="upd_download">تنزيل %1$s</string>
+    <string name="upd_whats_new">ما الجديد؟</string>
+    <string name="about_update_privacy">عند التحقّق يُسأل GitHub عن أحدث إصدار فقط – ولا يُرسَل أي شيء آخر.</string>
+    <string name="about_credits_title">شكر وتقدير</string>
+    <string name="about_credit_poweramp">Poweramp API من Max MP</string>
+    <string name="about_credit_discord">واجهة RPC لـ Discord Social SDK عبر antisocialcord-kt من Nightdavisao (رخصة MIT)</string>
+    <string name="about_credit_covers">الأغلفة: x0.at وcatbox.moe وImgur وSpotify وDeezer وApple Music / iTunes وBandcamp وDiscogs وMusicBrainz وCover Art Archive</string>
+    <string name="about_credit_aimp">النسخة الخاصة بـ Android من «Discord Rich Presence for AIMP» للمطوّر نفسه</string>
+    <string name="about_changelog_title">سجل التغييرات</string>
+    <string name="about_changelog_version">الإصدار %1$s</string>
+    <string name="about_installed">(مثبّت)</string>
+    <string name="about_translation_note">هذه الترجمة مُعدّة بالذكاء الاصطناعي وقد تحتوي على أخطاء – نرحّب بتصحيحاتك على GitHub عبر «الإبلاغ عن مشكلة».</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">حسنًا</string>
+    <string name="cd_info">ملاحظة</string>
+    <string name="cd_warning">تحذير</string>
+    <string name="cd_error">مشكلة</string>
+    <string name="field_show">إظهار</string>
+    <string name="field_hide">إخفاء</string>
+    <string name="field_range">المسموح: من %1$d إلى %2$d</string>
+</resources>

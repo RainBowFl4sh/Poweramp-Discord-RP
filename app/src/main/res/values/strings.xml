@@ -23,6 +23,10 @@
     <string name="app_settings_amoled_needs_dark">Only in dark mode – choose “Dark” or switch Android to dark mode.</string>
     <string name="app_settings_dynamic">Dynamic colors (Material You)</string>
     <string name="app_settings_dynamic_sub">Colors from your wallpaper. Off: the app’s own Discord-like colors.</string>
+    <string name="app_settings_language">Language</string>
+    <string name="language_system">System default</string>
+    <string name="language_ai">AI translation</string>
+    <string name="app_settings_language_note">Also in Android’s settings: Apps → Poweramp Discord RP → Language.</string>
     <string name="common_close">Close</string>
 
     <!-- Status tab: master switch -->
@@ -37,7 +41,6 @@
     <string name="conn_no_app_id">No Discord application ID configured</string>
     <string name="conn_connecting">Connecting to Discord…</string>
     <string name="conn_connected">Connected to Discord</string>
-    <string name="conn_connected_as">Connected to Discord as %1$s</string>
     <string name="conn_testing">The test presence is shown.</string>
     <string name="conn_test_waiting">Sending the test presence to Discord…</string>
     <string name="conn_activity_error">Discord did not accept the last update: %1$s</string>
@@ -55,6 +58,26 @@
     <string name="conn_service_stopped">not running</string>
     <string name="conn_service_start">Start</string>
     <string name="conn_service_stop">Stop</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Not linked</string>
+    <string name="acc_hint">Link your Discord account to see your name and picture in the live preview and here.</string>
+    <string name="acc_link">Link Discord account</string>
+    <string name="acc_refresh">Refresh</string>
+    <string name="acc_restart">Start again</string>
+    <string name="acc_unlink">Unlink</string>
+    <string name="acc_waiting">Waiting for Discord – allow the access there, then come back to this app.</string>
+    <string name="acc_working">Reading your profile from Discord…</string>
+    <string name="acc_privacy">Only your name and profile picture are read (Discord’s “identify” access). The access is revoked right away – the app keeps no token.</string>
+    <string name="acc_redirect_hint">Discord says “Invalid OAuth2 redirect_uri”? Whoever owns the Discord application must add %1$s under OAuth2 → Redirects in the Developer Portal.</string>
+    <string name="acc_no_app_id">Needs a Discord application ID (Advanced tab).</string>
+    <string name="acc_err_cancelled">Linking was cancelled – Discord was not allowed to share your profile.</string>
+    <string name="acc_err_redirect">The Discord application does not know this app’s return address. Whoever owns it must add %1$s under OAuth2 → Redirects in the Developer Portal.</string>
+    <string name="acc_err_public_client">Discord wants a client secret: “Public Client” is not switched on for the Discord application (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">The login took too long or was already used – please try again.</string>
+    <string name="acc_err_network">Discord could not be reached – check the internet connection and try again.</string>
+    <string name="acc_err_discord">Discord refused the login – please try again later.</string>
+    <string name="acc_err_bad_answer">Discord sent an unexpected answer – please try again later.</string>
 
     <!-- Connection errors (TransportError) -->
     <string name="err_none">Not connected to Discord – retrying</string>
@@ -145,6 +168,9 @@
     <string name="msg_reset">All settings were reset to their defaults.</string>
     <string name="msg_log_copied">Log copied.</string>
     <string name="msg_up_to_date">You have the latest version.</string>
+    <string name="msg_account_linked">Discord account linked: %1$s</string>
+    <string name="msg_account_failed">Linking the Discord account did not work – details on the Status tab.</string>
+    <string name="msg_account_unlinked">Discord account unlinked.</string>
 
     <!-- Display tab: live preview (drawn like Discord) -->
     <string name="disp_preview_title">Live preview</string>
@@ -160,6 +186,7 @@
     <string name="prev_icon_tip">Icon: %1$s</string>
     <string name="prev_link">Link: %1$s</string>
     <string name="prev_no_link">Title without link</string>
+    <string name="prev_link_account">Link your Discord account to see your name and picture here</string>
 
     <!-- Display tab: activity -->
     <string name="disp_activity_title">Activity</string>
@@ -328,6 +355,7 @@
     <string name="about_by">by %1$s</string>
     <string name="about_on_github">%1$s on GitHub</string>
     <string name="cd_author_avatar">GitHub profile picture of %1$s</string>
+    <string name="cd_account_avatar">Discord profile picture of %1$s</string>
     <string name="about_github">GitHub page</string>
     <string name="about_releases">All releases</string>
     <string name="about_issues">Report a problem</string>

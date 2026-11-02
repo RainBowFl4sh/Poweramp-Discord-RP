@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">En lecture</string>
+    <string name="status_paused">En pause</string>
+    <string name="status_test_line">La connexion fonctionne !</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Présence Discord</string>
+    <string name="svc_channel_desc">Affichée tant que l’app synchronise votre statut Discord avec Poweramp</string>
+    <string name="svc_alert_channel_name">Alertes</string>
+    <string name="svc_alert_channel_desc">Problèmes qui nécessitent votre attention, p. ex. quand Android bloque le démarrage en arrière-plan</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Affiché sur Discord</string>
+    <string name="svc_showing_paused">En pause – affiché sur Discord</string>
+    <string name="svc_hidden_paused">En pause – masqué sur Discord</string>
+    <string name="svc_hidden">Rien n’est affiché sur Discord</string>
+    <string name="svc_testing">Présence de test affichée sur Discord</string>
+    <string name="svc_sending">Envoi à Discord…</string>
+    <string name="svc_update_rejected">Discord n’a pas accepté la présence – détails dans l’app</string>
+    <string name="svc_connecting">Connexion à Discord…</string>
+    <string name="svc_waiting">En attente de Poweramp…</string>
+    <string name="svc_not_connected">Non connecté à Discord – nouvelle tentative</string>
+    <string name="svc_discord_missing">L’app Discord n’est pas installée</string>
+    <string name="svc_rejected">Discord a refusé l’ID d’application</string>
+    <string name="svc_no_app_id">Aucun ID d’application Discord configuré</string>
+    <string name="svc_disabled">Discord Rich Presence est désactivé</string>
+    <string name="svc_action_stop">Arrêter</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Impossible de démarrer la présence Discord</string>
+    <string name="svc_bg_blocked_text">Android n’autorise pas l’app à démarrer en arrière-plan. Appuyez pour ouvrir l’app et l’autoriser à s’exécuter en arrière-plan (optimisation de la batterie).</string>
+</resources>

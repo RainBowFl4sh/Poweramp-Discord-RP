@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">Tila</string>
+    <string name="tab_display">Näkymä</string>
+    <string name="tab_cover">Kansikuvat</string>
+    <string name="tab_sources">Lähteet</string>
+    <string name="tab_advanced">Lisäasetukset</string>
+    <string name="tab_about">Tietoja</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">Lisää vaihtoehtoja</string>
+    <string name="app_settings_title">Sovelluksen asetukset</string>
+    <string name="app_settings_theme">Teema</string>
+    <string name="theme_system">Järjestelmän mukaan</string>
+    <string name="theme_light">Vaalea</string>
+    <string name="theme_dark">Tumma</string>
+    <string name="app_settings_amoled">AMOLED-musta</string>
+    <string name="app_settings_amoled_on">Täysin musta tausta tummassa tilassa – säästää akkua OLED-näytöillä.</string>
+    <string name="app_settings_amoled_needs_dark">Vain tummassa tilassa – valitse ”Tumma” tai ota Androidin tumma tila käyttöön.</string>
+    <string name="app_settings_dynamic">Dynaamiset värit (Material You)</string>
+    <string name="app_settings_dynamic_sub">Värit taustakuvastasi. Pois: sovelluksen omat Discord-tyyliset värit.</string>
+    <string name="app_settings_language">Kieli</string>
+    <string name="language_system">Järjestelmän oletus</string>
+    <string name="language_ai">Tekoälykäännös</string>
+    <string name="app_settings_language_note">Myös Androidin asetuksissa: Sovellukset → Poweramp Discord RP → Kieli.</string>
+    <string name="common_close">Sulje</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Discord-tilasi näyttää, mitä Poweramp soittaa</string>
+    <string name="master_off">Pois päältä – Discord ei näytä mitään</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Yhteys</string>
+    <string name="conn_idle">Odotetaan – juuri nyt ei ole mitään näytettävää</string>
+    <string name="conn_disabled">Pois päältä</string>
+    <string name="conn_no_app_id">Discord-sovelluksen tunnusta ei ole määritetty</string>
+    <string name="conn_connecting">Yhdistetään Discordiin…</string>
+    <string name="conn_connected">Yhdistetty Discordiin</string>
+    <string name="conn_testing">Testitila on näkyvissä.</string>
+    <string name="conn_test_waiting">Lähetetään testitilaa Discordiin…</string>
+    <string name="conn_activity_error">Discord ei hyväksynyt viimeisintä päivitystä: %1$s</string>
+    <string name="conn_detail">Tiedot: %1$s</string>
+    <string name="conn_user">Discord-tili</string>
+    <string name="conn_app_id">Sovelluksen tunnus</string>
+    <string name="conn_app_builtin">%1$s (sisäänrakennettu)</string>
+    <string name="conn_app_own">%1$s (oma)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">Viimeisin päivitys</string>
+    <string name="conn_never">ei vielä</string>
+    <string name="conn_connections">Yhteydet</string>
+    <string name="conn_service">Taustapalvelu</string>
+    <string name="conn_service_running">käynnissä</string>
+    <string name="conn_service_stopped">ei käynnissä</string>
+    <string name="conn_service_start">Käynnistä</string>
+    <string name="conn_service_stop">Pysäytä</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Ei yhdistetty</string>
+    <string name="acc_hint">Yhdistä Discord-tilisi, niin näet nimesi ja kuvasi esikatselussa ja täällä.</string>
+    <string name="acc_link">Yhdistä Discord-tili</string>
+    <string name="acc_refresh">Päivitä</string>
+    <string name="acc_restart">Aloita alusta</string>
+    <string name="acc_unlink">Poista yhteys</string>
+    <string name="acc_waiting">Odotetaan Discordia – anna käyttöoikeus siellä ja palaa sitten tähän sovellukseen.</string>
+    <string name="acc_working">Luetaan profiiliasi Discordista…</string>
+    <string name="acc_privacy">Vain nimesi ja profiilikuvasi luetaan (Discordin ”identify”-oikeus). Käyttöoikeus perutaan heti – sovellus ei säilytä tunnistetta.</string>
+    <string name="acc_redirect_hint">Discord ilmoittaa ”Invalid OAuth2 redirect_uri”? Discord-sovelluksen omistajan on lisättävä %1$s kohtaan OAuth2 → Redirects Developer Portalissa.</string>
+    <string name="acc_no_app_id">Vaatii Discord-sovelluksen tunnuksen (Lisäasetukset-välilehti).</string>
+    <string name="acc_err_cancelled">Yhdistäminen peruttiin – Discord ei saanut lupaa jakaa profiiliasi.</string>
+    <string name="acc_err_redirect">Discord-sovellus ei tunne tämän sovelluksen paluuosoitetta. Sen omistajan on lisättävä %1$s kohtaan OAuth2 → Redirects Developer Portalissa.</string>
+    <string name="acc_err_public_client">Discord vaatii client secretin: ”Public Client” ei ole käytössä Discord-sovelluksessa (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">Kirjautuminen kesti liian kauan tai sen koodi on jo käytetty – yritä uudelleen.</string>
+    <string name="acc_err_network">Discordiin ei saatu yhteyttä – tarkista internetyhteys ja yritä uudelleen.</string>
+    <string name="acc_err_discord">Discord hylkäsi kirjautumisen – yritä myöhemmin uudelleen.</string>
+    <string name="acc_err_bad_answer">Discord lähetti odottamattoman vastauksen – yritä myöhemmin uudelleen.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Ei yhteyttä Discordiin – yritetään uudelleen</string>
+    <string name="err_discord_missing">Discord-sovellusta ei ole asennettu</string>
+    <string name="err_bind_failed">Discord-sovellus ei tarjoa Rich Presence -palvelua – päivitä Discord</string>
+    <string name="err_connect_failed">Discord ei hyväksynyt yhteyttä – yritetään uudelleen</string>
+    <string name="err_closed">Discord sulki yhteyden – yhdistetään uudelleen</string>
+    <string name="err_invalid_client_id">Discord hylkäsi sovelluksen tunnuksen – tarkista se Lisäasetukset-välilehdellä</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Nyt soi</string>
+    <string name="now_nothing">Powerampissa ei soi mitään.</string>
+    <string name="word_playing">Toistetaan</string>
+    <string name="word_paused">Keskeytetty</string>
+    <string name="hidden_no">Discord näyttää tämän kappaleen.</string>
+    <string name="hidden_disabled">Rich Presence on pois päältä – Discord ei näytä mitään.</string>
+    <string name="hidden_stopped">Mitään ei soi – Discord ei näytä mitään.</string>
+    <string name="hidden_stream">Nettiradio ja striimit piilotetaan (Näkymä-välilehti) – Discord ei näytä mitään.</string>
+    <string name="hidden_path">Polkusuodatin piilottaa tämän tiedoston (Näkymä-välilehti) – Discord ei näytä mitään.</string>
+    <string name="hidden_paused">Toisto on keskeytetty ja ”Piilota” on valittu (Näkymä-välilehti): Discord näyttää muut toimintasi.</string>
+    <string name="hidden_timeout">Keskeytetty pidempään kuin Näkymä-välilehdellä on asetettu – tila poistettiin.</string>
+    <string name="now_user_stopped">Pysäytit tilan – Discord ei näytä mitään, ennen kuin Poweramp soittaa taas.</string>
+    <string name="now_rejected">Discord ei hyväksynyt tätä tilaa – katso ”Yhteys”.</string>
+    <string name="now_after_test">Discord näyttää juuri nyt testitilaa – tämä kappale tulee sen jälkeen.</string>
+    <string name="now_test_shown">Discord näyttää juuri nyt testitilaa.</string>
+    <string name="now_sending">Lähetetään Discordiin…</string>
+    <string name="now_not_connected">Discord ei vielä näytä sitä – katso ”Yhteys”.</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Lähetä testitila</string>
+    <string name="btn_reconnect">Yhdistä uudelleen</string>
+    <string name="btn_open_poweramp">Avaa Poweramp</string>
+    <string name="btn_open_discord">Avaa Discord</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Käyttöönotto</string>
+    <string name="check_checking">Tarkistetaan…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">Versio %1$s (koontiversio %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">Versio %1$s</string>
+    <string name="check_poweramp_old">Versio %1$s (koontiversio %2$d) on liian vanha – tämä sovellus vaatii koontiversion %3$d tai uudemman.</string>
+    <string name="check_poweramp_missing">Powerampia ei ole asennettu.</string>
+    <string name="check_poweramp_get">Hanki Poweramp</string>
+    <string name="check_poweramp_update">Päivitä Poweramp</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Asennettu, Rich Presence -palvelu käytettävissä</string>
+    <string name="check_discord_no_rpc">Tämä Discord-versio ei tarjoa Rich Presence -palvelua muille sovelluksille. Päivitä Discord.</string>
+    <string name="check_discord_missing">Discord-sovellusta ei ole asennettu.</string>
+    <string name="check_discord_get">Hanki Discord</string>
+    <string name="check_discord_update">Päivitä Discord</string>
+    <string name="check_appid_title">Discord-sovellus</string>
+    <string name="check_appid_own">Oma sovelluksesi (tunnus %1$s)</string>
+    <string name="check_appid_missing">Tähän koontiversioon ei ole sisäänrakennettu sovelluksen tunnusta. Luo oma Discord-sovellus ja syötä sen tunnus Lisäasetukset-välilehdellä.</string>
+    <string name="check_appid_invalid">Oma sovelluksen tunnuksesi ei kelpaa (17–20 numeroa), eikä tähän koontiversioon ole sisäänrakennettu tunnusta.</string>
+    <string name="check_appid_invalid_fallback">Oma sovelluksen tunnuksesi ei kelpaa (17–20 numeroa) – käytetään sisäänrakennettua sovellusta (tunnus %1$s).</string>
+    <string name="check_appid_builtin_invalid">Tähän koontiversioon sisäänrakennettu sovelluksen tunnus (%1$s) ei kelpaa (17–20 numeroa). Luo oma Discord-sovellus ja syötä sen tunnus Lisäasetukset-välilehdellä.</string>
+    <string name="check_appid_both_invalid">Oma sovelluksen tunnuksesi ei kelpaa (17–20 numeroa), eikä myöskään tähän koontiversioon sisäänrakennettu tunnus (%1$s) kelpaa.</string>
+    <string name="check_appid_fix">Määritä</string>
+    <string name="check_battery_title">Akun optimointi</string>
+    <string name="check_battery_ok">Pois päältä tältä sovellukselta – se voi käynnistyä taustalla, kun Poweramp alkaa soittaa.</string>
+    <string name="check_battery_bad">Android ei ehkä anna sovelluksen käynnistyä, kun Poweramp alkaa soittaa, tai pysäyttää sen myöhemmin. Poista sovellus akun optimoinnista.</string>
+    <string name="check_battery_fix">Salli</string>
+    <string name="check_notif_title">Ilmoitukset</string>
+    <string name="check_notif_ok">Sallittu – tilailmoitus näyttää, mitä Discord näkee.</string>
+    <string name="check_notif_bad">Ei sallittu – sovellus ei voi näyttää tilailmoitustaan pitäessään tilaasi ajan tasalla.</string>
+    <string name="check_notif_fix">Salli</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Hyvä tietää</string>
+    <string name="hint_privacy_title">Jaa toimintasi Discordissa</string>
+    <string name="hint_privacy">Discordissa: Asetukset → Toiminnan yksityisyys → ota käyttöön ”Jaa toimintasi”. Muuten kukaan ei näe, mitä kuuntelet.</string>
+    <string name="hint_poweramp_title">Ensimmäinen käynnistys</string>
+    <string name="hint_poweramp">Kun olet asentanut tämän sovelluksen, paina Powerampissa kerran taukoa ja sitten toistoa, jotta Poweramp huomaa sovelluksen ja lähettää sille kappaleen tiedot.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Lähetetään testitila – se näkyy %1$d sekuntia.</string>
+    <string name="msg_reconnecting">Yhdistetään uudelleen…</string>
+    <string name="msg_stop_ended">Pysäytys päättyi – Discord näyttää taas Powerampin.</string>
+    <string name="msg_start_blocked">Android ei sallinut käynnistystä taustalla – salli se kohdassa ”Akun optimointi”.</string>
+    <string name="msg_service_started">Taustapalvelu käynnistetty.</string>
+    <string name="msg_service_stopped">Pysäytetty, kunnes Poweramp soittaa taas.</string>
+    <string name="msg_cannot_open">Tämän avaamiseen ei löytynyt sovellusta.</string>
+    <string name="msg_cover_cleared">Kansikuvien välimuisti tyhjennetty.</string>
+    <string name="msg_exported">Asetukset tallennettu.</string>
+    <string name="msg_export_failed">Asetuksia ei voitu tallentaa.</string>
+    <string name="msg_imported">Asetukset tuotu.</string>
+    <string name="msg_import_failed">Tämä tiedosto ei sisällä tämän sovelluksen asetuksia.</string>
+    <string name="msg_reset">Kaikki asetukset palautettiin oletuksiin.</string>
+    <string name="msg_log_copied">Loki kopioitu.</string>
+    <string name="msg_up_to_date">Sinulla on uusin versio.</string>
+    <string name="msg_account_linked">Discord-tili yhdistetty: %1$s</string>
+    <string name="msg_account_failed">Discord-tilin yhdistäminen ei onnistunut – tiedot Tila-välilehdellä.</string>
+    <string name="msg_account_unlinked">Discord-tilin yhteys poistettu.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Esikatselu</string>
+    <string name="prev_listening">Kuuntelee: %1$s</string>
+    <string name="prev_playing">Pelaa: %1$s</string>
+    <string name="prev_app_own">oma sovelluksesi</string>
+    <string name="prev_you">Sinä</string>
+    <string name="prev_elapsed">%1$s kulunut</string>
+    <string name="prev_example">Esimerkki – mitään ei soi juuri nyt.</string>
+    <string name="prev_example_title">Esimerkkikappale</string>
+    <string name="prev_example_artist">Esimerkkiesittäjä</string>
+    <string name="prev_example_album">Esimerkkialbumi</string>
+    <string name="prev_icon_tip">Kuvake: %1$s</string>
+    <string name="prev_link">Linkki: %1$s</string>
+    <string name="prev_no_link">Otsikko ilman linkkiä</string>
+    <string name="prev_link_account">Yhdistä Discord-tilisi, niin näet nimesi ja kuvasi täällä</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Toiminta</string>
+    <string name="disp_type">Toiminnan tyyppi</string>
+    <string name="disp_type_listening">Kuuntelee (näyttää edistymispalkin)</string>
+    <string name="disp_type_playing">Pelaa (vain kulunut aika)</string>
+    <string name="disp_status_display">Discordin tilatekstissä näkyy</string>
+    <string name="disp_status_name">Sovelluksen nimi (Poweramp)</string>
+    <string name="disp_status_state">Toinen rivi (esittäjä)</string>
+    <string name="disp_status_details">Ensimmäinen rivi (kappaleen nimi)</string>
+    <string name="disp_timestamps">Näytä edistymispalkki / kulunut aika</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Tekstit</string>
+    <string name="disp_details">Ensimmäinen rivi</string>
+    <string name="disp_state">Toinen rivi</string>
+    <string name="disp_large_text">Kansikuvan vihjeteksti</string>
+    <string name="disp_small_text">Kuvakkeen vihjeteksti</string>
+    <string name="disp_insert_into">Lisää paikkamerkki kenttään ”%1$s” napauttamalla:</string>
+    <string name="disp_placeholders_help">Mitä paikkamerkit tarkoittavat</string>
+    <string name="disp_rotation_help" formatted="false">Kirjoita tekstien väliin ||, niin ne vuorottelevat, esim. %artist% || %title% (vaihtoväli alempana).</string>
+    <string name="ph_title">kappaleen nimi</string>
+    <string name="ph_artist">esittäjä</string>
+    <string name="ph_album">albumi</string>
+    <string name="ph_filename">tiedostonimi ilman päätettä</string>
+    <string name="ph_ext">tiedostopääte (flac, mp3 …)</string>
+    <string name="ph_pos">nykyinen kohta (1:23)</string>
+    <string name="ph_dur">kesto (3:45)</string>
+    <string name="ph_percent">edistyminen prosentteina</string>
+    <string name="ph_bar">tekstimuotoinen edistymispalkki ▰▰▰▱▱▱</string>
+    <string name="ph_status">Toistetaan / Keskeytetty</string>
+    <string name="ph_codec">koodekki (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">bittinopeus (320 kbps)</string>
+    <string name="ph_samplerate">näytteenottotaajuus (44,1 kHz)</string>
+    <string name="ph_bits">bittisyvyys (24 bittiä)</string>
+    <string name="ph_track">sijainti nykyisessä listassa</string>
+    <string name="ph_listsize">kappaleiden määrä listassa</string>
+    <string name="ph_rating">arvosana ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">vuorottelevien vaihtoehtojen välissä, esim. %artist% || %title%</string>
+    <string name="disp_small_icon">Näytä toisto- / taukokuvake (pieni kuva)</string>
+    <string name="disp_bar_length" formatted="false">Paikkamerkin %bar% pituus</string>
+    <string name="disp_bar_length_value">%1$d merkkiä</string>
+    <string name="disp_refresh">Päivitysväli</string>
+    <string name="disp_refresh_value">%1$d s</string>
+    <string name="disp_refresh_note" formatted="false">Käytetään vain, jos tekstissä on %pos%, %bar% tai %percent%. Discord hyväksyy vain muutaman päivityksen minuutissa.</string>
+    <string name="disp_rotation">Vaihtoväli</string>
+    <string name="disp_rotation_value">%1$d s</string>
+    <string name="disp_rotation_note">Käytetään vain, jos tekstissä on ||. Jokainen kappale alkaa ensimmäisestä vaihtoehdosta, tyhjät ohitetaan. Discord hyväksyy vain 5 päivitystä 20 sekunnissa, joten vähintään 5 s.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Klikattava otsikko</string>
+    <string name="disp_title_link">Klikattava kappaleen nimi (YouTube-haku esittäjällä ja nimellä)</string>
+    <string name="disp_own_link">Oma linkki</string>
+    <string name="disp_own_link_url">Linkki</string>
+    <string name="disp_own_link_hint" formatted="false">Paikkamerkit toimivat myös tässä, esim. https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">Linkin on alettava http:// tai https://</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Tauko</string>
+    <string name="disp_paused">Kun toisto on keskeytetty</string>
+    <string name="disp_paused_show">Näytä tila ”Keskeytetty”</string>
+    <string name="disp_paused_hide">Piilota (muut toiminnat näkyvät)</string>
+    <string name="disp_clear_after">Poista tauon kestettyä (minuuttia)</string>
+    <string name="disp_clear_after_hint">0 = ei koskaan (vain kun ”Keskeytetty” näytetään)</string>
+    <string name="disp_filters_title">Suodattimet</string>
+    <string name="disp_hide_streams">Piilota nettiradio ja striimit</string>
+    <string name="disp_exclude_paths">Piilota, kun tiedostopolku sisältää</string>
+    <string name="disp_exclude_paths_hint">esim. Äänikirjat;Podcastit</string>
+    <string name="disp_exclude_paths_note">Useita osia ;-merkillä erotettuina (isoilla ja pienillä kirjaimilla ei ole väliä)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Näytä albumin kansikuva Discordissa</string>
+    <string name="cov_info">Discord näyttää vain kansikuvat, joilla on julkinen linkki. Powerampin näyttämä kansikuva voidaan ladata palveluun (x0.at ei vaadi tiliä) tai etsiä verkosta (katso ”Lähteet”). Jokainen kansikuva haetaan kerran ja tallennetaan välimuistiin.</string>
+    <string name="cov_local_title">Powerampin kansikuva</string>
+    <string name="cov_local">Käytä Powerampin näyttämää kansikuvaa</string>
+    <string name="cov_local_sub">Upotettu tiedostoon, kuva kansiossa tai Powerampin lataama – ladataan palveluun julkisen linkin saamiseksi</string>
+    <string name="cov_upload">Lataa kansikuvat palveluun</string>
+    <string name="cov_upload_x0">x0.at (ei tiliä)</string>
+    <string name="cov_upload_catbox">catbox.moe (ei tiliä)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Pois (vain verkkohaku)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Imgur vaatii Client-ID:n – ilman sitä käytetään toista palvelua.</string>
+    <string name="cov_imgur_get">Hanki Client-ID</string>
+    <string name="cov_prefer_local">Suosi Powerampin kansikuvaa</string>
+    <string name="cov_prefer_local_sub">Verkkohaku vain kappaleille, joilla ei ole kansikuvaa</string>
+    <string name="cov_size">Ladattujen kansikuvien koko</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">Ladatut kansikuvat näkee kuka tahansa, jolla on linkki.</string>
+    <string name="cov_current_title">Nykyinen kansikuva</string>
+    <string name="cov_off">Kansikuvat ovat pois päältä – Discord näyttää sovelluksen logon.</string>
+    <string name="cov_nothing">Mitään ei soi.</string>
+    <string name="cov_searching">Etsitään kansikuvaa…</string>
+    <string name="cov_not_yet">Kansikuvaa etsitään, kun Discord näyttää tämän kappaleen.</string>
+    <string name="cov_none">Discord näyttää sovelluksen logon: kansikuvaa ei löytynyt tai Discord ei voinut ladata sitä.</string>
+    <string name="cov_source">Lähde: %1$s</string>
+    <string name="cov_src_cache">kansikuvien välimuisti</string>
+    <string name="cov_src_online">löytyi palvelusta %1$s</string>
+    <string name="cov_src_poweramp">Powerampin kansikuva</string>
+    <string name="cov_src_uploaded">%1$s, ladattu palveluun %2$s</string>
+    <string name="cov_open">Avaa kuva</string>
+    <string name="cov_clear">Tyhjennä kansikuvien välimuisti</string>
+    <string name="cov_image_desc">Albumin kansikuva</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Verkkohaku etsii esittäjää / albumia ja käyttää julkista kuvalinkkiä suoraan – mitään ei ladata palveluun. Lähteitä kokeillaan ylhäältä alas, ja ensimmäinen osuma otetaan käyttöön.</string>
+    <string name="src_covers_off">Kansikuvat ovat pois päältä – hakuja ei tehdä.</string>
+    <string name="src_open_cover_tab">Kansikuva-asetukset</string>
+    <string name="src_prefer_local_note">”Suosi Powerampin kansikuvaa” on päällä: hakuja käytetään vain kappaleille, joilla ei ole kansikuvaa.</string>
+    <string name="src_list_title">Verkkolähteet</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Vaatii ilmaisen kehittäjäsovelluksen (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Syötä Client ID ja Secret, muuten Spotify ohitetaan.</string>
+    <string name="src_create_app">Luo sovellus</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Ei vaadi avainta (epävirallinen rajapinta)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Vaatii ilmaisen henkilökohtaisen käyttötunnisteen</string>
+    <string name="src_token">Tunniste</string>
+    <string name="src_discogs_missing">Syötä tunniste, muuten Discogs ohitetaan.</string>
+    <string name="src_get_token">Hanki tunniste</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Ei vaadi avainta</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Discord-sovellus</string>
+    <string name="adv_custom_app">Käytä omaa Discord-sovellustani</string>
+    <string name="adv_custom_app_sub">Discord näyttää sen nimen (”Kuuntelee: …”)</string>
+    <string name="adv_app_id">Sovelluksen tunnus</string>
+    <string name="adv_app_id_hint">Developer Portal → sovelluksesi → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">Sovelluksen tunnuksessa on 17–20 numeroa.</string>
+    <string name="adv_portal">Avaa Developer Portal</string>
+    <string name="adv_assets_note">Lataa kohdassa Rich Presence → Art Assets kuvat nimillä ”poweramp” (logo), ”play” ja ”pause”.</string>
+    <string name="adv_effective">Käytössä oleva sovelluksen tunnus</string>
+    <string name="adv_effective_none">ei mitään – tässä koontiversiossa ei ole sisäänrakennettua tunnusta, käytä omaa sovellusta</string>
+    <string name="adv_compat_title">Yhteensopivuus</string>
+    <string name="adv_seconds">Lähetä aikaleimat sekunteina</string>
+    <string name="adv_seconds_sub">Vain jos Discord näyttää väärän ajan tai ei edistymispalkkia</string>
+    <string name="adv_log_title">Viimeisimmät lokimerkinnät</string>
+    <string name="adv_log_empty">Lokissa ei ole vielä mitään.</string>
+    <string name="adv_log_copy">Kopioi</string>
+    <string name="adv_log_share">Jaa</string>
+    <string name="adv_log_clear">Tyhjennä</string>
+    <string name="adv_log_share_subject">Poweramp Discord RP -loki</string>
+    <string name="adv_settings_title">Asetustiedosto</string>
+    <string name="adv_settings_info">Tallenna kaikki asetukset tiedostoon tai lataa ne tiedostosta (esim. uudessa puhelimessa). Tiedostossa ovat myös kansikuvia varten syöttämäsi avaimet (Imgur, Spotify, Discogs).</string>
+    <string name="adv_export">Vie…</string>
+    <string name="adv_import">Tuo…</string>
+    <string name="adv_reset">Palauta oletukset</string>
+    <string name="adv_reset_confirm_title">Palautetaanko kaikki asetukset?</string>
+    <string name="adv_reset_confirm_text">Kaikki asetukset palautuvat oletuksiin. Vie ne ensin, jos haluat säilyttää ne.</string>
+    <string name="adv_reset_confirm">Palauta</string>
+    <string name="adv_export_keys_title">Viedäänkö avaimesi mukana?</string>
+    <string name="adv_export_keys_text">Tiedosto sisältää avaimesi palveluille %1$s selkotekstinä. Pidä se itselläsi – älä jaa sitä tai liitä sitä virheraporttiin.</string>
+    <string name="adv_export_keys_confirm">Vie</string>
+    <string name="common_cancel">Peruuta</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">Versio %1$s</string>
+    <string name="about_by">tekijä: %1$s</string>
+    <string name="about_on_github">%1$s GitHubissa</string>
+    <string name="cd_author_avatar">Käyttäjän %1$s GitHub-profiilikuva</string>
+    <string name="cd_account_avatar">Käyttäjän %1$s Discord-profiilikuva</string>
+    <string name="about_github">GitHub-sivu</string>
+    <string name="about_releases">Kaikki julkaisut</string>
+    <string name="about_issues">Ilmoita ongelmasta</string>
+    <string name="about_disclaimer">Itsenäinen projekti – ei Discordin tai Powerampin virallinen eikä niiden hyväksymä.</string>
+    <string name="about_updates_title">Päivitykset</string>
+    <string name="about_update_check">Tarkista päivitykset</string>
+    <string name="about_update_freq">Kuinka usein</string>
+    <string name="upd_every_start">aina sovelluksen käynnistyessä</string>
+    <string name="upd_daily">kerran päivässä</string>
+    <string name="upd_weekly">kerran viikossa</string>
+    <string name="upd_monthly">kerran kuukaudessa</string>
+    <string name="about_check_now">Tarkista nyt</string>
+    <string name="upd_never">Ei vielä tarkistettu.</string>
+    <string name="upd_checking">Tarkistetaan päivityksiä…</string>
+    <string name="upd_latest">Sinulla on uusin versio (viimeksi tarkistettu: %1$s).</string>
+    <string name="upd_available">Versio %1$s on saatavilla.</string>
+    <string name="upd_failed">Päivitysten tarkistus epäonnistui: ei yhteyttä GitHubiin.</string>
+    <string name="upd_rate_limited">GitHub rajoittaa pyyntöjä juuri nyt – yritä myöhemmin uudelleen.</string>
+    <string name="upd_no_release">Julkaisuja ei ole vielä tehty.</string>
+    <string name="upd_bad_answer">Päivitysten tarkistus epäonnistui: GitHubin vastausta ei voitu lukea.</string>
+    <string name="upd_download">Lataa %1$s</string>
+    <string name="upd_whats_new">Mitä uutta?</string>
+    <string name="about_update_privacy">Tarkistus kysyy GitHubilta vain uusinta julkaisua – mitään muuta ei lähetetä.</string>
+    <string name="about_credits_title">Kiitokset</string>
+    <string name="about_credit_poweramp">Poweramp API: Max MP</string>
+    <string name="about_credit_discord">Discord Social SDK RPC -rajapinta: antisocialcord-kt, tekijä Nightdavisao (MIT-lisenssi)</string>
+    <string name="about_credit_covers">Kansikuvat: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz ja Cover Art Archive</string>
+    <string name="about_credit_aimp">Android-sisarsovellus saman tekijän ”Discord Rich Presence for AIMP” -sovellukselle</string>
+    <string name="about_changelog_title">Muutosloki</string>
+    <string name="about_changelog_version">Versio %1$s</string>
+    <string name="about_installed">(asennettu)</string>
+    <string name="about_translation_note">Tämä käännös on tehty tekoälyllä ja voi sisältää virheitä – korjaukset ovat tervetulleita GitHubissa (”Ilmoita ongelmasta”).</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">OK</string>
+    <string name="cd_info">Huomautus</string>
+    <string name="cd_warning">Varoitus</string>
+    <string name="cd_error">Ongelma</string>
+    <string name="field_show">Näytä</string>
+    <string name="field_hide">Piilota</string>
+    <string name="field_range">Sallittu: %1$d–%2$d</string>
+</resources>

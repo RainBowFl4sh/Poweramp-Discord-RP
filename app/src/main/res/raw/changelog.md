@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.2.0
+
+### New
+- **Link your Discord account** (*Status* tab): your real name and profile picture in the live preview and on the
+  *Status* tab – only the public profile is kept
+- **26 more languages**: French, Spanish, Portuguese (Brazil), Italian, Dutch, Danish, Swedish, Norwegian, Finnish,
+  Polish, Czech, Hungarian, Romanian, Greek, Turkish, Serbian, Arabic, Hindi, Indonesian, Vietnamese, Thai, Chinese,
+  Japanese and Korean (AI translations – corrections welcome)
+- **Language picker** in *App settings* (on Android 13+ also in Android's app settings)
+
+### Improved
+- Less battery: “Paused” disappears on time while the phone sleeps; no wake-ups while the presence is off or Discord
+  is missing; reconnects back off
+- Less network and memory: covers are checked again less often, unknown albums are not looked up again for 12 h,
+  pictures are dropped when the app is in the background
+- Fixes: imported settings are corrected, play brings the presence back after a stop from the task manager
+
 ## 1.1.0
 
 ### New

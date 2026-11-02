@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">Přehrává se</string>
+    <string name="status_paused">Pozastaveno</string>
+    <string name="status_test_line">Připojení funguje!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Stav v Discordu</string>
+    <string name="svc_channel_desc">Zobrazuje se, zatímco aplikace synchronizuje váš stav v Discordu s Powerampem</string>
+    <string name="svc_alert_channel_name">Upozornění</string>
+    <string name="svc_alert_channel_desc">Problémy, které vyžadují vaši pozornost, např. když Android zablokuje spuštění na pozadí</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Zobrazeno v Discordu</string>
+    <string name="svc_showing_paused">Pozastaveno – zobrazeno v Discordu</string>
+    <string name="svc_hidden_paused">Pozastaveno – skryto v Discordu</string>
+    <string name="svc_hidden">V Discordu se nic nezobrazuje</string>
+    <string name="svc_testing">V Discordu se zobrazuje testovací stav</string>
+    <string name="svc_sending">Odesílání do Discordu…</string>
+    <string name="svc_update_rejected">Discord stav nepřijal – podrobnosti v aplikaci</string>
+    <string name="svc_connecting">Připojování k Discordu…</string>
+    <string name="svc_waiting">Čeká se na Poweramp…</string>
+    <string name="svc_not_connected">Nepřipojeno k Discordu – zkouší se znovu</string>
+    <string name="svc_discord_missing">Aplikace Discord není nainstalovaná</string>
+    <string name="svc_rejected">Discord odmítl ID aplikace</string>
+    <string name="svc_no_app_id">Není nastaveno ID aplikace Discord</string>
+    <string name="svc_disabled">Discord Rich Presence je vypnuté</string>
+    <string name="svc_action_stop">Zastavit</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Stav v Discordu se nepodařilo spustit</string>
+    <string name="svc_bg_blocked_text">Android aplikaci nedovolí spustit se na pozadí. Klepnutím otevřete aplikaci a povolte jí běh na pozadí (optimalizace baterie).</string>
+</resources>

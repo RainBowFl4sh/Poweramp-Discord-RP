@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">Status</string>
+    <string name="tab_display">Tampilan</string>
+    <string name="tab_cover">Sampul</string>
+    <string name="tab_sources">Sumber</string>
+    <string name="tab_advanced">Lanjutan</string>
+    <string name="tab_about">Tentang</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">Opsi lainnya</string>
+    <string name="app_settings_title">Setelan aplikasi</string>
+    <string name="app_settings_theme">Tema</string>
+    <string name="theme_system">Ikuti sistem</string>
+    <string name="theme_light">Terang</string>
+    <string name="theme_dark">Gelap</string>
+    <string name="app_settings_amoled">Hitam AMOLED</string>
+    <string name="app_settings_amoled_on">Latar hitam pekat dalam mode gelap – menghemat baterai pada layar OLED.</string>
+    <string name="app_settings_amoled_needs_dark">Hanya dalam mode gelap – pilih “Gelap” atau aktifkan mode gelap Android.</string>
+    <string name="app_settings_dynamic">Warna dinamis (Material You)</string>
+    <string name="app_settings_dynamic_sub">Warna dari wallpaper Anda. Nonaktif: warna khas aplikasi yang mirip Discord.</string>
+    <string name="app_settings_language">Bahasa</string>
+    <string name="language_system">Default sistem</string>
+    <string name="language_ai">Terjemahan AI</string>
+    <string name="app_settings_language_note">Juga di setelan Android: Aplikasi → Poweramp Discord RP → Bahasa.</string>
+    <string name="common_close">Tutup</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Status Discord Anda menampilkan apa yang diputar Poweramp</string>
+    <string name="master_off">Nonaktif – Discord tidak menampilkan apa pun</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Koneksi</string>
+    <string name="conn_idle">Menunggu – tidak ada yang ditampilkan saat ini</string>
+    <string name="conn_disabled">Nonaktif</string>
+    <string name="conn_no_app_id">Belum ada ID aplikasi Discord yang diatur</string>
+    <string name="conn_connecting">Menghubungkan ke Discord…</string>
+    <string name="conn_connected">Terhubung ke Discord</string>
+    <string name="conn_testing">Presence uji sedang ditampilkan.</string>
+    <string name="conn_test_waiting">Mengirim presence uji ke Discord…</string>
+    <string name="conn_activity_error">Discord tidak menerima pembaruan terakhir: %1$s</string>
+    <string name="conn_detail">Detail: %1$s</string>
+    <string name="conn_user">Akun Discord</string>
+    <string name="conn_app_id">ID aplikasi</string>
+    <string name="conn_app_builtin">%1$s (bawaan)</string>
+    <string name="conn_app_own">%1$s (milik Anda)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">Pembaruan terakhir</string>
+    <string name="conn_never">belum ada</string>
+    <string name="conn_connections">Koneksi</string>
+    <string name="conn_service">Layanan latar belakang</string>
+    <string name="conn_service_running">berjalan</string>
+    <string name="conn_service_stopped">tidak berjalan</string>
+    <string name="conn_service_start">Mulai</string>
+    <string name="conn_service_stop">Hentikan</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Belum ditautkan</string>
+    <string name="acc_hint">Tautkan akun Discord Anda untuk melihat nama dan foto Anda di pratinjau langsung dan di sini.</string>
+    <string name="acc_link">Tautkan akun Discord</string>
+    <string name="acc_refresh">Muat ulang</string>
+    <string name="acc_restart">Mulai lagi</string>
+    <string name="acc_unlink">Putuskan tautan</string>
+    <string name="acc_waiting">Menunggu Discord – izinkan akses di sana, lalu kembali ke aplikasi ini.</string>
+    <string name="acc_working">Membaca profil Anda dari Discord…</string>
+    <string name="acc_privacy">Hanya nama dan foto profil Anda yang dibaca (akses “identify” Discord). Akses tersebut langsung dicabut – aplikasi tidak menyimpan token.</string>
+    <string name="acc_redirect_hint">Discord menampilkan “Invalid OAuth2 redirect_uri”? Pemilik aplikasi Discord harus menambahkan %1$s di OAuth2 → Redirects pada Developer Portal.</string>
+    <string name="acc_no_app_id">Memerlukan ID aplikasi Discord (tab Lanjutan).</string>
+    <string name="acc_err_cancelled">Penautan dibatalkan – Discord tidak diizinkan membagikan profil Anda.</string>
+    <string name="acc_err_redirect">Aplikasi Discord tidak mengenali alamat kembali aplikasi ini. Pemiliknya harus menambahkan %1$s di OAuth2 → Redirects pada Developer Portal.</string>
+    <string name="acc_err_public_client">Discord meminta client secret: “Public Client” belum diaktifkan untuk aplikasi Discord (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">Proses login terlalu lama atau sudah pernah digunakan – coba lagi.</string>
+    <string name="acc_err_network">Tidak dapat terhubung ke Discord – periksa koneksi internet, lalu coba lagi.</string>
+    <string name="acc_err_discord">Discord menolak login – coba lagi nanti.</string>
+    <string name="acc_err_bad_answer">Discord mengirim respons yang tidak terduga – coba lagi nanti.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Tidak terhubung ke Discord – mencoba lagi</string>
+    <string name="err_discord_missing">Aplikasi Discord tidak terinstal</string>
+    <string name="err_bind_failed">Aplikasi Discord tidak menyediakan layanan Rich Presence – perbarui Discord</string>
+    <string name="err_connect_failed">Discord tidak menerima koneksi – mencoba lagi</string>
+    <string name="err_closed">Discord menutup koneksi – menghubungkan ulang</string>
+    <string name="err_invalid_client_id">Discord menolak ID aplikasi – periksa di tab Lanjutan</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Sedang diputar</string>
+    <string name="now_nothing">Tidak ada yang diputar di Poweramp.</string>
+    <string name="word_playing">Memutar</string>
+    <string name="word_paused">Dijeda</string>
+    <string name="hidden_no">Discord menampilkan lagu ini.</string>
+    <string name="hidden_disabled">Rich Presence nonaktif – Discord tidak menampilkan apa pun.</string>
+    <string name="hidden_stopped">Tidak ada yang diputar – Discord tidak menampilkan apa pun.</string>
+    <string name="hidden_stream">Radio internet / stream disembunyikan (tab Tampilan) – Discord tidak menampilkan apa pun.</string>
+    <string name="hidden_path">File ini disembunyikan oleh filter jalur (tab Tampilan) – Discord tidak menampilkan apa pun.</string>
+    <string name="hidden_paused">Pemutaran dijeda dan “Sembunyikan” dipilih (tab Tampilan): Discord menampilkan aktivitas Anda yang lain.</string>
+    <string name="hidden_timeout">Dijeda lebih lama dari yang diatur di tab Tampilan – presence telah dihapus.</string>
+    <string name="now_user_stopped">Dihentikan oleh Anda – Discord tidak menampilkan apa pun hingga Poweramp memutar lagi.</string>
+    <string name="now_rejected">Discord tidak menerima presence ini – lihat “Koneksi”.</string>
+    <string name="now_after_test">Discord sedang menampilkan presence uji – lagu ini menyusul.</string>
+    <string name="now_test_shown">Discord sedang menampilkan presence uji.</string>
+    <string name="now_sending">Sedang dikirim ke Discord…</string>
+    <string name="now_not_connected">Discord belum menampilkannya – lihat “Koneksi”.</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Kirim presence uji</string>
+    <string name="btn_reconnect">Hubungkan ulang</string>
+    <string name="btn_open_poweramp">Buka Poweramp</string>
+    <string name="btn_open_discord">Buka Discord</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Penyiapan</string>
+    <string name="check_checking">Memeriksa…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">Versi %1$s (build %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">Versi %1$s</string>
+    <string name="check_poweramp_old">Versi %1$s (build %2$d) terlalu lama – aplikasi ini memerlukan build %3$d atau yang lebih baru.</string>
+    <string name="check_poweramp_missing">Poweramp tidak terinstal.</string>
+    <string name="check_poweramp_get">Dapatkan Poweramp</string>
+    <string name="check_poweramp_update">Perbarui Poweramp</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Terinstal, layanan Rich Presence tersedia</string>
+    <string name="check_discord_no_rpc">Versi Discord ini tidak menyediakan layanan Rich Presence untuk aplikasi lain. Perbarui Discord.</string>
+    <string name="check_discord_missing">Aplikasi Discord tidak terinstal.</string>
+    <string name="check_discord_get">Dapatkan Discord</string>
+    <string name="check_discord_update">Perbarui Discord</string>
+    <string name="check_appid_title">Aplikasi Discord</string>
+    <string name="check_appid_own">Aplikasi Anda sendiri (ID %1$s)</string>
+    <string name="check_appid_missing">Build ini tidak memiliki ID aplikasi bawaan. Buat aplikasi Discord Anda sendiri dan masukkan ID-nya di tab Lanjutan.</string>
+    <string name="check_appid_invalid">ID aplikasi Anda sendiri tidak valid (17 hingga 20 digit), dan build ini tidak memiliki ID bawaan.</string>
+    <string name="check_appid_invalid_fallback">ID aplikasi Anda sendiri tidak valid (17 hingga 20 digit) – aplikasi bawaan (ID %1$s) yang digunakan.</string>
+    <string name="check_appid_builtin_invalid">ID aplikasi bawaan build ini (%1$s) tidak valid (17 hingga 20 digit). Buat aplikasi Discord Anda sendiri dan masukkan ID-nya di tab Lanjutan.</string>
+    <string name="check_appid_both_invalid">ID aplikasi Anda sendiri tidak valid (17 hingga 20 digit), dan ID bawaan build ini (%1$s) juga tidak valid.</string>
+    <string name="check_appid_fix">Siapkan</string>
+    <string name="check_battery_title">Pengoptimalan baterai</string>
+    <string name="check_battery_ok">Nonaktif untuk aplikasi ini – aplikasi dapat dimulai di latar belakang saat Poweramp mulai memutar.</string>
+    <string name="check_battery_bad">Android mungkin tidak mengizinkan aplikasi dimulai saat Poweramp mulai memutar, atau menghentikannya nanti. Kecualikan aplikasi dari pengoptimalan baterai.</string>
+    <string name="check_battery_fix">Izinkan</string>
+    <string name="check_notif_title">Notifikasi</string>
+    <string name="check_notif_ok">Diizinkan – notifikasi status menampilkan apa yang dilihat Discord.</string>
+    <string name="check_notif_bad">Tidak diizinkan – aplikasi tidak dapat menampilkan notifikasi status saat memperbarui presence Anda.</string>
+    <string name="check_notif_fix">Izinkan</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Perlu diketahui</string>
+    <string name="hint_privacy_title">Bagikan aktivitas Anda di Discord</string>
+    <string name="hint_privacy">Di Discord: Setelan → Privasi Aktivitas → aktifkan “Bagikan aktivitas Anda”. Jika tidak, tidak ada yang melihat apa yang Anda dengarkan.</string>
+    <string name="hint_poweramp_title">Penggunaan pertama</string>
+    <string name="hint_poweramp">Setelah menginstal aplikasi ini, tekan jeda lalu putar sekali di Poweramp agar Poweramp mengenali aplikasi ini dan mengirimkan info lagu.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Mengirim presence uji – ditampilkan selama %1$d detik.</string>
+    <string name="msg_reconnecting">Menghubungkan ulang…</string>
+    <string name="msg_stop_ended">Penghentian manual telah berakhir – Discord kembali menampilkan Poweramp.</string>
+    <string name="msg_start_blocked">Android tidak mengizinkan aplikasi dimulai di latar belakang – izinkan di “Pengoptimalan baterai”.</string>
+    <string name="msg_service_started">Layanan latar belakang dimulai.</string>
+    <string name="msg_service_stopped">Dihentikan hingga Poweramp memutar lagi.</string>
+    <string name="msg_cannot_open">Tidak ada aplikasi untuk membuka ini.</string>
+    <string name="msg_cover_cleared">Cache sampul dihapus.</string>
+    <string name="msg_exported">Setelan disimpan.</string>
+    <string name="msg_export_failed">Setelan tidak dapat disimpan.</string>
+    <string name="msg_imported">Setelan diimpor.</string>
+    <string name="msg_import_failed">File ini tidak berisi setelan aplikasi ini.</string>
+    <string name="msg_reset">Semua setelan telah dikembalikan ke default.</string>
+    <string name="msg_log_copied">Log disalin.</string>
+    <string name="msg_up_to_date">Anda sudah memakai versi terbaru.</string>
+    <string name="msg_account_linked">Akun Discord ditautkan: %1$s</string>
+    <string name="msg_account_failed">Gagal menautkan akun Discord – detail ada di tab Status.</string>
+    <string name="msg_account_unlinked">Tautan akun Discord diputuskan.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Pratinjau langsung</string>
+    <string name="prev_listening">Mendengarkan %1$s</string>
+    <string name="prev_playing">Memainkan %1$s</string>
+    <string name="prev_app_own">aplikasi Anda</string>
+    <string name="prev_you">Anda</string>
+    <string name="prev_elapsed">%1$s berlalu</string>
+    <string name="prev_example">Contoh – saat ini tidak ada yang diputar.</string>
+    <string name="prev_example_title">Contoh judul</string>
+    <string name="prev_example_artist">Contoh artis</string>
+    <string name="prev_example_album">Contoh album</string>
+    <string name="prev_icon_tip">Ikon: %1$s</string>
+    <string name="prev_link">Tautan: %1$s</string>
+    <string name="prev_no_link">Judul tanpa tautan</string>
+    <string name="prev_link_account">Tautkan akun Discord Anda untuk melihat nama dan foto Anda di sini</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Aktivitas</string>
+    <string name="disp_type">Jenis aktivitas</string>
+    <string name="disp_type_listening">Mendengarkan (menampilkan bilah progres)</string>
+    <string name="disp_type_playing">Memainkan (hanya waktu yang berlalu)</string>
+    <string name="disp_status_display">Teks status Discord menampilkan</string>
+    <string name="disp_status_name">Nama aplikasi (Poweramp)</string>
+    <string name="disp_status_state">Baris kedua (artis)</string>
+    <string name="disp_status_details">Baris pertama (judul lagu)</string>
+    <string name="disp_timestamps">Tampilkan bilah progres / waktu berlalu</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Teks</string>
+    <string name="disp_details">Baris pertama</string>
+    <string name="disp_state">Baris kedua</string>
+    <string name="disp_large_text">Keterangan sampul</string>
+    <string name="disp_small_text">Keterangan ikon</string>
+    <string name="disp_insert_into">Ketuk placeholder untuk menyisipkannya ke “%1$s”:</string>
+    <string name="disp_placeholders_help">Arti placeholder</string>
+    <string name="disp_rotation_help" formatted="false">Letakkan || di antara teks agar ditampilkan bergantian, mis. %artist% || %title% (interval rotasi di bawah).</string>
+    <string name="ph_title">judul lagu</string>
+    <string name="ph_artist">artis</string>
+    <string name="ph_album">album</string>
+    <string name="ph_filename">nama file tanpa ekstensi</string>
+    <string name="ph_ext">ekstensi file (flac, mp3 …)</string>
+    <string name="ph_pos">posisi saat ini (1:23)</string>
+    <string name="ph_dur">durasi (3:45)</string>
+    <string name="ph_percent">progres dalam persen</string>
+    <string name="ph_bar">bilah progres teks ▰▰▰▱▱▱</string>
+    <string name="ph_status">Memutar / Dijeda</string>
+    <string name="ph_codec">codec (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">bitrate (320 kbps)</string>
+    <string name="ph_samplerate">laju sampel (44.1 kHz)</string>
+    <string name="ph_bits">kedalaman bit (24-bit)</string>
+    <string name="ph_track">posisi di daftar saat ini</string>
+    <string name="ph_listsize">jumlah lagu di daftar</string>
+    <string name="ph_rating">rating ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">di antara alternatif yang ditampilkan bergantian, mis. %artist% || %title%</string>
+    <string name="disp_small_icon">Tampilkan ikon putar / jeda (gambar kecil)</string>
+    <string name="disp_bar_length" formatted="false">Panjang %bar%</string>
+    <string name="disp_bar_length_value">%1$d karakter</string>
+    <string name="disp_refresh">Interval pembaruan</string>
+    <string name="disp_refresh_value">%1$d dtk</string>
+    <string name="disp_refresh_note" formatted="false">Hanya digunakan jika teks berisi %pos%, %bar% atau %percent%. Discord hanya menerima beberapa pembaruan per menit.</string>
+    <string name="disp_rotation">Interval rotasi</string>
+    <string name="disp_rotation_value">%1$d dtk</string>
+    <string name="disp_rotation_note">Hanya digunakan jika teks berisi ||. Setiap lagu dimulai dengan alternatif pertama, yang kosong dilewati. Discord hanya menerima 5 pembaruan per 20 detik, jadi minimal 5 dtk.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Judul yang dapat diklik</string>
+    <string name="disp_title_link">Judul lagu yang dapat diklik (pencarian YouTube untuk artis + judul)</string>
+    <string name="disp_own_link">Tautan sendiri</string>
+    <string name="disp_own_link_url">Tautan</string>
+    <string name="disp_own_link_hint" formatted="false">Placeholder juga berfungsi di sini, mis. https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">Tautan harus diawali dengan http:// atau https://</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Jeda</string>
+    <string name="disp_paused">Saat dijeda</string>
+    <string name="disp_paused_show">Tampilkan status “Dijeda”</string>
+    <string name="disp_paused_hide">Sembunyikan (aktivitas lain ditampilkan)</string>
+    <string name="disp_clear_after">Hapus setelah jeda selama (menit)</string>
+    <string name="disp_clear_after_hint">0 = tidak pernah (hanya jika “Dijeda” ditampilkan)</string>
+    <string name="disp_filters_title">Filter</string>
+    <string name="disp_hide_streams">Sembunyikan presence untuk radio internet / stream</string>
+    <string name="disp_exclude_paths">Sembunyikan jika jalur file berisi</string>
+    <string name="disp_exclude_paths_hint">mis. Audiobooks;Podcasts</string>
+    <string name="disp_exclude_paths_note">Beberapa bagian dipisahkan dengan ; (huruf besar / kecil tidak berpengaruh)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Tampilkan sampul album di Discord</string>
+    <string name="cov_info">Discord hanya menampilkan sampul yang memiliki tautan publik. Sampul yang ditampilkan Poweramp dapat diunggah (x0.at tidak memerlukan akun) atau dicari secara online (lihat “Sumber”). Setiap sampul dicari sekali lalu disimpan di cache.</string>
+    <string name="cov_local_title">Sampul Poweramp</string>
+    <string name="cov_local">Gunakan sampul yang ditampilkan Poweramp</string>
+    <string name="cov_local_sub">Tertanam di file, gambar di folder, atau diunduh oleh Poweramp – diunggah untuk mendapatkan tautan publik</string>
+    <string name="cov_upload">Unggah sampul ke</string>
+    <string name="cov_upload_x0">x0.at (tanpa akun)</string>
+    <string name="cov_upload_catbox">catbox.moe (tanpa akun)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Nonaktif (hanya pencarian online)</string>
+    <string name="cov_imgur_id">Client-ID Imgur</string>
+    <string name="cov_imgur_missing">Imgur memerlukan Client-ID – tanpanya, host lain yang digunakan.</string>
+    <string name="cov_imgur_get">Dapatkan Client-ID</string>
+    <string name="cov_prefer_local">Utamakan sampul Poweramp</string>
+    <string name="cov_prefer_local_sub">Pencarian online hanya untuk lagu tanpa sampul</string>
+    <string name="cov_size">Ukuran sampul yang diunggah</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">Sampul yang diunggah dapat dilihat oleh siapa saja yang memiliki tautannya.</string>
+    <string name="cov_current_title">Sampul saat ini</string>
+    <string name="cov_off">Sampul nonaktif – Discord menampilkan logo aplikasi.</string>
+    <string name="cov_nothing">Tidak ada yang diputar.</string>
+    <string name="cov_searching">Mencari sampul…</string>
+    <string name="cov_not_yet">Sampul akan dicari setelah Discord menampilkan lagu ini.</string>
+    <string name="cov_none">Discord menampilkan logo aplikasi: sampul tidak ditemukan, atau Discord tidak dapat memuatnya.</string>
+    <string name="cov_source">Sumber: %1$s</string>
+    <string name="cov_src_cache">cache sampul</string>
+    <string name="cov_src_online">ditemukan di %1$s</string>
+    <string name="cov_src_poweramp">Sampul Poweramp</string>
+    <string name="cov_src_uploaded">%1$s, diunggah ke %2$s</string>
+    <string name="cov_open">Buka gambar</string>
+    <string name="cov_clear">Hapus cache sampul</string>
+    <string name="cov_image_desc">Sampul album</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Pencarian online mencari artis / album dan langsung menggunakan tautan gambar publik – tidak ada yang diunggah. Sumber dicoba dari atas ke bawah, hasil pertama yang digunakan.</string>
+    <string name="src_covers_off">Sampul nonaktif – tidak ada pencarian yang dilakukan.</string>
+    <string name="src_open_cover_tab">Setelan sampul</string>
+    <string name="src_prefer_local_note">“Utamakan sampul Poweramp” aktif: pencarian hanya digunakan untuk lagu tanpa sampul.</string>
+    <string name="src_list_title">Sumber online</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Memerlukan aplikasi developer gratis (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Masukkan Client ID dan Secret; jika tidak, Spotify dilewati.</string>
+    <string name="src_create_app">Buat aplikasi</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Tidak perlu kunci (antarmuka tidak resmi)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Memerlukan token akses pribadi gratis</string>
+    <string name="src_token">Token</string>
+    <string name="src_discogs_missing">Masukkan token; jika tidak, Discogs dilewati.</string>
+    <string name="src_get_token">Dapatkan token</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Tidak perlu kunci</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Aplikasi Discord</string>
+    <string name="adv_custom_app">Gunakan aplikasi Discord saya sendiri</string>
+    <string name="adv_custom_app_sub">Discord menampilkan namanya (“Mendengarkan …”)</string>
+    <string name="adv_app_id">ID aplikasi</string>
+    <string name="adv_app_id_hint">Developer Portal → aplikasi Anda → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">ID aplikasi terdiri dari 17 hingga 20 digit.</string>
+    <string name="adv_portal">Buka Developer Portal</string>
+    <string name="adv_assets_note">Di Rich Presence → Art Assets, unggah gambar bernama “poweramp” (logo), “play”, dan “pause”.</string>
+    <string name="adv_effective">ID aplikasi yang digunakan</string>
+    <string name="adv_effective_none">tidak ada – build ini tidak memiliki ID bawaan, gunakan aplikasi Anda sendiri</string>
+    <string name="adv_compat_title">Kompatibilitas</string>
+    <string name="adv_seconds">Kirim stempel waktu dalam detik</string>
+    <string name="adv_seconds_sub">Hanya jika Discord menampilkan waktu yang salah atau tidak ada bilah progres</string>
+    <string name="adv_log_title">Log terbaru</string>
+    <string name="adv_log_empty">Belum ada yang dicatat.</string>
+    <string name="adv_log_copy">Salin</string>
+    <string name="adv_log_share">Bagikan</string>
+    <string name="adv_log_clear">Hapus</string>
+    <string name="adv_log_share_subject">Log Poweramp Discord RP</string>
+    <string name="adv_settings_title">File setelan</string>
+    <string name="adv_settings_info">Simpan semua setelan ke file atau muat dari file (mis. di ponsel baru). File ini juga berisi kunci yang Anda masukkan untuk sampul (Imgur, Spotify, Discogs).</string>
+    <string name="adv_export">Ekspor…</string>
+    <string name="adv_import">Impor…</string>
+    <string name="adv_reset">Kembalikan ke default</string>
+    <string name="adv_reset_confirm_title">Reset semua setelan?</string>
+    <string name="adv_reset_confirm_text">Semua setelan akan kembali ke default. Ekspor terlebih dahulu jika Anda ingin menyimpannya.</string>
+    <string name="adv_reset_confirm">Reset</string>
+    <string name="adv_export_keys_title">Ekspor beserta kunci Anda?</string>
+    <string name="adv_export_keys_text">File akan berisi kunci Anda untuk %1$s dalam teks biasa. Simpan hanya untuk Anda sendiri – jangan bagikan atau lampirkan ke laporan bug.</string>
+    <string name="adv_export_keys_confirm">Ekspor</string>
+    <string name="common_cancel">Batal</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">Versi %1$s</string>
+    <string name="about_by">oleh %1$s</string>
+    <string name="about_on_github">%1$s di GitHub</string>
+    <string name="cd_author_avatar">Foto profil GitHub %1$s</string>
+    <string name="cd_account_avatar">Foto profil Discord %1$s</string>
+    <string name="about_github">Halaman GitHub</string>
+    <string name="about_releases">Semua rilis</string>
+    <string name="about_issues">Laporkan masalah</string>
+    <string name="about_disclaimer">Proyek independen – tidak berafiliasi dengan atau didukung oleh Discord maupun Poweramp.</string>
+    <string name="about_updates_title">Pembaruan</string>
+    <string name="about_update_check">Periksa pembaruan</string>
+    <string name="about_update_freq">Seberapa sering</string>
+    <string name="upd_every_start">setiap kali aplikasi dibuka</string>
+    <string name="upd_daily">sekali sehari</string>
+    <string name="upd_weekly">sekali seminggu</string>
+    <string name="upd_monthly">sekali sebulan</string>
+    <string name="about_check_now">Periksa sekarang</string>
+    <string name="upd_never">Belum diperiksa.</string>
+    <string name="upd_checking">Memeriksa pembaruan…</string>
+    <string name="upd_latest">Anda sudah memakai versi terbaru (pemeriksaan terakhir: %1$s).</string>
+    <string name="upd_available">Versi %1$s tersedia.</string>
+    <string name="upd_failed">Pemeriksaan pembaruan gagal: tidak ada koneksi ke GitHub.</string>
+    <string name="upd_rate_limited">GitHub sedang membatasi permintaan – coba lagi nanti.</string>
+    <string name="upd_no_release">Belum ada rilis yang dipublikasikan.</string>
+    <string name="upd_bad_answer">Pemeriksaan pembaruan gagal: respons GitHub tidak dapat dibaca.</string>
+    <string name="upd_download">Unduh %1$s</string>
+    <string name="upd_whats_new">Apa yang baru?</string>
+    <string name="about_update_privacy">Pemeriksaan hanya menanyakan rilis terbaru ke GitHub – tidak ada data lain yang dikirim.</string>
+    <string name="about_credits_title">Kredit</string>
+    <string name="about_credit_poweramp">Poweramp API oleh Max MP</string>
+    <string name="about_credit_discord">Antarmuka RPC Discord Social SDK melalui antisocialcord-kt oleh Nightdavisao (lisensi MIT)</string>
+    <string name="about_credit_covers">Sampul: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz, dan Cover Art Archive</string>
+    <string name="about_credit_aimp">Versi Android dari “Discord Rich Presence for AIMP” oleh pembuat yang sama</string>
+    <string name="about_changelog_title">Log perubahan</string>
+    <string name="about_changelog_version">Versi %1$s</string>
+    <string name="about_installed">(terinstal)</string>
+    <string name="about_translation_note">Terjemahan bahasa Indonesia ini dibuat dengan AI dan mungkin mengandung kesalahan, jadi koreksi melalui “Laporkan masalah” di GitHub sangat kami harapkan.</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">OK</string>
+    <string name="cd_info">Catatan</string>
+    <string name="cd_warning">Peringatan</string>
+    <string name="cd_error">Masalah</string>
+    <string name="field_show">Tampilkan</string>
+    <string name="field_hide">Sembunyikan</string>
+    <string name="field_range">Diizinkan: %1$d hingga %2$d</string>
+</resources>

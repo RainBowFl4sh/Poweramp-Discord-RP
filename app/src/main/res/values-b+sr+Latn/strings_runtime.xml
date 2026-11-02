@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tekstovi pozadinskog dela (usluga statusa, obaveštenja, %status% u statusu) - srpski (latinica). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">Pušta se</string>
+    <string name="status_paused">Pauzirano</string>
+    <string name="status_test_line">Veza radi!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Discord status</string>
+    <string name="svc_channel_desc">Prikazuje se dok aplikacija usklađuje vaš Discord status sa Poweramp-om</string>
+    <string name="svc_alert_channel_name">Upozorenja</string>
+    <string name="svc_alert_channel_desc">Problemi koji zahtevaju vašu pažnju, npr. kada Android blokira pokretanje u pozadini</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Prikazuje se na Discordu</string>
+    <string name="svc_showing_paused">Pauzirano – prikazuje se na Discordu</string>
+    <string name="svc_hidden_paused">Pauzirano – sakriveno na Discordu</string>
+    <string name="svc_hidden">Ništa se ne prikazuje na Discordu</string>
+    <string name="svc_testing">Probni status se prikazuje na Discordu</string>
+    <string name="svc_sending">Slanje Discordu…</string>
+    <string name="svc_update_rejected">Discord nije prihvatio status – detalji su u aplikaciji</string>
+    <string name="svc_connecting">Povezivanje sa Discordom…</string>
+    <string name="svc_waiting">Čeka se Poweramp…</string>
+    <string name="svc_not_connected">Nije povezano sa Discordom – novi pokušaj</string>
+    <string name="svc_discord_missing">Discord aplikacija nije instalirana</string>
+    <string name="svc_rejected">Discord je odbio ID aplikacije</string>
+    <string name="svc_no_app_id">Nije podešen ID Discord aplikacije</string>
+    <string name="svc_disabled">Discord Rich Presence je isključen</string>
+    <string name="svc_action_stop">Zaustavi</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Discord status nije mogao da se pokrene</string>
+    <string name="svc_bg_blocked_text">Android ne dozvoljava aplikaciji da se pokrene u pozadini. Dodirnite da otvorite aplikaciju i dozvolite joj rad u pozadini (optimizacija baterije).</string>
+</resources>

@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tekstovi ekrana podešavanja / statusa (UI) - srpski (latinica). Pozadinski deo ima svoju datoteku, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">Status</string>
+    <string name="tab_display">Prikaz</string>
+    <string name="tab_cover">Omot</string>
+    <string name="tab_sources">Izvori</string>
+    <string name="tab_advanced">Napredno</string>
+    <string name="tab_about">O aplikaciji</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">Još opcija</string>
+    <string name="app_settings_title">Podešavanja aplikacije</string>
+    <string name="app_settings_theme">Tema</string>
+    <string name="theme_system">Prati sistem</string>
+    <string name="theme_light">Svetla</string>
+    <string name="theme_dark">Tamna</string>
+    <string name="app_settings_amoled">AMOLED crna</string>
+    <string name="app_settings_amoled_on">Potpuno crna pozadina u tamnom režimu – štedi bateriju na OLED ekranima.</string>
+    <string name="app_settings_amoled_needs_dark">Samo u tamnom režimu – izaberite „Tamna“ ili uključite tamni režim u Androidu.</string>
+    <string name="app_settings_dynamic">Dinamičke boje (Material You)</string>
+    <string name="app_settings_dynamic_sub">Boje iz vaše pozadine. Isključeno: sopstvene boje aplikacije, slične Discordu.</string>
+    <string name="app_settings_language">Jezik</string>
+    <string name="language_system">Podrazumevani jezik sistema</string>
+    <string name="language_ai">AI prevod</string>
+    <string name="app_settings_language_note">Takođe u Android podešavanjima: Aplikacije → Poweramp Discord RP → Jezik.</string>
+    <string name="common_close">Zatvori</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Vaš Discord status prikazuje šta Poweramp pušta</string>
+    <string name="master_off">Isključeno – Discord ne prikazuje ništa</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Veza</string>
+    <string name="conn_idle">Čeka se – trenutno nema šta da se prikaže</string>
+    <string name="conn_disabled">Isključeno</string>
+    <string name="conn_no_app_id">Nije podešen ID Discord aplikacije</string>
+    <string name="conn_connecting">Povezivanje sa Discordom…</string>
+    <string name="conn_connected">Povezano sa Discordom</string>
+    <string name="conn_testing">Prikazuje se probni status.</string>
+    <string name="conn_test_waiting">Slanje probnog statusa Discordu…</string>
+    <string name="conn_activity_error">Discord nije prihvatio poslednje ažuriranje: %1$s</string>
+    <string name="conn_detail">Detalji: %1$s</string>
+    <string name="conn_user">Discord nalog</string>
+    <string name="conn_app_id">ID aplikacije</string>
+    <string name="conn_app_builtin">%1$s (ugrađeni)</string>
+    <string name="conn_app_own">%1$s (vaš sopstveni)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">Poslednje ažuriranje</string>
+    <string name="conn_never">još nije</string>
+    <string name="conn_connections">Povezivanja</string>
+    <string name="conn_service">Pozadinska usluga</string>
+    <string name="conn_service_running">radi</string>
+    <string name="conn_service_stopped">ne radi</string>
+    <string name="conn_service_start">Pokreni</string>
+    <string name="conn_service_stop">Zaustavi</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Nije povezan</string>
+    <string name="acc_hint">Povežite Discord nalog da biste videli svoje ime i sliku u pregledu uživo i ovde.</string>
+    <string name="acc_link">Poveži Discord nalog</string>
+    <string name="acc_refresh">Osveži</string>
+    <string name="acc_restart">Počni ponovo</string>
+    <string name="acc_unlink">Prekini vezu</string>
+    <string name="acc_waiting">Čeka se Discord – dozvolite pristup tamo, pa se vratite u ovu aplikaciju.</string>
+    <string name="acc_working">Čitanje vašeg profila sa Discorda…</string>
+    <string name="acc_privacy">Čitaju se samo vaše ime i slika profila (Discord dozvola „identify“). Pristup se odmah opoziva – aplikacija ne čuva token.</string>
+    <string name="acc_redirect_hint">Discord prijavljuje „Invalid OAuth2 redirect_uri“? Vlasnik Discord aplikacije mora da doda %1$s pod OAuth2 → Redirects u Developer Portalu.</string>
+    <string name="acc_no_app_id">Potreban je ID Discord aplikacije (kartica Napredno).</string>
+    <string name="acc_err_cancelled">Povezivanje je otkazano – Discordu nije dozvoljeno da deli vaš profil.</string>
+    <string name="acc_err_redirect">Discord aplikacija ne poznaje povratnu adresu ove aplikacije. Njen vlasnik mora da doda %1$s pod OAuth2 → Redirects u Developer Portalu.</string>
+    <string name="acc_err_public_client">Discord traži tajni ključ klijenta: opcija „Public Client“ nije uključena za Discord aplikaciju (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">Prijava je trajala predugo ili je već iskorišćena – pokušajte ponovo.</string>
+    <string name="acc_err_network">Discord nije dostupan – proverite internet vezu i pokušajte ponovo.</string>
+    <string name="acc_err_discord">Discord je odbio prijavu – pokušajte ponovo kasnije.</string>
+    <string name="acc_err_bad_answer">Discord je poslao neočekivan odgovor – pokušajte ponovo kasnije.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Nije povezano sa Discordom – novi pokušaj</string>
+    <string name="err_discord_missing">Discord aplikacija nije instalirana</string>
+    <string name="err_bind_failed">Discord aplikacija ne nudi Rich Presence uslugu – ažurirajte Discord</string>
+    <string name="err_connect_failed">Discord nije prihvatio vezu – novi pokušaj</string>
+    <string name="err_closed">Discord je zatvorio vezu – ponovno povezivanje</string>
+    <string name="err_invalid_client_id">Discord je odbio ID aplikacije – proverite ga na kartici Napredno</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Trenutno se pušta</string>
+    <string name="now_nothing">U Poweramp-u se ništa ne pušta.</string>
+    <string name="word_playing">Pušta se</string>
+    <string name="word_paused">Pauzirano</string>
+    <string name="hidden_no">Discord prikazuje ovu pesmu.</string>
+    <string name="hidden_disabled">Rich Presence je isključen – Discord ne prikazuje ništa.</string>
+    <string name="hidden_stopped">Ništa se ne pušta – Discord ne prikazuje ništa.</string>
+    <string name="hidden_stream">Internet radio / strimovi su sakriveni (kartica Prikaz) – Discord ne prikazuje ništa.</string>
+    <string name="hidden_path">Ova datoteka je sakrivena filterom putanje (kartica Prikaz) – Discord ne prikazuje ništa.</string>
+    <string name="hidden_paused">Reprodukcija je pauzirana i izabrano je „Sakrij“ (kartica Prikaz): Discord prikazuje vaše druge aktivnosti.</string>
+    <string name="hidden_timeout">Pauzirano duže nego što je podešeno na kartici Prikaz – status je uklonjen.</string>
+    <string name="now_user_stopped">Zaustavili ste – Discord ne prikazuje ništa dok Poweramp ponovo ne počne da pušta.</string>
+    <string name="now_rejected">Discord nije prihvatio ovaj status – pogledajte „Veza“.</string>
+    <string name="now_after_test">Discord trenutno prikazuje probni status – zatim sledi ova pesma.</string>
+    <string name="now_test_shown">Discord trenutno prikazuje probni status.</string>
+    <string name="now_sending">Šalje se Discordu…</string>
+    <string name="now_not_connected">Discord to još ne prikazuje – pogledajte „Veza“.</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Pošalji probni status</string>
+    <string name="btn_reconnect">Ponovo poveži</string>
+    <string name="btn_open_poweramp">Otvori Poweramp</string>
+    <string name="btn_open_discord">Otvori Discord</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Podešavanje</string>
+    <string name="check_checking">Provera…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">Verzija %1$s (build %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">Verzija %1$s</string>
+    <string name="check_poweramp_old">Verzija %1$s (build %2$d) je prestara – ovoj aplikaciji je potreban build %3$d ili noviji.</string>
+    <string name="check_poweramp_missing">Poweramp nije instaliran.</string>
+    <string name="check_poweramp_get">Preuzmi Poweramp</string>
+    <string name="check_poweramp_update">Ažuriraj Poweramp</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Instaliran, Rich Presence usluga je dostupna</string>
+    <string name="check_discord_no_rpc">Ova verzija Discorda ne nudi Rich Presence uslugu drugim aplikacijama. Ažurirajte Discord.</string>
+    <string name="check_discord_missing">Discord aplikacija nije instalirana.</string>
+    <string name="check_discord_get">Preuzmi Discord</string>
+    <string name="check_discord_update">Ažuriraj Discord</string>
+    <string name="check_appid_title">Discord aplikacija</string>
+    <string name="check_appid_own">Vaša sopstvena aplikacija (ID %1$s)</string>
+    <string name="check_appid_missing">Ovaj build nema ugrađen ID aplikacije. Napravite sopstvenu Discord aplikaciju i unesite njen ID na kartici Napredno.</string>
+    <string name="check_appid_invalid">Vaš ID aplikacije nije važeći (17 do 20 cifara), a ovaj build nema ugrađen ID.</string>
+    <string name="check_appid_invalid_fallback">Vaš ID aplikacije nije važeći (17 do 20 cifara) – koristi se ugrađena aplikacija (ID %1$s).</string>
+    <string name="check_appid_builtin_invalid">ID aplikacije ugrađen u ovaj build (%1$s) nije važeći (17 do 20 cifara). Napravite sopstvenu Discord aplikaciju i unesite njen ID na kartici Napredno.</string>
+    <string name="check_appid_both_invalid">Vaš ID aplikacije nije važeći (17 do 20 cifara), a ni ID ugrađen u ovaj build (%1$s) nije važeći.</string>
+    <string name="check_appid_fix">Podesi</string>
+    <string name="check_battery_title">Optimizacija baterije</string>
+    <string name="check_battery_ok">Isključena za ovu aplikaciju – može da se pokrene u pozadini kada Poweramp počne da pušta.</string>
+    <string name="check_battery_bad">Android možda neće dozvoliti aplikaciji da se pokrene kada Poweramp počne da pušta ili će je kasnije zaustaviti. Izuzmite je iz optimizacije baterije.</string>
+    <string name="check_battery_fix">Dozvoli</string>
+    <string name="check_notif_title">Obaveštenja</string>
+    <string name="check_notif_ok">Dozvoljena – obaveštenje o statusu prikazuje šta Discord vidi.</string>
+    <string name="check_notif_bad">Nisu dozvoljena – aplikacija ne može da prikaže obaveštenje o statusu dok ažurira vaš status.</string>
+    <string name="check_notif_fix">Dozvoli</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Dobro je znati</string>
+    <string name="hint_privacy_title">Delite svoju aktivnost na Discordu</string>
+    <string name="hint_privacy">U Discordu: Podešavanja → Privatnost aktivnosti → uključite „Deli svoju aktivnost“. U suprotnom niko ne vidi šta slušate.</string>
+    <string name="hint_poweramp_title">Prvo pokretanje</string>
+    <string name="hint_poweramp">Posle instaliranja ove aplikacije pritisnite jednom pauzu i reprodukciju u Poweramp-u da bi Poweramp primetio aplikaciju i slao joj podatke o pesmi.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Šalje se probni status – ostaje prikazan %1$d s.</string>
+    <string name="msg_reconnecting">Ponovno povezivanje…</string>
+    <string name="msg_stop_ended">Ručno zaustavljanje je završeno – Discord ponovo prikazuje Poweramp.</string>
+    <string name="msg_start_blocked">Android nije dozvolio pokretanje u pozadini – dozvolite ga pod „Optimizacija baterije“.</string>
+    <string name="msg_service_started">Pozadinska usluga je pokrenuta.</string>
+    <string name="msg_service_stopped">Zaustavljeno dok Poweramp ponovo ne počne da pušta.</string>
+    <string name="msg_cannot_open">Nije pronađena aplikacija koja može ovo da otvori.</string>
+    <string name="msg_cover_cleared">Keš omota je obrisan.</string>
+    <string name="msg_exported">Podešavanja su sačuvana.</string>
+    <string name="msg_export_failed">Podešavanja nije moguće sačuvati.</string>
+    <string name="msg_imported">Podešavanja su uvezena.</string>
+    <string name="msg_import_failed">Ova datoteka ne sadrži podešavanja ove aplikacije.</string>
+    <string name="msg_reset">Sva podešavanja su vraćena na podrazumevane vrednosti.</string>
+    <string name="msg_log_copied">Evidencija je kopirana.</string>
+    <string name="msg_up_to_date">Imate najnoviju verziju.</string>
+    <string name="msg_account_linked">Discord nalog je povezan: %1$s</string>
+    <string name="msg_account_failed">Povezivanje Discord naloga nije uspelo – detalji su na kartici Status.</string>
+    <string name="msg_account_unlinked">Veza sa Discord nalogom je prekinuta.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Pregled uživo</string>
+    <string name="prev_listening">Sluša %1$s</string>
+    <string name="prev_playing">Igra %1$s</string>
+    <string name="prev_app_own">vaša aplikacija</string>
+    <string name="prev_you">Vi</string>
+    <string name="prev_elapsed">proteklo: %1$s</string>
+    <string name="prev_example">Primer – trenutno se ništa ne pušta.</string>
+    <string name="prev_example_title">Primer naslova</string>
+    <string name="prev_example_artist">Primer izvođača</string>
+    <string name="prev_example_album">Primer albuma</string>
+    <string name="prev_icon_tip">Ikona: %1$s</string>
+    <string name="prev_link">Link: %1$s</string>
+    <string name="prev_no_link">Naslov bez linka</string>
+    <string name="prev_link_account">Povežite Discord nalog da biste ovde videli svoje ime i sliku</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Aktivnost</string>
+    <string name="disp_type">Vrsta aktivnosti</string>
+    <string name="disp_type_listening">Sluša (prikazuje traku napretka)</string>
+    <string name="disp_type_playing">Igra (samo proteklo vreme)</string>
+    <string name="disp_status_display">Tekst Discord statusa prikazuje</string>
+    <string name="disp_status_name">Naziv aplikacije (Poweramp)</string>
+    <string name="disp_status_state">Drugi red (izvođač)</string>
+    <string name="disp_status_details">Prvi red (naslov pesme)</string>
+    <string name="disp_timestamps">Prikaži traku napretka / proteklo vreme</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Tekstovi</string>
+    <string name="disp_details">Prvi red</string>
+    <string name="disp_state">Drugi red</string>
+    <string name="disp_large_text">Opis omota</string>
+    <string name="disp_small_text">Opis ikone</string>
+    <string name="disp_insert_into">Dodirnite čuvar mesta da ga umetnete u „%1$s“:</string>
+    <string name="disp_placeholders_help">Šta znače čuvari mesta</string>
+    <string name="disp_rotation_help" formatted="false">Stavite || između tekstova da bi se smenjivali, npr. %artist% || %title% (interval smenjivanja ispod).</string>
+    <string name="ph_title">naslov pesme</string>
+    <string name="ph_artist">izvođač</string>
+    <string name="ph_album">album</string>
+    <string name="ph_filename">naziv datoteke bez ekstenzije</string>
+    <string name="ph_ext">ekstenzija datoteke (flac, mp3 …)</string>
+    <string name="ph_pos">trenutna pozicija (1:23)</string>
+    <string name="ph_dur">trajanje (3:45)</string>
+    <string name="ph_percent">napredak u procentima</string>
+    <string name="ph_bar">tekstualna traka napretka ▰▰▰▱▱▱</string>
+    <string name="ph_status">Pušta se / Pauzirano</string>
+    <string name="ph_codec">kodek (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">protok (320 kbps)</string>
+    <string name="ph_samplerate">frekvencija uzorkovanja (44,1 kHz)</string>
+    <string name="ph_bits">dubina bita (24-bit)</string>
+    <string name="ph_track">pozicija na trenutnoj listi</string>
+    <string name="ph_listsize">broj pesama na listi</string>
+    <string name="ph_rating">ocena ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">između alternativa koje se smenjuju, npr. %artist% || %title%</string>
+    <string name="disp_small_icon">Prikaži ikonu reprodukcije / pauze (mala slika)</string>
+    <string name="disp_bar_length" formatted="false">Dužina za %bar%</string>
+    <string name="disp_bar_length_value">Znakova: %1$d</string>
+    <string name="disp_refresh">Interval osvežavanja</string>
+    <string name="disp_refresh_value">%1$d s</string>
+    <string name="disp_refresh_note" formatted="false">Koristi se samo kada tekst sadrži %pos%, %bar% ili %percent%. Discord prihvata samo nekoliko ažuriranja u minutu.</string>
+    <string name="disp_rotation">Interval smenjivanja</string>
+    <string name="disp_rotation_value">%1$d s</string>
+    <string name="disp_rotation_note">Koristi se samo kada tekst sadrži ||. Svaka pesma počinje prvom alternativom, prazne se preskaču. Discord prihvata samo 5 ažuriranja na 20 sekundi, zato najmanje 5 s.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Naslov na koji se može kliknuti</string>
+    <string name="disp_title_link">Naslov pesme na koji se može kliknuti (YouTube pretraga za izvođača + naslov)</string>
+    <string name="disp_own_link">Sopstveni link</string>
+    <string name="disp_own_link_url">Link</string>
+    <string name="disp_own_link_hint" formatted="false">Čuvari mesta rade i ovde, npr. https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">Link mora da počinje sa http:// ili https://</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Pauza</string>
+    <string name="disp_paused">Kada je pauzirano</string>
+    <string name="disp_paused_show">Prikaži status „Pauzirano“</string>
+    <string name="disp_paused_hide">Sakrij (prikazuju se druge aktivnosti)</string>
+    <string name="disp_clear_after">Ukloni posle pauze od (minuta)</string>
+    <string name="disp_clear_after_hint">0 = nikad (samo kada se prikazuje „Pauzirano“)</string>
+    <string name="disp_filters_title">Filteri</string>
+    <string name="disp_hide_streams">Sakrij status za internet radio / strimove</string>
+    <string name="disp_exclude_paths">Sakrij kada putanja datoteke sadrži</string>
+    <string name="disp_exclude_paths_hint">npr. Audioknjige;Podkasti</string>
+    <string name="disp_exclude_paths_note">Više delova odvojenih sa ; (velika / mala slova nisu bitna)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Prikaži omot albuma na Discordu</string>
+    <string name="cov_info">Discord prikazuje samo omote koji imaju javni link. Omot koji Poweramp prikazuje može da se otpremi (x0.at ne traži nalog) ili da se potraži na internetu (pogledajte „Izvori“). Svaki omot se traži samo jednom i čuva u kešu.</string>
+    <string name="cov_local_title">Poweramp omot</string>
+    <string name="cov_local">Koristi omot koji Poweramp prikazuje</string>
+    <string name="cov_local_sub">Ugrađen u datoteku, slika u folderu ili ga je preuzeo Poweramp – otprema se da bi dobio javni link</string>
+    <string name="cov_upload">Otpremaj omote na</string>
+    <string name="cov_upload_x0">x0.at (bez naloga)</string>
+    <string name="cov_upload_catbox">catbox.moe (bez naloga)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Isključeno (samo pretraga na internetu)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Imgur traži Client-ID – bez njega se koristi drugi servis.</string>
+    <string name="cov_imgur_get">Nabavi Client-ID</string>
+    <string name="cov_prefer_local">Daj prednost Poweramp omotu</string>
+    <string name="cov_prefer_local_sub">Pretraga na internetu samo za pesme bez omota</string>
+    <string name="cov_size">Veličina otpremljenih omota</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">Otpremljene omote može da vidi svako ko ima link.</string>
+    <string name="cov_current_title">Trenutni omot</string>
+    <string name="cov_off">Omoti su isključeni – Discord prikazuje logo aplikacije.</string>
+    <string name="cov_nothing">Ništa se ne pušta.</string>
+    <string name="cov_searching">Traži se omot…</string>
+    <string name="cov_not_yet">Omot će se tražiti čim Discord prikaže ovu pesmu.</string>
+    <string name="cov_none">Discord prikazuje logo aplikacije: omot nije pronađen ili Discord nije mogao da ga učita.</string>
+    <string name="cov_source">Izvor: %1$s</string>
+    <string name="cov_src_cache">keš omota</string>
+    <string name="cov_src_online">pronađen na: %1$s</string>
+    <string name="cov_src_poweramp">Poweramp omot</string>
+    <string name="cov_src_uploaded">%1$s, otpremljen na %2$s</string>
+    <string name="cov_open">Otvori sliku</string>
+    <string name="cov_clear">Obriši keš omota</string>
+    <string name="cov_image_desc">Omot albuma</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Pretraga na internetu traži izvođača / album i direktno koristi javni link slike – ništa se ne otprema. Izvori se isprobavaju odozgo nadole, a koristi se prvi pogodak.</string>
+    <string name="src_covers_off">Omoti su isključeni – pretraga se ne vrši.</string>
+    <string name="src_open_cover_tab">Podešavanja omota</string>
+    <string name="src_prefer_local_note">Uključeno je „Daj prednost Poweramp omotu“: pretraga se koristi samo za pesme bez omota.</string>
+    <string name="src_list_title">Izvori na internetu</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Potrebna je besplatna aplikacija za programere (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Unesite Client ID i Secret, inače se Spotify preskače.</string>
+    <string name="src_create_app">Napravi aplikaciju</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Ključ nije potreban (nezvanični interfejs)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Potreban je besplatan lični token za pristup</string>
+    <string name="src_token">Token</string>
+    <string name="src_discogs_missing">Unesite token, inače se Discogs preskače.</string>
+    <string name="src_get_token">Nabavi token</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Ključ nije potreban</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Discord aplikacija</string>
+    <string name="adv_custom_app">Koristi sopstvenu Discord aplikaciju</string>
+    <string name="adv_custom_app_sub">Discord prikazuje njen naziv („Sluša …“)</string>
+    <string name="adv_app_id">ID aplikacije</string>
+    <string name="adv_app_id_hint">Developer Portal → vaša aplikacija → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">ID aplikacije ima 17 do 20 cifara.</string>
+    <string name="adv_portal">Otvori Developer Portal</string>
+    <string name="adv_assets_note">Pod Rich Presence → Art Assets otpremite slike pod nazivima „poweramp“ (logo), „play“ i „pause“.</string>
+    <string name="adv_effective">ID aplikacije u upotrebi</string>
+    <string name="adv_effective_none">nema – ovaj build nema ugrađen ID, koristite sopstvenu aplikaciju</string>
+    <string name="adv_compat_title">Kompatibilnost</string>
+    <string name="adv_seconds">Šalji vremenske oznake u sekundama</string>
+    <string name="adv_seconds_sub">Samo ako Discord prikazuje pogrešno vreme ili nema trake napretka</string>
+    <string name="adv_log_title">Nedavna evidencija</string>
+    <string name="adv_log_empty">Još ništa nije zabeleženo.</string>
+    <string name="adv_log_copy">Kopiraj</string>
+    <string name="adv_log_share">Deli</string>
+    <string name="adv_log_clear">Obriši</string>
+    <string name="adv_log_share_subject">Poweramp Discord RP evidencija</string>
+    <string name="adv_settings_title">Datoteka podešavanja</string>
+    <string name="adv_settings_info">Sačuvajte sva podešavanja u datoteku ili ih učitajte iz nje (npr. na novom telefonu). Datoteka sadrži i ključeve koje ste uneli za omote (Imgur, Spotify, Discogs).</string>
+    <string name="adv_export">Izvezi…</string>
+    <string name="adv_import">Uvezi…</string>
+    <string name="adv_reset">Vrati na podrazumevano</string>
+    <string name="adv_reset_confirm_title">Resetovati sva podešavanja?</string>
+    <string name="adv_reset_confirm_text">Sva podešavanja se vraćaju na podrazumevane vrednosti. Prvo ih izvezite ako želite da ih sačuvate.</string>
+    <string name="adv_reset_confirm">Resetuj</string>
+    <string name="adv_export_keys_title">Izvesti sa vašim ključevima?</string>
+    <string name="adv_export_keys_text">Datoteka će sadržati vaše ključeve za %1$s kao običan tekst. Zadržite je za sebe – ne delite je i ne prilažite je uz prijavu greške.</string>
+    <string name="adv_export_keys_confirm">Izvezi</string>
+    <string name="common_cancel">Otkaži</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">Verzija %1$s</string>
+    <string name="about_by">autor: %1$s</string>
+    <string name="about_on_github">%1$s na GitHub-u</string>
+    <string name="cd_author_avatar">GitHub slika profila korisnika %1$s</string>
+    <string name="cd_account_avatar">Discord slika profila korisnika %1$s</string>
+    <string name="about_github">GitHub stranica</string>
+    <string name="about_releases">Sva izdanja</string>
+    <string name="about_issues">Prijavi problem</string>
+    <string name="about_disclaimer">Nezavisan projekat – nije povezan sa Discordom ni Poweramp-om, niti ga oni podržavaju.</string>
+    <string name="about_updates_title">Ažuriranja</string>
+    <string name="about_update_check">Proveravaj ažuriranja</string>
+    <string name="about_update_freq">Koliko često</string>
+    <string name="upd_every_start">pri svakom pokretanju aplikacije</string>
+    <string name="upd_daily">jednom dnevno</string>
+    <string name="upd_weekly">jednom nedeljno</string>
+    <string name="upd_monthly">jednom mesečno</string>
+    <string name="about_check_now">Proveri sada</string>
+    <string name="upd_never">Još nije provereno.</string>
+    <string name="upd_checking">Traže se ažuriranja…</string>
+    <string name="upd_latest">Imate najnoviju verziju (poslednja provera: %1$s).</string>
+    <string name="upd_available">Dostupna je verzija %1$s.</string>
+    <string name="upd_failed">Provera ažuriranja nije uspela: nema veze sa GitHub-om.</string>
+    <string name="upd_rate_limited">GitHub trenutno ograničava zahteve – pokušajte ponovo kasnije.</string>
+    <string name="upd_no_release">Još nije objavljeno nijedno izdanje.</string>
+    <string name="upd_bad_answer">Provera ažuriranja nije uspela: odgovor GitHub-a nije moguće pročitati.</string>
+    <string name="upd_download">Preuzmi %1$s</string>
+    <string name="upd_whats_new">Šta je novo?</string>
+    <string name="about_update_privacy">Provera samo pita GitHub za najnovije izdanje – ništa drugo se ne šalje.</string>
+    <string name="about_credits_title">Zasluge</string>
+    <string name="about_credit_poweramp">Poweramp API: Max MP</string>
+    <string name="about_credit_discord">Discord Social SDK RPC interfejs preko antisocialcord-kt, autor Nightdavisao (MIT licenca)</string>
+    <string name="about_credit_covers">Omoti: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz i Cover Art Archive</string>
+    <string name="about_credit_aimp">Android pandan aplikacije „Discord Rich Presence for AIMP“ istog autora</string>
+    <string name="about_changelog_title">Istorija promena</string>
+    <string name="about_changelog_version">Verzija %1$s</string>
+    <string name="about_installed">(instalirana)</string>
+    <string name="about_translation_note">Napomena: srpski prevod je napravljen pomoću veštačke inteligencije i može da sadrži greške. Ispravke su dobrodošle na GitHub-u („Prijavi problem“).</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">U redu</string>
+    <string name="cd_info">Napomena</string>
+    <string name="cd_warning">Upozorenje</string>
+    <string name="cd_error">Problem</string>
+    <string name="field_show">Prikaži</string>
+    <string name="field_hide">Sakrij</string>
+    <string name="field_range">Dozvoljeno: %1$d do %2$d</string>
+</resources>

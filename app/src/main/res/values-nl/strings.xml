@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">Status</string>
+    <string name="tab_display">Weergave</string>
+    <string name="tab_cover">Albumhoes</string>
+    <string name="tab_sources">Bronnen</string>
+    <string name="tab_advanced">Geavanceerd</string>
+    <string name="tab_about">Over</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">Meer opties</string>
+    <string name="app_settings_title">App-instellingen</string>
+    <string name="app_settings_theme">Thema</string>
+    <string name="theme_system">Systeemstandaard volgen</string>
+    <string name="theme_light">Licht</string>
+    <string name="theme_dark">Donker</string>
+    <string name="app_settings_amoled">AMOLED-zwart</string>
+    <string name="app_settings_amoled_on">Puur zwarte achtergrond in de donkere modus – bespaart batterij op OLED-schermen.</string>
+    <string name="app_settings_amoled_needs_dark">Alleen in de donkere modus – kies “Donker” of zet Android in de donkere modus.</string>
+    <string name="app_settings_dynamic">Dynamische kleuren (Material You)</string>
+    <string name="app_settings_dynamic_sub">Kleuren uit je achtergrond. Uit: de eigen Discord-achtige kleuren van de app.</string>
+    <string name="app_settings_language">Taal</string>
+    <string name="language_system">Systeemstandaard</string>
+    <string name="language_ai">AI-vertaling</string>
+    <string name="app_settings_language_note">Ook in de instellingen van Android: Apps → Poweramp Discord RP → Taal.</string>
+    <string name="common_close">Sluiten</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Je Discord-status toont wat Poweramp afspeelt</string>
+    <string name="master_off">Uitgeschakeld – Discord toont niets</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Verbinding</string>
+    <string name="conn_idle">Wachten – er is nu niets te tonen</string>
+    <string name="conn_disabled">Uitgeschakeld</string>
+    <string name="conn_no_app_id">Geen Discord-applicatie-ID ingesteld</string>
+    <string name="conn_connecting">Verbinden met Discord…</string>
+    <string name="conn_connected">Verbonden met Discord</string>
+    <string name="conn_testing">De testpresence wordt getoond.</string>
+    <string name="conn_test_waiting">Testpresence wordt naar Discord verzonden…</string>
+    <string name="conn_activity_error">Discord heeft de laatste update niet geaccepteerd: %1$s</string>
+    <string name="conn_detail">Details: %1$s</string>
+    <string name="conn_user">Discord-account</string>
+    <string name="conn_app_id">Applicatie-ID</string>
+    <string name="conn_app_builtin">%1$s (ingebouwd)</string>
+    <string name="conn_app_own">%1$s (eigen)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">Laatste update</string>
+    <string name="conn_never">nog niet</string>
+    <string name="conn_connections">Verbindingen</string>
+    <string name="conn_service">Achtergrondservice</string>
+    <string name="conn_service_running">actief</string>
+    <string name="conn_service_stopped">niet actief</string>
+    <string name="conn_service_start">Starten</string>
+    <string name="conn_service_stop">Stoppen</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Niet gekoppeld</string>
+    <string name="acc_hint">Koppel je Discord-account om je naam en profielfoto hier en in het livevoorbeeld te zien.</string>
+    <string name="acc_link">Discord-account koppelen</string>
+    <string name="acc_refresh">Vernieuwen</string>
+    <string name="acc_restart">Opnieuw beginnen</string>
+    <string name="acc_unlink">Ontkoppelen</string>
+    <string name="acc_waiting">Wachten op Discord – geef daar toegang en kom dan terug naar deze app.</string>
+    <string name="acc_working">Je profiel wordt uit Discord gelezen…</string>
+    <string name="acc_privacy">Alleen je naam en profielfoto worden gelezen (Discords “identify”-toegang). De toegang wordt meteen weer ingetrokken – de app bewaart geen token.</string>
+    <string name="acc_redirect_hint">Meldt Discord “Invalid OAuth2 redirect_uri”? De eigenaar van de Discord-applicatie moet %1$s toevoegen onder OAuth2 → Redirects in het Developer Portal.</string>
+    <string name="acc_no_app_id">Vereist een Discord-applicatie-ID (tabblad Geavanceerd).</string>
+    <string name="acc_err_cancelled">Koppelen geannuleerd – Discord mocht je profiel niet delen.</string>
+    <string name="acc_err_redirect">De Discord-applicatie kent het terugkeeradres van deze app niet. De eigenaar moet %1$s toevoegen onder OAuth2 → Redirects in het Developer Portal.</string>
+    <string name="acc_err_public_client">Discord vraagt om een client secret: “Public Client” is niet ingeschakeld voor de Discord-applicatie (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">Het inlogverzoek is verlopen of al gebruikt – probeer het opnieuw.</string>
+    <string name="acc_err_network">Discord is niet bereikbaar – controleer de internetverbinding en probeer het opnieuw.</string>
+    <string name="acc_err_discord">Discord heeft het inloggen geweigerd – probeer het later opnieuw.</string>
+    <string name="acc_err_bad_answer">Discord gaf een onverwacht antwoord – probeer het later opnieuw.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Niet verbonden met Discord – opnieuw proberen</string>
+    <string name="err_discord_missing">De Discord-app is niet geïnstalleerd</string>
+    <string name="err_bind_failed">De Discord-app biedt de Rich Presence-service niet aan – update Discord</string>
+    <string name="err_connect_failed">Discord heeft de verbinding niet geaccepteerd – opnieuw proberen</string>
+    <string name="err_closed">Discord heeft de verbinding verbroken – opnieuw verbinden</string>
+    <string name="err_invalid_client_id">Discord heeft de applicatie-ID geweigerd – controleer deze op het tabblad Geavanceerd</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Wordt nu afgespeeld</string>
+    <string name="now_nothing">Er wordt niets afgespeeld in Poweramp.</string>
+    <string name="word_playing">Speelt af</string>
+    <string name="word_paused">Gepauzeerd</string>
+    <string name="hidden_no">Discord toont dit nummer.</string>
+    <string name="hidden_disabled">Rich Presence is uitgeschakeld – Discord toont niets.</string>
+    <string name="hidden_stopped">Er wordt niets afgespeeld – Discord toont niets.</string>
+    <string name="hidden_stream">Internetradio / streams worden verborgen (tabblad Weergave) – Discord toont niets.</string>
+    <string name="hidden_path">Dit bestand wordt verborgen door het padfilter (tabblad Weergave) – Discord toont niets.</string>
+    <string name="hidden_paused">Het afspelen is gepauzeerd en “Verbergen” is gekozen (tabblad Weergave): Discord toont je andere activiteiten.</string>
+    <string name="hidden_timeout">Langer gepauzeerd dan ingesteld op het tabblad Weergave – de presence is verwijderd.</string>
+    <string name="now_user_stopped">Door jou gestopt – Discord toont niets tot Poweramp weer afspeelt.</string>
+    <string name="now_rejected">Discord heeft deze presence niet geaccepteerd – zie “Verbinding”.</string>
+    <string name="now_after_test">Discord toont nu de testpresence – dit nummer volgt.</string>
+    <string name="now_test_shown">Discord toont nu de testpresence.</string>
+    <string name="now_sending">Wordt naar Discord verzonden…</string>
+    <string name="now_not_connected">Discord toont het nog niet – zie “Verbinding”.</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Testpresence verzenden</string>
+    <string name="btn_reconnect">Opnieuw verbinden</string>
+    <string name="btn_open_poweramp">Poweramp openen</string>
+    <string name="btn_open_discord">Discord openen</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Configuratie</string>
+    <string name="check_checking">Controleren…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">Versie %1$s (build %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">Versie %1$s</string>
+    <string name="check_poweramp_old">Versie %1$s (build %2$d) is te oud – deze app vereist build %3$d of nieuwer.</string>
+    <string name="check_poweramp_missing">Poweramp is niet geïnstalleerd.</string>
+    <string name="check_poweramp_get">Poweramp downloaden</string>
+    <string name="check_poweramp_update">Poweramp updaten</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Geïnstalleerd, Rich Presence-service beschikbaar</string>
+    <string name="check_discord_no_rpc">Deze Discord-versie biedt de Rich Presence-service niet aan andere apps aan. Update Discord.</string>
+    <string name="check_discord_missing">De Discord-app is niet geïnstalleerd.</string>
+    <string name="check_discord_get">Discord downloaden</string>
+    <string name="check_discord_update">Discord updaten</string>
+    <string name="check_appid_title">Discord-applicatie</string>
+    <string name="check_appid_own">Je eigen applicatie (ID %1$s)</string>
+    <string name="check_appid_missing">In deze build is geen applicatie-ID ingebouwd. Maak je eigen Discord-applicatie aan en vul de ID in op het tabblad Geavanceerd.</string>
+    <string name="check_appid_invalid">Je eigen applicatie-ID is ongeldig (17 tot 20 cijfers) en in deze build is er geen ingebouwd.</string>
+    <string name="check_appid_invalid_fallback">Je eigen applicatie-ID is ongeldig (17 tot 20 cijfers) – de ingebouwde applicatie (ID %1$s) wordt gebruikt.</string>
+    <string name="check_appid_builtin_invalid">De in deze build ingebouwde applicatie-ID (%1$s) is ongeldig (17 tot 20 cijfers). Maak je eigen Discord-applicatie aan en vul de ID in op het tabblad Geavanceerd.</string>
+    <string name="check_appid_both_invalid">Je eigen applicatie-ID is ongeldig (17 tot 20 cijfers) en de in deze build ingebouwde ID (%1$s) is ook ongeldig.</string>
+    <string name="check_appid_fix">Instellen</string>
+    <string name="check_battery_title">Batterijoptimalisatie</string>
+    <string name="check_battery_ok">Uit voor deze app – hij kan op de achtergrond starten zodra Poweramp begint af te spelen.</string>
+    <string name="check_battery_bad">Android laat de app mogelijk niet starten als Poweramp begint af te spelen, of stopt hem later. Schakel batterijoptimalisatie voor deze app uit.</string>
+    <string name="check_battery_fix">Toestaan</string>
+    <string name="check_notif_title">Meldingen</string>
+    <string name="check_notif_ok">Toegestaan – de statusmelding toont wat Discord ziet.</string>
+    <string name="check_notif_bad">Niet toegestaan – de app kan zijn statusmelding niet tonen terwijl hij je presence bijwerkt.</string>
+    <string name="check_notif_fix">Toestaan</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Goed om te weten</string>
+    <string name="hint_privacy_title">Deel je activiteit in Discord</string>
+    <string name="hint_privacy">In Discord: Instellingen → Activiteitsprivacy → zet “Je activiteit delen” aan. Anders ziet niemand waar je naar luistert.</string>
+    <string name="hint_poweramp_title">Eerste start</string>
+    <string name="hint_poweramp">Druk na het installeren van deze app één keer op pauze en afspelen in Poweramp, zodat Poweramp de app opmerkt en de nummergegevens doorstuurt.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Testpresence wordt verzonden – deze blijft %1$d seconden staan.</string>
+    <string name="msg_reconnecting">Opnieuw verbinden…</string>
+    <string name="msg_stop_ended">Handmatig stoppen is opgeheven – Discord toont Poweramp weer.</string>
+    <string name="msg_start_blocked">Android stond het starten op de achtergrond niet toe – sta het toe onder “Batterijoptimalisatie”.</string>
+    <string name="msg_service_started">Achtergrondservice gestart.</string>
+    <string name="msg_service_stopped">Gestopt tot Poweramp weer afspeelt.</string>
+    <string name="msg_cannot_open">Geen app gevonden om dit te openen.</string>
+    <string name="msg_cover_cleared">Hoescache gewist.</string>
+    <string name="msg_exported">Instellingen opgeslagen.</string>
+    <string name="msg_export_failed">De instellingen konden niet worden opgeslagen.</string>
+    <string name="msg_imported">Instellingen geïmporteerd.</string>
+    <string name="msg_import_failed">Dit bestand bevat geen instellingen van deze app.</string>
+    <string name="msg_reset">Alle instellingen zijn teruggezet naar de standaardwaarden.</string>
+    <string name="msg_log_copied">Logboek gekopieerd.</string>
+    <string name="msg_up_to_date">Je hebt de nieuwste versie.</string>
+    <string name="msg_account_linked">Discord-account gekoppeld: %1$s</string>
+    <string name="msg_account_failed">Het koppelen van het Discord-account is mislukt – details op het tabblad Status.</string>
+    <string name="msg_account_unlinked">Discord-account ontkoppeld.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Livevoorbeeld</string>
+    <string name="prev_listening">Luistert naar %1$s</string>
+    <string name="prev_playing">Speelt %1$s</string>
+    <string name="prev_app_own">je app</string>
+    <string name="prev_you">Jij</string>
+    <string name="prev_elapsed">%1$s verstreken</string>
+    <string name="prev_example">Voorbeeld – er wordt nu niets afgespeeld.</string>
+    <string name="prev_example_title">Voorbeeldtitel</string>
+    <string name="prev_example_artist">Voorbeeldartiest</string>
+    <string name="prev_example_album">Voorbeeldalbum</string>
+    <string name="prev_icon_tip">Pictogram: %1$s</string>
+    <string name="prev_link">Link: %1$s</string>
+    <string name="prev_no_link">Titel zonder link</string>
+    <string name="prev_link_account">Koppel je Discord-account om hier je naam en profielfoto te zien</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Activiteit</string>
+    <string name="disp_type">Type activiteit</string>
+    <string name="disp_type_listening">Luistert (met voortgangsbalk)</string>
+    <string name="disp_type_playing">Speelt (alleen verstreken tijd)</string>
+    <string name="disp_status_display">Discord-statustekst toont</string>
+    <string name="disp_status_name">Applicatienaam (Poweramp)</string>
+    <string name="disp_status_state">Tweede regel (artiest)</string>
+    <string name="disp_status_details">Eerste regel (titel)</string>
+    <string name="disp_timestamps">Voortgangsbalk / verstreken tijd tonen</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Teksten</string>
+    <string name="disp_details">Eerste regel</string>
+    <string name="disp_state">Tweede regel</string>
+    <string name="disp_large_text">Tooltip van de hoes</string>
+    <string name="disp_small_text">Tooltip van het pictogram</string>
+    <string name="disp_insert_into">Tik op een placeholder om die in te voegen in “%1$s”:</string>
+    <string name="disp_placeholders_help">Wat de placeholders betekenen</string>
+    <string name="disp_rotation_help" formatted="false">Zet || tussen teksten om ze af te wisselen, bijv. %artist% || %title% (wisselinterval hieronder).</string>
+    <string name="ph_title">titel van het nummer</string>
+    <string name="ph_artist">artiest</string>
+    <string name="ph_album">album</string>
+    <string name="ph_filename">bestandsnaam zonder extensie</string>
+    <string name="ph_ext">bestandsextensie (flac, mp3 …)</string>
+    <string name="ph_pos">huidige positie (1:23)</string>
+    <string name="ph_dur">duur (3:45)</string>
+    <string name="ph_percent">voortgang in procent</string>
+    <string name="ph_bar">voortgangsbalk als tekst ▰▰▰▱▱▱</string>
+    <string name="ph_status">Speelt af / Gepauzeerd</string>
+    <string name="ph_codec">codec (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">bitrate (320 kbps)</string>
+    <string name="ph_samplerate">samplefrequentie (44,1 kHz)</string>
+    <string name="ph_bits">bitdiepte (24-bit)</string>
+    <string name="ph_track">positie in de huidige lijst</string>
+    <string name="ph_listsize">aantal nummers in de lijst</string>
+    <string name="ph_rating">beoordeling ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">tussen alternatieven die elkaar afwisselen, bijv. %artist% || %title%</string>
+    <string name="disp_small_icon">Afspeel- / pauzepictogram tonen (kleine afbeelding)</string>
+    <string name="disp_bar_length" formatted="false">Lengte van %bar%</string>
+    <string name="disp_bar_length_value">%1$d tekens</string>
+    <string name="disp_refresh">Vernieuwingsinterval</string>
+    <string name="disp_refresh_value">%1$d s</string>
+    <string name="disp_refresh_note" formatted="false">Alleen gebruikt als een tekst %pos%, %bar% of %percent% bevat. Discord accepteert maar een paar updates per minuut.</string>
+    <string name="disp_rotation">Wisselinterval</string>
+    <string name="disp_rotation_value">%1$d s</string>
+    <string name="disp_rotation_note">Alleen gebruikt als een tekst || bevat. Elk nummer begint met het eerste alternatief, lege worden overgeslagen. Discord accepteert maar 5 updates per 20 seconden, daarom minstens 5 s.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Klikbare titel</string>
+    <string name="disp_title_link">Klikbare nummertitel (YouTube-zoekopdracht naar artiest + titel)</string>
+    <string name="disp_own_link">Eigen link</string>
+    <string name="disp_own_link_url">Link</string>
+    <string name="disp_own_link_hint" formatted="false">Placeholders werken hier ook, bijv. https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">De link moet beginnen met http:// of https://</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Pauze</string>
+    <string name="disp_paused">Bij pauze</string>
+    <string name="disp_paused_show">Status “Gepauzeerd” tonen</string>
+    <string name="disp_paused_hide">Verbergen (andere activiteiten zichtbaar)</string>
+    <string name="disp_clear_after">Verwijderen na een pauze van (minuten)</string>
+    <string name="disp_clear_after_hint">0 = nooit (alleen als “Gepauzeerd” wordt getoond)</string>
+    <string name="disp_filters_title">Filters</string>
+    <string name="disp_hide_streams">Presence verbergen bij internetradio / streams</string>
+    <string name="disp_exclude_paths">Verbergen als het bestandspad bevat</string>
+    <string name="disp_exclude_paths_hint">bijv. Luisterboeken;Podcasts</string>
+    <string name="disp_exclude_paths_note">Meerdere delen gescheiden door ; (hoofdletters / kleine letters maken niet uit)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Albumhoes tonen in Discord</string>
+    <string name="cov_info">Discord toont alleen hoezen met een openbare link. De hoes die Poweramp toont, kan worden geüpload (x0.at heeft geen account nodig) of online worden opgezocht (zie “Bronnen”). Elke hoes wordt één keer opgezocht en gecachet.</string>
+    <string name="cov_local_title">Hoes van Poweramp</string>
+    <string name="cov_local">De hoes gebruiken die Poweramp toont</string>
+    <string name="cov_local_sub">Ingesloten in het bestand, afbeelding in de map of gedownload door Poweramp – wordt geüpload voor een openbare link</string>
+    <string name="cov_upload">Hoezen uploaden naar</string>
+    <string name="cov_upload_x0">x0.at (geen account)</string>
+    <string name="cov_upload_catbox">catbox.moe (geen account)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Uit (alleen online zoeken)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Imgur vereist een Client-ID – zonder Client-ID wordt een andere host gebruikt.</string>
+    <string name="cov_imgur_get">Client-ID aanvragen</string>
+    <string name="cov_prefer_local">Hoes van Poweramp voorrang geven</string>
+    <string name="cov_prefer_local_sub">Alleen online zoeken voor nummers zonder hoes</string>
+    <string name="cov_size">Grootte van geüploade hoezen</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">Geüploade hoezen zijn zichtbaar voor iedereen die de link heeft.</string>
+    <string name="cov_current_title">Huidige hoes</string>
+    <string name="cov_off">Hoezen zijn uitgeschakeld – Discord toont het app-logo.</string>
+    <string name="cov_nothing">Er wordt niets afgespeeld.</string>
+    <string name="cov_searching">Hoes zoeken…</string>
+    <string name="cov_not_yet">Er wordt naar de hoes gezocht zodra Discord dit nummer toont.</string>
+    <string name="cov_none">Discord toont het app-logo: er is geen hoes gevonden of Discord kon hem niet laden.</string>
+    <string name="cov_source">Bron: %1$s</string>
+    <string name="cov_src_cache">hoescache</string>
+    <string name="cov_src_online">gevonden op %1$s</string>
+    <string name="cov_src_poweramp">hoes van Poweramp</string>
+    <string name="cov_src_uploaded">%1$s, geüpload naar %2$s</string>
+    <string name="cov_open">Afbeelding openen</string>
+    <string name="cov_clear">Hoescache wissen</string>
+    <string name="cov_image_desc">Albumhoes</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Bij online zoeken wordt gezocht op artiest / album en wordt de openbare afbeeldingslink direct gebruikt – er wordt niets geüpload. Bronnen worden van boven naar beneden geprobeerd, de eerste treffer wint.</string>
+    <string name="src_covers_off">Hoezen zijn uitgeschakeld – er wordt niets opgezocht.</string>
+    <string name="src_open_cover_tab">Hoesinstellingen</string>
+    <string name="src_prefer_local_note">“Hoes van Poweramp voorrang geven” staat aan: online zoeken wordt alleen gebruikt voor nummers zonder hoes.</string>
+    <string name="src_list_title">Online bronnen</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Vereist een gratis ontwikkelaarsapp (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Vul Client ID en Secret in, anders wordt Spotify overgeslagen.</string>
+    <string name="src_create_app">App aanmaken</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Geen sleutel nodig (onofficiële interface)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Vereist een gratis persoonlijk toegangstoken</string>
+    <string name="src_token">Token</string>
+    <string name="src_discogs_missing">Vul een token in, anders wordt Discogs overgeslagen.</string>
+    <string name="src_get_token">Token aanvragen</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Geen sleutel nodig</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Discord-applicatie</string>
+    <string name="adv_custom_app">Mijn eigen Discord-applicatie gebruiken</string>
+    <string name="adv_custom_app_sub">Discord toont de naam ervan (“Luistert naar …”)</string>
+    <string name="adv_app_id">Applicatie-ID</string>
+    <string name="adv_app_id_hint">Developer Portal → je applicatie → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">Een applicatie-ID heeft 17 tot 20 cijfers.</string>
+    <string name="adv_portal">Developer Portal openen</string>
+    <string name="adv_assets_note">Upload onder Rich Presence → Art Assets afbeeldingen met de namen “poweramp” (logo), “play” en “pause”.</string>
+    <string name="adv_effective">Gebruikte applicatie-ID</string>
+    <string name="adv_effective_none">geen – deze build heeft geen ingebouwde ID, gebruik je eigen applicatie</string>
+    <string name="adv_compat_title">Compatibiliteit</string>
+    <string name="adv_seconds">Tijdstempels in seconden verzenden</string>
+    <string name="adv_seconds_sub">Alleen als Discord een verkeerde tijd of geen voortgangsbalk toont</string>
+    <string name="adv_log_title">Recent logboek</string>
+    <string name="adv_log_empty">Nog niets gelogd.</string>
+    <string name="adv_log_copy">Kopiëren</string>
+    <string name="adv_log_share">Delen</string>
+    <string name="adv_log_clear">Wissen</string>
+    <string name="adv_log_share_subject">Poweramp Discord RP-logboek</string>
+    <string name="adv_settings_title">Instellingenbestand</string>
+    <string name="adv_settings_info">Sla alle instellingen op in een bestand of laad ze eruit (bijv. op een nieuwe telefoon). Het bestand bevat ook de sleutels die je voor hoezen hebt ingevuld (Imgur, Spotify, Discogs).</string>
+    <string name="adv_export">Exporteren…</string>
+    <string name="adv_import">Importeren…</string>
+    <string name="adv_reset">Standaardwaarden herstellen</string>
+    <string name="adv_reset_confirm_title">Alle instellingen resetten?</string>
+    <string name="adv_reset_confirm_text">Alle instellingen worden teruggezet naar de standaardwaarden. Exporteer ze eerst als je ze wilt bewaren.</string>
+    <string name="adv_reset_confirm">Resetten</string>
+    <string name="adv_export_keys_title">Exporteren met je sleutels?</string>
+    <string name="adv_export_keys_text">Het bestand bevat je sleutels voor %1$s als platte tekst. Houd het voor jezelf – deel het niet en voeg het niet toe aan een bugmelding.</string>
+    <string name="adv_export_keys_confirm">Exporteren</string>
+    <string name="common_cancel">Annuleren</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">Versie %1$s</string>
+    <string name="about_by">door %1$s</string>
+    <string name="about_on_github">%1$s op GitHub</string>
+    <string name="cd_author_avatar">GitHub-profielfoto van %1$s</string>
+    <string name="cd_account_avatar">Discord-profielfoto van %1$s</string>
+    <string name="about_github">GitHub-pagina</string>
+    <string name="about_releases">Alle releases</string>
+    <string name="about_issues">Probleem melden</string>
+    <string name="about_disclaimer">Een onafhankelijk project – niet verbonden aan of goedgekeurd door Discord of Poweramp.</string>
+    <string name="about_updates_title">Updates</string>
+    <string name="about_update_check">Controleren op updates</string>
+    <string name="about_update_freq">Hoe vaak</string>
+    <string name="upd_every_start">bij elke start van de app</string>
+    <string name="upd_daily">één keer per dag</string>
+    <string name="upd_weekly">één keer per week</string>
+    <string name="upd_monthly">één keer per maand</string>
+    <string name="about_check_now">Nu controleren</string>
+    <string name="upd_never">Nog niet gecontroleerd.</string>
+    <string name="upd_checking">Controleren op updates…</string>
+    <string name="upd_latest">Je hebt de nieuwste versie (laatste controle: %1$s).</string>
+    <string name="upd_available">Versie %1$s is beschikbaar.</string>
+    <string name="upd_failed">Updatecontrole mislukt: geen verbinding met GitHub.</string>
+    <string name="upd_rate_limited">GitHub beperkt op dit moment het aantal verzoeken – probeer het later opnieuw.</string>
+    <string name="upd_no_release">Er is nog geen release gepubliceerd.</string>
+    <string name="upd_bad_answer">Updatecontrole mislukt: het antwoord van GitHub kon niet worden gelezen.</string>
+    <string name="upd_download">%1$s downloaden</string>
+    <string name="upd_whats_new">Wat is er nieuw?</string>
+    <string name="about_update_privacy">De controle vraagt GitHub alleen naar de nieuwste release – verder wordt er niets verzonden.</string>
+    <string name="about_credits_title">Met dank aan</string>
+    <string name="about_credit_poweramp">Poweramp API door Max MP</string>
+    <string name="about_credit_discord">Discord Social SDK RPC-interface via antisocialcord-kt door Nightdavisao (MIT-licentie)</string>
+    <string name="about_credit_covers">Hoezen: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz en het Cover Art Archive</string>
+    <string name="about_credit_aimp">De Android-tegenhanger van “Discord Rich Presence for AIMP” van dezelfde maker</string>
+    <string name="about_changelog_title">Wijzigingen</string>
+    <string name="about_changelog_version">Versie %1$s</string>
+    <string name="about_installed">(geïnstalleerd)</string>
+    <string name="about_translation_note">Let op: de Nederlandse vertaling is gemaakt met AI en kan fouten bevatten – correcties zijn welkom op GitHub (“Probleem melden”).</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">OK</string>
+    <string name="cd_info">Opmerking</string>
+    <string name="cd_warning">Waarschuwing</string>
+    <string name="cd_error">Probleem</string>
+    <string name="field_show">Tonen</string>
+    <string name="field_hide">Verbergen</string>
+    <string name="field_range">Toegestaan: %1$d tot %2$d</string>
+</resources>

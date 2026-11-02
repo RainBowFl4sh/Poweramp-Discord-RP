@@ -21,6 +21,10 @@
     <string name="app_settings_amoled_needs_dark">Nur im dunklen Design – wähle „Dunkel“ oder stelle Android auf das dunkle Design um.</string>
     <string name="app_settings_dynamic">Dynamische Farben (Material You)</string>
     <string name="app_settings_dynamic_sub">Farben aus deinem Hintergrundbild. Aus: die eigenen Discord-ähnlichen Farben der App.</string>
+    <string name="app_settings_language">Sprache</string>
+    <string name="language_system">Systemstandard</string>
+    <string name="language_ai">KI-Übersetzung</string>
+    <string name="app_settings_language_note">Auch in den Android-Einstellungen: Apps → Poweramp Discord RP → Sprache.</string>
     <string name="common_close">Schließen</string>
 
     <!-- Status tab: master switch -->
@@ -35,7 +39,6 @@
     <string name="conn_no_app_id">Keine Discord Application ID eingestellt</string>
     <string name="conn_connecting">Verbinde mit Discord …</string>
     <string name="conn_connected">Mit Discord verbunden</string>
-    <string name="conn_connected_as">Mit Discord verbunden als %1$s</string>
     <string name="conn_testing">Die Test-Presence wird angezeigt.</string>
     <string name="conn_test_waiting">Die Test-Presence wird an Discord gesendet …</string>
     <string name="conn_activity_error">Discord hat die letzte Aktualisierung nicht angenommen: %1$s</string>
@@ -53,6 +56,26 @@
     <string name="conn_service_stopped">läuft nicht</string>
     <string name="conn_service_start">Starten</string>
     <string name="conn_service_stop">Stoppen</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Nicht verknüpft</string>
+    <string name="acc_hint">Verknüpfe dein Discord-Konto, um deinen Namen und dein Profilbild in der Live-Vorschau und hier zu sehen.</string>
+    <string name="acc_link">Discord-Konto verknüpfen</string>
+    <string name="acc_refresh">Aktualisieren</string>
+    <string name="acc_restart">Neu starten</string>
+    <string name="acc_unlink">Verknüpfung lösen</string>
+    <string name="acc_waiting">Warte auf Discord – erlaube dort den Zugriff und kehre dann zu dieser App zurück.</string>
+    <string name="acc_working">Dein Profil wird von Discord gelesen …</string>
+    <string name="acc_privacy">Gelesen werden nur dein Name und dein Profilbild (Discords Zugriff „identify“). Der Zugriff wird sofort widerrufen – die App speichert kein Token.</string>
+    <string name="acc_redirect_hint">Discord meldet „Invalid OAuth2 redirect_uri“? Wem die Discord-Anwendung gehört, muss %1$s im Developer Portal unter OAuth2 → Redirects eintragen.</string>
+    <string name="acc_no_app_id">Braucht eine Discord Application ID (Tab „Erweitert“).</string>
+    <string name="acc_err_cancelled">Verknüpfung abgebrochen – Discord durfte dein Profil nicht teilen.</string>
+    <string name="acc_err_redirect">Die Discord-Anwendung kennt die Rücksprungadresse dieser App nicht. Wem sie gehört, muss %1$s im Developer Portal unter OAuth2 → Redirects eintragen.</string>
+    <string name="acc_err_public_client">Discord verlangt ein Client-Secret: „Public Client“ ist für die Discord-Anwendung nicht eingeschaltet (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">Die Anmeldung hat zu lange gedauert oder wurde schon verwendet – bitte versuche es noch einmal.</string>
+    <string name="acc_err_network">Discord ist nicht erreichbar – prüfe die Internetverbindung und versuche es noch einmal.</string>
+    <string name="acc_err_discord">Discord hat die Anmeldung abgelehnt – bitte versuche es später noch einmal.</string>
+    <string name="acc_err_bad_answer">Discord hat unerwartet geantwortet – bitte versuche es später noch einmal.</string>
 
     <!-- Connection errors (TransportError) -->
     <string name="err_none">Nicht mit Discord verbunden – neuer Versuch läuft</string>
@@ -143,6 +166,9 @@
     <string name="msg_reset">Alle Einstellungen wurden auf die Standardwerte zurückgesetzt.</string>
     <string name="msg_log_copied">Log kopiert.</string>
     <string name="msg_up_to_date">Du hast die neueste Version.</string>
+    <string name="msg_account_linked">Discord-Konto verknüpft: %1$s</string>
+    <string name="msg_account_failed">Das Verknüpfen des Discord-Kontos hat nicht geklappt – Details im Tab „Status“.</string>
+    <string name="msg_account_unlinked">Verknüpfung mit dem Discord-Konto gelöst.</string>
 
     <!-- Display tab: live preview (drawn like Discord) -->
     <string name="disp_preview_title">Live-Vorschau</string>
@@ -158,6 +184,7 @@
     <string name="prev_icon_tip">Symbol: %1$s</string>
     <string name="prev_link">Link: %1$s</string>
     <string name="prev_no_link">Titel ohne Link</string>
+    <string name="prev_link_account">Verknüpfe dein Discord-Konto, um hier deinen Namen und dein Profilbild zu sehen</string>
 
     <!-- Display tab: activity -->
     <string name="disp_activity_title">Aktivität</string>
@@ -325,6 +352,7 @@
     <string name="about_by">von %1$s</string>
     <string name="about_on_github">%1$s auf GitHub</string>
     <string name="cd_author_avatar">GitHub-Profilbild von %1$s</string>
+    <string name="cd_account_avatar">Discord-Profilbild von %1$s</string>
     <string name="about_github">GitHub-Seite</string>
     <string name="about_releases">Alle Versionen</string>
     <string name="about_issues">Problem melden</string>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">再生中</string>
+    <string name="status_paused">一時停止中</string>
+    <string name="status_test_line">接続できています！</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Discordプレゼンス</string>
+    <string name="svc_channel_desc">アプリがDiscordのステータスをPowerampと同期している間に表示されます</string>
+    <string name="svc_alert_channel_name">アラート</string>
+    <string name="svc_alert_channel_desc">対応が必要な問題（Androidがバックグラウンドでの起動をブロックした場合など）</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Discordに表示中</string>
+    <string name="svc_showing_paused">一時停止中 – Discordに表示中</string>
+    <string name="svc_hidden_paused">一時停止中 – Discordでは非表示</string>
+    <string name="svc_hidden">Discordには何も表示されていません</string>
+    <string name="svc_testing">Discordにテスト用プレゼンスを表示中</string>
+    <string name="svc_sending">Discordに送信しています…</string>
+    <string name="svc_update_rejected">Discordがプレゼンスを受け付けませんでした – 詳細はアプリで確認してください</string>
+    <string name="svc_connecting">Discordに接続しています…</string>
+    <string name="svc_waiting">Powerampを待っています…</string>
+    <string name="svc_not_connected">Discordに接続されていません – 再試行しています</string>
+    <string name="svc_discord_missing">Discordアプリがインストールされていません</string>
+    <string name="svc_rejected">DiscordがアプリケーションIDを拒否しました</string>
+    <string name="svc_no_app_id">DiscordアプリケーションIDが設定されていません</string>
+    <string name="svc_disabled">Discord Rich Presenceはオフです</string>
+    <string name="svc_action_stop">停止</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Discordプレゼンスを開始できませんでした</string>
+    <string name="svc_bg_blocked_text">Androidがアプリのバックグラウンドでの起動を許可していません。タップしてアプリを開き、バックグラウンドでの実行を許可してください（電池の最適化）。</string>
+</resources>

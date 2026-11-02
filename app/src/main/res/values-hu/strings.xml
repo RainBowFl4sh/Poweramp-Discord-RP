@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">Állapot</string>
+    <string name="tab_display">Megjelenítés</string>
+    <string name="tab_cover">Borító</string>
+    <string name="tab_sources">Források</string>
+    <string name="tab_advanced">Speciális</string>
+    <string name="tab_about">Névjegy</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">További lehetőségek</string>
+    <string name="app_settings_title">Alkalmazásbeállítások</string>
+    <string name="app_settings_theme">Téma</string>
+    <string name="theme_system">Rendszerbeállítás követése</string>
+    <string name="theme_light">Világos</string>
+    <string name="theme_dark">Sötét</string>
+    <string name="app_settings_amoled">AMOLED fekete</string>
+    <string name="app_settings_amoled_on">Tiszta fekete háttér sötét módban – kíméli az akkumulátort OLED kijelzőn.</string>
+    <string name="app_settings_amoled_needs_dark">Csak sötét módban – válaszd a „Sötét” témát, vagy kapcsold az Androidot sötét módba.</string>
+    <string name="app_settings_dynamic">Dinamikus színek (Material You)</string>
+    <string name="app_settings_dynamic_sub">Színek a háttérképedből. Kikapcsolva: az alkalmazás saját, Discordhoz hasonló színei.</string>
+    <string name="app_settings_language">Nyelv</string>
+    <string name="language_system">Rendszer alapértelmezése</string>
+    <string name="language_ai">MI-fordítás</string>
+    <string name="app_settings_language_note">Az Android beállításaiban is: Alkalmazások → Poweramp Discord RP → Nyelv.</string>
+    <string name="common_close">Bezárás</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">A Discord-állapotod mutatja, mit játszik a Poweramp</string>
+    <string name="master_off">Kikapcsolva – a Discord nem mutat semmit</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Kapcsolat</string>
+    <string name="conn_idle">Várakozás – most nincs mit megjeleníteni</string>
+    <string name="conn_disabled">Kikapcsolva</string>
+    <string name="conn_no_app_id">Nincs megadva Discord-alkalmazásazonosító</string>
+    <string name="conn_connecting">Csatlakozás a Discordhoz…</string>
+    <string name="conn_connected">Csatlakozva a Discordhoz</string>
+    <string name="conn_testing">A tesztállapot látható.</string>
+    <string name="conn_test_waiting">Tesztállapot küldése a Discordnak…</string>
+    <string name="conn_activity_error">A Discord nem fogadta el a legutóbbi frissítést: %1$s</string>
+    <string name="conn_detail">Részletek: %1$s</string>
+    <string name="conn_user">Discord-fiók</string>
+    <string name="conn_app_id">Alkalmazásazonosító</string>
+    <string name="conn_app_builtin">%1$s (beépített)</string>
+    <string name="conn_app_own">%1$s (saját)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">Utolsó frissítés</string>
+    <string name="conn_never">még nem volt</string>
+    <string name="conn_connections">Kapcsolódások</string>
+    <string name="conn_service">Háttérszolgáltatás</string>
+    <string name="conn_service_running">fut</string>
+    <string name="conn_service_stopped">nem fut</string>
+    <string name="conn_service_start">Indítás</string>
+    <string name="conn_service_stop">Leállítás</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Nincs összekapcsolva</string>
+    <string name="acc_hint">Kapcsold össze a Discord-fiókodat, hogy a neved és a képed itt és az élő előnézetben is látható legyen.</string>
+    <string name="acc_link">Discord-fiók összekapcsolása</string>
+    <string name="acc_refresh">Frissítés</string>
+    <string name="acc_restart">Újrakezdés</string>
+    <string name="acc_unlink">Leválasztás</string>
+    <string name="acc_waiting">Várakozás a Discordra – engedélyezd ott a hozzáférést, majd térj vissza ebbe az alkalmazásba.</string>
+    <string name="acc_working">Profilod beolvasása a Discordról…</string>
+    <string name="acc_privacy">Csak a nevedet és a profilképedet olvassa be (a Discord „identify” hozzáférésével). A hozzáférést azonnal visszavonja – az alkalmazás nem tárol tokent.</string>
+    <string name="acc_redirect_hint">A Discord azt írja: „Invalid OAuth2 redirect_uri”? A Discord-alkalmazás tulajdonosának fel kell vennie a(z) %1$s címet a Developer Portalon az OAuth2 → Redirects alatt.</string>
+    <string name="acc_no_app_id">Discord-alkalmazásazonosító szükséges (Speciális lap).</string>
+    <string name="acc_err_cancelled">Az összekapcsolás megszakadt – a Discord nem kapott engedélyt a profilod megosztására.</string>
+    <string name="acc_err_redirect">A Discord-alkalmazás nem ismeri ennek az alkalmazásnak a visszatérési címét. A tulajdonosnak fel kell vennie a(z) %1$s címet a Developer Portalon az OAuth2 → Redirects alatt.</string>
+    <string name="acc_err_public_client">A Discord kliens titkos kulcsot kér: a „Public Client” nincs bekapcsolva a Discord-alkalmazásnál (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">A bejelentkezés túl sokáig tartott, vagy már felhasználták – próbáld újra.</string>
+    <string name="acc_err_network">A Discord nem érhető el – ellenőrizd az internetkapcsolatot, és próbáld újra.</string>
+    <string name="acc_err_discord">A Discord elutasította a bejelentkezést – próbáld újra később.</string>
+    <string name="acc_err_bad_answer">A Discord váratlan választ küldött – próbáld újra később.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Nincs kapcsolat a Discorddal – újrapróbálkozás</string>
+    <string name="err_discord_missing">A Discord nincs telepítve</string>
+    <string name="err_bind_failed">A telepített Discord nem kínálja a Rich Presence szolgáltatást – frissítsd a Discordot</string>
+    <string name="err_connect_failed">A Discord nem fogadta el a kapcsolatot – újrapróbálkozás</string>
+    <string name="err_closed">A Discord bontotta a kapcsolatot – újracsatlakozás</string>
+    <string name="err_invalid_client_id">A Discord elutasította az alkalmazásazonosítót – ellenőrizd a Speciális lapon</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Most szól</string>
+    <string name="now_nothing">A Poweramp nem játszik le semmit.</string>
+    <string name="word_playing">Lejátszás</string>
+    <string name="word_paused">Szüneteltetve</string>
+    <string name="hidden_no">A Discord ezt a számot mutatja.</string>
+    <string name="hidden_disabled">A Rich Presence ki van kapcsolva – a Discord nem mutat semmit.</string>
+    <string name="hidden_stopped">Semmi sem szól – a Discord nem mutat semmit.</string>
+    <string name="hidden_stream">Az internetes rádiók / streamek el vannak rejtve (Megjelenítés lap) – a Discord nem mutat semmit.</string>
+    <string name="hidden_path">Ezt a fájlt az útvonalszűrő elrejti (Megjelenítés lap) – a Discord nem mutat semmit.</string>
+    <string name="hidden_paused">A lejátszás szünetel, és az „Elrejtés” van kiválasztva (Megjelenítés lap): a Discord a többi tevékenységedet mutatja.</string>
+    <string name="hidden_timeout">Tovább szünetel, mint a Megjelenítés lapon beállított idő – az állapot eltávolítva.</string>
+    <string name="now_user_stopped">Leállítottad – a Discord nem mutat semmit, amíg a Poweramp újra le nem játszik valamit.</string>
+    <string name="now_rejected">A Discord nem fogadta el ezt az állapotot – lásd „Kapcsolat”.</string>
+    <string name="now_after_test">A Discord most a tesztállapotot mutatja – utána ez a szám következik.</string>
+    <string name="now_test_shown">A Discord most a tesztállapotot mutatja.</string>
+    <string name="now_sending">Küldés a Discordnak…</string>
+    <string name="now_not_connected">A Discord még nem mutatja – lásd „Kapcsolat”.</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Tesztállapot küldése</string>
+    <string name="btn_reconnect">Újracsatlakozás</string>
+    <string name="btn_open_poweramp">Poweramp megnyitása</string>
+    <string name="btn_open_discord">Discord megnyitása</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Beállítás</string>
+    <string name="check_checking">Ellenőrzés…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">%1$s verzió (build %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">%1$s verzió</string>
+    <string name="check_poweramp_old">A(z) %1$s verzió (build %2$d) túl régi – ehhez az alkalmazáshoz legalább %3$d buildszámú verzió kell.</string>
+    <string name="check_poweramp_missing">A Poweramp nincs telepítve.</string>
+    <string name="check_poweramp_get">Poweramp beszerzése</string>
+    <string name="check_poweramp_update">Poweramp frissítése</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Telepítve, a Rich Presence szolgáltatás elérhető</string>
+    <string name="check_discord_no_rpc">Ez a Discord-verzió nem kínálja a Rich Presence szolgáltatást más alkalmazásoknak. Frissítsd a Discordot.</string>
+    <string name="check_discord_missing">A Discord nincs telepítve.</string>
+    <string name="check_discord_get">Discord beszerzése</string>
+    <string name="check_discord_update">Discord frissítése</string>
+    <string name="check_appid_title">Discord-alkalmazás</string>
+    <string name="check_appid_own">Saját alkalmazás (azonosító: %1$s)</string>
+    <string name="check_appid_missing">Ebbe a buildbe nincs beépítve alkalmazásazonosító. Hozz létre saját Discord-alkalmazást, és add meg az azonosítóját a Speciális lapon.</string>
+    <string name="check_appid_invalid">A saját alkalmazásazonosítód érvénytelen (17–20 számjegy), és ebbe a buildbe sincs beépítve azonosító.</string>
+    <string name="check_appid_invalid_fallback">A saját alkalmazásazonosítód érvénytelen (17–20 számjegy) – a beépített alkalmazás (azonosító: %1$s) van használatban.</string>
+    <string name="check_appid_builtin_invalid">Az ebbe a buildbe beépített alkalmazásazonosító (%1$s) érvénytelen (17–20 számjegy). Hozz létre saját Discord-alkalmazást, és add meg az azonosítóját a Speciális lapon.</string>
+    <string name="check_appid_both_invalid">A saját alkalmazásazonosítód érvénytelen (17–20 számjegy), és az ebbe a buildbe beépített (%1$s) sem érvényes.</string>
+    <string name="check_appid_fix">Beállítás</string>
+    <string name="check_battery_title">Akkumulátor-optimalizálás</string>
+    <string name="check_battery_ok">Ki van kapcsolva ennél az alkalmazásnál – elindulhat a háttérben, amikor a Poweramp lejátszásba kezd.</string>
+    <string name="check_battery_bad">Előfordulhat, hogy az Android nem engedi elindulni az alkalmazást, amikor a Poweramp lejátszásba kezd, vagy később leállítja. Vedd ki az akkumulátor-optimalizálás alól.</string>
+    <string name="check_battery_fix">Engedélyezés</string>
+    <string name="check_notif_title">Értesítések</string>
+    <string name="check_notif_ok">Engedélyezve – az állapotértesítés mutatja, mit lát a Discord.</string>
+    <string name="check_notif_bad">Nincs engedélyezve – az alkalmazás nem tudja megjeleníteni az állapotértesítést, miközben naprakészen tartja az állapotodat.</string>
+    <string name="check_notif_fix">Engedélyezés</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Jó tudni</string>
+    <string name="hint_privacy_title">Tevékenység megosztása a Discordon</string>
+    <string name="hint_privacy">A Discordban: Beállítások → Tevékenységi adatvédelem → kapcsold be a „Tevékenység megosztása” lehetőséget. Különben senki sem látja, mit hallgatsz.</string>
+    <string name="hint_poweramp_title">Első indítás</string>
+    <string name="hint_poweramp">Az alkalmazás telepítése után nyomd meg egyszer a szünet és a lejátszás gombot a Powerampban, hogy a Poweramp észlelje az alkalmazást, és elküldje neki a szám adatait.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Tesztállapot küldése – %1$d másodpercig látható.</string>
+    <string name="msg_reconnecting">Újracsatlakozás…</string>
+    <string name="msg_stop_ended">A leállítás véget ért – a Discord ismét a Powerampot mutatja.</string>
+    <string name="msg_start_blocked">Az Android nem engedte a háttérben való indítást – engedélyezd az „Akkumulátor-optimalizálás” alatt.</string>
+    <string name="msg_service_started">Háttérszolgáltatás elindítva.</string>
+    <string name="msg_service_stopped">Leállítva, amíg a Poweramp újra le nem játszik valamit.</string>
+    <string name="msg_cannot_open">Nem található alkalmazás a megnyitáshoz.</string>
+    <string name="msg_cover_cleared">Borítógyorsítótár törölve.</string>
+    <string name="msg_exported">Beállítások mentve.</string>
+    <string name="msg_export_failed">A beállításokat nem sikerült menteni.</string>
+    <string name="msg_imported">Beállítások importálva.</string>
+    <string name="msg_import_failed">Ez a fájl nem tartalmazza ennek az alkalmazásnak a beállításait.</string>
+    <string name="msg_reset">Minden beállítás visszaállt az alapértelmezett értékre.</string>
+    <string name="msg_log_copied">Napló másolva.</string>
+    <string name="msg_up_to_date">A legújabb verziót használod.</string>
+    <string name="msg_account_linked">Discord-fiók összekapcsolva: %1$s</string>
+    <string name="msg_account_failed">A Discord-fiók összekapcsolása nem sikerült – részletek az Állapot lapon.</string>
+    <string name="msg_account_unlinked">Discord-fiók leválasztva.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Élő előnézet</string>
+    <string name="prev_listening">Hallgatja: %1$s</string>
+    <string name="prev_playing">Játszik: %1$s</string>
+    <string name="prev_app_own">saját alkalmazásod</string>
+    <string name="prev_you">Te</string>
+    <string name="prev_elapsed">%1$s telt el</string>
+    <string name="prev_example">Példa – most semmi sem szól.</string>
+    <string name="prev_example_title">Példacím</string>
+    <string name="prev_example_artist">Példaelőadó</string>
+    <string name="prev_example_album">Példaalbum</string>
+    <string name="prev_icon_tip">Ikon: %1$s</string>
+    <string name="prev_link">Link: %1$s</string>
+    <string name="prev_no_link">Cím link nélkül</string>
+    <string name="prev_link_account">Kapcsold össze a Discord-fiókodat, hogy itt lásd a neved és a képed</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Tevékenység</string>
+    <string name="disp_type">Tevékenység típusa</string>
+    <string name="disp_type_listening">Hallgatás (folyamatjelzővel)</string>
+    <string name="disp_type_playing">Játék (csak az eltelt idővel)</string>
+    <string name="disp_status_display">A Discord állapotszövege ezt mutatja</string>
+    <string name="disp_status_name">Alkalmazás neve (Poweramp)</string>
+    <string name="disp_status_state">Második sor (előadó)</string>
+    <string name="disp_status_details">Első sor (szám címe)</string>
+    <string name="disp_timestamps">Folyamatjelző / eltelt idő megjelenítése</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Szövegek</string>
+    <string name="disp_details">Első sor</string>
+    <string name="disp_state">Második sor</string>
+    <string name="disp_large_text">Borító elemleírása</string>
+    <string name="disp_small_text">Ikon elemleírása</string>
+    <string name="disp_insert_into">Koppints egy helyőrzőre, hogy beszúrd ide: „%1$s”</string>
+    <string name="disp_placeholders_help">Mit jelentenek a helyőrzők</string>
+    <string name="disp_rotation_help" formatted="false">Tegyél || jelet a szövegek közé, hogy felváltva jelenjenek meg, pl. %artist% || %title% (a váltási időköz lent állítható).</string>
+    <string name="ph_title">szám címe</string>
+    <string name="ph_artist">előadó</string>
+    <string name="ph_album">album</string>
+    <string name="ph_filename">fájlnév kiterjesztés nélkül</string>
+    <string name="ph_ext">fájlkiterjesztés (flac, mp3 …)</string>
+    <string name="ph_pos">aktuális pozíció (1:23)</string>
+    <string name="ph_dur">hossz (3:45)</string>
+    <string name="ph_percent">haladás százalékban</string>
+    <string name="ph_bar">szöveges folyamatjelző ▰▰▰▱▱▱</string>
+    <string name="ph_status">Lejátszás / Szüneteltetve</string>
+    <string name="ph_codec">kodek (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">bitráta (320 kbps)</string>
+    <string name="ph_samplerate">mintavételi frekvencia (44,1 kHz)</string>
+    <string name="ph_bits">bitmélység (24 bit)</string>
+    <string name="ph_track">sorszám az aktuális listában</string>
+    <string name="ph_listsize">a listában lévő számok darabszáma</string>
+    <string name="ph_rating">értékelés ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">felváltva megjelenő változatok között, pl. %artist% || %title%</string>
+    <string name="disp_small_icon">Lejátszás/szünet ikon megjelenítése (kis kép)</string>
+    <string name="disp_bar_length" formatted="false">A %bar% hossza</string>
+    <string name="disp_bar_length_value">%1$d karakter</string>
+    <string name="disp_refresh">Frissítési időköz</string>
+    <string name="disp_refresh_value">%1$d mp</string>
+    <string name="disp_refresh_note" formatted="false">Csak akkor számít, ha egy szöveg tartalmazza a %pos%, %bar% vagy %percent% helyőrzőt. A Discord percenként csak néhány frissítést fogad el.</string>
+    <string name="disp_rotation">Váltási időköz</string>
+    <string name="disp_rotation_value">%1$d mp</string>
+    <string name="disp_rotation_note">Csak akkor számít, ha egy szöveg tartalmazza a || jelet. Minden szám az első változattal kezdődik, az üresek kimaradnak. A Discord 20 másodpercenként csak 5 frissítést fogad el, ezért legalább 5 mp.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Kattintható cím</string>
+    <string name="disp_title_link">Kattintható dalcím (YouTube-keresés az előadóra és a címre)</string>
+    <string name="disp_own_link">Saját link</string>
+    <string name="disp_own_link_url">Link</string>
+    <string name="disp_own_link_hint" formatted="false">Itt is működnek a helyőrzők, pl. https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">A linknek http:// vagy https:// előtaggal kell kezdődnie</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Szünet</string>
+    <string name="disp_paused">Szüneteltetéskor</string>
+    <string name="disp_paused_show">„Szüneteltetve” állapot megjelenítése</string>
+    <string name="disp_paused_hide">Elrejtés (a többi tevékenység látszik)</string>
+    <string name="disp_clear_after">Eltávolítás ennyi perc szünet után</string>
+    <string name="disp_clear_after_hint">0 = soha (csak ha a „Szüneteltetve” látható)</string>
+    <string name="disp_filters_title">Szűrők</string>
+    <string name="disp_hide_streams">Állapot elrejtése internetes rádiónál / streameknél</string>
+    <string name="disp_exclude_paths">Elrejtés, ha a fájl útvonala tartalmazza</string>
+    <string name="disp_exclude_paths_hint">pl. Hangoskönyvek;Podcastok</string>
+    <string name="disp_exclude_paths_note">Több rész ;-vel elválasztva (a kis- és nagybetű nem számít)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Albumborító megjelenítése a Discordon</string>
+    <string name="cov_info">A Discord csak nyilvános linkkel rendelkező borítókat jelenít meg. A Poweramp által mutatott borító feltölthető (az x0.at-hez nem kell fiók), vagy online megkereshető (lásd „Források”). Minden borítót csak egyszer keres meg, majd gyorsítótárba menti.</string>
+    <string name="cov_local_title">A Poweramp borítója</string>
+    <string name="cov_local">A Poweramp által mutatott borító használata</string>
+    <string name="cov_local_sub">A fájlba ágyazott, a mappában lévő vagy a Poweramp által letöltött kép – feltöltve, hogy nyilvános linket kapjon</string>
+    <string name="cov_upload">Borítók feltöltése ide</string>
+    <string name="cov_upload_x0">x0.at (fiók nélkül)</string>
+    <string name="cov_upload_catbox">catbox.moe (fiók nélkül)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Ki (csak online keresés)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Az Imgurhöz Client-ID kell – enélkül egy másik szolgáltatás ugrik be.</string>
+    <string name="cov_imgur_get">Client-ID beszerzése</string>
+    <string name="cov_prefer_local">A Poweramp borítójának előnyben részesítése</string>
+    <string name="cov_prefer_local_sub">Online keresés csak borító nélküli számoknál</string>
+    <string name="cov_size">Feltöltött borítók mérete</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">A feltöltött borítókat bárki láthatja, akinek megvan a link.</string>
+    <string name="cov_current_title">Jelenlegi borító</string>
+    <string name="cov_off">A borítók ki vannak kapcsolva – a Discord az alkalmazás logóját mutatja.</string>
+    <string name="cov_nothing">Semmi sem szól.</string>
+    <string name="cov_searching">Borító keresése…</string>
+    <string name="cov_not_yet">A borító keresése akkor kezdődik, amikor a Discord megjeleníti ezt a számot.</string>
+    <string name="cov_none">A Discord az alkalmazás logóját mutatja: nem található borító, vagy a Discord nem tudta betölteni.</string>
+    <string name="cov_source">Forrás: %1$s</string>
+    <string name="cov_src_cache">borítógyorsítótár</string>
+    <string name="cov_src_online">online találat (%1$s)</string>
+    <string name="cov_src_poweramp">a Poweramp borítója</string>
+    <string name="cov_src_uploaded">%1$s, feltöltve ide: %2$s</string>
+    <string name="cov_open">Kép megnyitása</string>
+    <string name="cov_clear">Borítógyorsítótár törlése</string>
+    <string name="cov_image_desc">Albumborító</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Az online keresés az előadó / album alapján keres, és közvetlenül a nyilvános képlinket használja – semmit sem tölt fel. A forrásokat fentről lefelé próbálja végig, az első találat nyer.</string>
+    <string name="src_covers_off">A borítók ki vannak kapcsolva – nincs keresés.</string>
+    <string name="src_open_cover_tab">Borítóbeállítások</string>
+    <string name="src_prefer_local_note">„A Poweramp borítójának előnyben részesítése” be van kapcsolva: online keresés csak a borító nélküli számoknál történik.</string>
+    <string name="src_list_title">Online források</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Ingyenes fejlesztői alkalmazás szükséges (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Add meg a Client ID-t és a Secretet, különben a Spotify kimarad.</string>
+    <string name="src_create_app">Alkalmazás létrehozása</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Nem kell kulcs (nem hivatalos felület)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Ingyenes személyes hozzáférési token szükséges</string>
+    <string name="src_token">Token</string>
+    <string name="src_discogs_missing">Adj meg egy tokent, különben a Discogs kimarad.</string>
+    <string name="src_get_token">Token beszerzése</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Nem kell kulcs</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Discord-alkalmazás</string>
+    <string name="adv_custom_app">Saját Discord-alkalmazás használata</string>
+    <string name="adv_custom_app_sub">A Discord annak a nevét mutatja („Hallgatja: …”)</string>
+    <string name="adv_app_id">Alkalmazásazonosító</string>
+    <string name="adv_app_id_hint">Developer Portal → az alkalmazásod → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">Az alkalmazásazonosító 17–20 számjegyből áll.</string>
+    <string name="adv_portal">Developer Portal megnyitása</string>
+    <string name="adv_assets_note">A Rich Presence → Art Assets alatt tölts fel „poweramp” (logó), „play” és „pause” nevű képeket.</string>
+    <string name="adv_effective">Használt alkalmazásazonosító</string>
+    <string name="adv_effective_none">nincs – ebben a buildben nincs beépített azonosító, használj saját alkalmazást</string>
+    <string name="adv_compat_title">Kompatibilitás</string>
+    <string name="adv_seconds">Időbélyegek küldése másodpercben</string>
+    <string name="adv_seconds_sub">Csak ha a Discord rossz időt mutat, vagy nincs folyamatjelző</string>
+    <string name="adv_log_title">Legutóbbi napló</string>
+    <string name="adv_log_empty">Még nincs naplóbejegyzés.</string>
+    <string name="adv_log_copy">Másolás</string>
+    <string name="adv_log_share">Megosztás</string>
+    <string name="adv_log_clear">Törlés</string>
+    <string name="adv_log_share_subject">Poweramp Discord RP napló</string>
+    <string name="adv_settings_title">Beállításfájl</string>
+    <string name="adv_settings_info">Az összes beállítás mentése fájlba vagy betöltése fájlból (pl. új telefonon). A fájl a borítókhoz megadott kulcsokat is tartalmazza (Imgur, Spotify, Discogs).</string>
+    <string name="adv_export">Exportálás…</string>
+    <string name="adv_import">Importálás…</string>
+    <string name="adv_reset">Alapértelmezések visszaállítása</string>
+    <string name="adv_reset_confirm_title">Visszaállítod az összes beállítást?</string>
+    <string name="adv_reset_confirm_text">Minden beállítás visszaáll az alapértelmezettre. Ha meg szeretnéd tartani őket, előbb exportáld.</string>
+    <string name="adv_reset_confirm">Visszaállítás</string>
+    <string name="adv_export_keys_title">Exportálod a kulcsaiddal együtt?</string>
+    <string name="adv_export_keys_text">A fájl titkosítatlanul tartalmazza a kulcsaidat ehhez: %1$s. Őrizd meg magadnál – ne oszd meg senkivel, és ne csatold hibajelentéshez.</string>
+    <string name="adv_export_keys_confirm">Exportálás</string>
+    <string name="common_cancel">Mégse</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">%1$s verzió</string>
+    <string name="about_by">Készítette: %1$s</string>
+    <string name="about_on_github">%1$s a GitHubon</string>
+    <string name="cd_author_avatar">%1$s GitHub-profilképe</string>
+    <string name="cd_account_avatar">%1$s Discord-profilképe</string>
+    <string name="about_github">GitHub-oldal</string>
+    <string name="about_releases">Összes kiadás</string>
+    <string name="about_issues">Hiba bejelentése</string>
+    <string name="about_disclaimer">Független projekt – nem kapcsolódik a Discordhoz vagy a Poweramphoz, és ezek nem is támogatják.</string>
+    <string name="about_updates_title">Frissítések</string>
+    <string name="about_update_check">Frissítések keresése</string>
+    <string name="about_update_freq">Milyen gyakran</string>
+    <string name="upd_every_start">minden alkalmazásindításkor</string>
+    <string name="upd_daily">naponta egyszer</string>
+    <string name="upd_weekly">hetente egyszer</string>
+    <string name="upd_monthly">havonta egyszer</string>
+    <string name="about_check_now">Ellenőrzés most</string>
+    <string name="upd_never">Még nem volt ellenőrzés.</string>
+    <string name="upd_checking">Frissítések keresése…</string>
+    <string name="upd_latest">A legújabb verziót használod (utolsó ellenőrzés: %1$s).</string>
+    <string name="upd_available">Elérhető a(z) %1$s verzió.</string>
+    <string name="upd_failed">A frissítéskeresés nem sikerült: nincs kapcsolat a GitHubbal.</string>
+    <string name="upd_rate_limited">A GitHub most korlátozza a kéréseket – próbáld újra később.</string>
+    <string name="upd_no_release">Még nem jelent meg kiadás.</string>
+    <string name="upd_bad_answer">A frissítéskeresés nem sikerült: a GitHub válasza nem olvasható.</string>
+    <string name="upd_download">%1$s letöltése</string>
+    <string name="upd_whats_new">Újdonságok</string>
+    <string name="about_update_privacy">Az ellenőrzés csak a legújabb kiadást kérdezi le a GitHubtól – semmi mást nem küld el.</string>
+    <string name="about_credits_title">Köszönetnyilvánítás</string>
+    <string name="about_credit_poweramp">Poweramp API: Max MP</string>
+    <string name="about_credit_discord">Discord Social SDK RPC-felület az antisocialcord-kt segítségével, készítette: Nightdavisao (MIT-licenc)</string>
+    <string name="about_credit_covers">Borítók: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz és a Cover Art Archive</string>
+    <string name="about_credit_aimp">Az ugyanattól a szerzőtől származó „Discord Rich Presence for AIMP” androidos testvére</string>
+    <string name="about_changelog_title">Változásnapló</string>
+    <string name="about_changelog_version">%1$s verzió</string>
+    <string name="about_installed">(telepítve)</string>
+    <string name="about_translation_note">Ezt a fordítást mesterséges intelligencia készítette, ezért hibákat tartalmazhat – a javításokat szívesen fogadjuk a GitHubon (a „Hiba bejelentése” gombbal).</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">OK</string>
+    <string name="cd_info">Megjegyzés</string>
+    <string name="cd_warning">Figyelmeztetés</string>
+    <string name="cd_error">Probléma</string>
+    <string name="field_show">Megjelenítés</string>
+    <string name="field_hide">Elrejtés</string>
+    <string name="field_range">Megengedett: %1$d–%2$d</string>
+</resources>

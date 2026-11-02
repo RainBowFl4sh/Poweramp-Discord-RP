@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">Afspiller</string>
+    <string name="status_paused">Sat på pause</string>
+    <string name="status_test_line">Forbindelsen virker!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Discord-visning</string>
+    <string name="svc_channel_desc">Vises, mens appen holder din Discord-status synkroniseret med Poweramp</string>
+    <string name="svc_alert_channel_name">Advarsler</string>
+    <string name="svc_alert_channel_desc">Problemer, der kræver din opmærksomhed, f.eks. når Android blokerer start i baggrunden</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Vises på Discord</string>
+    <string name="svc_showing_paused">Sat på pause – vises på Discord</string>
+    <string name="svc_hidden_paused">Sat på pause – skjult på Discord</string>
+    <string name="svc_hidden">Intet vises på Discord</string>
+    <string name="svc_testing">Testvisning vises på Discord</string>
+    <string name="svc_sending">Sender til Discord…</string>
+    <string name="svc_update_rejected">Discord accepterede ikke visningen – detaljer i appen</string>
+    <string name="svc_connecting">Opretter forbindelse til Discord…</string>
+    <string name="svc_waiting">Venter på Poweramp…</string>
+    <string name="svc_not_connected">Ikke forbundet til Discord – prøver igen</string>
+    <string name="svc_discord_missing">Discord-appen er ikke installeret</string>
+    <string name="svc_rejected">Discord afviste applikations-id’et</string>
+    <string name="svc_no_app_id">Intet Discord-applikations-id er angivet</string>
+    <string name="svc_disabled">Discord Rich Presence er slået fra</string>
+    <string name="svc_action_stop">Stop</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Discord-visningen kunne ikke starte</string>
+    <string name="svc_bg_blocked_text">Android lader ikke appen starte i baggrunden. Tryk for at åbne appen og tillade, at den kører i baggrunden (batterioptimering).</string>
+</resources>

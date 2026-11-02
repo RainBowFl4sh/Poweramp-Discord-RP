@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">状态</string>
+    <string name="tab_display">显示</string>
+    <string name="tab_cover">封面</string>
+    <string name="tab_sources">来源</string>
+    <string name="tab_advanced">高级</string>
+    <string name="tab_about">关于</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">更多选项</string>
+    <string name="app_settings_title">应用设置</string>
+    <string name="app_settings_theme">主题</string>
+    <string name="theme_system">跟随系统</string>
+    <string name="theme_light">浅色</string>
+    <string name="theme_dark">深色</string>
+    <string name="app_settings_amoled">AMOLED 纯黑</string>
+    <string name="app_settings_amoled_on">深色模式下使用纯黑背景，在 OLED 屏幕上更省电。</string>
+    <string name="app_settings_amoled_needs_dark">仅限深色模式：请选择“深色”，或将 Android 切换到深色模式。</string>
+    <string name="app_settings_dynamic">动态配色 (Material You)</string>
+    <string name="app_settings_dynamic_sub">根据壁纸取色。关闭时使用应用自带的类 Discord 配色。</string>
+    <string name="app_settings_language">语言</string>
+    <string name="language_system">系统默认</string>
+    <string name="language_ai">AI 翻译</string>
+    <string name="app_settings_language_note">也可在 Android 设置中更改：应用 → Poweramp Discord RP → 语言。</string>
+    <string name="common_close">关闭</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">你的 Discord 状态会显示 Poweramp 正在播放的内容</string>
+    <string name="master_off">已关闭，Discord 不显示任何内容</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">连接</string>
+    <string name="conn_idle">等待中，目前没有可显示的内容</string>
+    <string name="conn_disabled">已关闭</string>
+    <string name="conn_no_app_id">未配置 Discord 应用 ID</string>
+    <string name="conn_connecting">正在连接 Discord…</string>
+    <string name="conn_connected">已连接到 Discord</string>
+    <string name="conn_testing">正在显示测试状态。</string>
+    <string name="conn_test_waiting">正在向 Discord 发送测试状态…</string>
+    <string name="conn_activity_error">Discord 未接受上一次更新：%1$s</string>
+    <string name="conn_detail">详情：%1$s</string>
+    <string name="conn_user">Discord 账号</string>
+    <string name="conn_app_id">应用 ID</string>
+    <string name="conn_app_builtin">%1$s（内置）</string>
+    <string name="conn_app_own">%1$s（你自己的）</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">上次更新</string>
+    <string name="conn_never">暂无</string>
+    <string name="conn_connections">连接次数</string>
+    <string name="conn_service">后台服务</string>
+    <string name="conn_service_running">运行中</string>
+    <string name="conn_service_stopped">未运行</string>
+    <string name="conn_service_start">启动</string>
+    <string name="conn_service_stop">停止</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">未关联</string>
+    <string name="acc_hint">关联你的 Discord 账号后，即可在此处和实时预览中看到你的名称和头像。</string>
+    <string name="acc_link">关联 Discord 账号</string>
+    <string name="acc_refresh">刷新</string>
+    <string name="acc_restart">重新开始</string>
+    <string name="acc_unlink">取消关联</string>
+    <string name="acc_waiting">正在等待 Discord：请在 Discord 中允许访问，然后返回本应用。</string>
+    <string name="acc_working">正在从 Discord 读取你的个人资料…</string>
+    <string name="acc_privacy">只会读取你的名称和头像（Discord 的“identify”权限）。访问权限会立即撤销，应用不保存任何令牌。</string>
+    <string name="acc_redirect_hint">Discord 提示“Invalid OAuth2 redirect_uri”？Discord 应用的所有者需要在 Developer Portal 的 OAuth2 → Redirects 中添加 %1$s。</string>
+    <string name="acc_no_app_id">需要 Discord 应用 ID（“高级”标签页）。</string>
+    <string name="acc_err_cancelled">关联已取消：未允许 Discord 共享你的个人资料。</string>
+    <string name="acc_err_redirect">该 Discord 应用无法识别本应用的返回地址。其所有者需要在 Developer Portal 的 OAuth2 → Redirects 中添加 %1$s。</string>
+    <string name="acc_err_public_client">Discord 要求提供客户端密钥：该 Discord 应用未开启“Public Client”（Developer Portal → OAuth2）。</string>
+    <string name="acc_err_expired">登录耗时过长或已被使用，请重试。</string>
+    <string name="acc_err_network">无法连接到 Discord，请检查网络连接后重试。</string>
+    <string name="acc_err_discord">Discord 拒绝了登录，请稍后重试。</string>
+    <string name="acc_err_bad_answer">Discord 返回了意外的响应，请稍后重试。</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">未连接到 Discord，正在重试</string>
+    <string name="err_discord_missing">未安装 Discord 应用</string>
+    <string name="err_bind_failed">Discord 应用未提供 Rich Presence 服务，请更新 Discord</string>
+    <string name="err_connect_failed">Discord 未接受连接，正在重试</string>
+    <string name="err_closed">Discord 关闭了连接，正在重新连接</string>
+    <string name="err_invalid_client_id">Discord 拒绝了应用 ID，请在“高级”标签页中检查</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">正在播放</string>
+    <string name="now_nothing">Poweramp 当前没有播放任何内容。</string>
+    <string name="word_playing">正在播放</string>
+    <string name="word_paused">已暂停</string>
+    <string name="hidden_no">Discord 正在显示这首曲目。</string>
+    <string name="hidden_disabled">Rich Presence 已关闭，Discord 不显示任何内容。</string>
+    <string name="hidden_stopped">没有正在播放的内容，Discord 不显示任何内容。</string>
+    <string name="hidden_stream">网络电台 / 流媒体已隐藏（“显示”标签页），Discord 不显示任何内容。</string>
+    <string name="hidden_path">此文件被路径过滤器隐藏（“显示”标签页），Discord 不显示任何内容。</string>
+    <string name="hidden_paused">播放已暂停，且已选择“隐藏”（“显示”标签页）：Discord 会显示你的其他活动。</string>
+    <string name="hidden_timeout">暂停时间超过了“显示”标签页中设置的时长，状态已移除。</string>
+    <string name="now_user_stopped">已由你停止，在 Poweramp 再次播放前 Discord 不显示任何内容。</string>
+    <string name="now_rejected">Discord 未接受此状态，请查看“连接”。</string>
+    <string name="now_after_test">Discord 正在显示测试状态，之后将显示这首曲目。</string>
+    <string name="now_test_shown">Discord 正在显示测试状态。</string>
+    <string name="now_sending">正在发送到 Discord…</string>
+    <string name="now_not_connected">Discord 尚未显示，请查看“连接”。</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">发送测试状态</string>
+    <string name="btn_reconnect">重新连接</string>
+    <string name="btn_open_poweramp">打开 Poweramp</string>
+    <string name="btn_open_discord">打开 Discord</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">设置检查</string>
+    <string name="check_checking">正在检查…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">版本 %1$s（build %2$d）</string>
+    <string name="check_poweramp_ok_nobuild">版本 %1$s</string>
+    <string name="check_poweramp_old">版本 %1$s（build %2$d）过旧，本应用需要 build %3$d 或更高版本。</string>
+    <string name="check_poweramp_missing">未安装 Poweramp。</string>
+    <string name="check_poweramp_get">获取 Poweramp</string>
+    <string name="check_poweramp_update">更新 Poweramp</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">已安装，Rich Presence 服务可用</string>
+    <string name="check_discord_no_rpc">此 Discord 版本未向其他应用提供 Rich Presence 服务，请更新 Discord。</string>
+    <string name="check_discord_missing">未安装 Discord 应用。</string>
+    <string name="check_discord_get">获取 Discord</string>
+    <string name="check_discord_update">更新 Discord</string>
+    <string name="check_appid_title">Discord 应用</string>
+    <string name="check_appid_own">你自己的应用（ID %1$s）</string>
+    <string name="check_appid_missing">此版本没有内置应用 ID。请创建你自己的 Discord 应用，并在“高级”标签页中输入其 ID。</string>
+    <string name="check_appid_invalid">你自己的应用 ID 无效（应为 17 到 20 位数字），且此版本没有内置 ID。</string>
+    <string name="check_appid_invalid_fallback">你自己的应用 ID 无效（应为 17 到 20 位数字），将使用内置应用（ID %1$s）。</string>
+    <string name="check_appid_builtin_invalid">此版本内置的应用 ID（%1$s）无效（应为 17 到 20 位数字）。请创建你自己的 Discord 应用，并在“高级”标签页中输入其 ID。</string>
+    <string name="check_appid_both_invalid">你自己的应用 ID 无效（应为 17 到 20 位数字），此版本内置的 ID（%1$s）也无效。</string>
+    <string name="check_appid_fix">设置</string>
+    <string name="check_battery_title">电池优化</string>
+    <string name="check_battery_ok">已对本应用关闭：Poweramp 开始播放时，本应用可在后台启动。</string>
+    <string name="check_battery_bad">Poweramp 开始播放时，Android 可能不允许本应用启动，或稍后将其停止。请将本应用排除在电池优化之外。</string>
+    <string name="check_battery_fix">允许</string>
+    <string name="check_notif_title">通知</string>
+    <string name="check_notif_ok">已允许：状态通知会显示 Discord 看到的内容。</string>
+    <string name="check_notif_bad">未允许：本应用在更新你的状态时无法显示状态通知。</string>
+    <string name="check_notif_fix">允许</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">小提示</string>
+    <string name="hint_privacy_title">在 Discord 中分享你的活动</string>
+    <string name="hint_privacy">在 Discord 中：设置 → 活动隐私 → 开启“分享你的活动”。否则别人看不到你在听什么。</string>
+    <string name="hint_poweramp_title">首次启动</string>
+    <string name="hint_poweramp">安装本应用后，请在 Poweramp 中按一次暂停再播放，让 Poweramp 识别本应用并向其发送曲目信息。</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">正在发送测试状态，将保留 %1$d 秒。</string>
+    <string name="msg_reconnecting">正在重新连接…</string>
+    <string name="msg_stop_ended">你的停止已解除，Discord 重新显示 Poweramp。</string>
+    <string name="msg_start_blocked">Android 不允许在后台启动，请在“电池优化”中允许。</string>
+    <string name="msg_service_started">后台服务已启动。</string>
+    <string name="msg_service_stopped">已停止，直到 Poweramp 再次播放。</string>
+    <string name="msg_cannot_open">找不到可打开此内容的应用。</string>
+    <string name="msg_cover_cleared">封面缓存已清除。</string>
+    <string name="msg_exported">设置已保存。</string>
+    <string name="msg_export_failed">无法保存设置。</string>
+    <string name="msg_imported">设置已导入。</string>
+    <string name="msg_import_failed">此文件不包含本应用的设置。</string>
+    <string name="msg_reset">所有设置已恢复为默认值。</string>
+    <string name="msg_log_copied">日志已复制。</string>
+    <string name="msg_up_to_date">你使用的已是最新版本。</string>
+    <string name="msg_account_linked">已关联 Discord 账号：%1$s</string>
+    <string name="msg_account_failed">关联 Discord 账号失败，详情请见“状态”标签页。</string>
+    <string name="msg_account_unlinked">已取消关联 Discord 账号。</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">实时预览</string>
+    <string name="prev_listening">正在收听 %1$s</string>
+    <string name="prev_playing">正在玩 %1$s</string>
+    <string name="prev_app_own">你的应用</string>
+    <string name="prev_you">你</string>
+    <string name="prev_elapsed">已进行 %1$s</string>
+    <string name="prev_example">示例：目前没有正在播放的内容。</string>
+    <string name="prev_example_title">示例标题</string>
+    <string name="prev_example_artist">示例艺术家</string>
+    <string name="prev_example_album">示例专辑</string>
+    <string name="prev_icon_tip">图标：%1$s</string>
+    <string name="prev_link">链接：%1$s</string>
+    <string name="prev_no_link">标题无链接</string>
+    <string name="prev_link_account">关联你的 Discord 账号，即可在此处看到你的名称和头像</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">活动</string>
+    <string name="disp_type">活动类型</string>
+    <string name="disp_type_listening">正在收听（显示进度条）</string>
+    <string name="disp_type_playing">正在玩（仅显示已进行时间）</string>
+    <string name="disp_status_display">Discord 状态文字显示为</string>
+    <string name="disp_status_name">应用名称 (Poweramp)</string>
+    <string name="disp_status_state">第二行（艺术家）</string>
+    <string name="disp_status_details">第一行（曲目标题）</string>
+    <string name="disp_timestamps">显示进度条 / 已进行时间</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">文字</string>
+    <string name="disp_details">第一行</string>
+    <string name="disp_state">第二行</string>
+    <string name="disp_large_text">封面提示文字</string>
+    <string name="disp_small_text">图标提示文字</string>
+    <string name="disp_insert_into">点按占位符，将其插入“%1$s”：</string>
+    <string name="disp_placeholders_help">占位符的含义</string>
+    <string name="disp_rotation_help" formatted="false">在文字之间加入 || 可让它们轮流显示，例如 %artist% || %title%（轮换间隔见下方）。</string>
+    <string name="ph_title">曲目标题</string>
+    <string name="ph_artist">艺术家</string>
+    <string name="ph_album">专辑</string>
+    <string name="ph_filename">不含扩展名的文件名</string>
+    <string name="ph_ext">文件扩展名（flac、mp3 …）</string>
+    <string name="ph_pos">当前位置 (1:23)</string>
+    <string name="ph_dur">时长 (3:45)</string>
+    <string name="ph_percent">进度百分比</string>
+    <string name="ph_bar">文字进度条 ▰▰▰▱▱▱</string>
+    <string name="ph_status">正在播放 / 已暂停</string>
+    <string name="ph_codec">编解码器（FLAC、MP3 …）</string>
+    <string name="ph_bitrate">比特率 (320 kbps)</string>
+    <string name="ph_samplerate">采样率 (44.1 kHz)</string>
+    <string name="ph_bits">位深 (24-bit)</string>
+    <string name="ph_track">在当前列表中的位置</string>
+    <string name="ph_listsize">列表中的曲目数</string>
+    <string name="ph_rating">评分 ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">放在轮流显示的备选文字之间，例如 %artist% || %title%</string>
+    <string name="disp_small_icon">显示播放 / 暂停图标（小图）</string>
+    <string name="disp_bar_length" formatted="false">%bar% 的长度</string>
+    <string name="disp_bar_length_value">%1$d 个字符</string>
+    <string name="disp_refresh">刷新间隔</string>
+    <string name="disp_refresh_value">%1$d 秒</string>
+    <string name="disp_refresh_note" formatted="false">仅在文字包含 %pos%、%bar% 或 %percent% 时使用。Discord 每分钟只接受少量更新。</string>
+    <string name="disp_rotation">轮换间隔</string>
+    <string name="disp_rotation_value">%1$d 秒</string>
+    <string name="disp_rotation_note">仅在文字包含 || 时使用。每首曲目都从第一个备选文字开始，空白的会被跳过。Discord 每 20 秒只接受 5 次更新，因此至少为 5 秒。</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">可点击的标题</string>
+    <string name="disp_title_link">可点击的歌曲标题（在 YouTube 搜索艺术家 + 标题）</string>
+    <string name="disp_own_link">自定义链接</string>
+    <string name="disp_own_link_url">链接</string>
+    <string name="disp_own_link_hint" formatted="false">此处同样支持占位符，例如 https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">链接必须以 http:// 或 https:// 开头</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">暂停</string>
+    <string name="disp_paused">暂停时</string>
+    <string name="disp_paused_show">显示“已暂停”状态</string>
+    <string name="disp_paused_hide">隐藏（显示其他活动）</string>
+    <string name="disp_clear_after">暂停多久后移除（分钟）</string>
+    <string name="disp_clear_after_hint">0 = 从不（仅在显示“已暂停”时有效）</string>
+    <string name="disp_filters_title">过滤器</string>
+    <string name="disp_hide_streams">隐藏网络电台 / 流媒体的状态</string>
+    <string name="disp_exclude_paths">文件路径包含以下内容时隐藏</string>
+    <string name="disp_exclude_paths_hint">例如 Audiobooks;Podcasts</string>
+    <string name="disp_exclude_paths_note">多个部分用 ; 分隔（不区分大小写）</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">在 Discord 中显示专辑封面</string>
+    <string name="cov_info">Discord 只显示具有公开链接的封面。Poweramp 显示的封面可以上传（x0.at 无需账号），也可以在线查找（见“来源”）。每个封面只解析一次并缓存。</string>
+    <string name="cov_local_title">Poweramp 的封面</string>
+    <string name="cov_local">使用 Poweramp 显示的封面</string>
+    <string name="cov_local_sub">嵌入文件中、文件夹中的图片或由 Poweramp 下载的封面，上传后获得公开链接</string>
+    <string name="cov_upload">封面上传至</string>
+    <string name="cov_upload_x0">x0.at（无需账号）</string>
+    <string name="cov_upload_catbox">catbox.moe（无需账号）</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">关闭（仅在线查找）</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Imgur 需要 Client-ID，没有时将改用其他图床。</string>
+    <string name="cov_imgur_get">获取 Client-ID</string>
+    <string name="cov_prefer_local">优先使用 Poweramp 的封面</string>
+    <string name="cov_prefer_local_sub">仅对没有封面的曲目进行在线查找</string>
+    <string name="cov_size">上传封面的尺寸</string>
+    <string name="cov_size_px">%1$d × %1$d 像素</string>
+    <string name="cov_public_note">任何拥有链接的人都能看到已上传的封面。</string>
+    <string name="cov_current_title">当前封面</string>
+    <string name="cov_off">封面已关闭，Discord 显示应用图标。</string>
+    <string name="cov_nothing">没有正在播放的内容。</string>
+    <string name="cov_searching">正在查找封面…</string>
+    <string name="cov_not_yet">Discord 显示这首曲目后才会查找封面。</string>
+    <string name="cov_none">Discord 显示应用图标：未找到封面，或 Discord 无法加载封面。</string>
+    <string name="cov_source">来源：%1$s</string>
+    <string name="cov_src_cache">封面缓存</string>
+    <string name="cov_src_online">在 %1$s 上找到</string>
+    <string name="cov_src_poweramp">Poweramp 的封面</string>
+    <string name="cov_src_uploaded">%1$s，已上传到 %2$s</string>
+    <string name="cov_open">打开图片</string>
+    <string name="cov_clear">清除封面缓存</string>
+    <string name="cov_image_desc">专辑封面</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">在线查找会搜索艺术家 / 专辑，并直接使用公开的图片链接，不会上传任何内容。来源按从上到下的顺序尝试，以第一个结果为准。</string>
+    <string name="src_covers_off">封面已关闭，不会进行查找。</string>
+    <string name="src_open_cover_tab">封面设置</string>
+    <string name="src_prefer_local_note">已开启“优先使用 Poweramp 的封面”：仅对没有封面的曲目进行查找。</string>
+    <string name="src_list_title">在线来源</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">需要一个免费的开发者应用（Client ID + Secret）</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">请输入 Client ID 和 Secret，否则将跳过 Spotify。</string>
+    <string name="src_create_app">创建应用</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">无需密钥（非官方接口）</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">需要一个免费的个人访问令牌</string>
+    <string name="src_token">令牌</string>
+    <string name="src_discogs_missing">请输入令牌，否则将跳过 Discogs。</string>
+    <string name="src_get_token">获取令牌</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">无需密钥</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Discord 应用</string>
+    <string name="adv_custom_app">使用我自己的 Discord 应用</string>
+    <string name="adv_custom_app_sub">Discord 会显示它的名称（“正在收听 …”）</string>
+    <string name="adv_app_id">应用 ID</string>
+    <string name="adv_app_id_hint">Developer Portal → 你的应用 → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">应用 ID 为 17 到 20 位数字。</string>
+    <string name="adv_portal">打开 Developer Portal</string>
+    <string name="adv_assets_note">在 Rich Presence → Art Assets 中上传名为“poweramp”（图标）、“play”和“pause”的图片。</string>
+    <string name="adv_effective">正在使用的应用 ID</string>
+    <string name="adv_effective_none">无：此版本没有内置 ID，请使用你自己的应用</string>
+    <string name="adv_compat_title">兼容性</string>
+    <string name="adv_seconds">以秒为单位发送时间戳</string>
+    <string name="adv_seconds_sub">仅在 Discord 显示错误时间或没有进度条时使用</string>
+    <string name="adv_log_title">最近日志</string>
+    <string name="adv_log_empty">暂无日志。</string>
+    <string name="adv_log_copy">复制</string>
+    <string name="adv_log_share">分享</string>
+    <string name="adv_log_clear">清除</string>
+    <string name="adv_log_share_subject">Poweramp Discord RP 日志</string>
+    <string name="adv_settings_title">设置文件</string>
+    <string name="adv_settings_info">将所有设置保存到文件，或从文件加载（例如换新手机时）。该文件也包含你为封面输入的密钥（Imgur、Spotify、Discogs）。</string>
+    <string name="adv_export">导出…</string>
+    <string name="adv_import">导入…</string>
+    <string name="adv_reset">恢复默认设置</string>
+    <string name="adv_reset_confirm_title">要重置所有设置吗？</string>
+    <string name="adv_reset_confirm_text">所有设置都将恢复为默认值。如需保留，请先导出。</string>
+    <string name="adv_reset_confirm">重置</string>
+    <string name="adv_export_keys_title">要连同密钥一起导出吗？</string>
+    <string name="adv_export_keys_text">该文件将以明文形式包含你的 %1$s 密钥。请妥善保管，不要分享，也不要附加到问题报告中。</string>
+    <string name="adv_export_keys_confirm">导出</string>
+    <string name="common_cancel">取消</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">版本 %1$s</string>
+    <string name="about_by">作者：%1$s</string>
+    <string name="about_on_github">GitHub 上的 %1$s</string>
+    <string name="cd_author_avatar">%1$s 的 GitHub 头像</string>
+    <string name="cd_account_avatar">%1$s 的 Discord 头像</string>
+    <string name="about_github">GitHub 页面</string>
+    <string name="about_releases">所有版本</string>
+    <string name="about_issues">报告问题</string>
+    <string name="about_disclaimer">这是一个独立项目，与 Discord 或 Poweramp 无关，也未获得其认可。</string>
+    <string name="about_updates_title">更新</string>
+    <string name="about_update_check">检查更新</string>
+    <string name="about_update_freq">检查频率</string>
+    <string name="upd_every_start">每次启动应用时</string>
+    <string name="upd_daily">每天一次</string>
+    <string name="upd_weekly">每周一次</string>
+    <string name="upd_monthly">每月一次</string>
+    <string name="about_check_now">立即检查</string>
+    <string name="upd_never">尚未检查。</string>
+    <string name="upd_checking">正在检查更新…</string>
+    <string name="upd_latest">你使用的已是最新版本（上次检查：%1$s）。</string>
+    <string name="upd_available">版本 %1$s 现已推出。</string>
+    <string name="upd_failed">检查更新失败：无法连接到 GitHub。</string>
+    <string name="upd_rate_limited">GitHub 目前限制了请求，请稍后重试。</string>
+    <string name="upd_no_release">尚未发布任何版本。</string>
+    <string name="upd_bad_answer">检查更新失败：无法读取 GitHub 的响应。</string>
+    <string name="upd_download">下载 %1$s</string>
+    <string name="upd_whats_new">更新内容</string>
+    <string name="about_update_privacy">检查时只会向 GitHub 查询最新版本，不会发送其他任何内容。</string>
+    <string name="about_credits_title">致谢</string>
+    <string name="about_credit_poweramp">Poweramp API 由 Max MP 提供</string>
+    <string name="about_credit_discord">Discord Social SDK RPC 接口通过 Nightdavisao 的 antisocialcord-kt 实现（MIT 许可证）</string>
+    <string name="about_credit_covers">封面：x0.at、catbox.moe、Imgur、Spotify、Deezer、Apple Music / iTunes、Bandcamp、Discogs、MusicBrainz 和 Cover Art Archive</string>
+    <string name="about_credit_aimp">同一作者的“Discord Rich Presence for AIMP”的 Android 版姊妹项目</string>
+    <string name="about_changelog_title">更新日志</string>
+    <string name="about_changelog_version">版本 %1$s</string>
+    <string name="about_installed">（已安装）</string>
+    <string name="about_translation_note">本翻译由 AI 完成，可能存在错误，欢迎通过 GitHub（“报告问题”）提交更正。</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">正常</string>
+    <string name="cd_info">提示</string>
+    <string name="cd_warning">警告</string>
+    <string name="cd_error">问题</string>
+    <string name="field_show">显示</string>
+    <string name="field_hide">隐藏</string>
+    <string name="field_range">允许范围：%1$d 到 %2$d</string>
+</resources>

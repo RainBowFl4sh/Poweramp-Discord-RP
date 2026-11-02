@@ -21,6 +21,10 @@
     <string name="app_settings_amoled_needs_dark">Лише в темній темі — виберіть «Темна» або ввімкніть темну тему в Android.</string>
     <string name="app_settings_dynamic">Динамічні кольори (Material You)</string>
     <string name="app_settings_dynamic_sub">Кольори з ваших шпалер. Вимк.: власні кольори застосунку в стилі Discord.</string>
+    <string name="app_settings_language">Мова</string>
+    <string name="language_system">Як у системі</string>
+    <string name="language_ai">Переклад ШІ</string>
+    <string name="app_settings_language_note">Також у налаштуваннях Android: Застосунки → Poweramp Discord RP → Мова.</string>
     <string name="common_close">Закрити</string>
 
     <!-- Status tab: master switch -->
@@ -35,7 +39,6 @@
     <string name="conn_no_app_id">ID застосунку Discord не задано</string>
     <string name="conn_connecting">Підключення до Discord…</string>
     <string name="conn_connected">Підключено до Discord</string>
-    <string name="conn_connected_as">Підключено до Discord як %1$s</string>
     <string name="conn_testing">Показується тестовий статус.</string>
     <string name="conn_test_waiting">Тестовий статус надсилається в Discord…</string>
     <string name="conn_activity_error">Discord не прийняв останнє оновлення: %1$s</string>
@@ -53,6 +56,26 @@
     <string name="conn_service_stopped">не працює</string>
     <string name="conn_service_start">Запустити</string>
     <string name="conn_service_stop">Зупинити</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Не прив’язано</string>
+    <string name="acc_hint">Прив’яжіть обліковий запис Discord, щоб бачити своє ім’я та аватар у попередньому перегляді й тут.</string>
+    <string name="acc_link">Прив’язати обліковий запис Discord</string>
+    <string name="acc_refresh">Оновити</string>
+    <string name="acc_restart">Почати знову</string>
+    <string name="acc_unlink">Відв’язати</string>
+    <string name="acc_waiting">Очікування Discord — дозвольте там доступ і поверніться до цього застосунку.</string>
+    <string name="acc_working">Читання профілю з Discord…</string>
+    <string name="acc_privacy">Читаються лише ваше ім’я та аватар (доступ Discord «identify»). Доступ одразу відкликається — застосунок не зберігає токен.</string>
+    <string name="acc_redirect_hint">Discord повідомляє «Invalid OAuth2 redirect_uri»? Власник застосунку Discord має додати %1$s у Developer Portal у розділі OAuth2 → Redirects.</string>
+    <string name="acc_no_app_id">Потрібен ID застосунку Discord (вкладка «Сервіс»).</string>
+    <string name="acc_err_cancelled">Прив’язування скасовано — Discord не отримав дозволу передати ваш профіль.</string>
+    <string name="acc_err_redirect">Застосунок Discord не знає адреси повернення цього застосунку. Його власник має додати %1$s у Developer Portal у розділі OAuth2 → Redirects.</string>
+    <string name="acc_err_public_client">Discord вимагає секрет клієнта: для застосунку Discord не ввімкнено «Public Client» (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">Вхід тривав надто довго або вже був використаний — спробуйте ще раз.</string>
+    <string name="acc_err_network">Не вдалося зв’язатися з Discord — перевірте підключення до інтернету й спробуйте ще раз.</string>
+    <string name="acc_err_discord">Discord відхилив вхід — спробуйте пізніше.</string>
+    <string name="acc_err_bad_answer">Discord надіслав неочікувану відповідь — спробуйте пізніше.</string>
 
     <!-- Connection errors (TransportError) -->
     <string name="err_none">Немає підключення до Discord — повторна спроба</string>
@@ -143,6 +166,9 @@
     <string name="msg_reset">Усі налаштування скинуто до типових.</string>
     <string name="msg_log_copied">Журнал скопійовано.</string>
     <string name="msg_up_to_date">У вас остання версія.</string>
+    <string name="msg_account_linked">Обліковий запис Discord прив’язано: %1$s</string>
+    <string name="msg_account_failed">Не вдалося прив’язати обліковий запис Discord — подробиці на вкладці «Стан».</string>
+    <string name="msg_account_unlinked">Обліковий запис Discord відв’язано.</string>
 
     <!-- Display tab: live preview (drawn like Discord) -->
     <string name="disp_preview_title">Попередній перегляд</string>
@@ -158,6 +184,7 @@
     <string name="prev_icon_tip">Значок: %1$s</string>
     <string name="prev_link">Посилання: %1$s</string>
     <string name="prev_no_link">Назва без посилання</string>
+    <string name="prev_link_account">Прив’яжіть обліковий запис Discord, щоб бачити тут своє ім’я та аватар</string>
 
     <!-- Display tab: activity -->
     <string name="disp_activity_title">Активність</string>
@@ -325,6 +352,7 @@
     <string name="about_by">автор: %1$s</string>
     <string name="about_on_github">%1$s на GitHub</string>
     <string name="cd_author_avatar">Фото профілю GitHub: %1$s</string>
+    <string name="cd_account_avatar">Аватар Discord користувача %1$s</string>
     <string name="about_github">Сторінка на GitHub</string>
     <string name="about_releases">Усі версії</string>
     <string name="about_issues">Звіт про помилку</string>

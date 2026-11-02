@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">正在播放</string>
+    <string name="status_paused">已暂停</string>
+    <string name="status_test_line">连接正常！</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Discord 状态</string>
+    <string name="svc_channel_desc">在本应用将你的 Discord 状态与 Poweramp 保持同步时显示</string>
+    <string name="svc_alert_channel_name">提醒</string>
+    <string name="svc_alert_channel_desc">需要你处理的问题，例如 Android 阻止了后台启动</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">正在 Discord 上显示</string>
+    <string name="svc_showing_paused">已暂停，在 Discord 上显示</string>
+    <string name="svc_hidden_paused">已暂停，在 Discord 上隐藏</string>
+    <string name="svc_hidden">Discord 上不显示任何内容</string>
+    <string name="svc_testing">Discord 上正在显示测试状态</string>
+    <string name="svc_sending">正在发送到 Discord…</string>
+    <string name="svc_update_rejected">Discord 未接受此状态，详情请见应用</string>
+    <string name="svc_connecting">正在连接 Discord…</string>
+    <string name="svc_waiting">正在等待 Poweramp…</string>
+    <string name="svc_not_connected">未连接到 Discord，正在重试</string>
+    <string name="svc_discord_missing">未安装 Discord 应用</string>
+    <string name="svc_rejected">Discord 拒绝了应用 ID</string>
+    <string name="svc_no_app_id">未配置 Discord 应用 ID</string>
+    <string name="svc_disabled">Discord Rich Presence 已关闭</string>
+    <string name="svc_action_stop">停止</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Discord 状态无法启动</string>
+    <string name="svc_bg_blocked_text">Android 不允许本应用在后台启动。点按即可打开应用，并允许其在后台运行（电池优化）。</string>
+</resources>

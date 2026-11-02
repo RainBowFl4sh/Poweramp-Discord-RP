@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+    <!-- Tabs -->
+    <string name="tab_status">Status</string>
+    <string name="tab_display">Visning</string>
+    <string name="tab_cover">Omslag</string>
+    <string name="tab_sources">Kilder</string>
+    <string name="tab_advanced">Avansert</string>
+    <string name="tab_about">Om</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">Flere alternativer</string>
+    <string name="app_settings_title">Appinnstillinger</string>
+    <string name="app_settings_theme">Tema</string>
+    <string name="theme_system">Følg systemet</string>
+    <string name="theme_light">Lyst</string>
+    <string name="theme_dark">Mørkt</string>
+    <string name="app_settings_amoled">AMOLED-svart</string>
+    <string name="app_settings_amoled_on">Helt svart bakgrunn i mørk modus – sparer batteri på OLED-skjermer.</string>
+    <string name="app_settings_amoled_needs_dark">Bare i mørk modus – velg «Mørkt» eller slå på mørk modus i Android.</string>
+    <string name="app_settings_dynamic">Dynamiske farger (Material You)</string>
+    <string name="app_settings_dynamic_sub">Farger fra bakgrunnsbildet ditt. Av: appens egne Discord-lignende farger.</string>
+    <string name="app_settings_language">Språk</string>
+    <string name="language_system">Systemstandard</string>
+    <string name="language_ai">KI-oversettelse</string>
+    <string name="app_settings_language_note">Også i Android-innstillingene: Apper → Poweramp Discord RP → Språk.</string>
+    <string name="common_close">Lukk</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Discord-statusen din viser hva Poweramp spiller</string>
+    <string name="master_off">Slått av – Discord viser ingenting</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Tilkobling</string>
+    <string name="conn_idle">Venter – ingenting å vise akkurat nå</string>
+    <string name="conn_disabled">Slått av</string>
+    <string name="conn_no_app_id">Ingen Discord-applikasjons-ID er angitt</string>
+    <string name="conn_connecting">Kobler til Discord …</string>
+    <string name="conn_connected">Koblet til Discord</string>
+    <string name="conn_testing">Testvisningen vises.</string>
+    <string name="conn_test_waiting">Sender testvisningen til Discord …</string>
+    <string name="conn_activity_error">Discord godtok ikke den siste oppdateringen: %1$s</string>
+    <string name="conn_detail">Detaljer: %1$s</string>
+    <string name="conn_user">Discord-konto</string>
+    <string name="conn_app_id">Applikasjons-ID</string>
+    <string name="conn_app_builtin">%1$s (innebygd)</string>
+    <string name="conn_app_own">%1$s (din egen)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">Siste oppdatering</string>
+    <string name="conn_never">ikke ennå</string>
+    <string name="conn_connections">Tilkoblinger</string>
+    <string name="conn_service">Bakgrunnstjeneste</string>
+    <string name="conn_service_running">kjører</string>
+    <string name="conn_service_stopped">kjører ikke</string>
+    <string name="conn_service_start">Start</string>
+    <string name="conn_service_stop">Stopp</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Ikke koblet til</string>
+    <string name="acc_hint">Koble til Discord-kontoen din for å se navnet og bildet ditt i forhåndsvisningen og her.</string>
+    <string name="acc_link">Koble til Discord-konto</string>
+    <string name="acc_refresh">Oppdater</string>
+    <string name="acc_restart">Start på nytt</string>
+    <string name="acc_unlink">Koble fra</string>
+    <string name="acc_waiting">Venter på Discord – gi tilgang der, og kom så tilbake til denne appen.</string>
+    <string name="acc_working">Leser profilen din fra Discord …</string>
+    <string name="acc_privacy">Bare navnet og profilbildet ditt leses (Discords «identify»-tilgang). Tilgangen trekkes tilbake med en gang – appen lagrer ingen token.</string>
+    <string name="acc_redirect_hint">Sier Discord «Invalid OAuth2 redirect_uri»? Eieren av Discord-applikasjonen må legge til %1$s under OAuth2 → Redirects i Developer Portal.</string>
+    <string name="acc_no_app_id">Krever en Discord-applikasjons-ID (fanen Avansert).</string>
+    <string name="acc_err_cancelled">Tilkoblingen ble avbrutt – Discord fikk ikke lov til å dele profilen din.</string>
+    <string name="acc_err_redirect">Discord-applikasjonen kjenner ikke denne appens returadresse. Eieren må legge til %1$s under OAuth2 → Redirects i Developer Portal.</string>
+    <string name="acc_err_public_client">Discord krever en klienthemmelighet: «Public Client» er ikke slått på for Discord-applikasjonen (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">Påloggingen tok for lang tid eller er allerede brukt – prøv igjen.</string>
+    <string name="acc_err_network">Fikk ikke kontakt med Discord – sjekk internettilkoblingen og prøv igjen.</string>
+    <string name="acc_err_discord">Discord avviste påloggingen – prøv igjen senere.</string>
+    <string name="acc_err_bad_answer">Discord sendte et uventet svar – prøv igjen senere.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Ikke koblet til Discord – prøver igjen</string>
+    <string name="err_discord_missing">Discord-appen er ikke installert</string>
+    <string name="err_bind_failed">Discord-appen tilbyr ikke Rich Presence-tjenesten – oppdater Discord</string>
+    <string name="err_connect_failed">Discord godtok ikke tilkoblingen – prøver igjen</string>
+    <string name="err_closed">Discord lukket tilkoblingen – kobler til på nytt</string>
+    <string name="err_invalid_client_id">Discord avviste applikasjons-ID-en – sjekk den i fanen Avansert</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Spilles nå</string>
+    <string name="now_nothing">Ingenting spilles i Poweramp.</string>
+    <string name="word_playing">Spiller</string>
+    <string name="word_paused">Satt på pause</string>
+    <string name="hidden_no">Discord viser dette sporet.</string>
+    <string name="hidden_disabled">Rich Presence er slått av – Discord viser ingenting.</string>
+    <string name="hidden_stopped">Ingenting spilles – Discord viser ingenting.</string>
+    <string name="hidden_stream">Nettradio / strømmer skjules (fanen Visning) – Discord viser ingenting.</string>
+    <string name="hidden_path">Denne filen skjules av stifilteret (fanen Visning) – Discord viser ingenting.</string>
+    <string name="hidden_paused">Avspillingen er satt på pause og «Skjul» er valgt (fanen Visning): Discord viser de andre aktivitetene dine.</string>
+    <string name="hidden_timeout">Satt på pause lenger enn angitt i fanen Visning – statusen ble fjernet.</string>
+    <string name="now_user_stopped">Stoppet av deg – Discord viser ingenting før Poweramp spiller igjen.</string>
+    <string name="now_rejected">Discord godtok ikke denne statusen – se «Tilkobling».</string>
+    <string name="now_after_test">Discord viser testvisningen akkurat nå – dette sporet kommer etterpå.</string>
+    <string name="now_test_shown">Discord viser testvisningen akkurat nå.</string>
+    <string name="now_sending">Sendes til Discord …</string>
+    <string name="now_not_connected">Discord viser det ikke ennå – se «Tilkobling».</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Send testvisning</string>
+    <string name="btn_reconnect">Koble til på nytt</string>
+    <string name="btn_open_poweramp">Åpne Poweramp</string>
+    <string name="btn_open_discord">Åpne Discord</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Oppsett</string>
+    <string name="check_checking">Sjekker …</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">Versjon %1$s (build %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">Versjon %1$s</string>
+    <string name="check_poweramp_old">Versjon %1$s (build %2$d) er for gammel – denne appen krever build %3$d eller nyere.</string>
+    <string name="check_poweramp_missing">Poweramp er ikke installert.</string>
+    <string name="check_poweramp_get">Skaff Poweramp</string>
+    <string name="check_poweramp_update">Oppdater Poweramp</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Installert, Rich Presence-tjenesten er tilgjengelig</string>
+    <string name="check_discord_no_rpc">Denne Discord-versjonen tilbyr ikke Rich Presence-tjenesten til andre apper. Oppdater Discord.</string>
+    <string name="check_discord_missing">Discord-appen er ikke installert.</string>
+    <string name="check_discord_get">Skaff Discord</string>
+    <string name="check_discord_update">Oppdater Discord</string>
+    <string name="check_appid_title">Discord-applikasjon</string>
+    <string name="check_appid_own">Din egen applikasjon (ID %1$s)</string>
+    <string name="check_appid_missing">Denne builden har ingen innebygd applikasjons-ID. Opprett din egen Discord-applikasjon og skriv inn ID-en i fanen Avansert.</string>
+    <string name="check_appid_invalid">Din egen applikasjons-ID er ugyldig (17 til 20 sifre), og denne builden har ingen innebygd.</string>
+    <string name="check_appid_invalid_fallback">Din egen applikasjons-ID er ugyldig (17 til 20 sifre) – den innebygde applikasjonen (ID %1$s) brukes.</string>
+    <string name="check_appid_builtin_invalid">Applikasjons-ID-en som er innebygd i denne builden (%1$s), er ugyldig (17 til 20 sifre). Opprett din egen Discord-applikasjon og skriv inn ID-en i fanen Avansert.</string>
+    <string name="check_appid_both_invalid">Din egen applikasjons-ID er ugyldig (17 til 20 sifre), og den som er innebygd i denne builden (%1$s), er heller ikke gyldig.</string>
+    <string name="check_appid_fix">Sett opp</string>
+    <string name="check_battery_title">Batterioptimalisering</string>
+    <string name="check_battery_ok">Av for denne appen – den kan starte i bakgrunnen når Poweramp begynner å spille.</string>
+    <string name="check_battery_bad">Android hindrer kanskje appen i å starte når Poweramp begynner å spille, eller stopper den senere. Unnta den fra batterioptimalisering.</string>
+    <string name="check_battery_fix">Tillat</string>
+    <string name="check_notif_title">Varsler</string>
+    <string name="check_notif_ok">Tillatt – statusvarselet viser hva Discord ser.</string>
+    <string name="check_notif_bad">Ikke tillatt – appen kan ikke vise statusvarselet mens den holder statusen din oppdatert.</string>
+    <string name="check_notif_fix">Tillat</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Greit å vite</string>
+    <string name="hint_privacy_title">Del aktiviteten din i Discord</string>
+    <string name="hint_privacy">I Discord: Innstillinger → Aktivitetspersonvern → slå på «Del aktiviteten din». Ellers ser ingen hva du hører på.</string>
+    <string name="hint_poweramp_title">Første oppstart</string>
+    <string name="hint_poweramp">Når du har installert denne appen, trykker du én gang på pause og deretter på spill i Poweramp, slik at Poweramp oppdager appen og sender den sporinformasjon.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Sender en testvisning – den vises i %1$d sekunder.</string>
+    <string name="msg_reconnecting">Kobler til på nytt …</string>
+    <string name="msg_stop_ended">Stoppet er opphevet – Discord viser Poweramp igjen.</string>
+    <string name="msg_start_blocked">Android tillot ikke oppstart i bakgrunnen – tillat det under «Batterioptimalisering».</string>
+    <string name="msg_service_started">Bakgrunnstjenesten er startet.</string>
+    <string name="msg_service_stopped">Stoppet til Poweramp spiller igjen.</string>
+    <string name="msg_cannot_open">Fant ingen app som kan åpne dette.</string>
+    <string name="msg_cover_cleared">Omslagsbufferen er tømt.</string>
+    <string name="msg_exported">Innstillingene er lagret.</string>
+    <string name="msg_export_failed">Kunne ikke lagre innstillingene.</string>
+    <string name="msg_imported">Innstillingene er importert.</string>
+    <string name="msg_import_failed">Denne filen inneholder ikke innstillinger for denne appen.</string>
+    <string name="msg_reset">Alle innstillinger er tilbakestilt til standard.</string>
+    <string name="msg_log_copied">Loggen er kopiert.</string>
+    <string name="msg_up_to_date">Du har den nyeste versjonen.</string>
+    <string name="msg_account_linked">Discord-kontoen er koblet til: %1$s</string>
+    <string name="msg_account_failed">Kunne ikke koble til Discord-kontoen – detaljer i fanen Status.</string>
+    <string name="msg_account_unlinked">Discord-kontoen er koblet fra.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Forhåndsvisning</string>
+    <string name="prev_listening">Lytter til %1$s</string>
+    <string name="prev_playing">Spiller %1$s</string>
+    <string name="prev_app_own">appen din</string>
+    <string name="prev_you">Du</string>
+    <string name="prev_elapsed">%1$s har gått</string>
+    <string name="prev_example">Eksempel – ingenting spilles akkurat nå.</string>
+    <string name="prev_example_title">Eksempeltittel</string>
+    <string name="prev_example_artist">Eksempelartist</string>
+    <string name="prev_example_album">Eksempelalbum</string>
+    <string name="prev_icon_tip">Ikon: %1$s</string>
+    <string name="prev_link">Lenke: %1$s</string>
+    <string name="prev_no_link">Tittel uten lenke</string>
+    <string name="prev_link_account">Koble til Discord-kontoen din for å se navnet og bildet ditt her</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Aktivitet</string>
+    <string name="disp_type">Aktivitetstype</string>
+    <string name="disp_type_listening">Lytter (viser en fremdriftslinje)</string>
+    <string name="disp_type_playing">Spiller (bare medgått tid)</string>
+    <string name="disp_status_display">Discord-statusteksten viser</string>
+    <string name="disp_status_name">Applikasjonsnavnet (Poweramp)</string>
+    <string name="disp_status_state">Andre linje (artist)</string>
+    <string name="disp_status_details">Første linje (sportittel)</string>
+    <string name="disp_timestamps">Vis fremdriftslinje / medgått tid</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Tekster</string>
+    <string name="disp_details">Første linje</string>
+    <string name="disp_state">Andre linje</string>
+    <string name="disp_large_text">Verktøytips for omslaget</string>
+    <string name="disp_small_text">Verktøytips for ikonet</string>
+    <string name="disp_insert_into">Trykk på en plassholder for å sette den inn i «%1$s»:</string>
+    <string name="disp_placeholders_help">Hva plassholderne betyr</string>
+    <string name="disp_rotation_help" formatted="false">Sett || mellom tekster for å la dem vises etter tur, f.eks. %artist% || %title% (vekslingsintervall nedenfor).</string>
+    <string name="ph_title">sportittel</string>
+    <string name="ph_artist">artist</string>
+    <string name="ph_album">album</string>
+    <string name="ph_filename">filnavn uten filtype</string>
+    <string name="ph_ext">filtype (flac, mp3 …)</string>
+    <string name="ph_pos">nåværende posisjon (1:23)</string>
+    <string name="ph_dur">varighet (3:45)</string>
+    <string name="ph_percent">fremdrift i prosent</string>
+    <string name="ph_bar">fremdriftslinje som tekst ▰▰▰▱▱▱</string>
+    <string name="ph_status">Spiller / Satt på pause</string>
+    <string name="ph_codec">kodek (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">bithastighet (320 kbps)</string>
+    <string name="ph_samplerate">samplingsfrekvens (44,1 kHz)</string>
+    <string name="ph_bits">bitdybde (24-bit)</string>
+    <string name="ph_track">posisjon i gjeldende liste</string>
+    <string name="ph_listsize">antall spor i listen</string>
+    <string name="ph_rating">vurdering ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">mellom alternativer som vises etter tur, f.eks. %artist% || %title%</string>
+    <string name="disp_small_icon">Vis spill-/pauseikon (lite bilde)</string>
+    <string name="disp_bar_length" formatted="false">Lengde på %bar%</string>
+    <string name="disp_bar_length_value">%1$d tegn</string>
+    <string name="disp_refresh">Oppdateringsintervall</string>
+    <string name="disp_refresh_value">%1$d s</string>
+    <string name="disp_refresh_note" formatted="false">Brukes bare når en tekst inneholder %pos%, %bar% eller %percent%. Discord godtar bare noen få oppdateringer per minutt.</string>
+    <string name="disp_rotation">Vekslingsintervall</string>
+    <string name="disp_rotation_value">%1$d s</string>
+    <string name="disp_rotation_note">Brukes bare når en tekst inneholder ||. Hvert spor starter med det første alternativet, og tomme alternativer hoppes over. Discord godtar bare 5 oppdateringer per 20 sekunder, derfor minst 5 s.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Klikkbar tittel</string>
+    <string name="disp_title_link">Klikkbar sangtittel (YouTube-søk etter artist + tittel)</string>
+    <string name="disp_own_link">Egen lenke</string>
+    <string name="disp_own_link_url">Lenke</string>
+    <string name="disp_own_link_hint" formatted="false">Plassholdere fungerer også her, f.eks. https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">Lenken må begynne med http:// eller https://</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Pause</string>
+    <string name="disp_paused">Ved pause</string>
+    <string name="disp_paused_show">Vis statusen «Satt på pause»</string>
+    <string name="disp_paused_hide">Skjul (andre aktiviteter vises)</string>
+    <string name="disp_clear_after">Fjern etter en pause på (minutter)</string>
+    <string name="disp_clear_after_hint">0 = aldri (bare når «Satt på pause» vises)</string>
+    <string name="disp_filters_title">Filtre</string>
+    <string name="disp_hide_streams">Skjul statusen for nettradio / strømmer</string>
+    <string name="disp_exclude_paths">Skjul når filstien inneholder</string>
+    <string name="disp_exclude_paths_hint">f.eks. Lydbøker;Podkaster</string>
+    <string name="disp_exclude_paths_note">Flere deler skilt med ; (store / små bokstaver spiller ingen rolle)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Vis albumomslag i Discord</string>
+    <string name="cov_info">Discord viser bare omslag som har en offentlig lenke. Omslaget Poweramp viser, kan lastes opp (x0.at krever ingen konto) eller søkes opp på nettet (se «Kilder»). Hvert omslag slås opp bare én gang og bufres.</string>
+    <string name="cov_local_title">Poweramps omslag</string>
+    <string name="cov_local">Bruk omslaget Poweramp viser</string>
+    <string name="cov_local_sub">Innebygd i filen, bilde i mappen eller lastet ned av Poweramp – lastes opp for å få en offentlig lenke</string>
+    <string name="cov_upload">Last opp omslag til</string>
+    <string name="cov_upload_x0">x0.at (ingen konto)</string>
+    <string name="cov_upload_catbox">catbox.moe (ingen konto)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Av (bare søk på nettet)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Imgur krever en Client-ID – uten den brukes en annen tjeneste i stedet.</string>
+    <string name="cov_imgur_get">Skaff en Client-ID</string>
+    <string name="cov_prefer_local">Foretrekk Poweramps omslag</string>
+    <string name="cov_prefer_local_sub">Søk på nettet bare for spor uten omslag</string>
+    <string name="cov_size">Størrelse på opplastede omslag</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">Opplastede omslag kan ses av alle som har lenken.</string>
+    <string name="cov_current_title">Nåværende omslag</string>
+    <string name="cov_off">Omslag er slått av – Discord viser applogoen.</string>
+    <string name="cov_nothing">Ingenting spilles.</string>
+    <string name="cov_searching">Ser etter et omslag …</string>
+    <string name="cov_not_yet">Omslaget hentes når Discord viser dette sporet.</string>
+    <string name="cov_none">Discord viser applogoen: ingen omslag ble funnet, eller Discord kunne ikke laste det inn.</string>
+    <string name="cov_source">Kilde: %1$s</string>
+    <string name="cov_src_cache">omslagsbuffer</string>
+    <string name="cov_src_online">funnet på %1$s</string>
+    <string name="cov_src_poweramp">Poweramps omslag</string>
+    <string name="cov_src_uploaded">%1$s, lastet opp til %2$s</string>
+    <string name="cov_open">Åpne bildet</string>
+    <string name="cov_clear">Tøm omslagsbufferen</string>
+    <string name="cov_image_desc">Albumomslag</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Nettsøkene leter etter artist / album og bruker den offentlige bildelenken direkte – ingenting lastes opp. Kildene prøves ovenfra og ned, første treff vinner.</string>
+    <string name="src_covers_off">Omslag er slått av – det gjøres ingen søk.</string>
+    <string name="src_open_cover_tab">Innstillinger for omslag</string>
+    <string name="src_prefer_local_note">«Foretrekk Poweramps omslag» er på: nettsøk brukes bare for spor uten omslag.</string>
+    <string name="src_list_title">Nettkilder</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Krever en gratis utviklerapp (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Skriv inn Client ID og Secret, ellers hoppes Spotify over.</string>
+    <string name="src_create_app">Opprett en app</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Ingen nøkkel nødvendig (uoffisielt grensesnitt)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Krever et gratis personlig tilgangstoken</string>
+    <string name="src_token">Token</string>
+    <string name="src_discogs_missing">Skriv inn et token, ellers hoppes Discogs over.</string>
+    <string name="src_get_token">Skaff et token</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Ingen nøkkel nødvendig</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Discord-applikasjon</string>
+    <string name="adv_custom_app">Bruk min egen Discord-applikasjon</string>
+    <string name="adv_custom_app_sub">Discord viser navnet på applikasjonen («Lytter til …»)</string>
+    <string name="adv_app_id">Applikasjons-ID</string>
+    <string name="adv_app_id_hint">Developer Portal → applikasjonen din → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">En applikasjons-ID har 17 til 20 sifre.</string>
+    <string name="adv_portal">Åpne Developer Portal</string>
+    <string name="adv_assets_note">Under Rich Presence → Art Assets laster du opp bilder med navnene «poweramp» (logo), «play» og «pause».</string>
+    <string name="adv_effective">Applikasjons-ID i bruk</string>
+    <string name="adv_effective_none">ingen – denne builden har ingen innebygd ID, bruk din egen applikasjon</string>
+    <string name="adv_compat_title">Kompatibilitet</string>
+    <string name="adv_seconds">Send tidsstempler i sekunder</string>
+    <string name="adv_seconds_sub">Bare hvis Discord viser feil tid eller ingen fremdriftslinje</string>
+    <string name="adv_log_title">Siste logg</string>
+    <string name="adv_log_empty">Ingenting er logget ennå.</string>
+    <string name="adv_log_copy">Kopier</string>
+    <string name="adv_log_share">Del</string>
+    <string name="adv_log_clear">Tøm</string>
+    <string name="adv_log_share_subject">Poweramp Discord RP-logg</string>
+    <string name="adv_settings_title">Innstillingsfil</string>
+    <string name="adv_settings_info">Lagre alle innstillinger i en fil eller last dem inn fra en (f.eks. på en ny telefon). Filen inneholder også nøklene du har skrevet inn for omslag (Imgur, Spotify, Discogs).</string>
+    <string name="adv_export">Eksporter …</string>
+    <string name="adv_import">Importer …</string>
+    <string name="adv_reset">Tilbakestill til standard</string>
+    <string name="adv_reset_confirm_title">Vil du tilbakestille alle innstillinger?</string>
+    <string name="adv_reset_confirm_text">Alle innstillinger settes tilbake til standard. Eksporter dem først hvis du vil beholde dem.</string>
+    <string name="adv_reset_confirm">Tilbakestill</string>
+    <string name="adv_export_keys_title">Vil du eksportere med nøklene dine?</string>
+    <string name="adv_export_keys_text">Filen vil inneholde nøklene dine for %1$s i klartekst. Hold den for deg selv – ikke del den, og ikke legg den ved en feilrapport.</string>
+    <string name="adv_export_keys_confirm">Eksporter</string>
+    <string name="common_cancel">Avbryt</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">Versjon %1$s</string>
+    <string name="about_by">av %1$s</string>
+    <string name="about_on_github">%1$s på GitHub</string>
+    <string name="cd_author_avatar">GitHub-profilbildet til %1$s</string>
+    <string name="cd_account_avatar">Discord-profilbildet til %1$s</string>
+    <string name="about_github">GitHub-side</string>
+    <string name="about_releases">Alle utgivelser</string>
+    <string name="about_issues">Rapporter et problem</string>
+    <string name="about_disclaimer">Et uavhengig prosjekt – ikke tilknyttet eller godkjent av Discord eller Poweramp.</string>
+    <string name="about_updates_title">Oppdateringer</string>
+    <string name="about_update_check">Se etter oppdateringer</string>
+    <string name="about_update_freq">Hvor ofte</string>
+    <string name="upd_every_start">ved hver oppstart av appen</string>
+    <string name="upd_daily">én gang om dagen</string>
+    <string name="upd_weekly">én gang i uken</string>
+    <string name="upd_monthly">én gang i måneden</string>
+    <string name="about_check_now">Sjekk nå</string>
+    <string name="upd_never">Ikke sjekket ennå.</string>
+    <string name="upd_checking">Ser etter oppdateringer …</string>
+    <string name="upd_latest">Du har den nyeste versjonen (sist sjekket: %1$s).</string>
+    <string name="upd_available">Versjon %1$s er tilgjengelig.</string>
+    <string name="upd_failed">Oppdateringssjekken mislyktes: ingen tilkobling til GitHub.</string>
+    <string name="upd_rate_limited">GitHub begrenser forespørsler akkurat nå – prøv igjen senere.</string>
+    <string name="upd_no_release">Ingen utgivelse er publisert ennå.</string>
+    <string name="upd_bad_answer">Oppdateringssjekken mislyktes: svaret fra GitHub kunne ikke leses.</string>
+    <string name="upd_download">Last ned %1$s</string>
+    <string name="upd_whats_new">Hva er nytt?</string>
+    <string name="about_update_privacy">Sjekken spør bare GitHub om den nyeste utgivelsen – ingenting annet sendes.</string>
+    <string name="about_credits_title">Takk til</string>
+    <string name="about_credit_poweramp">Poweramp API av Max MP</string>
+    <string name="about_credit_discord">Discord Social SDK RPC-grensesnitt via antisocialcord-kt av Nightdavisao (MIT-lisens)</string>
+    <string name="about_credit_covers">Omslag: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz og Cover Art Archive</string>
+    <string name="about_credit_aimp">Android-motstykket til «Discord Rich Presence for AIMP» fra samme utvikler</string>
+    <string name="about_changelog_title">Endringslogg</string>
+    <string name="about_changelog_version">Versjon %1$s</string>
+    <string name="about_installed">(installert)</string>
+    <string name="about_translation_note">Merk: Den norske oversettelsen er laget med KI og kan inneholde feil – rettelser tas gjerne imot på GitHub («Rapporter et problem»).</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">OK</string>
+    <string name="cd_info">Merknad</string>
+    <string name="cd_warning">Advarsel</string>
+    <string name="cd_error">Problem</string>
+    <string name="field_show">Vis</string>
+    <string name="field_hide">Skjul</string>
+    <string name="field_range">Tillatt: %1$d til %2$d</string>
+</resources>

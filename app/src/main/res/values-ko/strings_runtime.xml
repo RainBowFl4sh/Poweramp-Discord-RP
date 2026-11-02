@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">재생 중</string>
+    <string name="status_paused">일시정지됨</string>
+    <string name="status_test_line">연결이 정상입니다!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Discord 프레즌스</string>
+    <string name="svc_channel_desc">앱이 Discord 상태를 Poweramp와 동기화하는 동안 표시됩니다</string>
+    <string name="svc_alert_channel_name">경고</string>
+    <string name="svc_alert_channel_desc">확인이 필요한 문제(예: Android가 백그라운드 시작을 차단한 경우)</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Discord에 표시 중</string>
+    <string name="svc_showing_paused">일시정지됨 – Discord에 표시 중</string>
+    <string name="svc_hidden_paused">일시정지됨 – Discord에서 숨김</string>
+    <string name="svc_hidden">Discord에 표시되는 내용 없음</string>
+    <string name="svc_testing">Discord에 테스트 프레즌스 표시 중</string>
+    <string name="svc_sending">Discord로 보내는 중…</string>
+    <string name="svc_update_rejected">Discord가 프레즌스를 받아들이지 않았습니다 – 자세한 내용은 앱에서 확인하세요</string>
+    <string name="svc_connecting">Discord에 연결하는 중…</string>
+    <string name="svc_waiting">Poweramp를 기다리는 중…</string>
+    <string name="svc_not_connected">Discord에 연결되지 않음 – 다시 시도하는 중</string>
+    <string name="svc_discord_missing">Discord 앱이 설치되어 있지 않습니다</string>
+    <string name="svc_rejected">Discord가 애플리케이션 ID를 거부했습니다</string>
+    <string name="svc_no_app_id">Discord 애플리케이션 ID가 설정되지 않았습니다</string>
+    <string name="svc_disabled">Discord Rich Presence가 꺼져 있습니다</string>
+    <string name="svc_action_stop">중지</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Discord 프레즌스를 시작할 수 없습니다</string>
+    <string name="svc_bg_blocked_text">Android가 앱의 백그라운드 시작을 허용하지 않습니다. 탭하여 앱을 열고 백그라운드 실행을 허용하세요(배터리 최적화).</string>
+</resources>

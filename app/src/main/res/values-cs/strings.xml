@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">Stav</string>
+    <string name="tab_display">Zobrazení</string>
+    <string name="tab_cover">Obaly</string>
+    <string name="tab_sources">Zdroje</string>
+    <string name="tab_advanced">Pokročilé</string>
+    <string name="tab_about">O aplikaci</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">Další možnosti</string>
+    <string name="app_settings_title">Nastavení aplikace</string>
+    <string name="app_settings_theme">Motiv</string>
+    <string name="theme_system">Podle systému</string>
+    <string name="theme_light">Světlý</string>
+    <string name="theme_dark">Tmavý</string>
+    <string name="app_settings_amoled">AMOLED černá</string>
+    <string name="app_settings_amoled_on">Čistě černé pozadí v tmavém režimu – šetří baterii na OLED displejích.</string>
+    <string name="app_settings_amoled_needs_dark">Jen v tmavém režimu – zvolte „Tmavý“ nebo přepněte Android do tmavého režimu.</string>
+    <string name="app_settings_dynamic">Dynamické barvy (Material You)</string>
+    <string name="app_settings_dynamic_sub">Barvy podle tapety. Vypnuto: vlastní barvy aplikace ve stylu Discordu.</string>
+    <string name="app_settings_language">Jazyk</string>
+    <string name="language_system">Výchozí jazyk systému</string>
+    <string name="language_ai">Překlad pomocí AI</string>
+    <string name="app_settings_language_note">Také v nastavení Androidu: Aplikace → Poweramp Discord RP → Jazyk.</string>
+    <string name="common_close">Zavřít</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Váš stav v Discordu ukazuje, co hraje Poweramp</string>
+    <string name="master_off">Vypnuto – Discord nic nezobrazuje</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Připojení</string>
+    <string name="conn_idle">Čeká se – momentálně není co zobrazit</string>
+    <string name="conn_disabled">Vypnuto</string>
+    <string name="conn_no_app_id">Není nastaveno ID aplikace Discord</string>
+    <string name="conn_connecting">Připojování k Discordu…</string>
+    <string name="conn_connected">Připojeno k Discordu</string>
+    <string name="conn_testing">Zobrazuje se testovací stav.</string>
+    <string name="conn_test_waiting">Odesílání testovacího stavu do Discordu…</string>
+    <string name="conn_activity_error">Discord nepřijal poslední aktualizaci: %1$s</string>
+    <string name="conn_detail">Podrobnosti: %1$s</string>
+    <string name="conn_user">Účet Discord</string>
+    <string name="conn_app_id">ID aplikace</string>
+    <string name="conn_app_builtin">%1$s (vestavěné)</string>
+    <string name="conn_app_own">%1$s (vlastní)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">Poslední aktualizace</string>
+    <string name="conn_never">zatím ne</string>
+    <string name="conn_connections">Připojení</string>
+    <string name="conn_service">Služba na pozadí</string>
+    <string name="conn_service_running">běží</string>
+    <string name="conn_service_stopped">neběží</string>
+    <string name="conn_service_start">Spustit</string>
+    <string name="conn_service_stop">Zastavit</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Nepropojeno</string>
+    <string name="acc_hint">Propojte svůj účet Discord, abyste viděli své jméno a profilový obrázek v živém náhledu i zde.</string>
+    <string name="acc_link">Propojit účet Discord</string>
+    <string name="acc_refresh">Obnovit</string>
+    <string name="acc_restart">Začít znovu</string>
+    <string name="acc_unlink">Odpojit</string>
+    <string name="acc_waiting">Čeká se na Discord – povolte tam přístup a pak se vraťte do této aplikace.</string>
+    <string name="acc_working">Načítání vašeho profilu z Discordu…</string>
+    <string name="acc_privacy">Načte se jen vaše jméno a profilový obrázek (přístup „identify“ v Discordu). Přístup se ihned zruší – aplikace si neukládá žádný token.</string>
+    <string name="acc_redirect_hint">Discord hlásí „Invalid OAuth2 redirect_uri“? Vlastník aplikace Discord musí v Developer Portalu přidat %1$s v části OAuth2 → Redirects.</string>
+    <string name="acc_no_app_id">Je potřeba ID aplikace Discord (karta Pokročilé).</string>
+    <string name="acc_err_cancelled">Propojení bylo zrušeno – Discord nedostal povolení sdílet váš profil.</string>
+    <string name="acc_err_redirect">Aplikace Discord nezná návratovou adresu této aplikace. Její vlastník musí v Developer Portalu přidat %1$s v části OAuth2 → Redirects.</string>
+    <string name="acc_err_public_client">Discord vyžaduje tajný klíč klienta: v aplikaci Discord není zapnutá volba „Public Client“ (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">Přihlášení trvalo příliš dlouho nebo už bylo použito – zkuste to prosím znovu.</string>
+    <string name="acc_err_network">Discord není dostupný – zkontrolujte připojení k internetu a zkuste to znovu.</string>
+    <string name="acc_err_discord">Discord přihlášení odmítl – zkuste to prosím později.</string>
+    <string name="acc_err_bad_answer">Discord poslal neočekávanou odpověď – zkuste to prosím později.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Nepřipojeno k Discordu – zkouší se znovu</string>
+    <string name="err_discord_missing">Aplikace Discord není nainstalovaná</string>
+    <string name="err_bind_failed">Aplikace Discord nenabízí službu Rich Presence – aktualizujte Discord</string>
+    <string name="err_connect_failed">Discord nepřijal připojení – zkouší se znovu</string>
+    <string name="err_closed">Discord ukončil připojení – připojuje se znovu</string>
+    <string name="err_invalid_client_id">Discord odmítl ID aplikace – zkontrolujte ho na kartě Pokročilé</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Právě hraje</string>
+    <string name="now_nothing">V Powerampu nic nehraje.</string>
+    <string name="word_playing">Přehrává se</string>
+    <string name="word_paused">Pozastaveno</string>
+    <string name="hidden_no">Discord zobrazuje tuto skladbu.</string>
+    <string name="hidden_disabled">Rich Presence je vypnuté – Discord nic nezobrazuje.</string>
+    <string name="hidden_stopped">Nic nehraje – Discord nic nezobrazuje.</string>
+    <string name="hidden_stream">Internetová rádia / streamy jsou skryté (karta Zobrazení) – Discord nic nezobrazuje.</string>
+    <string name="hidden_path">Tento soubor skrývá filtr cest (karta Zobrazení) – Discord nic nezobrazuje.</string>
+    <string name="hidden_paused">Přehrávání je pozastavené a je zvoleno „Skrýt“ (karta Zobrazení): Discord ukazuje vaše ostatní aktivity.</string>
+    <string name="hidden_timeout">Pozastaveno déle, než je nastaveno na kartě Zobrazení – stav byl odstraněn.</string>
+    <string name="now_user_stopped">Zastaveno vámi – Discord nic nezobrazuje, dokud Poweramp znovu nezačne hrát.</string>
+    <string name="now_rejected">Discord tento stav nepřijal – viz „Připojení“.</string>
+    <string name="now_after_test">Discord teď zobrazuje testovací stav – potom se zobrazí tato skladba.</string>
+    <string name="now_test_shown">Discord teď zobrazuje testovací stav.</string>
+    <string name="now_sending">Odesílá se do Discordu…</string>
+    <string name="now_not_connected">Discord to zatím nezobrazuje – viz „Připojení“.</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Odeslat testovací stav</string>
+    <string name="btn_reconnect">Znovu připojit</string>
+    <string name="btn_open_poweramp">Otevřít Poweramp</string>
+    <string name="btn_open_discord">Otevřít Discord</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Kontrola nastavení</string>
+    <string name="check_checking">Kontrola…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">Verze %1$s (build %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">Verze %1$s</string>
+    <string name="check_poweramp_old">Verze %1$s (build %2$d) je příliš stará – tato aplikace potřebuje build %3$d nebo novější.</string>
+    <string name="check_poweramp_missing">Poweramp není nainstalovaný.</string>
+    <string name="check_poweramp_get">Získat Poweramp</string>
+    <string name="check_poweramp_update">Aktualizovat Poweramp</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Nainstalováno, služba Rich Presence je dostupná</string>
+    <string name="check_discord_no_rpc">Tato verze Discordu nenabízí službu Rich Presence ostatním aplikacím. Aktualizujte prosím Discord.</string>
+    <string name="check_discord_missing">Aplikace Discord není nainstalovaná.</string>
+    <string name="check_discord_get">Získat Discord</string>
+    <string name="check_discord_update">Aktualizovat Discord</string>
+    <string name="check_appid_title">Aplikace Discord</string>
+    <string name="check_appid_own">Vlastní aplikace (ID %1$s)</string>
+    <string name="check_appid_missing">Tento build nemá vestavěné ID aplikace. Vytvořte si vlastní aplikaci Discord a zadejte její ID na kartě Pokročilé.</string>
+    <string name="check_appid_invalid">Vaše vlastní ID aplikace není platné (17 až 20 číslic) a tento build žádné vestavěné nemá.</string>
+    <string name="check_appid_invalid_fallback">Vaše vlastní ID aplikace není platné (17 až 20 číslic) – používá se vestavěná aplikace (ID %1$s).</string>
+    <string name="check_appid_builtin_invalid">ID aplikace vestavěné v tomto buildu (%1$s) není platné (17 až 20 číslic). Vytvořte si vlastní aplikaci Discord a zadejte její ID na kartě Pokročilé.</string>
+    <string name="check_appid_both_invalid">Vaše vlastní ID aplikace není platné (17 až 20 číslic) a ani ID vestavěné v tomto buildu (%1$s) není platné.</string>
+    <string name="check_appid_fix">Nastavit</string>
+    <string name="check_battery_title">Optimalizace baterie</string>
+    <string name="check_battery_ok">Pro tuto aplikaci vypnuta – může se spustit na pozadí, když Poweramp začne hrát.</string>
+    <string name="check_battery_bad">Android nemusí aplikaci dovolit spustit se, když Poweramp začne hrát, nebo ji později může zastavit. Vyjměte ji z optimalizace baterie.</string>
+    <string name="check_battery_fix">Povolit</string>
+    <string name="check_notif_title">Oznámení</string>
+    <string name="check_notif_ok">Povolena – stavové oznámení ukazuje, co vidí Discord.</string>
+    <string name="check_notif_bad">Nepovolena – aplikace nemůže zobrazit stavové oznámení, zatímco udržuje váš stav aktuální.</string>
+    <string name="check_notif_fix">Povolit</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Dobré vědět</string>
+    <string name="hint_privacy_title">Sdílejte svou aktivitu v Discordu</string>
+    <string name="hint_privacy">V Discordu: Nastavení → Soukromí aktivity → zapněte „Sdílet aktivitu“. Jinak nikdo neuvidí, co posloucháte.</string>
+    <string name="hint_poweramp_title">První spuštění</string>
+    <string name="hint_poweramp">Po instalaci této aplikace v Powerampu jednou pozastavte a znovu spusťte přehrávání, aby Poweramp aplikaci zaznamenal a začal jí posílat informace o skladbě.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Odesílá se testovací stav – zůstane zobrazen %1$d s.</string>
+    <string name="msg_reconnecting">Znovu se připojuje…</string>
+    <string name="msg_stop_ended">Ruční zastavení skončilo – Discord znovu zobrazuje Poweramp.</string>
+    <string name="msg_start_blocked">Android nepovolil spuštění na pozadí – povolte ho v části „Optimalizace baterie“.</string>
+    <string name="msg_service_started">Služba na pozadí spuštěna.</string>
+    <string name="msg_service_stopped">Zastaveno, dokud Poweramp znovu nezačne hrát.</string>
+    <string name="msg_cannot_open">Nebyla nalezena aplikace, která by to otevřela.</string>
+    <string name="msg_cover_cleared">Mezipaměť obalů vymazána.</string>
+    <string name="msg_exported">Nastavení uloženo.</string>
+    <string name="msg_export_failed">Nastavení se nepodařilo uložit.</string>
+    <string name="msg_imported">Nastavení importováno.</string>
+    <string name="msg_import_failed">Tento soubor neobsahuje nastavení této aplikace.</string>
+    <string name="msg_reset">Všechna nastavení byla obnovena na výchozí hodnoty.</string>
+    <string name="msg_log_copied">Protokol zkopírován.</string>
+    <string name="msg_up_to_date">Máte nejnovější verzi.</string>
+    <string name="msg_account_linked">Účet Discord propojen: %1$s</string>
+    <string name="msg_account_failed">Propojení účtu Discord se nezdařilo – podrobnosti na kartě Stav.</string>
+    <string name="msg_account_unlinked">Účet Discord odpojen.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Živý náhled</string>
+    <string name="prev_listening">Poslouchá %1$s</string>
+    <string name="prev_playing">Hraje %1$s</string>
+    <string name="prev_app_own">vaše aplikace</string>
+    <string name="prev_you">Vy</string>
+    <string name="prev_elapsed">uplynulo %1$s</string>
+    <string name="prev_example">Příklad – právě nic nehraje.</string>
+    <string name="prev_example_title">Ukázkový název</string>
+    <string name="prev_example_artist">Ukázkový interpret</string>
+    <string name="prev_example_album">Ukázkové album</string>
+    <string name="prev_icon_tip">Ikona: %1$s</string>
+    <string name="prev_link">Odkaz: %1$s</string>
+    <string name="prev_no_link">Název bez odkazu</string>
+    <string name="prev_link_account">Propojte svůj účet Discord, abyste zde viděli své jméno a obrázek</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Aktivita</string>
+    <string name="disp_type">Typ aktivity</string>
+    <string name="disp_type_listening">Poslouchá (zobrazuje ukazatel průběhu)</string>
+    <string name="disp_type_playing">Hraje (jen uplynulý čas)</string>
+    <string name="disp_status_display">Text stavu v Discordu ukazuje</string>
+    <string name="disp_status_name">Název aplikace (Poweramp)</string>
+    <string name="disp_status_state">Druhý řádek (interpret)</string>
+    <string name="disp_status_details">První řádek (název skladby)</string>
+    <string name="disp_timestamps">Zobrazit ukazatel průběhu / uplynulý čas</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Texty</string>
+    <string name="disp_details">První řádek</string>
+    <string name="disp_state">Druhý řádek</string>
+    <string name="disp_large_text">Popisek obalu</string>
+    <string name="disp_small_text">Popisek ikony</string>
+    <string name="disp_insert_into">Klepnutím vložíte zástupný symbol do pole „%1$s“:</string>
+    <string name="disp_placeholders_help">Co znamenají zástupné symboly</string>
+    <string name="disp_rotation_help" formatted="false">Oddělte texty pomocí ||, aby se střídaly, např. %artist% || %title% (interval střídání níže).</string>
+    <string name="ph_title">název skladby</string>
+    <string name="ph_artist">interpret</string>
+    <string name="ph_album">album</string>
+    <string name="ph_filename">název souboru bez přípony</string>
+    <string name="ph_ext">přípona souboru (flac, mp3 …)</string>
+    <string name="ph_pos">aktuální pozice (1:23)</string>
+    <string name="ph_dur">délka (3:45)</string>
+    <string name="ph_percent">průběh v procentech</string>
+    <string name="ph_bar">textový ukazatel průběhu ▰▰▰▱▱▱</string>
+    <string name="ph_status">Přehrává se / Pozastaveno</string>
+    <string name="ph_codec">kodek (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">datový tok (320 kbps)</string>
+    <string name="ph_samplerate">vzorkovací frekvence (44,1 kHz)</string>
+    <string name="ph_bits">bitová hloubka (24 bitů)</string>
+    <string name="ph_track">pozice v aktuálním seznamu</string>
+    <string name="ph_listsize">počet skladeb v seznamu</string>
+    <string name="ph_rating">hodnocení ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">mezi alternativami, které se střídají, např. %artist% || %title%</string>
+    <string name="disp_small_icon">Zobrazit ikonu přehrávání / pauzy (malý obrázek)</string>
+    <string name="disp_bar_length" formatted="false">Délka %bar%</string>
+    <string name="disp_bar_length_value">%1$d zn.</string>
+    <string name="disp_refresh">Interval obnovení</string>
+    <string name="disp_refresh_value">%1$d s</string>
+    <string name="disp_refresh_note" formatted="false">Používá se jen tehdy, když text obsahuje %pos%, %bar% nebo %percent%. Discord přijímá jen několik aktualizací za minutu.</string>
+    <string name="disp_rotation">Interval střídání</string>
+    <string name="disp_rotation_value">%1$d s</string>
+    <string name="disp_rotation_note">Používá se jen tehdy, když text obsahuje ||. Každá skladba začíná první alternativou, prázdné se přeskakují. Discord přijímá jen 5 aktualizací za 20 sekund, proto nejméně 5 s.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Klikací název</string>
+    <string name="disp_title_link">Klikací název skladby (vyhledání interpreta + názvu na YouTube)</string>
+    <string name="disp_own_link">Vlastní odkaz</string>
+    <string name="disp_own_link_url">Odkaz</string>
+    <string name="disp_own_link_hint" formatted="false">Zástupné symboly fungují i zde, např. https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">Odkaz musí začínat http:// nebo https://</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Pauza</string>
+    <string name="disp_paused">Při pozastavení</string>
+    <string name="disp_paused_show">Zobrazit stav „Pozastaveno“</string>
+    <string name="disp_paused_hide">Skrýt (zobrazí se jiné aktivity)</string>
+    <string name="disp_clear_after">Odstranit po pauze delší než (minuty)</string>
+    <string name="disp_clear_after_hint">0 = nikdy (jen když se zobrazuje „Pozastaveno“)</string>
+    <string name="disp_filters_title">Filtry</string>
+    <string name="disp_hide_streams">Skrýt stav u internetových rádií / streamů</string>
+    <string name="disp_exclude_paths">Skrýt, když cesta k souboru obsahuje</string>
+    <string name="disp_exclude_paths_hint">např. Audioknihy;Podcasty</string>
+    <string name="disp_exclude_paths_note">Více částí oddělte středníkem ; (na velikosti písmen nezáleží)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Zobrazit obal alba v Discordu</string>
+    <string name="cov_info">Discord zobrazuje jen obaly, které mají veřejný odkaz. Obal, který zobrazuje Poweramp, lze nahrát (x0.at nevyžaduje účet) nebo vyhledat online (viz „Zdroje“). Každý obal se zjišťuje jen jednou a ukládá se do mezipaměti.</string>
+    <string name="cov_local_title">Obal z Powerampu</string>
+    <string name="cov_local">Použít obal, který zobrazuje Poweramp</string>
+    <string name="cov_local_sub">Vložený v souboru, obrázek ve složce nebo stažený Powerampem – nahraje se kvůli veřejnému odkazu</string>
+    <string name="cov_upload">Nahrávat obaly na</string>
+    <string name="cov_upload_x0">x0.at (bez účtu)</string>
+    <string name="cov_upload_catbox">catbox.moe (bez účtu)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Vypnuto (jen vyhledávání online)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Imgur vyžaduje Client-ID – bez něj se použije jiná služba.</string>
+    <string name="cov_imgur_get">Získat Client-ID</string>
+    <string name="cov_prefer_local">Upřednostnit obal z Powerampu</string>
+    <string name="cov_prefer_local_sub">Vyhledávání online jen u skladeb bez obalu</string>
+    <string name="cov_size">Velikost nahrávaných obalů</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">Nahrané obaly může vidět každý, kdo má odkaz.</string>
+    <string name="cov_current_title">Aktuální obal</string>
+    <string name="cov_off">Obaly jsou vypnuté – Discord zobrazuje logo aplikace.</string>
+    <string name="cov_nothing">Nic nehraje.</string>
+    <string name="cov_searching">Hledá se obal…</string>
+    <string name="cov_not_yet">Obal se začne hledat, jakmile Discord zobrazí tuto skladbu.</string>
+    <string name="cov_none">Discord zobrazuje logo aplikace: obal nebyl nalezen nebo ho Discord nedokázal načíst.</string>
+    <string name="cov_source">Zdroj: %1$s</string>
+    <string name="cov_src_cache">mezipaměť obalů</string>
+    <string name="cov_src_online">nalezeno na %1$s</string>
+    <string name="cov_src_poweramp">obal z Powerampu</string>
+    <string name="cov_src_uploaded">%1$s, nahráno na %2$s</string>
+    <string name="cov_open">Otevřít obrázek</string>
+    <string name="cov_clear">Vymazat mezipaměť obalů</string>
+    <string name="cov_image_desc">Obal alba</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Vyhledávání online hledá interpreta / album a přímo použije veřejný odkaz na obrázek – nic se nenahrává. Zdroje se zkoušejí shora dolů, platí první nalezený výsledek.</string>
+    <string name="src_covers_off">Obaly jsou vypnuté – nic se nevyhledává.</string>
+    <string name="src_open_cover_tab">Nastavení obalů</string>
+    <string name="src_prefer_local_note">Volba „Upřednostnit obal z Powerampu“ je zapnutá: vyhledávání se použije jen u skladeb bez obalu.</string>
+    <string name="src_list_title">Online zdroje</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Vyžaduje bezplatnou vývojářskou aplikaci (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Zadejte Client ID a Secret, jinak se Spotify přeskočí.</string>
+    <string name="src_create_app">Vytvořit aplikaci</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Bez klíče (neoficiální rozhraní)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Vyžaduje bezplatný osobní přístupový token</string>
+    <string name="src_token">Token</string>
+    <string name="src_discogs_missing">Zadejte token, jinak se Discogs přeskočí.</string>
+    <string name="src_get_token">Získat token</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Bez klíče</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Aplikace Discord</string>
+    <string name="adv_custom_app">Použít vlastní aplikaci Discord</string>
+    <string name="adv_custom_app_sub">Discord zobrazí její název („Poslouchá …“)</string>
+    <string name="adv_app_id">ID aplikace</string>
+    <string name="adv_app_id_hint">Developer Portal → vaše aplikace → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">ID aplikace má 17 až 20 číslic.</string>
+    <string name="adv_portal">Otevřít Developer Portal</string>
+    <string name="adv_assets_note">V části Rich Presence → Art Assets nahrajte obrázky s názvy „poweramp“ (logo), „play“ a „pause“.</string>
+    <string name="adv_effective">Používané ID aplikace</string>
+    <string name="adv_effective_none">žádné – tento build nemá vestavěné ID, použijte vlastní aplikaci</string>
+    <string name="adv_compat_title">Kompatibilita</string>
+    <string name="adv_seconds">Odesílat časové údaje v sekundách</string>
+    <string name="adv_seconds_sub">Jen pokud Discord zobrazuje špatný čas nebo žádný ukazatel průběhu</string>
+    <string name="adv_log_title">Nedávný protokol</string>
+    <string name="adv_log_empty">Zatím nic nezaznamenáno.</string>
+    <string name="adv_log_copy">Kopírovat</string>
+    <string name="adv_log_share">Sdílet</string>
+    <string name="adv_log_clear">Vymazat</string>
+    <string name="adv_log_share_subject">Protokol Poweramp Discord RP</string>
+    <string name="adv_settings_title">Soubor s nastavením</string>
+    <string name="adv_settings_info">Uložte všechna nastavení do souboru nebo je z něj načtěte (např. v novém telefonu). Soubor obsahuje i klíče, které jste zadali pro obaly (Imgur, Spotify, Discogs).</string>
+    <string name="adv_export">Exportovat…</string>
+    <string name="adv_import">Importovat…</string>
+    <string name="adv_reset">Obnovit výchozí</string>
+    <string name="adv_reset_confirm_title">Obnovit všechna nastavení?</string>
+    <string name="adv_reset_confirm_text">Všechna nastavení se vrátí na výchozí hodnoty. Pokud si je chcete ponechat, nejdříve je exportujte.</string>
+    <string name="adv_reset_confirm">Obnovit</string>
+    <string name="adv_export_keys_title">Exportovat s vašimi klíči?</string>
+    <string name="adv_export_keys_text">Soubor bude obsahovat vaše klíče pro %1$s jako prostý text. Nechte si ho pro sebe – nesdílejte ho a nepřikládejte ho k hlášení chyby.</string>
+    <string name="adv_export_keys_confirm">Exportovat</string>
+    <string name="common_cancel">Zrušit</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">Verze %1$s</string>
+    <string name="about_by">autor: %1$s</string>
+    <string name="about_on_github">%1$s na GitHubu</string>
+    <string name="cd_author_avatar">Profilový obrázek uživatele %1$s na GitHubu</string>
+    <string name="cd_account_avatar">Profilový obrázek uživatele %1$s v Discordu</string>
+    <string name="about_github">Stránka na GitHubu</string>
+    <string name="about_releases">Všechna vydání</string>
+    <string name="about_issues">Nahlásit problém</string>
+    <string name="about_disclaimer">Nezávislý projekt – není spojen s Discordem ani Powerampem a není jimi podporován.</string>
+    <string name="about_updates_title">Aktualizace</string>
+    <string name="about_update_check">Kontrolovat aktualizace</string>
+    <string name="about_update_freq">Jak často</string>
+    <string name="upd_every_start">při každém spuštění aplikace</string>
+    <string name="upd_daily">jednou denně</string>
+    <string name="upd_weekly">jednou týdně</string>
+    <string name="upd_monthly">jednou měsíčně</string>
+    <string name="about_check_now">Zkontrolovat</string>
+    <string name="upd_never">Zatím nezkontrolováno.</string>
+    <string name="upd_checking">Hledání aktualizací…</string>
+    <string name="upd_latest">Máte nejnovější verzi (poslední kontrola: %1$s).</string>
+    <string name="upd_available">Je k dispozici verze %1$s.</string>
+    <string name="upd_failed">Kontrola aktualizací selhala: žádné spojení s GitHubem.</string>
+    <string name="upd_rate_limited">GitHub momentálně omezuje požadavky – zkuste to prosím později.</string>
+    <string name="upd_no_release">Zatím nebylo zveřejněno žádné vydání.</string>
+    <string name="upd_bad_answer">Kontrola aktualizací selhala: odpověď GitHubu se nepodařilo přečíst.</string>
+    <string name="upd_download">Stáhnout %1$s</string>
+    <string name="upd_whats_new">Co je nového?</string>
+    <string name="about_update_privacy">Kontrola se jen ptá GitHubu na nejnovější vydání – nic jiného se neodesílá.</string>
+    <string name="about_credits_title">Poděkování</string>
+    <string name="about_credit_poweramp">Poweramp API od Max MP</string>
+    <string name="about_credit_discord">Rozhraní RPC pro Discord Social SDK přes antisocialcord-kt od Nightdavisao (licence MIT)</string>
+    <string name="about_credit_covers">Obaly: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz a Cover Art Archive</string>
+    <string name="about_credit_aimp">Verze pro Android projektu „Discord Rich Presence for AIMP“ od stejného autora</string>
+    <string name="about_changelog_title">Seznam změn</string>
+    <string name="about_changelog_version">Verze %1$s</string>
+    <string name="about_installed">(nainstalováno)</string>
+    <string name="about_translation_note">Český překlad byl vytvořen pomocí AI a může obsahovat chyby – opravy uvítáme na GitHubu („Nahlásit problém“).</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">OK</string>
+    <string name="cd_info">Poznámka</string>
+    <string name="cd_warning">Upozornění</string>
+    <string name="cd_error">Problém</string>
+    <string name="field_show">Zobrazit</string>
+    <string name="field_hide">Skrýt</string>
+    <string name="field_range">Povoleno: %1$d až %2$d</string>
+</resources>

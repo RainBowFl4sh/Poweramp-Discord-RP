@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">Memutar</string>
+    <string name="status_paused">Dijeda</string>
+    <string name="status_test_line">Koneksi berfungsi!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Presence Discord</string>
+    <string name="svc_channel_desc">Ditampilkan selama aplikasi menyinkronkan status Discord Anda dengan Poweramp</string>
+    <string name="svc_alert_channel_name">Peringatan</string>
+    <string name="svc_alert_channel_desc">Masalah yang perlu Anda perhatikan, mis. saat Android memblokir aplikasi dimulai di latar belakang</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Ditampilkan di Discord</string>
+    <string name="svc_showing_paused">Dijeda – ditampilkan di Discord</string>
+    <string name="svc_hidden_paused">Dijeda – disembunyikan di Discord</string>
+    <string name="svc_hidden">Tidak ada yang ditampilkan di Discord</string>
+    <string name="svc_testing">Presence uji ditampilkan di Discord</string>
+    <string name="svc_sending">Mengirim ke Discord…</string>
+    <string name="svc_update_rejected">Discord tidak menerima presence – detail ada di aplikasi</string>
+    <string name="svc_connecting">Menghubungkan ke Discord…</string>
+    <string name="svc_waiting">Menunggu Poweramp…</string>
+    <string name="svc_not_connected">Tidak terhubung ke Discord – mencoba lagi</string>
+    <string name="svc_discord_missing">Aplikasi Discord tidak terinstal</string>
+    <string name="svc_rejected">Discord menolak ID aplikasi</string>
+    <string name="svc_no_app_id">Belum ada ID aplikasi Discord yang diatur</string>
+    <string name="svc_disabled">Discord Rich Presence nonaktif</string>
+    <string name="svc_action_stop">Hentikan</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">Presence Discord tidak dapat dimulai</string>
+    <string name="svc_bg_blocked_text">Android tidak mengizinkan aplikasi dimulai di latar belakang. Ketuk untuk membuka aplikasi dan izinkan berjalan di latar belakang (pengoptimalan baterai).</string>
+</resources>

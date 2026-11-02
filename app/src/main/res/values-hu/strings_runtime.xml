@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">Lejátszás</string>
+    <string name="status_paused">Szüneteltetve</string>
+    <string name="status_test_line">A kapcsolat működik!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">Discord-állapot</string>
+    <string name="svc_channel_desc">Akkor látható, amikor az alkalmazás szinkronban tartja a Discord-állapotodat a Poweramppal</string>
+    <string name="svc_alert_channel_name">Figyelmeztetések</string>
+    <string name="svc_alert_channel_desc">Figyelmet igénylő problémák, pl. ha az Android letiltja a háttérben való indítást</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">Látható a Discordon</string>
+    <string name="svc_showing_paused">Szüneteltetve – látható a Discordon</string>
+    <string name="svc_hidden_paused">Szüneteltetve – elrejtve a Discordon</string>
+    <string name="svc_hidden">Semmi sem látható a Discordon</string>
+    <string name="svc_testing">Tesztállapot látható a Discordon</string>
+    <string name="svc_sending">Küldés a Discordnak…</string>
+    <string name="svc_update_rejected">A Discord nem fogadta el az állapotot – részletek az alkalmazásban</string>
+    <string name="svc_connecting">Csatlakozás a Discordhoz…</string>
+    <string name="svc_waiting">Várakozás a Powerampra…</string>
+    <string name="svc_not_connected">Nincs kapcsolat a Discorddal – újrapróbálkozás</string>
+    <string name="svc_discord_missing">A Discord nincs telepítve</string>
+    <string name="svc_rejected">A Discord elutasította az alkalmazásazonosítót</string>
+    <string name="svc_no_app_id">Nincs megadva Discord-alkalmazásazonosító</string>
+    <string name="svc_disabled">A Discord Rich Presence ki van kapcsolva</string>
+    <string name="svc_action_stop">Leállítás</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">A Discord-állapot nem tudott elindulni</string>
+    <string name="svc_bg_blocked_text">Az Android nem engedi, hogy az alkalmazás a háttérben induljon el. Koppints az alkalmazás megnyitásához, és engedélyezd a háttérben futást (akkumulátor-optimalizálás).</string>
+</resources>

@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+    <!-- Tabs -->
+    <string name="tab_status">Κατάσταση</string>
+    <string name="tab_display">Εμφάνιση</string>
+    <string name="tab_cover">Εξώφυλλο</string>
+    <string name="tab_sources">Πηγές</string>
+    <string name="tab_advanced">Σύνθετα</string>
+    <string name="tab_about">Πληροφορίες</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">Περισσότερες επιλογές</string>
+    <string name="app_settings_title">Ρυθμίσεις εφαρμογής</string>
+    <string name="app_settings_theme">Θέμα</string>
+    <string name="theme_system">Σύμφωνα με το σύστημα</string>
+    <string name="theme_light">Ανοιχτό</string>
+    <string name="theme_dark">Σκούρο</string>
+    <string name="app_settings_amoled">Μαύρο AMOLED</string>
+    <string name="app_settings_amoled_on">Καθαρό μαύρο φόντο στη σκούρα λειτουργία – εξοικονομεί μπαταρία σε οθόνες OLED.</string>
+    <string name="app_settings_amoled_needs_dark">Μόνο σε σκούρα λειτουργία – επιλέξτε «Σκούρο» ή ενεργοποιήστε τη σκούρα λειτουργία του Android.</string>
+    <string name="app_settings_dynamic">Δυναμικά χρώματα (Material You)</string>
+    <string name="app_settings_dynamic_sub">Χρώματα από την ταπετσαρία σας. Ανενεργό: τα χρώματα της εφαρμογής σε στιλ Discord.</string>
+    <string name="app_settings_language">Γλώσσα</string>
+    <string name="language_system">Προεπιλογή συστήματος</string>
+    <string name="language_ai">Μετάφραση με τεχνητή νοημοσύνη</string>
+    <string name="app_settings_language_note">Επίσης στις ρυθμίσεις του Android: Εφαρμογές → Poweramp Discord RP → Γλώσσα.</string>
+    <string name="common_close">Κλείσιμο</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Η κατάστασή σας στο Discord δείχνει τι παίζει το Poweramp</string>
+    <string name="master_off">Απενεργοποιημένο – το Discord δεν δείχνει τίποτα</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Σύνδεση</string>
+    <string name="conn_idle">Αναμονή – τίποτα για εμφάνιση αυτή τη στιγμή</string>
+    <string name="conn_disabled">Απενεργοποιημένο</string>
+    <string name="conn_no_app_id">Δεν έχει οριστεί αναγνωριστικό εφαρμογής Discord</string>
+    <string name="conn_connecting">Σύνδεση στο Discord…</string>
+    <string name="conn_connected">Συνδέθηκε στο Discord</string>
+    <string name="conn_testing">Εμφανίζεται η δοκιμαστική παρουσία.</string>
+    <string name="conn_test_waiting">Αποστολή της δοκιμαστικής παρουσίας στο Discord…</string>
+    <string name="conn_activity_error">Το Discord δεν δέχτηκε την τελευταία ενημέρωση: %1$s</string>
+    <string name="conn_detail">Λεπτομέρειες: %1$s</string>
+    <string name="conn_user">Λογαριασμός Discord</string>
+    <string name="conn_app_id">Αναγνωριστικό εφαρμογής</string>
+    <string name="conn_app_builtin">%1$s (ενσωματωμένο)</string>
+    <string name="conn_app_own">%1$s (δικό σας)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">Τελευταία ενημέρωση</string>
+    <string name="conn_never">όχι ακόμη</string>
+    <string name="conn_connections">Συνδέσεις</string>
+    <string name="conn_service">Υπηρεσία παρασκηνίου</string>
+    <string name="conn_service_running">εκτελείται</string>
+    <string name="conn_service_stopped">δεν εκτελείται</string>
+    <string name="conn_service_start">Έναρξη</string>
+    <string name="conn_service_stop">Διακοπή</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Δεν έχει συνδεθεί</string>
+    <string name="acc_hint">Συνδέστε τον λογαριασμό σας στο Discord για να βλέπετε το όνομα και τη φωτογραφία σας στη ζωντανή προεπισκόπηση και εδώ.</string>
+    <string name="acc_link">Σύνδεση λογαριασμού Discord</string>
+    <string name="acc_refresh">Ανανέωση</string>
+    <string name="acc_restart">Από την αρχή</string>
+    <string name="acc_unlink">Αποσύνδεση</string>
+    <string name="acc_waiting">Αναμονή για το Discord – επιτρέψτε την πρόσβαση εκεί και επιστρέψτε σε αυτή την εφαρμογή.</string>
+    <string name="acc_working">Ανάγνωση του προφίλ σας από το Discord…</string>
+    <string name="acc_privacy">Διαβάζονται μόνο το όνομα και η φωτογραφία προφίλ σας (πρόσβαση «identify» του Discord). Η πρόσβαση ανακαλείται αμέσως – η εφαρμογή δεν κρατά κανένα token.</string>
+    <string name="acc_redirect_hint">Το Discord λέει «Invalid OAuth2 redirect_uri»; Ο κάτοχος της εφαρμογής Discord πρέπει να προσθέσει το %1$s στο OAuth2 → Redirects στο Developer Portal.</string>
+    <string name="acc_no_app_id">Χρειάζεται αναγνωριστικό εφαρμογής Discord (καρτέλα Σύνθετα).</string>
+    <string name="acc_err_cancelled">Η σύνδεση ακυρώθηκε – δεν δόθηκε άδεια στο Discord να κοινοποιήσει το προφίλ σας.</string>
+    <string name="acc_err_redirect">Η εφαρμογή Discord δεν γνωρίζει τη διεύθυνση επιστροφής αυτής της εφαρμογής. Ο κάτοχός της πρέπει να προσθέσει το %1$s στο OAuth2 → Redirects στο Developer Portal.</string>
+    <string name="acc_err_public_client">Το Discord ζητά client secret: η επιλογή «Public Client» δεν είναι ενεργοποιημένη για την εφαρμογή Discord (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">Η σύνδεση άργησε πολύ ή έχει ήδη χρησιμοποιηθεί – δοκιμάστε ξανά.</string>
+    <string name="acc_err_network">Δεν ήταν δυνατή η επικοινωνία με το Discord – ελέγξτε τη σύνδεση στο διαδίκτυο και δοκιμάστε ξανά.</string>
+    <string name="acc_err_discord">Το Discord απέρριψε τη σύνδεση – δοκιμάστε ξανά αργότερα.</string>
+    <string name="acc_err_bad_answer">Το Discord έστειλε μια απροσδόκητη απάντηση – δοκιμάστε ξανά αργότερα.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Δεν υπάρχει σύνδεση με το Discord – νέα προσπάθεια</string>
+    <string name="err_discord_missing">Η εφαρμογή Discord δεν είναι εγκατεστημένη</string>
+    <string name="err_bind_failed">Η εφαρμογή Discord δεν προσφέρει την υπηρεσία Rich Presence – ενημερώστε το Discord</string>
+    <string name="err_connect_failed">Το Discord δεν δέχτηκε τη σύνδεση – νέα προσπάθεια</string>
+    <string name="err_closed">Το Discord έκλεισε τη σύνδεση – επανασύνδεση</string>
+    <string name="err_invalid_client_id">Το Discord απέρριψε το αναγνωριστικό εφαρμογής – ελέγξτε το στην καρτέλα Σύνθετα</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Παίζει τώρα</string>
+    <string name="now_nothing">Δεν παίζει τίποτα στο Poweramp.</string>
+    <string name="word_playing">Αναπαραγωγή</string>
+    <string name="word_paused">Σε παύση</string>
+    <string name="hidden_no">Το Discord δείχνει αυτό το κομμάτι.</string>
+    <string name="hidden_disabled">Το Rich Presence είναι απενεργοποιημένο – το Discord δεν δείχνει τίποτα.</string>
+    <string name="hidden_stopped">Δεν παίζει τίποτα – το Discord δεν δείχνει τίποτα.</string>
+    <string name="hidden_stream">Το διαδικτυακό ραδιόφωνο / οι ροές αποκρύπτονται (καρτέλα Εμφάνιση) – το Discord δεν δείχνει τίποτα.</string>
+    <string name="hidden_path">Αυτό το αρχείο αποκρύπτεται από το φίλτρο διαδρομής (καρτέλα Εμφάνιση) – το Discord δεν δείχνει τίποτα.</string>
+    <string name="hidden_paused">Η αναπαραγωγή είναι σε παύση και έχει επιλεγεί «Απόκρυψη» (καρτέλα Εμφάνιση): το Discord δείχνει τις άλλες δραστηριότητές σας.</string>
+    <string name="hidden_timeout">Σε παύση για περισσότερο χρόνο από όσο ορίζεται στην καρτέλα Εμφάνιση – η παρουσία αφαιρέθηκε.</string>
+    <string name="now_user_stopped">Το σταματήσατε εσείς – το Discord δεν δείχνει τίποτα μέχρι να ξαναπαίξει το Poweramp.</string>
+    <string name="now_rejected">Το Discord δεν δέχτηκε αυτή την παρουσία – δείτε «Σύνδεση».</string>
+    <string name="now_after_test">Το Discord δείχνει αυτή τη στιγμή τη δοκιμαστική παρουσία – ακολουθεί αυτό το κομμάτι.</string>
+    <string name="now_test_shown">Το Discord δείχνει αυτή τη στιγμή τη δοκιμαστική παρουσία.</string>
+    <string name="now_sending">Αποστέλλεται στο Discord…</string>
+    <string name="now_not_connected">Το Discord δεν το δείχνει ακόμη – δείτε «Σύνδεση».</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Αποστολή δοκιμαστικής παρουσίας</string>
+    <string name="btn_reconnect">Επανασύνδεση</string>
+    <string name="btn_open_poweramp">Άνοιγμα Poweramp</string>
+    <string name="btn_open_discord">Άνοιγμα Discord</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Ρύθμιση</string>
+    <string name="check_checking">Έλεγχος…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">Έκδοση %1$s (build %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">Έκδοση %1$s</string>
+    <string name="check_poweramp_old">Η έκδοση %1$s (build %2$d) είναι πολύ παλιά – αυτή η εφαρμογή χρειάζεται build %3$d ή νεότερο.</string>
+    <string name="check_poweramp_missing">Το Poweramp δεν είναι εγκατεστημένο.</string>
+    <string name="check_poweramp_get">Λήψη Poweramp</string>
+    <string name="check_poweramp_update">Ενημέρωση Poweramp</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Εγκατεστημένο, η υπηρεσία Rich Presence είναι διαθέσιμη</string>
+    <string name="check_discord_no_rpc">Αυτή η έκδοση του Discord δεν προσφέρει την υπηρεσία Rich Presence σε άλλες εφαρμογές. Ενημερώστε το Discord.</string>
+    <string name="check_discord_missing">Η εφαρμογή Discord δεν είναι εγκατεστημένη.</string>
+    <string name="check_discord_get">Λήψη Discord</string>
+    <string name="check_discord_update">Ενημέρωση Discord</string>
+    <string name="check_appid_title">Εφαρμογή Discord</string>
+    <string name="check_appid_own">Δική σας εφαρμογή (ID %1$s)</string>
+    <string name="check_appid_missing">Αυτή η έκδοση δεν έχει ενσωματωμένο αναγνωριστικό εφαρμογής. Δημιουργήστε τη δική σας εφαρμογή Discord και εισαγάγετε το αναγνωριστικό της στην καρτέλα Σύνθετα.</string>
+    <string name="check_appid_invalid">Το δικό σας αναγνωριστικό εφαρμογής δεν είναι έγκυρο (17 έως 20 ψηφία) και αυτή η έκδοση δεν έχει ενσωματωμένο.</string>
+    <string name="check_appid_invalid_fallback">Το δικό σας αναγνωριστικό εφαρμογής δεν είναι έγκυρο (17 έως 20 ψηφία) – χρησιμοποιείται η ενσωματωμένη εφαρμογή (ID %1$s).</string>
+    <string name="check_appid_builtin_invalid">Το αναγνωριστικό εφαρμογής που είναι ενσωματωμένο σε αυτή την έκδοση (%1$s) δεν είναι έγκυρο (17 έως 20 ψηφία). Δημιουργήστε τη δική σας εφαρμογή Discord και εισαγάγετε το αναγνωριστικό της στην καρτέλα Σύνθετα.</string>
+    <string name="check_appid_both_invalid">Το δικό σας αναγνωριστικό εφαρμογής δεν είναι έγκυρο (17 έως 20 ψηφία), ούτε αυτό που είναι ενσωματωμένο σε αυτή την έκδοση (%1$s).</string>
+    <string name="check_appid_fix">Ρύθμιση</string>
+    <string name="check_battery_title">Βελτιστοποίηση μπαταρίας</string>
+    <string name="check_battery_ok">Ανενεργή για αυτή την εφαρμογή – μπορεί να ξεκινά στο παρασκήνιο όταν το Poweramp αρχίζει αναπαραγωγή.</string>
+    <string name="check_battery_bad">Το Android μπορεί να μην αφήσει την εφαρμογή να ξεκινήσει όταν το Poweramp αρχίζει αναπαραγωγή ή να τη σταματήσει αργότερα. Εξαιρέστε την από τη βελτιστοποίηση μπαταρίας.</string>
+    <string name="check_battery_fix">Να επιτρέπεται</string>
+    <string name="check_notif_title">Ειδοποιήσεις</string>
+    <string name="check_notif_ok">Επιτρέπονται – η ειδοποίηση κατάστασης δείχνει τι βλέπει το Discord.</string>
+    <string name="check_notif_bad">Δεν επιτρέπονται – η εφαρμογή δεν μπορεί να δείξει την ειδοποίηση κατάστασης ενώ ενημερώνει την παρουσία σας.</string>
+    <string name="check_notif_fix">Να επιτρέπεται</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Καλό να ξέρετε</string>
+    <string name="hint_privacy_title">Κοινοποίηση της δραστηριότητάς σας στο Discord</string>
+    <string name="hint_privacy">Στο Discord: Ρυθμίσεις → Απόρρητο δραστηριότητας → ενεργοποιήστε την «Κοινοποίηση της δραστηριότητάς σας». Διαφορετικά κανείς δεν βλέπει τι ακούτε.</string>
+    <string name="hint_poweramp_title">Πρώτη εκκίνηση</string>
+    <string name="hint_poweramp">Μετά την εγκατάσταση αυτής της εφαρμογής, πατήστε μία φορά παύση και αναπαραγωγή στο Poweramp, ώστε το Poweramp να εντοπίσει την εφαρμογή και να της στέλνει τις πληροφορίες του κομματιού.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Αποστολή δοκιμαστικής παρουσίας – παραμένει για %1$d δευτερόλεπτα.</string>
+    <string name="msg_reconnecting">Επανασύνδεση…</string>
+    <string name="msg_stop_ended">Η διακοπή που ορίσατε έληξε – το Discord δείχνει ξανά το Poweramp.</string>
+    <string name="msg_start_blocked">Το Android δεν επέτρεψε την εκκίνηση στο παρασκήνιο – επιτρέψτε τη στη «Βελτιστοποίηση μπαταρίας».</string>
+    <string name="msg_service_started">Η υπηρεσία παρασκηνίου ξεκίνησε.</string>
+    <string name="msg_service_stopped">Διακόπηκε μέχρι να ξαναπαίξει το Poweramp.</string>
+    <string name="msg_cannot_open">Δεν βρέθηκε εφαρμογή για να ανοίξει αυτό.</string>
+    <string name="msg_cover_cleared">Η κρυφή μνήμη εξωφύλλων εκκαθαρίστηκε.</string>
+    <string name="msg_exported">Οι ρυθμίσεις αποθηκεύτηκαν.</string>
+    <string name="msg_export_failed">Δεν ήταν δυνατή η αποθήκευση των ρυθμίσεων.</string>
+    <string name="msg_imported">Οι ρυθμίσεις εισήχθησαν.</string>
+    <string name="msg_import_failed">Αυτό το αρχείο δεν περιέχει ρυθμίσεις αυτής της εφαρμογής.</string>
+    <string name="msg_reset">Όλες οι ρυθμίσεις επανήλθαν στις προεπιλογές.</string>
+    <string name="msg_log_copied">Το αρχείο καταγραφής αντιγράφηκε.</string>
+    <string name="msg_up_to_date">Έχετε την πιο πρόσφατη έκδοση.</string>
+    <string name="msg_account_linked">Ο λογαριασμός Discord συνδέθηκε: %1$s</string>
+    <string name="msg_account_failed">Η σύνδεση του λογαριασμού Discord απέτυχε – λεπτομέρειες στην καρτέλα Κατάσταση.</string>
+    <string name="msg_account_unlinked">Ο λογαριασμός Discord αποσυνδέθηκε.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Ζωντανή προεπισκόπηση</string>
+    <string name="prev_listening">Ακούει %1$s</string>
+    <string name="prev_playing">Παίζει %1$s</string>
+    <string name="prev_app_own">η εφαρμογή σας</string>
+    <string name="prev_you">Εσείς</string>
+    <string name="prev_elapsed">πέρασαν %1$s</string>
+    <string name="prev_example">Παράδειγμα – δεν παίζει τίποτα αυτή τη στιγμή.</string>
+    <string name="prev_example_title">Τίτλος παραδείγματος</string>
+    <string name="prev_example_artist">Καλλιτέχνης παραδείγματος</string>
+    <string name="prev_example_album">Άλμπουμ παραδείγματος</string>
+    <string name="prev_icon_tip">Εικονίδιο: %1$s</string>
+    <string name="prev_link">Σύνδεσμος: %1$s</string>
+    <string name="prev_no_link">Τίτλος χωρίς σύνδεσμο</string>
+    <string name="prev_link_account">Συνδέστε τον λογαριασμό σας στο Discord για να βλέπετε εδώ το όνομα και τη φωτογραφία σας</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Δραστηριότητα</string>
+    <string name="disp_type">Τύπος δραστηριότητας</string>
+    <string name="disp_type_listening">Ακούει (δείχνει γραμμή προόδου)</string>
+    <string name="disp_type_playing">Παίζει (μόνο χρόνος που πέρασε)</string>
+    <string name="disp_status_display">Το κείμενο κατάστασης του Discord δείχνει</string>
+    <string name="disp_status_name">Όνομα εφαρμογής (Poweramp)</string>
+    <string name="disp_status_state">Δεύτερη γραμμή (καλλιτέχνης)</string>
+    <string name="disp_status_details">Πρώτη γραμμή (τίτλος κομματιού)</string>
+    <string name="disp_timestamps">Εμφάνιση γραμμής προόδου / χρόνου που πέρασε</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Κείμενα</string>
+    <string name="disp_details">Πρώτη γραμμή</string>
+    <string name="disp_state">Δεύτερη γραμμή</string>
+    <string name="disp_large_text">Επεξήγηση εξωφύλλου</string>
+    <string name="disp_small_text">Επεξήγηση εικονιδίου</string>
+    <string name="disp_insert_into">Πατήστε ένα δεσμευτικό θέσης για να το εισαγάγετε στο «%1$s»:</string>
+    <string name="disp_placeholders_help">Τι σημαίνουν τα δεσμευτικά θέσης</string>
+    <string name="disp_rotation_help" formatted="false">Βάλτε || ανάμεσα σε κείμενα για να εναλλάσσονται, π.χ. %artist% || %title% (το διάστημα εναλλαγής ορίζεται παρακάτω).</string>
+    <string name="ph_title">τίτλος κομματιού</string>
+    <string name="ph_artist">καλλιτέχνης</string>
+    <string name="ph_album">άλμπουμ</string>
+    <string name="ph_filename">όνομα αρχείου χωρίς επέκταση</string>
+    <string name="ph_ext">επέκταση αρχείου (flac, mp3 …)</string>
+    <string name="ph_pos">τρέχουσα θέση (1:23)</string>
+    <string name="ph_dur">διάρκεια (3:45)</string>
+    <string name="ph_percent">πρόοδος σε ποσοστό</string>
+    <string name="ph_bar">γραμμή προόδου από κείμενο ▰▰▰▱▱▱</string>
+    <string name="ph_status">Αναπαραγωγή / Σε παύση</string>
+    <string name="ph_codec">codec (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">ρυθμός bit (320 kbps)</string>
+    <string name="ph_samplerate">ρυθμός δειγματοληψίας (44,1 kHz)</string>
+    <string name="ph_bits">βάθος bit (24-bit)</string>
+    <string name="ph_track">θέση στην τρέχουσα λίστα</string>
+    <string name="ph_listsize">αριθμός κομματιών στη λίστα</string>
+    <string name="ph_rating">βαθμολογία ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">ανάμεσα σε κείμενα που εναλλάσσονται, π.χ. %artist% || %title%</string>
+    <string name="disp_small_icon">Εμφάνιση εικονιδίου αναπαραγωγής / παύσης (μικρή εικόνα)</string>
+    <string name="disp_bar_length" formatted="false">Μήκος του %bar%</string>
+    <string name="disp_bar_length_value">%1$d χαρακτήρες</string>
+    <string name="disp_refresh">Διάστημα ανανέωσης</string>
+    <string name="disp_refresh_value">%1$d δευτ.</string>
+    <string name="disp_refresh_note" formatted="false">Χρησιμοποιείται μόνο όταν ένα κείμενο περιέχει %pos%, %bar% ή %percent%. Το Discord δέχεται μόνο λίγες ενημερώσεις ανά λεπτό.</string>
+    <string name="disp_rotation">Διάστημα εναλλαγής</string>
+    <string name="disp_rotation_value">%1$d δευτ.</string>
+    <string name="disp_rotation_note">Χρησιμοποιείται μόνο όταν ένα κείμενο περιέχει ||. Κάθε κομμάτι ξεκινά με το πρώτο εναλλακτικό κείμενο, τα κενά παραλείπονται. Το Discord δέχεται μόνο 5 ενημερώσεις ανά 20 δευτερόλεπτα, γι’ αυτό τουλάχιστον 5 δευτ.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Τίτλος με σύνδεσμο</string>
+    <string name="disp_title_link">Τίτλος τραγουδιού με σύνδεσμο (αναζήτηση στο YouTube για καλλιτέχνη + τίτλο)</string>
+    <string name="disp_own_link">Δικός σας σύνδεσμος</string>
+    <string name="disp_own_link_url">Σύνδεσμος</string>
+    <string name="disp_own_link_hint" formatted="false">Τα δεσμευτικά θέσης λειτουργούν και εδώ, π.χ. https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">Ο σύνδεσμος πρέπει να ξεκινά με http:// ή https://</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Παύση</string>
+    <string name="disp_paused">Όταν είναι σε παύση</string>
+    <string name="disp_paused_show">Εμφάνιση κατάστασης «Σε παύση»</string>
+    <string name="disp_paused_hide">Απόκρυψη (εμφανίζονται άλλες δραστηριότητες)</string>
+    <string name="disp_clear_after">Αφαίρεση μετά από παύση (λεπτά)</string>
+    <string name="disp_clear_after_hint">0 = ποτέ (μόνο όταν εμφανίζεται «Σε παύση»)</string>
+    <string name="disp_filters_title">Φίλτρα</string>
+    <string name="disp_hide_streams">Απόκρυψη παρουσίας για διαδικτυακό ραδιόφωνο / ροές</string>
+    <string name="disp_exclude_paths">Απόκρυψη όταν η διαδρομή αρχείου περιέχει</string>
+    <string name="disp_exclude_paths_hint">π.χ. Audiobooks;Podcasts</string>
+    <string name="disp_exclude_paths_note">Πολλά τμήματα χωρισμένα με ; (δεν έχει σημασία αν είναι κεφαλαία ή πεζά)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Εμφάνιση εξωφύλλου άλμπουμ στο Discord</string>
+    <string name="cov_info">Το Discord δείχνει μόνο εξώφυλλα που έχουν δημόσιο σύνδεσμο. Το εξώφυλλο που δείχνει το Poweramp μπορεί να ανέβει στο διαδίκτυο (το x0.at δεν χρειάζεται λογαριασμό) ή να αναζητηθεί online (δείτε «Πηγές»). Κάθε εξώφυλλο εντοπίζεται μία φορά και αποθηκεύεται στην κρυφή μνήμη.</string>
+    <string name="cov_local_title">Εξώφυλλο του Poweramp</string>
+    <string name="cov_local">Χρήση του εξωφύλλου που δείχνει το Poweramp</string>
+    <string name="cov_local_sub">Ενσωματωμένο στο αρχείο, εικόνα στον φάκελο ή λήψη από το Poweramp – ανεβαίνει για να πάρει δημόσιο σύνδεσμο</string>
+    <string name="cov_upload">Ανέβασμα εξωφύλλων στο</string>
+    <string name="cov_upload_x0">x0.at (χωρίς λογαριασμό)</string>
+    <string name="cov_upload_catbox">catbox.moe (χωρίς λογαριασμό)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Ανενεργό (μόνο online αναζήτηση)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Το Imgur χρειάζεται Client-ID – χωρίς αυτό χρησιμοποιείται άλλη υπηρεσία.</string>
+    <string name="cov_imgur_get">Απόκτηση Client-ID</string>
+    <string name="cov_prefer_local">Προτίμηση του εξωφύλλου του Poweramp</string>
+    <string name="cov_prefer_local_sub">Online αναζητήσεις μόνο για κομμάτια χωρίς εξώφυλλο</string>
+    <string name="cov_size">Μέγεθος εξωφύλλων που ανεβαίνουν</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">Τα εξώφυλλα που ανεβαίνουν είναι ορατά σε όποιον έχει τον σύνδεσμο.</string>
+    <string name="cov_current_title">Τρέχον εξώφυλλο</string>
+    <string name="cov_off">Τα εξώφυλλα είναι απενεργοποιημένα – το Discord δείχνει το λογότυπο της εφαρμογής.</string>
+    <string name="cov_nothing">Δεν παίζει τίποτα.</string>
+    <string name="cov_searching">Αναζήτηση εξωφύλλου…</string>
+    <string name="cov_not_yet">Το εξώφυλλο θα αναζητηθεί μόλις το Discord δείξει αυτό το κομμάτι.</string>
+    <string name="cov_none">Το Discord δείχνει το λογότυπο της εφαρμογής: δεν βρέθηκε εξώφυλλο ή το Discord δεν μπόρεσε να το φορτώσει.</string>
+    <string name="cov_source">Πηγή: %1$s</string>
+    <string name="cov_src_cache">κρυφή μνήμη εξωφύλλων</string>
+    <string name="cov_src_online">βρέθηκε στο %1$s</string>
+    <string name="cov_src_poweramp">εξώφυλλο του Poweramp</string>
+    <string name="cov_src_uploaded">%1$s, ανέβηκε στο %2$s</string>
+    <string name="cov_open">Άνοιγμα εικόνας</string>
+    <string name="cov_clear">Εκκαθάριση κρυφής μνήμης εξωφύλλων</string>
+    <string name="cov_image_desc">Εξώφυλλο άλμπουμ</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Οι online αναζητήσεις ψάχνουν τον καλλιτέχνη / το άλμπουμ και χρησιμοποιούν απευθείας τον δημόσιο σύνδεσμο της εικόνας – δεν ανεβαίνει τίποτα. Οι πηγές δοκιμάζονται από πάνω προς τα κάτω, κερδίζει το πρώτο αποτέλεσμα.</string>
+    <string name="src_covers_off">Τα εξώφυλλα είναι απενεργοποιημένα – δεν γίνονται αναζητήσεις.</string>
+    <string name="src_open_cover_tab">Ρυθμίσεις εξωφύλλου</string>
+    <string name="src_prefer_local_note">Η «Προτίμηση του εξωφύλλου του Poweramp» είναι ενεργή: οι αναζητήσεις χρησιμοποιούνται μόνο για κομμάτια χωρίς εξώφυλλο.</string>
+    <string name="src_list_title">Online πηγές</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Χρειάζεται δωρεάν εφαρμογή προγραμματιστή (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Εισαγάγετε Client ID και Secret, αλλιώς το Spotify παραλείπεται.</string>
+    <string name="src_create_app">Δημιουργία εφαρμογής</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Δεν χρειάζεται κλειδί (ανεπίσημη διεπαφή)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Χρειάζεται δωρεάν προσωπικό token πρόσβασης</string>
+    <string name="src_token">Token</string>
+    <string name="src_discogs_missing">Εισαγάγετε ένα token, αλλιώς το Discogs παραλείπεται.</string>
+    <string name="src_get_token">Απόκτηση token</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Δεν χρειάζεται κλειδί</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Εφαρμογή Discord</string>
+    <string name="adv_custom_app">Χρήση της δικής μου εφαρμογής Discord</string>
+    <string name="adv_custom_app_sub">Το Discord δείχνει το όνομά της («Ακούει …»)</string>
+    <string name="adv_app_id">Αναγνωριστικό εφαρμογής</string>
+    <string name="adv_app_id_hint">Developer Portal → η εφαρμογή σας → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">Ένα αναγνωριστικό εφαρμογής έχει 17 έως 20 ψηφία.</string>
+    <string name="adv_portal">Άνοιγμα του Developer Portal</string>
+    <string name="adv_assets_note">Στο Rich Presence → Art Assets, ανεβάστε εικόνες με τα ονόματα «poweramp» (λογότυπο), «play» και «pause».</string>
+    <string name="adv_effective">Αναγνωριστικό εφαρμογής σε χρήση</string>
+    <string name="adv_effective_none">κανένα – αυτή η έκδοση δεν έχει ενσωματωμένο αναγνωριστικό, χρησιμοποιήστε τη δική σας εφαρμογή</string>
+    <string name="adv_compat_title">Συμβατότητα</string>
+    <string name="adv_seconds">Αποστολή χρονοσφραγίδων σε δευτερόλεπτα</string>
+    <string name="adv_seconds_sub">Μόνο αν το Discord δείχνει λάθος χρόνο ή καθόλου γραμμή προόδου</string>
+    <string name="adv_log_title">Πρόσφατο αρχείο καταγραφής</string>
+    <string name="adv_log_empty">Δεν έχει καταγραφεί τίποτα ακόμη.</string>
+    <string name="adv_log_copy">Αντιγραφή</string>
+    <string name="adv_log_share">Κοινοποίηση</string>
+    <string name="adv_log_clear">Εκκαθάριση</string>
+    <string name="adv_log_share_subject">Αρχείο καταγραφής Poweramp Discord RP</string>
+    <string name="adv_settings_title">Αρχείο ρυθμίσεων</string>
+    <string name="adv_settings_info">Αποθηκεύστε όλες τις ρυθμίσεις σε αρχείο ή φορτώστε τες από αρχείο (π.χ. σε νέο τηλέφωνο). Το αρχείο περιέχει επίσης τα κλειδιά που εισαγάγατε για τα εξώφυλλα (Imgur, Spotify, Discogs).</string>
+    <string name="adv_export">Εξαγωγή…</string>
+    <string name="adv_import">Εισαγωγή…</string>
+    <string name="adv_reset">Επαναφορά προεπιλογών</string>
+    <string name="adv_reset_confirm_title">Επαναφορά όλων των ρυθμίσεων;</string>
+    <string name="adv_reset_confirm_text">Όλες οι ρυθμίσεις επιστρέφουν στις προεπιλογές. Εξαγάγετέ τες πρώτα αν θέλετε να τις κρατήσετε.</string>
+    <string name="adv_reset_confirm">Επαναφορά</string>
+    <string name="adv_export_keys_title">Εξαγωγή μαζί με τα κλειδιά σας;</string>
+    <string name="adv_export_keys_text">Το αρχείο θα περιέχει τα κλειδιά σας για %1$s σε απλό κείμενο. Κρατήστε το για τον εαυτό σας – μην το κοινοποιείτε και μην το επισυνάπτετε σε αναφορά σφάλματος.</string>
+    <string name="adv_export_keys_confirm">Εξαγωγή</string>
+    <string name="common_cancel">Ακύρωση</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">Έκδοση %1$s</string>
+    <string name="about_by">από %1$s</string>
+    <string name="about_on_github">%1$s στο GitHub</string>
+    <string name="cd_author_avatar">Φωτογραφία προφίλ GitHub του χρήστη %1$s</string>
+    <string name="cd_account_avatar">Φωτογραφία προφίλ Discord του χρήστη %1$s</string>
+    <string name="about_github">Σελίδα στο GitHub</string>
+    <string name="about_releases">Όλες οι εκδόσεις</string>
+    <string name="about_issues">Αναφορά προβλήματος</string>
+    <string name="about_disclaimer">Ανεξάρτητο έργο – δεν σχετίζεται με το Discord ή το Poweramp ούτε υποστηρίζεται από αυτά.</string>
+    <string name="about_updates_title">Ενημερώσεις</string>
+    <string name="about_update_check">Έλεγχος για ενημερώσεις</string>
+    <string name="about_update_freq">Συχνότητα</string>
+    <string name="upd_every_start">σε κάθε εκκίνηση της εφαρμογής</string>
+    <string name="upd_daily">μία φορά την ημέρα</string>
+    <string name="upd_weekly">μία φορά την εβδομάδα</string>
+    <string name="upd_monthly">μία φορά τον μήνα</string>
+    <string name="about_check_now">Έλεγχος τώρα</string>
+    <string name="upd_never">Δεν έχει γίνει έλεγχος ακόμη.</string>
+    <string name="upd_checking">Έλεγχος για ενημερώσεις…</string>
+    <string name="upd_latest">Έχετε την πιο πρόσφατη έκδοση (τελευταίος έλεγχος: %1$s).</string>
+    <string name="upd_available">Η έκδοση %1$s είναι διαθέσιμη.</string>
+    <string name="upd_failed">Ο έλεγχος ενημερώσεων απέτυχε: δεν υπάρχει σύνδεση με το GitHub.</string>
+    <string name="upd_rate_limited">Το GitHub περιορίζει τα αιτήματα αυτή τη στιγμή – δοκιμάστε ξανά αργότερα.</string>
+    <string name="upd_no_release">Δεν έχει δημοσιευτεί ακόμη καμία έκδοση.</string>
+    <string name="upd_bad_answer">Ο έλεγχος ενημερώσεων απέτυχε: δεν ήταν δυνατή η ανάγνωση της απάντησης του GitHub.</string>
+    <string name="upd_download">Λήψη %1$s</string>
+    <string name="upd_whats_new">Τι νέο υπάρχει;</string>
+    <string name="about_update_privacy">Ο έλεγχος ζητά από το GitHub μόνο την πιο πρόσφατη έκδοση – δεν αποστέλλεται τίποτα άλλο.</string>
+    <string name="about_credits_title">Ευχαριστίες</string>
+    <string name="about_credit_poweramp">Poweramp API από τον Max MP</string>
+    <string name="about_credit_discord">Διεπαφή RPC του Discord Social SDK μέσω του antisocialcord-kt από τον Nightdavisao (άδεια MIT)</string>
+    <string name="about_credit_covers">Εξώφυλλα: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz και Cover Art Archive</string>
+    <string name="about_credit_aimp">Το αδελφό έργο για Android του «Discord Rich Presence for AIMP» από τον ίδιο δημιουργό</string>
+    <string name="about_changelog_title">Αλλαγές</string>
+    <string name="about_changelog_version">Έκδοση %1$s</string>
+    <string name="about_installed">(εγκατεστημένη)</string>
+    <string name="about_translation_note">Η ελληνική μετάφραση έγινε με τεχνητή νοημοσύνη και μπορεί να περιέχει λάθη – οι διορθώσεις είναι ευπρόσδεκτες στο GitHub («Αναφορά προβλήματος»).</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">OK</string>
+    <string name="cd_info">Σημείωση</string>
+    <string name="cd_warning">Προειδοποίηση</string>
+    <string name="cd_error">Πρόβλημα</string>
+    <string name="field_show">Εμφάνιση</string>
+    <string name="field_hide">Απόκρυψη</string>
+    <string name="field_range">Επιτρέπεται: %1$d έως %2$d</string>
+</resources>

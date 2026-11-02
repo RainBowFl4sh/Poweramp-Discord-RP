@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">Trạng thái</string>
+    <string name="tab_display">Hiển thị</string>
+    <string name="tab_cover">Ảnh bìa</string>
+    <string name="tab_sources">Nguồn</string>
+    <string name="tab_advanced">Nâng cao</string>
+    <string name="tab_about">Giới thiệu</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">Tùy chọn khác</string>
+    <string name="app_settings_title">Cài đặt ứng dụng</string>
+    <string name="app_settings_theme">Giao diện</string>
+    <string name="theme_system">Theo hệ thống</string>
+    <string name="theme_light">Sáng</string>
+    <string name="theme_dark">Tối</string>
+    <string name="app_settings_amoled">Đen AMOLED</string>
+    <string name="app_settings_amoled_on">Nền đen tuyền ở chế độ tối – tiết kiệm pin trên màn hình OLED.</string>
+    <string name="app_settings_amoled_needs_dark">Chỉ ở chế độ tối – chọn “Tối” hoặc bật chế độ tối của Android.</string>
+    <string name="app_settings_dynamic">Màu động (Material You)</string>
+    <string name="app_settings_dynamic_sub">Màu lấy từ hình nền của bạn. Tắt: dùng màu riêng của ứng dụng, giống Discord.</string>
+    <string name="app_settings_language">Ngôn ngữ</string>
+    <string name="language_system">Mặc định của hệ thống</string>
+    <string name="language_ai">Bản dịch AI</string>
+    <string name="app_settings_language_note">Cũng có trong Cài đặt Android: Ứng dụng → Poweramp Discord RP → Ngôn ngữ.</string>
+    <string name="common_close">Đóng</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Trạng thái Discord của bạn hiển thị bài Poweramp đang phát</string>
+    <string name="master_off">Đã tắt – Discord không hiển thị gì</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Kết nối</string>
+    <string name="conn_idle">Đang chờ – hiện chưa có gì để hiển thị</string>
+    <string name="conn_disabled">Đã tắt</string>
+    <string name="conn_no_app_id">Chưa cấu hình ID ứng dụng Discord</string>
+    <string name="conn_connecting">Đang kết nối với Discord…</string>
+    <string name="conn_connected">Đã kết nối với Discord</string>
+    <string name="conn_testing">Đang hiển thị trạng thái thử.</string>
+    <string name="conn_test_waiting">Đang gửi trạng thái thử tới Discord…</string>
+    <string name="conn_activity_error">Discord không chấp nhận lần cập nhật gần nhất: %1$s</string>
+    <string name="conn_detail">Chi tiết: %1$s</string>
+    <string name="conn_user">Tài khoản Discord</string>
+    <string name="conn_app_id">ID ứng dụng</string>
+    <string name="conn_app_builtin">%1$s (tích hợp sẵn)</string>
+    <string name="conn_app_own">%1$s (của bạn)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">Cập nhật gần nhất</string>
+    <string name="conn_never">chưa có</string>
+    <string name="conn_connections">Lượt kết nối</string>
+    <string name="conn_service">Dịch vụ chạy nền</string>
+    <string name="conn_service_running">đang chạy</string>
+    <string name="conn_service_stopped">không chạy</string>
+    <string name="conn_service_start">Bắt đầu</string>
+    <string name="conn_service_stop">Dừng</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Chưa liên kết</string>
+    <string name="acc_hint">Liên kết tài khoản Discord để thấy tên và ảnh của bạn trong bản xem trước trực tiếp và tại đây.</string>
+    <string name="acc_link">Liên kết tài khoản Discord</string>
+    <string name="acc_refresh">Làm mới</string>
+    <string name="acc_restart">Bắt đầu lại</string>
+    <string name="acc_unlink">Hủy liên kết</string>
+    <string name="acc_waiting">Đang chờ Discord – hãy cho phép truy cập ở đó, rồi quay lại ứng dụng này.</string>
+    <string name="acc_working">Đang đọc hồ sơ của bạn từ Discord…</string>
+    <string name="acc_privacy">Chỉ đọc tên và ảnh hồ sơ của bạn (quyền “identify” của Discord). Quyền truy cập được thu hồi ngay – ứng dụng không lưu token nào.</string>
+    <string name="acc_redirect_hint">Discord báo “Invalid OAuth2 redirect_uri”? Chủ sở hữu ứng dụng Discord cần thêm %1$s vào OAuth2 → Redirects trong Developer Portal.</string>
+    <string name="acc_no_app_id">Cần có ID ứng dụng Discord (thẻ Nâng cao).</string>
+    <string name="acc_err_cancelled">Quá trình liên kết đã bị hủy – Discord không được phép chia sẻ hồ sơ của bạn.</string>
+    <string name="acc_err_redirect">Ứng dụng Discord không nhận ra địa chỉ trả về của ứng dụng này. Chủ sở hữu cần thêm %1$s vào OAuth2 → Redirects trong Developer Portal.</string>
+    <string name="acc_err_public_client">Discord yêu cầu client secret: “Public Client” chưa được bật cho ứng dụng Discord (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">Phiên đăng nhập đã hết hạn hoặc đã được dùng – vui lòng thử lại.</string>
+    <string name="acc_err_network">Không thể kết nối tới Discord – hãy kiểm tra kết nối Internet và thử lại.</string>
+    <string name="acc_err_discord">Discord từ chối đăng nhập – vui lòng thử lại sau.</string>
+    <string name="acc_err_bad_answer">Discord gửi phản hồi không mong đợi – vui lòng thử lại sau.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Chưa kết nối với Discord – đang thử lại</string>
+    <string name="err_discord_missing">Chưa cài đặt ứng dụng Discord</string>
+    <string name="err_bind_failed">Ứng dụng Discord không cung cấp dịch vụ Rich Presence – hãy cập nhật Discord</string>
+    <string name="err_connect_failed">Discord không chấp nhận kết nối – đang thử lại</string>
+    <string name="err_closed">Discord đã đóng kết nối – đang kết nối lại</string>
+    <string name="err_invalid_client_id">Discord từ chối ID ứng dụng – hãy kiểm tra ở thẻ Nâng cao</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Đang phát</string>
+    <string name="now_nothing">Không có gì đang phát trong Poweramp.</string>
+    <string name="word_playing">Đang phát</string>
+    <string name="word_paused">Đã tạm dừng</string>
+    <string name="hidden_no">Discord hiển thị bài này.</string>
+    <string name="hidden_disabled">Rich Presence đã tắt – Discord không hiển thị gì.</string>
+    <string name="hidden_stopped">Không có gì đang phát – Discord không hiển thị gì.</string>
+    <string name="hidden_stream">Radio Internet / luồng phát bị ẩn (thẻ Hiển thị) – Discord không hiển thị gì.</string>
+    <string name="hidden_path">Tệp này bị ẩn bởi bộ lọc đường dẫn (thẻ Hiển thị) – Discord không hiển thị gì.</string>
+    <string name="hidden_paused">Đang tạm dừng và đã chọn “Ẩn” (thẻ Hiển thị): Discord hiển thị các hoạt động khác của bạn.</string>
+    <string name="hidden_timeout">Đã tạm dừng lâu hơn thời gian đặt ở thẻ Hiển thị – trạng thái đã được gỡ.</string>
+    <string name="now_user_stopped">Bạn đã dừng – Discord không hiển thị gì cho tới khi Poweramp phát lại.</string>
+    <string name="now_rejected">Discord không chấp nhận trạng thái này – xem “Kết nối”.</string>
+    <string name="now_after_test">Discord đang hiển thị trạng thái thử – bài này sẽ hiển thị sau đó.</string>
+    <string name="now_test_shown">Discord đang hiển thị trạng thái thử.</string>
+    <string name="now_sending">Đang gửi tới Discord…</string>
+    <string name="now_not_connected">Discord chưa hiển thị – xem “Kết nối”.</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Gửi trạng thái thử</string>
+    <string name="btn_reconnect">Kết nối lại</string>
+    <string name="btn_open_poweramp">Mở Poweramp</string>
+    <string name="btn_open_discord">Mở Discord</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Thiết lập</string>
+    <string name="check_checking">Đang kiểm tra…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">Phiên bản %1$s (bản dựng %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">Phiên bản %1$s</string>
+    <string name="check_poweramp_old">Phiên bản %1$s (bản dựng %2$d) quá cũ – ứng dụng này cần bản dựng %3$d trở lên.</string>
+    <string name="check_poweramp_missing">Chưa cài đặt Poweramp.</string>
+    <string name="check_poweramp_get">Tải Poweramp</string>
+    <string name="check_poweramp_update">Cập nhật Poweramp</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Đã cài đặt, có dịch vụ Rich Presence</string>
+    <string name="check_discord_no_rpc">Phiên bản Discord này không cung cấp dịch vụ Rich Presence cho ứng dụng khác. Vui lòng cập nhật Discord.</string>
+    <string name="check_discord_missing">Chưa cài đặt ứng dụng Discord.</string>
+    <string name="check_discord_get">Tải Discord</string>
+    <string name="check_discord_update">Cập nhật Discord</string>
+    <string name="check_appid_title">Ứng dụng Discord</string>
+    <string name="check_appid_own">Ứng dụng của bạn (ID %1$s)</string>
+    <string name="check_appid_missing">Bản dựng này không có sẵn ID ứng dụng. Hãy tạo ứng dụng Discord của riêng bạn và nhập ID của nó ở thẻ Nâng cao.</string>
+    <string name="check_appid_invalid">ID ứng dụng của bạn không hợp lệ (17 đến 20 chữ số) và bản dựng này không có sẵn ID nào.</string>
+    <string name="check_appid_invalid_fallback">ID ứng dụng của bạn không hợp lệ (17 đến 20 chữ số) – đang dùng ứng dụng tích hợp sẵn (ID %1$s).</string>
+    <string name="check_appid_builtin_invalid">ID ứng dụng tích hợp trong bản dựng này (%1$s) không hợp lệ (17 đến 20 chữ số). Hãy tạo ứng dụng Discord của riêng bạn và nhập ID của nó ở thẻ Nâng cao.</string>
+    <string name="check_appid_both_invalid">ID ứng dụng của bạn không hợp lệ (17 đến 20 chữ số), và ID tích hợp trong bản dựng này (%1$s) cũng không hợp lệ.</string>
+    <string name="check_appid_fix">Thiết lập</string>
+    <string name="check_battery_title">Tối ưu hóa pin</string>
+    <string name="check_battery_ok">Đã tắt cho ứng dụng này – ứng dụng có thể khởi động ở chế độ nền khi Poweramp bắt đầu phát.</string>
+    <string name="check_battery_bad">Android có thể không cho ứng dụng khởi động khi Poweramp bắt đầu phát, hoặc dừng ứng dụng sau đó. Hãy loại trừ ứng dụng khỏi tối ưu hóa pin.</string>
+    <string name="check_battery_fix">Cho phép</string>
+    <string name="check_notif_title">Thông báo</string>
+    <string name="check_notif_ok">Đã cho phép – thông báo trạng thái cho biết Discord đang thấy gì.</string>
+    <string name="check_notif_bad">Chưa cho phép – ứng dụng không thể hiển thị thông báo trạng thái trong khi cập nhật trạng thái của bạn.</string>
+    <string name="check_notif_fix">Cho phép</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Thông tin hữu ích</string>
+    <string name="hint_privacy_title">Chia sẻ hoạt động của bạn trên Discord</string>
+    <string name="hint_privacy">Trong Discord: Cài đặt → Quyền riêng tư hoạt động → bật “Chia sẻ hoạt động của bạn”. Nếu không, sẽ không ai thấy bạn đang nghe gì.</string>
+    <string name="hint_poweramp_title">Lần khởi động đầu tiên</string>
+    <string name="hint_poweramp">Sau khi cài ứng dụng này, hãy nhấn tạm dừng rồi phát một lần trong Poweramp để Poweramp nhận ra ứng dụng và gửi thông tin bài hát.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Đang gửi trạng thái thử – sẽ hiển thị trong %1$d giây.</string>
+    <string name="msg_reconnecting">Đang kết nối lại…</string>
+    <string name="msg_stop_ended">Lệnh dừng của bạn đã kết thúc – Discord lại hiển thị Poweramp.</string>
+    <string name="msg_start_blocked">Android không cho phép khởi động ở chế độ nền – hãy cho phép trong “Tối ưu hóa pin”.</string>
+    <string name="msg_service_started">Đã khởi động dịch vụ chạy nền.</string>
+    <string name="msg_service_stopped">Đã dừng cho tới khi Poweramp phát lại.</string>
+    <string name="msg_cannot_open">Không tìm thấy ứng dụng để mở mục này.</string>
+    <string name="msg_cover_cleared">Đã xóa bộ nhớ đệm ảnh bìa.</string>
+    <string name="msg_exported">Đã lưu cài đặt.</string>
+    <string name="msg_export_failed">Không thể lưu cài đặt.</string>
+    <string name="msg_imported">Đã nhập cài đặt.</string>
+    <string name="msg_import_failed">Tệp này không chứa cài đặt của ứng dụng này.</string>
+    <string name="msg_reset">Đã đặt lại tất cả cài đặt về mặc định.</string>
+    <string name="msg_log_copied">Đã sao chép nhật ký.</string>
+    <string name="msg_up_to_date">Bạn đang dùng phiên bản mới nhất.</string>
+    <string name="msg_account_linked">Đã liên kết tài khoản Discord: %1$s</string>
+    <string name="msg_account_failed">Không liên kết được tài khoản Discord – xem chi tiết ở thẻ Trạng thái.</string>
+    <string name="msg_account_unlinked">Đã hủy liên kết tài khoản Discord.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Xem trước trực tiếp</string>
+    <string name="prev_listening">Đang nghe %1$s</string>
+    <string name="prev_playing">Đang chơi %1$s</string>
+    <string name="prev_app_own">ứng dụng của bạn</string>
+    <string name="prev_you">Bạn</string>
+    <string name="prev_elapsed">Đã trôi qua %1$s</string>
+    <string name="prev_example">Ví dụ – hiện không có gì đang phát.</string>
+    <string name="prev_example_title">Tên bài ví dụ</string>
+    <string name="prev_example_artist">Nghệ sĩ ví dụ</string>
+    <string name="prev_example_album">Album ví dụ</string>
+    <string name="prev_icon_tip">Biểu tượng: %1$s</string>
+    <string name="prev_link">Liên kết: %1$s</string>
+    <string name="prev_no_link">Tên bài không có liên kết</string>
+    <string name="prev_link_account">Liên kết tài khoản Discord để thấy tên và ảnh của bạn tại đây</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Hoạt động</string>
+    <string name="disp_type">Loại hoạt động</string>
+    <string name="disp_type_listening">Đang nghe (hiện thanh tiến trình)</string>
+    <string name="disp_type_playing">Đang chơi (chỉ thời gian đã trôi qua)</string>
+    <string name="disp_status_display">Văn bản trạng thái Discord hiển thị</string>
+    <string name="disp_status_name">Tên ứng dụng (Poweramp)</string>
+    <string name="disp_status_state">Dòng thứ hai (nghệ sĩ)</string>
+    <string name="disp_status_details">Dòng thứ nhất (tên bài)</string>
+    <string name="disp_timestamps">Hiện thanh tiến trình / thời gian đã trôi qua</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Văn bản</string>
+    <string name="disp_details">Dòng thứ nhất</string>
+    <string name="disp_state">Dòng thứ hai</string>
+    <string name="disp_large_text">Chú thích ảnh bìa</string>
+    <string name="disp_small_text">Chú thích biểu tượng</string>
+    <string name="disp_insert_into">Chạm vào một biến để chèn vào “%1$s”:</string>
+    <string name="disp_placeholders_help">Ý nghĩa của các biến</string>
+    <string name="disp_rotation_help" formatted="false">Đặt || giữa các đoạn văn bản để chúng hiển thị luân phiên, ví dụ %artist% || %title% (khoảng thời gian luân phiên ở bên dưới).</string>
+    <string name="ph_title">tên bài</string>
+    <string name="ph_artist">nghệ sĩ</string>
+    <string name="ph_album">album</string>
+    <string name="ph_filename">tên tệp không có phần mở rộng</string>
+    <string name="ph_ext">phần mở rộng tệp (flac, mp3 …)</string>
+    <string name="ph_pos">vị trí hiện tại (1:23)</string>
+    <string name="ph_dur">thời lượng (3:45)</string>
+    <string name="ph_percent">tiến trình theo phần trăm</string>
+    <string name="ph_bar">thanh tiến trình dạng văn bản ▰▰▰▱▱▱</string>
+    <string name="ph_status">Đang phát / Đã tạm dừng</string>
+    <string name="ph_codec">codec (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">bitrate (320 kbps)</string>
+    <string name="ph_samplerate">tần số lấy mẫu (44,1 kHz)</string>
+    <string name="ph_bits">độ sâu bit (24 bit)</string>
+    <string name="ph_track">vị trí trong danh sách hiện tại</string>
+    <string name="ph_listsize">số bài trong danh sách</string>
+    <string name="ph_rating">đánh giá ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">giữa các lựa chọn hiển thị luân phiên, ví dụ %artist% || %title%</string>
+    <string name="disp_small_icon">Hiện biểu tượng phát / tạm dừng (ảnh nhỏ)</string>
+    <string name="disp_bar_length" formatted="false">Độ dài của %bar%</string>
+    <string name="disp_bar_length_value">%1$d ký tự</string>
+    <string name="disp_refresh">Khoảng thời gian làm mới</string>
+    <string name="disp_refresh_value">%1$d giây</string>
+    <string name="disp_refresh_note" formatted="false">Chỉ dùng khi văn bản chứa %pos%, %bar% hoặc %percent%. Discord chỉ chấp nhận vài lần cập nhật mỗi phút.</string>
+    <string name="disp_rotation">Khoảng thời gian luân phiên</string>
+    <string name="disp_rotation_value">%1$d giây</string>
+    <string name="disp_rotation_note">Chỉ dùng khi văn bản chứa ||. Mỗi bài bắt đầu với lựa chọn đầu tiên, các lựa chọn trống sẽ bị bỏ qua. Discord chỉ chấp nhận 5 lần cập nhật mỗi 20 giây, vì vậy tối thiểu là 5 giây.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Tên bài có thể nhấn</string>
+    <string name="disp_title_link">Tên bài hát có thể nhấn (tìm nghệ sĩ + tên bài trên YouTube)</string>
+    <string name="disp_own_link">Liên kết riêng</string>
+    <string name="disp_own_link_url">Liên kết</string>
+    <string name="disp_own_link_hint" formatted="false">Biến cũng dùng được ở đây, ví dụ https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">Liên kết phải bắt đầu bằng http:// hoặc https://</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Tạm dừng</string>
+    <string name="disp_paused">Khi tạm dừng</string>
+    <string name="disp_paused_show">Hiện trạng thái “Đã tạm dừng”</string>
+    <string name="disp_paused_hide">Ẩn (hiển thị các hoạt động khác)</string>
+    <string name="disp_clear_after">Gỡ khi tạm dừng lâu hơn (phút)</string>
+    <string name="disp_clear_after_hint">0 = không bao giờ (chỉ khi hiện “Đã tạm dừng”)</string>
+    <string name="disp_filters_title">Bộ lọc</string>
+    <string name="disp_hide_streams">Ẩn trạng thái khi nghe radio Internet / luồng phát</string>
+    <string name="disp_exclude_paths">Ẩn khi đường dẫn tệp chứa</string>
+    <string name="disp_exclude_paths_hint">vd: Audiobooks;Podcasts</string>
+    <string name="disp_exclude_paths_note">Nhiều phần cách nhau bằng ; (không phân biệt chữ hoa / chữ thường)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Hiện ảnh bìa album trên Discord</string>
+    <string name="cov_info">Discord chỉ hiển thị ảnh bìa có liên kết công khai. Ảnh bìa mà Poweramp hiển thị có thể được tải lên (x0.at không cần tài khoản) hoặc tìm trực tuyến (xem “Nguồn”). Mỗi ảnh bìa chỉ được xử lý một lần và lưu vào bộ nhớ đệm.</string>
+    <string name="cov_local_title">Ảnh bìa của Poweramp</string>
+    <string name="cov_local">Dùng ảnh bìa mà Poweramp hiển thị</string>
+    <string name="cov_local_sub">Nhúng trong tệp, ảnh trong thư mục hoặc do Poweramp tải về – được tải lên để có liên kết công khai</string>
+    <string name="cov_upload">Tải ảnh bìa lên dịch vụ</string>
+    <string name="cov_upload_x0">x0.at (không cần tài khoản)</string>
+    <string name="cov_upload_catbox">catbox.moe (không cần tài khoản)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Tắt (chỉ tìm trực tuyến)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Imgur cần Client-ID – nếu không có, một dịch vụ khác sẽ được dùng thay.</string>
+    <string name="cov_imgur_get">Lấy Client-ID</string>
+    <string name="cov_prefer_local">Ưu tiên ảnh bìa của Poweramp</string>
+    <string name="cov_prefer_local_sub">Chỉ tìm trực tuyến cho bài không có ảnh bìa</string>
+    <string name="cov_size">Kích thước ảnh bìa tải lên</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">Bất kỳ ai có liên kết đều xem được ảnh bìa đã tải lên.</string>
+    <string name="cov_current_title">Ảnh bìa hiện tại</string>
+    <string name="cov_off">Ảnh bìa đã tắt – Discord hiển thị logo ứng dụng.</string>
+    <string name="cov_nothing">Không có gì đang phát.</string>
+    <string name="cov_searching">Đang tìm ảnh bìa…</string>
+    <string name="cov_not_yet">Ảnh bìa sẽ được tìm khi Discord hiển thị bài này.</string>
+    <string name="cov_none">Discord hiển thị logo ứng dụng: không tìm thấy ảnh bìa hoặc Discord không tải được ảnh.</string>
+    <string name="cov_source">Nguồn: %1$s</string>
+    <string name="cov_src_cache">bộ nhớ đệm ảnh bìa</string>
+    <string name="cov_src_online">tìm thấy trên %1$s</string>
+    <string name="cov_src_poweramp">Ảnh bìa của Poweramp</string>
+    <string name="cov_src_uploaded">%1$s, đã tải lên %2$s</string>
+    <string name="cov_open">Mở ảnh</string>
+    <string name="cov_clear">Xóa bộ nhớ đệm ảnh bìa</string>
+    <string name="cov_image_desc">Ảnh bìa album</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Tra cứu trực tuyến tìm theo nghệ sĩ / album và dùng trực tiếp liên kết ảnh công khai – không tải gì lên. Các nguồn được thử từ trên xuống dưới, nguồn đầu tiên tìm thấy sẽ được dùng.</string>
+    <string name="src_covers_off">Ảnh bìa đã tắt – không tìm kiếm.</string>
+    <string name="src_open_cover_tab">Cài đặt ảnh bìa</string>
+    <string name="src_prefer_local_note">“Ưu tiên ảnh bìa của Poweramp” đang bật: chỉ tìm kiếm cho bài không có ảnh bìa.</string>
+    <string name="src_list_title">Nguồn trực tuyến</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Cần một ứng dụng nhà phát triển miễn phí (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Nhập Client ID và Secret, nếu không Spotify sẽ bị bỏ qua.</string>
+    <string name="src_create_app">Tạo ứng dụng</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Không cần khóa (API không chính thức)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Cần token truy cập cá nhân miễn phí</string>
+    <string name="src_token">Token</string>
+    <string name="src_discogs_missing">Nhập token, nếu không Discogs sẽ bị bỏ qua.</string>
+    <string name="src_get_token">Lấy token</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Không cần khóa</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Ứng dụng Discord</string>
+    <string name="adv_custom_app">Dùng ứng dụng Discord của riêng tôi</string>
+    <string name="adv_custom_app_sub">Discord hiển thị tên của ứng dụng (“Đang nghe …”)</string>
+    <string name="adv_app_id">ID ứng dụng</string>
+    <string name="adv_app_id_hint">Developer Portal → ứng dụng của bạn → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">ID ứng dụng gồm 17 đến 20 chữ số.</string>
+    <string name="adv_portal">Mở Developer Portal</string>
+    <string name="adv_assets_note">Trong Rich Presence → Art Assets, hãy tải lên các ảnh có tên “poweramp” (logo), “play” và “pause”.</string>
+    <string name="adv_effective">ID ứng dụng đang dùng</string>
+    <string name="adv_effective_none">không có – bản dựng này không có sẵn ID, hãy dùng ứng dụng của riêng bạn</string>
+    <string name="adv_compat_title">Khả năng tương thích</string>
+    <string name="adv_seconds">Gửi mốc thời gian theo giây</string>
+    <string name="adv_seconds_sub">Chỉ khi Discord hiển thị sai thời gian hoặc không có thanh tiến trình</string>
+    <string name="adv_log_title">Nhật ký gần đây</string>
+    <string name="adv_log_empty">Chưa có gì trong nhật ký.</string>
+    <string name="adv_log_copy">Sao chép</string>
+    <string name="adv_log_share">Chia sẻ</string>
+    <string name="adv_log_clear">Xóa</string>
+    <string name="adv_log_share_subject">Nhật ký Poweramp Discord RP</string>
+    <string name="adv_settings_title">Tệp cài đặt</string>
+    <string name="adv_settings_info">Lưu tất cả cài đặt vào tệp hoặc nhập lại từ tệp (ví dụ trên điện thoại mới). Tệp cũng chứa các khóa bạn đã nhập cho ảnh bìa (Imgur, Spotify, Discogs).</string>
+    <string name="adv_export">Xuất…</string>
+    <string name="adv_import">Nhập…</string>
+    <string name="adv_reset">Đặt lại về mặc định</string>
+    <string name="adv_reset_confirm_title">Đặt lại tất cả cài đặt?</string>
+    <string name="adv_reset_confirm_text">Tất cả cài đặt sẽ trở về mặc định. Hãy xuất trước nếu bạn muốn giữ lại.</string>
+    <string name="adv_reset_confirm">Đặt lại</string>
+    <string name="adv_export_keys_title">Xuất kèm các khóa của bạn?</string>
+    <string name="adv_export_keys_text">Tệp sẽ chứa khóa %1$s của bạn ở dạng văn bản thuần. Hãy giữ riêng cho mình – đừng chia sẻ hoặc đính kèm vào báo cáo lỗi.</string>
+    <string name="adv_export_keys_confirm">Xuất</string>
+    <string name="common_cancel">Hủy</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">Phiên bản %1$s</string>
+    <string name="about_by">của %1$s</string>
+    <string name="about_on_github">%1$s trên GitHub</string>
+    <string name="cd_author_avatar">Ảnh hồ sơ GitHub của %1$s</string>
+    <string name="cd_account_avatar">Ảnh hồ sơ Discord của %1$s</string>
+    <string name="about_github">Trang GitHub</string>
+    <string name="about_releases">Tất cả bản phát hành</string>
+    <string name="about_issues">Báo cáo sự cố</string>
+    <string name="about_disclaimer">Dự án độc lập – không liên kết với Discord hay Poweramp và không được họ bảo trợ.</string>
+    <string name="about_updates_title">Cập nhật</string>
+    <string name="about_update_check">Kiểm tra bản cập nhật</string>
+    <string name="about_update_freq">Tần suất</string>
+    <string name="upd_every_start">mỗi lần mở ứng dụng</string>
+    <string name="upd_daily">mỗi ngày một lần</string>
+    <string name="upd_weekly">mỗi tuần một lần</string>
+    <string name="upd_monthly">mỗi tháng một lần</string>
+    <string name="about_check_now">Kiểm tra ngay</string>
+    <string name="upd_never">Chưa kiểm tra.</string>
+    <string name="upd_checking">Đang kiểm tra bản cập nhật…</string>
+    <string name="upd_latest">Bạn đang dùng phiên bản mới nhất (lần kiểm tra gần nhất: %1$s).</string>
+    <string name="upd_available">Đã có phiên bản %1$s.</string>
+    <string name="upd_failed">Kiểm tra cập nhật thất bại: không kết nối được với GitHub.</string>
+    <string name="upd_rate_limited">GitHub hiện đang giới hạn yêu cầu – vui lòng thử lại sau.</string>
+    <string name="upd_no_release">Chưa có bản phát hành nào.</string>
+    <string name="upd_bad_answer">Kiểm tra cập nhật thất bại: không đọc được phản hồi của GitHub.</string>
+    <string name="upd_download">Tải về %1$s</string>
+    <string name="upd_whats_new">Có gì mới?</string>
+    <string name="about_update_privacy">Việc kiểm tra chỉ hỏi GitHub về bản phát hành mới nhất – không gửi gì khác.</string>
+    <string name="about_credits_title">Ghi công</string>
+    <string name="about_credit_poweramp">Poweramp API của Max MP</string>
+    <string name="about_credit_discord">Giao diện RPC Discord Social SDK qua antisocialcord-kt của Nightdavisao (giấy phép MIT)</string>
+    <string name="about_credit_covers">Ảnh bìa: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz và Cover Art Archive</string>
+    <string name="about_credit_aimp">Phiên bản Android của “Discord Rich Presence for AIMP”, cùng tác giả</string>
+    <string name="about_changelog_title">Nhật ký thay đổi</string>
+    <string name="about_changelog_version">Phiên bản %1$s</string>
+    <string name="about_installed">(đã cài đặt)</string>
+    <string name="about_translation_note">Bản dịch này được tạo bằng AI và có thể có sai sót – rất hoan nghênh bạn góp ý sửa lỗi trên GitHub qua “Báo cáo sự cố”.</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">OK</string>
+    <string name="cd_info">Lưu ý</string>
+    <string name="cd_warning">Cảnh báo</string>
+    <string name="cd_error">Sự cố</string>
+    <string name="field_show">Hiện</string>
+    <string name="field_hide">Ẩn</string>
+    <string name="field_range">Cho phép: %1$d đến %2$d</string>
+</resources>

@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">Stare</string>
+    <string name="tab_display">Afișare</string>
+    <string name="tab_cover">Copertă</string>
+    <string name="tab_sources">Surse</string>
+    <string name="tab_advanced">Avansat</string>
+    <string name="tab_about">Despre</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">Mai multe opțiuni</string>
+    <string name="app_settings_title">Setările aplicației</string>
+    <string name="app_settings_theme">Temă</string>
+    <string name="theme_system">Conform sistemului</string>
+    <string name="theme_light">Luminoasă</string>
+    <string name="theme_dark">Întunecată</string>
+    <string name="app_settings_amoled">Negru AMOLED</string>
+    <string name="app_settings_amoled_on">Fundal complet negru în modul întunecat – economisește bateria pe ecranele OLED.</string>
+    <string name="app_settings_amoled_needs_dark">Doar în modul întunecat – alegeți „Întunecată” sau activați modul întunecat în Android.</string>
+    <string name="app_settings_dynamic">Culori dinamice (Material You)</string>
+    <string name="app_settings_dynamic_sub">Culori după imaginea de fundal. Dezactivat: culorile proprii ale aplicației, în stil Discord.</string>
+    <string name="app_settings_language">Limbă</string>
+    <string name="language_system">Prestabilită de sistem</string>
+    <string name="language_ai">Traducere AI</string>
+    <string name="app_settings_language_note">Și în setările Android: Aplicații → Poweramp Discord RP → Limbă.</string>
+    <string name="common_close">Închideți</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">Starea dvs. din Discord arată ce redă Poweramp</string>
+    <string name="master_off">Dezactivat – Discord nu afișează nimic</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">Conexiune</string>
+    <string name="conn_idle">În așteptare – momentan nu e nimic de afișat</string>
+    <string name="conn_disabled">Dezactivat</string>
+    <string name="conn_no_app_id">Nu este configurat niciun ID de aplicație Discord</string>
+    <string name="conn_connecting">Se conectează la Discord…</string>
+    <string name="conn_connected">Conectat la Discord</string>
+    <string name="conn_testing">Se afișează prezența de test.</string>
+    <string name="conn_test_waiting">Se trimite prezența de test la Discord…</string>
+    <string name="conn_activity_error">Discord nu a acceptat ultima actualizare: %1$s</string>
+    <string name="conn_detail">Detalii: %1$s</string>
+    <string name="conn_user">Cont Discord</string>
+    <string name="conn_app_id">ID aplicație</string>
+    <string name="conn_app_builtin">%1$s (integrat)</string>
+    <string name="conn_app_own">%1$s (propriu)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">Ultima actualizare</string>
+    <string name="conn_never">încă nu</string>
+    <string name="conn_connections">Conexiuni</string>
+    <string name="conn_service">Serviciu în fundal</string>
+    <string name="conn_service_running">rulează</string>
+    <string name="conn_service_stopped">nu rulează</string>
+    <string name="conn_service_start">Porniți</string>
+    <string name="conn_service_stop">Opriți</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">Neconectat</string>
+    <string name="acc_hint">Conectați contul Discord pentru a vedea numele și fotografia de profil aici și în previzualizarea live.</string>
+    <string name="acc_link">Conectați contul Discord</string>
+    <string name="acc_refresh">Actualizați</string>
+    <string name="acc_restart">Începeți din nou</string>
+    <string name="acc_unlink">Deconectați</string>
+    <string name="acc_waiting">Se așteaptă Discord – permiteți accesul acolo, apoi reveniți în această aplicație.</string>
+    <string name="acc_working">Se citește profilul dvs. din Discord…</string>
+    <string name="acc_privacy">Se citesc doar numele și fotografia de profil (accesul „identify” din Discord). Accesul este revocat imediat – aplicația nu păstrează niciun token.</string>
+    <string name="acc_redirect_hint">Discord afișează „Invalid OAuth2 redirect_uri”? Proprietarul aplicației Discord trebuie să adauge %1$s la OAuth2 → Redirects în Developer Portal.</string>
+    <string name="acc_no_app_id">Este necesar un ID de aplicație Discord (fila Avansat).</string>
+    <string name="acc_err_cancelled">Conectarea a fost anulată – Discord nu a primit permisiunea de a partaja profilul dvs.</string>
+    <string name="acc_err_redirect">Aplicația Discord nu cunoaște adresa de revenire a acestei aplicații. Proprietarul ei trebuie să adauge %1$s la OAuth2 → Redirects în Developer Portal.</string>
+    <string name="acc_err_public_client">Discord cere un client secret: opțiunea „Public Client” nu este activată pentru aplicația Discord (Developer Portal → OAuth2).</string>
+    <string name="acc_err_expired">Autentificarea a durat prea mult sau a fost deja folosită – încercați din nou.</string>
+    <string name="acc_err_network">Discord nu poate fi accesat – verificați conexiunea la internet și încercați din nou.</string>
+    <string name="acc_err_discord">Discord a refuzat autentificarea – încercați din nou mai târziu.</string>
+    <string name="acc_err_bad_answer">Discord a trimis un răspuns neașteptat – încercați din nou mai târziu.</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Neconectat la Discord – se reîncearcă</string>
+    <string name="err_discord_missing">Aplicația Discord nu este instalată</string>
+    <string name="err_bind_failed">Aplicația Discord nu oferă serviciul Rich Presence – actualizați Discord</string>
+    <string name="err_connect_failed">Discord nu a acceptat conexiunea – se reîncearcă</string>
+    <string name="err_closed">Discord a închis conexiunea – se reconectează</string>
+    <string name="err_invalid_client_id">Discord a respins ID-ul aplicației – verificați-l în fila Avansat</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">Se redă acum</string>
+    <string name="now_nothing">Nu se redă nimic în Poweramp.</string>
+    <string name="word_playing">Se redă</string>
+    <string name="word_paused">Întrerupt</string>
+    <string name="hidden_no">Discord afișează această piesă.</string>
+    <string name="hidden_disabled">Rich Presence este dezactivat – Discord nu afișează nimic.</string>
+    <string name="hidden_stopped">Nu se redă nimic – Discord nu afișează nimic.</string>
+    <string name="hidden_stream">Radioul pe internet / fluxurile sunt ascunse (fila Afișare) – Discord nu afișează nimic.</string>
+    <string name="hidden_path">Acest fișier este ascuns de filtrul de cale (fila Afișare) – Discord nu afișează nimic.</string>
+    <string name="hidden_paused">Redarea este întreruptă și este selectat „Ascunde” (fila Afișare): Discord afișează celelalte activități ale dvs.</string>
+    <string name="hidden_timeout">Pauza a durat mai mult decât s-a setat în fila Afișare – prezența a fost eliminată.</string>
+    <string name="now_user_stopped">Oprit de dvs. – Discord nu afișează nimic până când Poweramp redă din nou.</string>
+    <string name="now_rejected">Discord nu a acceptat această prezență – vedeți „Conexiune”.</string>
+    <string name="now_after_test">Discord afișează acum prezența de test – urmează această piesă.</string>
+    <string name="now_test_shown">Discord afișează acum prezența de test.</string>
+    <string name="now_sending">Se trimite la Discord…</string>
+    <string name="now_not_connected">Discord nu o afișează încă – vedeți „Conexiune”.</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">Trimiteți prezența de test</string>
+    <string name="btn_reconnect">Reconectați</string>
+    <string name="btn_open_poweramp">Deschideți Poweramp</string>
+    <string name="btn_open_discord">Deschideți Discord</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">Configurare</string>
+    <string name="check_checking">Se verifică…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">Versiunea %1$s (build %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">Versiunea %1$s</string>
+    <string name="check_poweramp_old">Versiunea %1$s (build %2$d) este prea veche – această aplicație necesită build %3$d sau mai nou.</string>
+    <string name="check_poweramp_missing">Poweramp nu este instalat.</string>
+    <string name="check_poweramp_get">Obțineți Poweramp</string>
+    <string name="check_poweramp_update">Actualizați Poweramp</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">Instalat, serviciul Rich Presence este disponibil</string>
+    <string name="check_discord_no_rpc">Această versiune Discord nu oferă serviciul Rich Presence altor aplicații. Actualizați Discord.</string>
+    <string name="check_discord_missing">Aplicația Discord nu este instalată.</string>
+    <string name="check_discord_get">Obțineți Discord</string>
+    <string name="check_discord_update">Actualizați Discord</string>
+    <string name="check_appid_title">Aplicație Discord</string>
+    <string name="check_appid_own">Aplicația proprie (ID %1$s)</string>
+    <string name="check_appid_missing">Acest build nu are niciun ID de aplicație integrat. Creați propria aplicație Discord și introduceți ID-ul ei în fila Avansat.</string>
+    <string name="check_appid_invalid">ID-ul aplicației proprii nu este valid (17–20 de cifre), iar acest build nu are niciun ID integrat.</string>
+    <string name="check_appid_invalid_fallback">ID-ul aplicației proprii nu este valid (17–20 de cifre) – se folosește aplicația integrată (ID %1$s).</string>
+    <string name="check_appid_builtin_invalid">ID-ul de aplicație integrat în acest build (%1$s) nu este valid (17–20 de cifre). Creați propria aplicație Discord și introduceți ID-ul ei în fila Avansat.</string>
+    <string name="check_appid_both_invalid">ID-ul aplicației proprii nu este valid (17–20 de cifre), iar nici cel integrat în acest build (%1$s) nu este valid.</string>
+    <string name="check_appid_fix">Configurați</string>
+    <string name="check_battery_title">Optimizarea bateriei</string>
+    <string name="check_battery_ok">Dezactivată pentru această aplicație – aceasta poate porni în fundal când Poweramp începe redarea.</string>
+    <string name="check_battery_bad">Este posibil ca Android să nu permită pornirea aplicației când Poweramp începe redarea sau să o oprească ulterior. Excludeți-o de la optimizarea bateriei.</string>
+    <string name="check_battery_fix">Permiteți</string>
+    <string name="check_notif_title">Notificări</string>
+    <string name="check_notif_ok">Permise – notificarea de stare arată ce vede Discord.</string>
+    <string name="check_notif_bad">Nepermise – aplicația nu poate afișa notificarea de stare în timp ce vă menține prezența la zi.</string>
+    <string name="check_notif_fix">Permiteți</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">Bine de știut</string>
+    <string name="hint_privacy_title">Partajați activitatea în Discord</string>
+    <string name="hint_privacy">În Discord: Setări → Confidențialitatea activității → activați „Partajează-ți activitatea”. Altfel nimeni nu vede ce ascultați.</string>
+    <string name="hint_poweramp_title">Prima pornire</string>
+    <string name="hint_poweramp">După instalarea acestei aplicații, apăsați o dată pauză și redare în Poweramp, ca Poweramp să observe aplicația și să-i trimită informațiile despre piesă.</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">Se trimite o prezență de test – rămâne afișată %1$d secunde.</string>
+    <string name="msg_reconnecting">Se reconectează…</string>
+    <string name="msg_stop_ended">Oprirea manuală s-a încheiat – Discord afișează din nou Poweramp.</string>
+    <string name="msg_start_blocked">Android nu a permis pornirea în fundal – permiteți-o la „Optimizarea bateriei”.</string>
+    <string name="msg_service_started">Serviciul în fundal a pornit.</string>
+    <string name="msg_service_stopped">Oprit până când Poweramp redă din nou.</string>
+    <string name="msg_cannot_open">Nu s-a găsit nicio aplicație care să deschidă acest element.</string>
+    <string name="msg_cover_cleared">Memoria cache a copertelor a fost golită.</string>
+    <string name="msg_exported">Setările au fost salvate.</string>
+    <string name="msg_export_failed">Setările nu au putut fi salvate.</string>
+    <string name="msg_imported">Setările au fost importate.</string>
+    <string name="msg_import_failed">Acest fișier nu conține setări ale acestei aplicații.</string>
+    <string name="msg_reset">Toate setările au fost resetate la valorile prestabilite.</string>
+    <string name="msg_log_copied">Jurnalul a fost copiat.</string>
+    <string name="msg_up_to_date">Aveți cea mai recentă versiune.</string>
+    <string name="msg_account_linked">Cont Discord conectat: %1$s</string>
+    <string name="msg_account_failed">Conectarea contului Discord nu a reușit – detalii în fila Stare.</string>
+    <string name="msg_account_unlinked">Contul Discord a fost deconectat.</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">Previzualizare live</string>
+    <string name="prev_listening">Ascultă %1$s</string>
+    <string name="prev_playing">Se joacă %1$s</string>
+    <string name="prev_app_own">aplicația dvs.</string>
+    <string name="prev_you">Dvs.</string>
+    <string name="prev_elapsed">%1$s scurs</string>
+    <string name="prev_example">Exemplu – momentan nu se redă nimic.</string>
+    <string name="prev_example_title">Titlu de exemplu</string>
+    <string name="prev_example_artist">Artist de exemplu</string>
+    <string name="prev_example_album">Album de exemplu</string>
+    <string name="prev_icon_tip">Pictogramă: %1$s</string>
+    <string name="prev_link">Link: %1$s</string>
+    <string name="prev_no_link">Titlu fără link</string>
+    <string name="prev_link_account">Conectați contul Discord pentru a vedea aici numele și fotografia de profil</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">Activitate</string>
+    <string name="disp_type">Tipul activității</string>
+    <string name="disp_type_listening">Ascultă (afișează o bară de progres)</string>
+    <string name="disp_type_playing">Se joacă (doar timpul scurs)</string>
+    <string name="disp_status_display">Textul de stare din Discord afișează</string>
+    <string name="disp_status_name">Numele aplicației (Poweramp)</string>
+    <string name="disp_status_state">A doua linie (artist)</string>
+    <string name="disp_status_details">Prima linie (titlul piesei)</string>
+    <string name="disp_timestamps">Afișați bara de progres / timpul scurs</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">Texte</string>
+    <string name="disp_details">Prima linie</string>
+    <string name="disp_state">A doua linie</string>
+    <string name="disp_large_text">Indicație copertă</string>
+    <string name="disp_small_text">Indicație pictogramă</string>
+    <string name="disp_insert_into">Atingeți un substituent pentru a-l insera în „%1$s”:</string>
+    <string name="disp_placeholders_help">Ce înseamnă substituenții</string>
+    <string name="disp_rotation_help" formatted="false">Puneți || între texte pentru ca ele să alterneze, de ex. %artist% || %title% (intervalul de rotație mai jos).</string>
+    <string name="ph_title">titlul piesei</string>
+    <string name="ph_artist">artist</string>
+    <string name="ph_album">album</string>
+    <string name="ph_filename">numele fișierului fără extensie</string>
+    <string name="ph_ext">extensia fișierului (flac, mp3 …)</string>
+    <string name="ph_pos">poziția curentă (1:23)</string>
+    <string name="ph_dur">durata (3:45)</string>
+    <string name="ph_percent">progresul în procente</string>
+    <string name="ph_bar">bară de progres text ▰▰▰▱▱▱</string>
+    <string name="ph_status">Se redă / Întrerupt</string>
+    <string name="ph_codec">codec (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">rată de biți (320 kbps)</string>
+    <string name="ph_samplerate">frecvență de eșantionare (44,1 kHz)</string>
+    <string name="ph_bits">adâncime de biți (24 de biți)</string>
+    <string name="ph_track">poziția în lista curentă</string>
+    <string name="ph_listsize">numărul de piese din listă</string>
+    <string name="ph_rating">evaluare ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">între variante care alternează, de ex. %artist% || %title%</string>
+    <string name="disp_small_icon">Afișați pictograma de redare / pauză (imagine mică)</string>
+    <string name="disp_bar_length" formatted="false">Lungimea pentru %bar%</string>
+    <string name="disp_bar_length_value">%1$d caractere</string>
+    <string name="disp_refresh">Interval de actualizare</string>
+    <string name="disp_refresh_value">%1$d s</string>
+    <string name="disp_refresh_note" formatted="false">Se folosește doar când un text conține %pos%, %bar% sau %percent%. Discord acceptă doar câteva actualizări pe minut.</string>
+    <string name="disp_rotation">Interval de rotație</string>
+    <string name="disp_rotation_value">%1$d s</string>
+    <string name="disp_rotation_note">Se folosește doar când un text conține ||. Fiecare piesă începe cu prima variantă, cele goale sunt omise. Discord acceptă doar 5 actualizări la 20 de secunde, deci minimum 5 s.</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">Titlu pe care se poate da clic</string>
+    <string name="disp_title_link">Titlul piesei ca link (căutare YouTube după artist + titlu)</string>
+    <string name="disp_own_link">Link propriu</string>
+    <string name="disp_own_link_url">Link</string>
+    <string name="disp_own_link_hint" formatted="false">Substituenții funcționează și aici, de ex. https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">Linkul trebuie să înceapă cu http:// sau https://</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">Pauză</string>
+    <string name="disp_paused">În pauză</string>
+    <string name="disp_paused_show">Afișează starea „Întrerupt”</string>
+    <string name="disp_paused_hide">Ascunde (se afișează alte activități)</string>
+    <string name="disp_clear_after">Eliminați după o pauză de (minute)</string>
+    <string name="disp_clear_after_hint">0 = niciodată (doar când se afișează „Întrerupt”)</string>
+    <string name="disp_filters_title">Filtre</string>
+    <string name="disp_hide_streams">Ascundeți prezența pentru radio pe internet / fluxuri</string>
+    <string name="disp_exclude_paths">Ascundeți când calea fișierului conține</string>
+    <string name="disp_exclude_paths_hint">de ex. Cărți audio;Podcasturi</string>
+    <string name="disp_exclude_paths_note">Mai multe părți separate prin ; (majusculele / minusculele nu contează)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Afișați coperta albumului în Discord</string>
+    <string name="cov_info">Discord afișează doar coperte care au un link public. Coperta afișată de Poweramp poate fi încărcată (x0.at nu necesită cont) sau căutată online (vedeți „Surse”). Fiecare copertă este determinată o singură dată și salvată în cache.</string>
+    <string name="cov_local_title">Coperta din Poweramp</string>
+    <string name="cov_local">Folosiți coperta afișată de Poweramp</string>
+    <string name="cov_local_sub">Încorporată în fișier, imagine din dosar sau descărcată de Poweramp – se încarcă pentru a obține un link public</string>
+    <string name="cov_upload">Încărcați copertele pe</string>
+    <string name="cov_upload_x0">x0.at (fără cont)</string>
+    <string name="cov_upload_catbox">catbox.moe (fără cont)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">Dezactivat (doar căutare online)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Imgur necesită un Client-ID – fără el, se folosește alt serviciu.</string>
+    <string name="cov_imgur_get">Obțineți un Client-ID</string>
+    <string name="cov_prefer_local">Preferați coperta din Poweramp</string>
+    <string name="cov_prefer_local_sub">Căutări online doar pentru piesele fără copertă</string>
+    <string name="cov_size">Dimensiunea copertelor încărcate</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">Copertele încărcate pot fi văzute de oricine are linkul.</string>
+    <string name="cov_current_title">Coperta curentă</string>
+    <string name="cov_off">Copertele sunt dezactivate – Discord afișează sigla aplicației.</string>
+    <string name="cov_nothing">Nu se redă nimic.</string>
+    <string name="cov_searching">Se caută o copertă…</string>
+    <string name="cov_not_yet">Coperta va fi căutată după ce Discord afișează această piesă.</string>
+    <string name="cov_none">Discord afișează sigla aplicației: nu s-a găsit nicio copertă sau Discord nu a putut-o încărca.</string>
+    <string name="cov_source">Sursă: %1$s</string>
+    <string name="cov_src_cache">cache-ul copertelor</string>
+    <string name="cov_src_online">găsită pe %1$s</string>
+    <string name="cov_src_poweramp">coperta din Poweramp</string>
+    <string name="cov_src_uploaded">%1$s, încărcată pe %2$s</string>
+    <string name="cov_open">Deschideți imaginea</string>
+    <string name="cov_clear">Goliți cache-ul copertelor</string>
+    <string name="cov_image_desc">Coperta albumului</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">Căutările online caută artistul / albumul și folosesc direct linkul public al imaginii – nu se încarcă nimic. Sursele sunt încercate de sus în jos, primul rezultat câștigă.</string>
+    <string name="src_covers_off">Copertele sunt dezactivate – nu se fac căutări.</string>
+    <string name="src_open_cover_tab">Setări copertă</string>
+    <string name="src_prefer_local_note">„Preferați coperta din Poweramp” este activat: căutările se folosesc doar pentru piesele fără copertă.</string>
+    <string name="src_list_title">Surse online</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">Necesită o aplicație de dezvoltator gratuită (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Introduceți Client ID și Secret, altfel Spotify este omis.</string>
+    <string name="src_create_app">Creați o aplicație</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">Nu necesită cheie (interfață neoficială)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">Necesită un token de acces personal gratuit</string>
+    <string name="src_token">Token</string>
+    <string name="src_discogs_missing">Introduceți un token, altfel Discogs este omis.</string>
+    <string name="src_get_token">Obțineți un token</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">Nu necesită cheie</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Aplicație Discord</string>
+    <string name="adv_custom_app">Folosiți propria aplicație Discord</string>
+    <string name="adv_custom_app_sub">Discord afișează numele ei („Ascultă …”)</string>
+    <string name="adv_app_id">ID aplicație</string>
+    <string name="adv_app_id_hint">Developer Portal → aplicația dvs. → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">Un ID de aplicație are între 17 și 20 de cifre.</string>
+    <string name="adv_portal">Deschideți Developer Portal</string>
+    <string name="adv_assets_note">La Rich Presence → Art Assets, încărcați imagini numite „poweramp” (siglă), „play” și „pause”.</string>
+    <string name="adv_effective">ID-ul de aplicație folosit</string>
+    <string name="adv_effective_none">niciunul – acest build nu are un ID integrat, folosiți propria aplicație</string>
+    <string name="adv_compat_title">Compatibilitate</string>
+    <string name="adv_seconds">Trimiteți marcajele de timp în secunde</string>
+    <string name="adv_seconds_sub">Doar dacă Discord afișează o oră greșită sau nicio bară de progres</string>
+    <string name="adv_log_title">Jurnal recent</string>
+    <string name="adv_log_empty">Nimic înregistrat încă.</string>
+    <string name="adv_log_copy">Copiați</string>
+    <string name="adv_log_share">Distribuiți</string>
+    <string name="adv_log_clear">Goliți</string>
+    <string name="adv_log_share_subject">Jurnal Poweramp Discord RP</string>
+    <string name="adv_settings_title">Fișier de setări</string>
+    <string name="adv_settings_info">Salvați toate setările într-un fișier sau încărcați-le dintr-unul (de ex. pe un telefon nou). Fișierul conține și cheile introduse pentru coperte (Imgur, Spotify, Discogs).</string>
+    <string name="adv_export">Exportați…</string>
+    <string name="adv_import">Importați…</string>
+    <string name="adv_reset">Resetați la valorile prestabilite</string>
+    <string name="adv_reset_confirm_title">Resetați toate setările?</string>
+    <string name="adv_reset_confirm_text">Toate setările revin la valorile prestabilite. Exportați-le mai întâi dacă doriți să le păstrați.</string>
+    <string name="adv_reset_confirm">Resetați</string>
+    <string name="adv_export_keys_title">Exportați cu cheile dvs.?</string>
+    <string name="adv_export_keys_text">Fișierul va conține cheile dvs. pentru %1$s ca text simplu. Păstrați-l pentru dvs. – nu îl distribuiți și nu îl atașați la un raport de eroare.</string>
+    <string name="adv_export_keys_confirm">Exportați</string>
+    <string name="common_cancel">Anulați</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">Versiunea %1$s</string>
+    <string name="about_by">de %1$s</string>
+    <string name="about_on_github">%1$s pe GitHub</string>
+    <string name="cd_author_avatar">Fotografia de profil GitHub a lui %1$s</string>
+    <string name="cd_account_avatar">Fotografia de profil Discord a lui %1$s</string>
+    <string name="about_github">Pagina GitHub</string>
+    <string name="about_releases">Toate versiunile</string>
+    <string name="about_issues">Raportați o problemă</string>
+    <string name="about_disclaimer">Un proiect independent – neafiliat și neaprobat de Discord sau Poweramp.</string>
+    <string name="about_updates_title">Actualizări</string>
+    <string name="about_update_check">Căutați actualizări</string>
+    <string name="about_update_freq">Cât de des</string>
+    <string name="upd_every_start">la fiecare pornire a aplicației</string>
+    <string name="upd_daily">o dată pe zi</string>
+    <string name="upd_weekly">o dată pe săptămână</string>
+    <string name="upd_monthly">o dată pe lună</string>
+    <string name="about_check_now">Verificați acum</string>
+    <string name="upd_never">Încă nu s-a verificat.</string>
+    <string name="upd_checking">Se caută actualizări…</string>
+    <string name="upd_latest">Aveți cea mai recentă versiune (ultima verificare: %1$s).</string>
+    <string name="upd_available">Versiunea %1$s este disponibilă.</string>
+    <string name="upd_failed">Verificarea actualizărilor a eșuat: nu există conexiune la GitHub.</string>
+    <string name="upd_rate_limited">GitHub limitează momentan cererile – încercați din nou mai târziu.</string>
+    <string name="upd_no_release">Nu a fost publicată încă nicio versiune.</string>
+    <string name="upd_bad_answer">Verificarea actualizărilor a eșuat: răspunsul GitHub nu a putut fi citit.</string>
+    <string name="upd_download">Descărcați %1$s</string>
+    <string name="upd_whats_new">Ce este nou?</string>
+    <string name="about_update_privacy">Verificarea cere de la GitHub doar cea mai nouă versiune – nu se trimite nimic altceva.</string>
+    <string name="about_credits_title">Mulțumiri</string>
+    <string name="about_credit_poweramp">Poweramp API de Max MP</string>
+    <string name="about_credit_discord">Interfața RPC Discord Social SDK prin antisocialcord-kt de Nightdavisao (licență MIT)</string>
+    <string name="about_credit_covers">Coperte: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz și Cover Art Archive</string>
+    <string name="about_credit_aimp">Varianta pentru Android a „Discord Rich Presence for AIMP”, de același autor</string>
+    <string name="about_changelog_title">Istoricul modificărilor</string>
+    <string name="about_changelog_version">Versiunea %1$s</string>
+    <string name="about_installed">(instalată)</string>
+    <string name="about_translation_note">Notă: traducerea în română a fost realizată cu AI și poate conține greșeli – corecturile sunt binevenite pe GitHub („Raportați o problemă”).</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">OK</string>
+    <string name="cd_info">Notă</string>
+    <string name="cd_warning">Avertisment</string>
+    <string name="cd_error">Problemă</string>
+    <string name="field_show">Afișați</string>
+    <string name="field_hide">Ascundeți</string>
+    <string name="field_range">Permis: între %1$d și %2$d</string>
+</resources>

@@ -1,5 +1,24 @@
 # Änderungen
 
+## 1.2.0
+
+### Neu
+- **Discord-Konto verknüpfen** (Tab *Status*): dein echter Name und dein Profilbild in der Live-Vorschau und im Tab
+  *Status* – gespeichert wird nur das öffentliche Profil
+- **26 weitere Sprachen**: Französisch, Spanisch, Portugiesisch (Brasilien), Italienisch, Niederländisch, Dänisch,
+  Schwedisch, Norwegisch, Finnisch, Polnisch, Tschechisch, Ungarisch, Rumänisch, Griechisch, Türkisch, Serbisch,
+  Arabisch, Hindi, Indonesisch, Vietnamesisch, Thai, Chinesisch, Japanisch und Koreanisch (KI-Übersetzungen –
+  Korrekturen willkommen)
+- **Sprachauswahl** in den *App-Einstellungen* (ab Android 13 auch in den App-Einstellungen von Android)
+
+### Verbessert
+- Weniger Akku: „Pausiert“ verschwindet auch im Standby pünktlich; kein Aufwachen, solange die Presence aus ist oder
+  Discord fehlt; neue Verbindungsversuche warten immer länger
+- Weniger Netz und Speicher: Cover werden seltener erneut geprüft, unbekannte Alben 12 h lang nicht erneut gesucht,
+  Bilder im Hintergrund verworfen
+- Fehlerbehebungen: importierte Einstellungen werden korrigiert, Play bringt die Presence nach einem Beenden über den
+  Task-Manager zurück
+
 ## 1.1.0
 
 ### Neu

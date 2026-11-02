@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- सेटिंग / स्थिति स्क्रीन (UI) के टेक्स्ट - हिन्दी। -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">स्थिति</string>
+    <string name="tab_display">डिस्प्ले</string>
+    <string name="tab_cover">कवर आर्ट</string>
+    <string name="tab_sources">स्रोत</string>
+    <string name="tab_advanced">उन्नत</string>
+    <string name="tab_about">जानकारी</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">और विकल्प</string>
+    <string name="app_settings_title">ऐप सेटिंग</string>
+    <string name="app_settings_theme">थीम</string>
+    <string name="theme_system">सिस्टम के अनुसार</string>
+    <string name="theme_light">लाइट</string>
+    <string name="theme_dark">डार्क</string>
+    <string name="app_settings_amoled">AMOLED ब्लैक</string>
+    <string name="app_settings_amoled_on">डार्क मोड में पूरी तरह काला बैकग्राउंड – OLED स्क्रीन पर बैटरी बचाता है।</string>
+    <string name="app_settings_amoled_needs_dark">सिर्फ़ डार्क मोड में – “डार्क” चुनें या Android को डार्क मोड पर करें।</string>
+    <string name="app_settings_dynamic">डायनैमिक रंग (Material You)</string>
+    <string name="app_settings_dynamic_sub">आपके वॉलपेपर से रंग। बंद: ऐप के अपने Discord जैसे रंग।</string>
+    <string name="app_settings_language">भाषा</string>
+    <string name="language_system">सिस्टम डिफ़ॉल्ट</string>
+    <string name="language_ai">AI अनुवाद</string>
+    <string name="app_settings_language_note">Android की सेटिंग में भी: ऐप्लिकेशन → Poweramp Discord RP → भाषा।</string>
+    <string name="common_close">बंद करें</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">आपका Discord स्टेटस दिखाता है कि Poweramp में क्या चल रहा है</string>
+    <string name="master_off">बंद है – Discord कुछ नहीं दिखाता</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">कनेक्शन</string>
+    <string name="conn_idle">इंतज़ार – अभी दिखाने को कुछ नहीं है</string>
+    <string name="conn_disabled">बंद है</string>
+    <string name="conn_no_app_id">कोई Discord ऐप्लिकेशन ID सेट नहीं है</string>
+    <string name="conn_connecting">Discord से कनेक्ट हो रहा है…</string>
+    <string name="conn_connected">Discord से कनेक्ट है</string>
+    <string name="conn_testing">टेस्ट प्रेज़ेंस दिखाई जा रही है।</string>
+    <string name="conn_test_waiting">टेस्ट प्रेज़ेंस Discord को भेजी जा रही है…</string>
+    <string name="conn_activity_error">Discord ने पिछला अपडेट स्वीकार नहीं किया: %1$s</string>
+    <string name="conn_detail">विवरण: %1$s</string>
+    <string name="conn_user">Discord खाता</string>
+    <string name="conn_app_id">ऐप्लिकेशन ID</string>
+    <string name="conn_app_builtin">%1$s (बिल्ट-इन)</string>
+    <string name="conn_app_own">%1$s (आपका अपना)</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">पिछला अपडेट</string>
+    <string name="conn_never">अभी तक नहीं</string>
+    <string name="conn_connections">कनेक्शन</string>
+    <string name="conn_service">बैकग्राउंड सेवा</string>
+    <string name="conn_service_running">चल रही है</string>
+    <string name="conn_service_stopped">नहीं चल रही</string>
+    <string name="conn_service_start">शुरू करें</string>
+    <string name="conn_service_stop">रोकें</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">लिंक नहीं है</string>
+    <string name="acc_hint">लाइव प्रीव्यू और यहाँ अपना नाम और तस्वीर देखने के लिए अपना Discord खाता लिंक करें।</string>
+    <string name="acc_link">Discord खाता लिंक करें</string>
+    <string name="acc_refresh">रीफ़्रेश करें</string>
+    <string name="acc_restart">फिर से शुरू करें</string>
+    <string name="acc_unlink">अनलिंक करें</string>
+    <string name="acc_waiting">Discord का इंतज़ार – वहाँ ऐक्सेस की अनुमति दें, फिर इस ऐप पर वापस आएँ।</string>
+    <string name="acc_working">Discord से आपकी प्रोफ़ाइल पढ़ी जा रही है…</string>
+    <string name="acc_privacy">सिर्फ़ आपका नाम और प्रोफ़ाइल तस्वीर पढ़ी जाती है (Discord का “identify” ऐक्सेस)। ऐक्सेस तुरंत रद्द कर दिया जाता है – ऐप कोई टोकन नहीं रखता।</string>
+    <string name="acc_redirect_hint">Discord “Invalid OAuth2 redirect_uri” दिखा रहा है? Discord ऐप्लिकेशन के मालिक को Developer Portal में OAuth2 → Redirects के अंदर %1$s जोड़ना होगा।</string>
+    <string name="acc_no_app_id">Discord ऐप्लिकेशन ID चाहिए (उन्नत टैब)।</string>
+    <string name="acc_err_cancelled">लिंक करना रद्द हो गया – Discord को आपकी प्रोफ़ाइल शेयर करने की अनुमति नहीं मिली।</string>
+    <string name="acc_err_redirect">Discord ऐप्लिकेशन इस ऐप का रिटर्न पता नहीं जानता। उसके मालिक को Developer Portal में OAuth2 → Redirects के अंदर %1$s जोड़ना होगा।</string>
+    <string name="acc_err_public_client">Discord क्लाइंट सीक्रेट माँग रहा है: Discord ऐप्लिकेशन के लिए “Public Client” चालू नहीं है (Developer Portal → OAuth2)।</string>
+    <string name="acc_err_expired">लॉगिन में बहुत समय लगा या वह पहले ही इस्तेमाल हो चुका है – कृपया फिर से कोशिश करें।</string>
+    <string name="acc_err_network">Discord तक नहीं पहुँचा जा सका – इंटरनेट कनेक्शन जाँचें और फिर से कोशिश करें।</string>
+    <string name="acc_err_discord">Discord ने लॉगिन अस्वीकार कर दिया – कृपया बाद में फिर से कोशिश करें।</string>
+    <string name="acc_err_bad_answer">Discord ने अनपेक्षित जवाब भेजा – कृपया बाद में फिर से कोशिश करें।</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Discord से कनेक्ट नहीं है – फिर से कोशिश हो रही है</string>
+    <string name="err_discord_missing">Discord ऐप इंस्टॉल नहीं है</string>
+    <string name="err_bind_failed">Discord ऐप Rich Presence सेवा नहीं देता – Discord अपडेट करें</string>
+    <string name="err_connect_failed">Discord ने कनेक्शन स्वीकार नहीं किया – फिर से कोशिश हो रही है</string>
+    <string name="err_closed">Discord ने कनेक्शन बंद कर दिया – फिर से कनेक्ट हो रहा है</string>
+    <string name="err_invalid_client_id">Discord ने ऐप्लिकेशन ID अस्वीकार कर दी – उन्नत टैब पर इसे जाँचें</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">अभी चल रहा है</string>
+    <string name="now_nothing">Poweramp में कुछ नहीं चल रहा।</string>
+    <string name="word_playing">चल रहा है</string>
+    <string name="word_paused">रुका हुआ</string>
+    <string name="hidden_no">Discord यह ट्रैक दिखा रहा है।</string>
+    <string name="hidden_disabled">Rich Presence बंद है – Discord कुछ नहीं दिखाता।</string>
+    <string name="hidden_stopped">कुछ नहीं चल रहा – Discord कुछ नहीं दिखाता।</string>
+    <string name="hidden_stream">इंटरनेट रेडियो / स्ट्रीम छिपे हुए हैं (डिस्प्ले टैब) – Discord कुछ नहीं दिखाता।</string>
+    <string name="hidden_path">यह फ़ाइल पाथ फ़िल्टर से छिपी हुई है (डिस्प्ले टैब) – Discord कुछ नहीं दिखाता।</string>
+    <string name="hidden_paused">प्लेबैक रुका हुआ है और “छिपाएँ” चुना गया है (डिस्प्ले टैब): Discord आपकी दूसरी गतिविधियाँ दिखाता है।</string>
+    <string name="hidden_timeout">डिस्प्ले टैब पर सेट समय से ज़्यादा देर से रुका हुआ है – प्रेज़ेंस हटा दी गई।</string>
+    <string name="now_user_stopped">आपने रोका है – जब तक Poweramp फिर से नहीं चलता, Discord कुछ नहीं दिखाएगा।</string>
+    <string name="now_rejected">Discord ने यह प्रेज़ेंस स्वीकार नहीं की – “कनेक्शन” देखें।</string>
+    <string name="now_after_test">Discord अभी टेस्ट प्रेज़ेंस दिखा रहा है – यह ट्रैक इसके बाद आएगा।</string>
+    <string name="now_test_shown">Discord अभी टेस्ट प्रेज़ेंस दिखा रहा है।</string>
+    <string name="now_sending">Discord को भेजा जा रहा है…</string>
+    <string name="now_not_connected">Discord अभी इसे नहीं दिखा रहा – “कनेक्शन” देखें।</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">टेस्ट प्रेज़ेंस भेजें</string>
+    <string name="btn_reconnect">फिर से कनेक्ट करें</string>
+    <string name="btn_open_poweramp">Poweramp खोलें</string>
+    <string name="btn_open_discord">Discord खोलें</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">सेटअप</string>
+    <string name="check_checking">जाँच हो रही है…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">वर्शन %1$s (बिल्ड %2$d)</string>
+    <string name="check_poweramp_ok_nobuild">वर्शन %1$s</string>
+    <string name="check_poweramp_old">वर्शन %1$s (बिल्ड %2$d) बहुत पुराना है – इस ऐप को बिल्ड %3$d या नया चाहिए।</string>
+    <string name="check_poweramp_missing">Poweramp इंस्टॉल नहीं है।</string>
+    <string name="check_poweramp_get">Poweramp पाएँ</string>
+    <string name="check_poweramp_update">Poweramp अपडेट करें</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">इंस्टॉल है, Rich Presence सेवा उपलब्ध है</string>
+    <string name="check_discord_no_rpc">Discord का यह वर्शन दूसरे ऐप्स को Rich Presence सेवा नहीं देता। कृपया Discord अपडेट करें।</string>
+    <string name="check_discord_missing">Discord ऐप इंस्टॉल नहीं है।</string>
+    <string name="check_discord_get">Discord पाएँ</string>
+    <string name="check_discord_update">Discord अपडेट करें</string>
+    <string name="check_appid_title">Discord ऐप्लिकेशन</string>
+    <string name="check_appid_own">आपका अपना ऐप्लिकेशन (ID %1$s)</string>
+    <string name="check_appid_missing">इस बिल्ड में कोई ऐप्लिकेशन ID बिल्ट-इन नहीं है। अपना Discord ऐप्लिकेशन बनाएँ और उसकी ID उन्नत टैब पर डालें।</string>
+    <string name="check_appid_invalid">आपकी अपनी ऐप्लिकेशन ID मान्य नहीं है (17 से 20 अंक), और इस बिल्ड में कोई बिल्ट-इन ID नहीं है।</string>
+    <string name="check_appid_invalid_fallback">आपकी अपनी ऐप्लिकेशन ID मान्य नहीं है (17 से 20 अंक) – बिल्ट-इन ऐप्लिकेशन (ID %1$s) इस्तेमाल हो रहा है।</string>
+    <string name="check_appid_builtin_invalid">इस बिल्ड में बिल्ट-इन ऐप्लिकेशन ID (%1$s) मान्य नहीं है (17 से 20 अंक)। अपना Discord ऐप्लिकेशन बनाएँ और उसकी ID उन्नत टैब पर डालें।</string>
+    <string name="check_appid_both_invalid">आपकी अपनी ऐप्लिकेशन ID मान्य नहीं है (17 से 20 अंक), और इस बिल्ड में बिल्ट-इन ID (%1$s) भी मान्य नहीं है।</string>
+    <string name="check_appid_fix">सेट करें</string>
+    <string name="check_battery_title">बैटरी ऑप्टिमाइज़ेशन</string>
+    <string name="check_battery_ok">इस ऐप के लिए बंद है – Poweramp में गाना शुरू होते ही यह बैकग्राउंड में शुरू हो सकता है।</string>
+    <string name="check_battery_bad">हो सकता है कि Poweramp में गाना शुरू होने पर Android ऐप को शुरू न होने दे, या बाद में उसे बंद कर दे। इसे बैटरी ऑप्टिमाइज़ेशन से बाहर रखें।</string>
+    <string name="check_battery_fix">अनुमति दें</string>
+    <string name="check_notif_title">सूचनाएं</string>
+    <string name="check_notif_ok">अनुमति है – स्थिति सूचना दिखाती है कि Discord क्या देख रहा है।</string>
+    <string name="check_notif_bad">अनुमति नहीं है – आपकी प्रेज़ेंस अपडेट रखते समय ऐप अपनी स्थिति सूचना नहीं दिखा सकता।</string>
+    <string name="check_notif_fix">अनुमति दें</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">काम की बातें</string>
+    <string name="hint_privacy_title">Discord में अपनी गतिविधि शेयर करें</string>
+    <string name="hint_privacy">Discord में: Settings → Activity privacy → “Share your activity” चालू करें। वरना कोई नहीं देख पाएगा कि आप क्या सुन रहे हैं।</string>
+    <string name="hint_poweramp_title">पहली बार शुरू करना</string>
+    <string name="hint_poweramp">यह ऐप इंस्टॉल करने के बाद Poweramp में एक बार पॉज़ और प्ले दबाएँ, ताकि Poweramp इस ऐप को पहचाने और इसे ट्रैक की जानकारी भेजे।</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">टेस्ट प्रेज़ेंस भेजी जा रही है – यह %1$d सेकंड तक रहेगी।</string>
+    <string name="msg_reconnecting">फिर से कनेक्ट हो रहा है…</string>
+    <string name="msg_stop_ended">रोक ख़त्म हुई – Discord फिर से Poweramp दिखा रहा है।</string>
+    <string name="msg_start_blocked">Android ने बैकग्राउंड में शुरू होने की अनुमति नहीं दी – “बैटरी ऑप्टिमाइज़ेशन” में इसकी अनुमति दें।</string>
+    <string name="msg_service_started">बैकग्राउंड सेवा शुरू हो गई।</string>
+    <string name="msg_service_stopped">Poweramp के फिर से चलने तक रोका गया।</string>
+    <string name="msg_cannot_open">इसे खोलने के लिए कोई ऐप नहीं मिला।</string>
+    <string name="msg_cover_cleared">कवर कैश साफ़ कर दिया गया।</string>
+    <string name="msg_exported">सेटिंग सेव हो गईं।</string>
+    <string name="msg_export_failed">सेटिंग सेव नहीं हो सकीं।</string>
+    <string name="msg_imported">सेटिंग इंपोर्ट हो गईं।</string>
+    <string name="msg_import_failed">इस फ़ाइल में इस ऐप की सेटिंग नहीं हैं।</string>
+    <string name="msg_reset">सभी सेटिंग डिफ़ॉल्ट पर रीसेट कर दी गईं।</string>
+    <string name="msg_log_copied">लॉग कॉपी हो गया।</string>
+    <string name="msg_up_to_date">आपके पास सबसे नया वर्शन है।</string>
+    <string name="msg_account_linked">Discord खाता लिंक हो गया: %1$s</string>
+    <string name="msg_account_failed">Discord खाता लिंक नहीं हो सका – विवरण स्थिति टैब पर है।</string>
+    <string name="msg_account_unlinked">Discord खाता अनलिंक हो गया।</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">लाइव प्रीव्यू</string>
+    <string name="prev_listening">%1$s सुन रहे हैं</string>
+    <string name="prev_playing">%1$s चला रहे हैं</string>
+    <string name="prev_app_own">आपका ऐप</string>
+    <string name="prev_you">आप</string>
+    <string name="prev_elapsed">%1$s बीत गए</string>
+    <string name="prev_example">उदाहरण – अभी कुछ नहीं चल रहा।</string>
+    <string name="prev_example_title">उदाहरण टाइटल</string>
+    <string name="prev_example_artist">उदाहरण कलाकार</string>
+    <string name="prev_example_album">उदाहरण एल्बम</string>
+    <string name="prev_icon_tip">आइकन: %1$s</string>
+    <string name="prev_link">लिंक: %1$s</string>
+    <string name="prev_no_link">बिना लिंक का टाइटल</string>
+    <string name="prev_link_account">यहाँ अपना नाम और तस्वीर देखने के लिए अपना Discord खाता लिंक करें</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">गतिविधि</string>
+    <string name="disp_type">गतिविधि का प्रकार</string>
+    <string name="disp_type_listening">सुन रहे हैं (प्रोग्रेस बार दिखाता है)</string>
+    <string name="disp_type_playing">चला रहे हैं (सिर्फ़ बीता समय)</string>
+    <string name="disp_status_display">Discord स्टेटस टेक्स्ट में दिखेगा</string>
+    <string name="disp_status_name">ऐप्लिकेशन का नाम (Poweramp)</string>
+    <string name="disp_status_state">दूसरी पंक्ति (कलाकार)</string>
+    <string name="disp_status_details">पहली पंक्ति (ट्रैक टाइटल)</string>
+    <string name="disp_timestamps">प्रोग्रेस बार / बीता समय दिखाएँ</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">टेक्स्ट</string>
+    <string name="disp_details">पहली पंक्ति</string>
+    <string name="disp_state">दूसरी पंक्ति</string>
+    <string name="disp_large_text">कवर टूलटिप</string>
+    <string name="disp_small_text">आइकन टूलटिप</string>
+    <string name="disp_insert_into">“%1$s” में डालने के लिए किसी प्लेसहोल्डर पर टैप करें:</string>
+    <string name="disp_placeholders_help">प्लेसहोल्डर का मतलब</string>
+    <string name="disp_rotation_help" formatted="false">टेक्स्ट के बीच || लगाएँ ताकि वे बारी-बारी से दिखें, जैसे %artist% || %title% (रोटेशन अंतराल नीचे)।</string>
+    <string name="ph_title">ट्रैक टाइटल</string>
+    <string name="ph_artist">कलाकार</string>
+    <string name="ph_album">एल्बम</string>
+    <string name="ph_filename">एक्सटेंशन के बिना फ़ाइल का नाम</string>
+    <string name="ph_ext">फ़ाइल एक्सटेंशन (flac, mp3 …)</string>
+    <string name="ph_pos">मौजूदा पोज़िशन (1:23)</string>
+    <string name="ph_dur">अवधि (3:45)</string>
+    <string name="ph_percent">प्रतिशत में प्रोग्रेस</string>
+    <string name="ph_bar">टेक्स्ट प्रोग्रेस बार ▰▰▰▱▱▱</string>
+    <string name="ph_status">चल रहा है / रुका हुआ</string>
+    <string name="ph_codec">कोडेक (FLAC, MP3 …)</string>
+    <string name="ph_bitrate">बिटरेट (320 kbps)</string>
+    <string name="ph_samplerate">सैंपल रेट (44.1 kHz)</string>
+    <string name="ph_bits">बिट डेप्थ (24-bit)</string>
+    <string name="ph_track">मौजूदा सूची में स्थान</string>
+    <string name="ph_listsize">सूची में ट्रैक की संख्या</string>
+    <string name="ph_rating">रेटिंग ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">बारी-बारी से दिखने वाले विकल्पों के बीच, जैसे %artist% || %title%</string>
+    <string name="disp_small_icon">प्ले / पॉज़ आइकन दिखाएँ (छोटी तस्वीर)</string>
+    <string name="disp_bar_length" formatted="false">%bar% की लंबाई</string>
+    <string name="disp_bar_length_value">%1$d अक्षर</string>
+    <string name="disp_refresh">रीफ़्रेश अंतराल</string>
+    <string name="disp_refresh_value">%1$d सेकंड</string>
+    <string name="disp_refresh_note" formatted="false">सिर्फ़ तब इस्तेमाल होता है जब किसी टेक्स्ट में %pos%, %bar% या %percent% हो। Discord प्रति मिनट कुछ ही अपडेट स्वीकार करता है।</string>
+    <string name="disp_rotation">रोटेशन अंतराल</string>
+    <string name="disp_rotation_value">%1$d सेकंड</string>
+    <string name="disp_rotation_note">सिर्फ़ तब इस्तेमाल होता है जब किसी टेक्स्ट में || हो। हर ट्रैक पहले विकल्प से शुरू होता है, खाली विकल्प छोड़ दिए जाते हैं। Discord हर 20 सेकंड में सिर्फ़ 5 अपडेट स्वीकार करता है, इसलिए कम से कम 5 सेकंड।</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">क्लिक करने योग्य टाइटल</string>
+    <string name="disp_title_link">क्लिक करने योग्य गाने का टाइटल (कलाकार + टाइटल के लिए YouTube खोज)</string>
+    <string name="disp_own_link">अपना लिंक</string>
+    <string name="disp_own_link_url">लिंक</string>
+    <string name="disp_own_link_hint" formatted="false">यहाँ भी प्लेसहोल्डर काम करते हैं, जैसे https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">लिंक http:// या https:// से शुरू होना चाहिए</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">पॉज़</string>
+    <string name="disp_paused">पॉज़ होने पर</string>
+    <string name="disp_paused_show">“रुका हुआ” स्थिति दिखाएँ</string>
+    <string name="disp_paused_hide">छिपाएँ (दूसरी गतिविधियाँ दिखेंगी)</string>
+    <string name="disp_clear_after">इतनी देर के पॉज़ के बाद हटाएँ (मिनट)</string>
+    <string name="disp_clear_after_hint">0 = कभी नहीं (सिर्फ़ जब “रुका हुआ” दिखाया जाए)</string>
+    <string name="disp_filters_title">फ़िल्टर</string>
+    <string name="disp_hide_streams">इंटरनेट रेडियो / स्ट्रीम के लिए प्रेज़ेंस छिपाएँ</string>
+    <string name="disp_exclude_paths">छिपाएँ जब फ़ाइल पाथ में यह हो</string>
+    <string name="disp_exclude_paths_hint">जैसे Audiobooks;Podcasts</string>
+    <string name="disp_exclude_paths_note">कई हिस्से ; से अलग करें (बड़े / छोटे अक्षरों से फ़र्क नहीं पड़ता)</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">Discord में एल्बम कवर दिखाएँ</string>
+    <string name="cov_info">Discord सिर्फ़ वही कवर दिखाता है जिनका सार्वजनिक लिंक हो। Poweramp में दिखने वाला कवर अपलोड किया जा सकता है (x0.at के लिए खाते की ज़रूरत नहीं) या ऑनलाइन खोजा जा सकता है (“स्रोत” देखें)। हर कवर एक बार ढूँढा जाता है और कैश में रखा जाता है।</string>
+    <string name="cov_local_title">Poweramp का कवर</string>
+    <string name="cov_local">Poweramp में दिखने वाला कवर इस्तेमाल करें</string>
+    <string name="cov_local_sub">फ़ाइल में एम्बेड, फ़ोल्डर में मौजूद तस्वीर या Poweramp द्वारा डाउनलोड किया गया – सार्वजनिक लिंक पाने के लिए अपलोड किया जाता है</string>
+    <string name="cov_upload">कवर यहाँ अपलोड करें</string>
+    <string name="cov_upload_x0">x0.at (खाते की ज़रूरत नहीं)</string>
+    <string name="cov_upload_catbox">catbox.moe (खाते की ज़रूरत नहीं)</string>
+    <string name="cov_upload_imgur">Imgur (Client-ID)</string>
+    <string name="cov_upload_off">बंद (सिर्फ़ ऑनलाइन खोज)</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">Imgur को Client-ID चाहिए – इसके बिना कोई दूसरा होस्ट इस्तेमाल होगा।</string>
+    <string name="cov_imgur_get">Client-ID पाएँ</string>
+    <string name="cov_prefer_local">Poweramp के कवर को प्राथमिकता दें</string>
+    <string name="cov_prefer_local_sub">ऑनलाइन खोज सिर्फ़ बिना कवर वाले ट्रैक के लिए</string>
+    <string name="cov_size">अपलोड किए गए कवर का साइज़</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">अपलोड किए गए कवर कोई भी देख सकता है जिसके पास लिंक हो।</string>
+    <string name="cov_current_title">मौजूदा कवर</string>
+    <string name="cov_off">कवर बंद हैं – Discord ऐप का लोगो दिखाता है।</string>
+    <string name="cov_nothing">कुछ नहीं चल रहा।</string>
+    <string name="cov_searching">कवर ढूँढा जा रहा है…</string>
+    <string name="cov_not_yet">Discord के यह ट्रैक दिखाते ही कवर ढूँढा जाएगा।</string>
+    <string name="cov_none">Discord ऐप का लोगो दिखा रहा है: कोई कवर नहीं मिला, या Discord उसे लोड नहीं कर सका।</string>
+    <string name="cov_source">स्रोत: %1$s</string>
+    <string name="cov_src_cache">कवर कैश</string>
+    <string name="cov_src_online">%1$s पर मिला</string>
+    <string name="cov_src_poweramp">Poweramp का कवर</string>
+    <string name="cov_src_uploaded">%1$s, %2$s पर अपलोड किया गया</string>
+    <string name="cov_open">तस्वीर खोलें</string>
+    <string name="cov_clear">कवर कैश साफ़ करें</string>
+    <string name="cov_image_desc">एल्बम कवर</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">ऑनलाइन खोज कलाकार / एल्बम ढूँढती है और सार्वजनिक इमेज लिंक सीधे इस्तेमाल करती है – कुछ भी अपलोड नहीं होता। स्रोत ऊपर से नीचे आज़माए जाते हैं, पहला नतीजा इस्तेमाल होता है।</string>
+    <string name="src_covers_off">कवर बंद हैं – कोई खोज नहीं होती।</string>
+    <string name="src_open_cover_tab">कवर आर्ट सेटिंग</string>
+    <string name="src_prefer_local_note">“Poweramp के कवर को प्राथमिकता दें” चालू है: खोज सिर्फ़ बिना कवर वाले ट्रैक के लिए होती है।</string>
+    <string name="src_list_title">ऑनलाइन स्रोत</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">एक मुफ़्त डेवलपर ऐप चाहिए (Client ID + Secret)</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Client ID और Secret डालें, वरना Spotify छोड़ दिया जाएगा।</string>
+    <string name="src_create_app">ऐप बनाएँ</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">किसी कुंजी की ज़रूरत नहीं (अनौपचारिक इंटरफ़ेस)</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">एक मुफ़्त पर्सनल ऐक्सेस टोकन चाहिए</string>
+    <string name="src_token">टोकन</string>
+    <string name="src_discogs_missing">टोकन डालें, वरना Discogs छोड़ दिया जाएगा।</string>
+    <string name="src_get_token">टोकन पाएँ</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">किसी कुंजी की ज़रूरत नहीं</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Discord ऐप्लिकेशन</string>
+    <string name="adv_custom_app">मेरा अपना Discord ऐप्लिकेशन इस्तेमाल करें</string>
+    <string name="adv_custom_app_sub">Discord उसका नाम दिखाता है (“… सुन रहे हैं”)</string>
+    <string name="adv_app_id">ऐप्लिकेशन ID</string>
+    <string name="adv_app_id_hint">Developer Portal → आपका ऐप्लिकेशन → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">ऐप्लिकेशन ID में 17 से 20 अंक होते हैं।</string>
+    <string name="adv_portal">Developer Portal खोलें</string>
+    <string name="adv_assets_note">Rich Presence → Art Assets में “poweramp” (लोगो), “play” और “pause” नाम की तस्वीरें अपलोड करें।</string>
+    <string name="adv_effective">इस्तेमाल हो रही ऐप्लिकेशन ID</string>
+    <string name="adv_effective_none">कोई नहीं – इस बिल्ड में बिल्ट-इन ID नहीं है, अपना ऐप्लिकेशन इस्तेमाल करें</string>
+    <string name="adv_compat_title">संगतता</string>
+    <string name="adv_seconds">टाइमस्टैम्प सेकंड में भेजें</string>
+    <string name="adv_seconds_sub">सिर्फ़ तब, जब Discord गलत समय दिखाए या प्रोग्रेस बार न दिखाए</string>
+    <string name="adv_log_title">हाल का लॉग</string>
+    <string name="adv_log_empty">अभी तक कुछ लॉग नहीं हुआ।</string>
+    <string name="adv_log_copy">कॉपी करें</string>
+    <string name="adv_log_share">शेयर करें</string>
+    <string name="adv_log_clear">साफ़ करें</string>
+    <string name="adv_log_share_subject">Poweramp Discord RP लॉग</string>
+    <string name="adv_settings_title">सेटिंग फ़ाइल</string>
+    <string name="adv_settings_info">सभी सेटिंग किसी फ़ाइल में सेव करें या फ़ाइल से लोड करें (जैसे नए फ़ोन पर)। फ़ाइल में कवर के लिए डाली गई आपकी कुंजियाँ (Imgur, Spotify, Discogs) भी होती हैं।</string>
+    <string name="adv_export">एक्सपोर्ट करें…</string>
+    <string name="adv_import">इंपोर्ट करें…</string>
+    <string name="adv_reset">डिफ़ॉल्ट पर रीसेट करें</string>
+    <string name="adv_reset_confirm_title">सभी सेटिंग रीसेट करें?</string>
+    <string name="adv_reset_confirm_text">सभी सेटिंग अपने डिफ़ॉल्ट पर लौट जाएँगी। अगर आप उन्हें रखना चाहते हैं, तो पहले एक्सपोर्ट कर लें।</string>
+    <string name="adv_reset_confirm">रीसेट करें</string>
+    <string name="adv_export_keys_title">अपनी कुंजियों के साथ एक्सपोर्ट करें?</string>
+    <string name="adv_export_keys_text">फ़ाइल में %1$s के लिए आपकी कुंजियाँ सादे टेक्स्ट में होंगी। इसे अपने पास रखें – इसे शेयर न करें और न ही किसी बग रिपोर्ट के साथ जोड़ें।</string>
+    <string name="adv_export_keys_confirm">एक्सपोर्ट करें</string>
+    <string name="common_cancel">रद्द करें</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">वर्शन %1$s</string>
+    <string name="about_by">%1$s द्वारा</string>
+    <string name="about_on_github">GitHub पर %1$s</string>
+    <string name="cd_author_avatar">%1$s की GitHub प्रोफ़ाइल तस्वीर</string>
+    <string name="cd_account_avatar">%1$s की Discord प्रोफ़ाइल तस्वीर</string>
+    <string name="about_github">GitHub पेज</string>
+    <string name="about_releases">सभी रिलीज़</string>
+    <string name="about_issues">समस्या की रिपोर्ट करें</string>
+    <string name="about_disclaimer">एक स्वतंत्र प्रोजेक्ट – Discord या Poweramp से संबद्ध या उनके द्वारा समर्थित नहीं।</string>
+    <string name="about_updates_title">अपडेट</string>
+    <string name="about_update_check">अपडेट की जाँच करें</string>
+    <string name="about_update_freq">कितनी बार</string>
+    <string name="upd_every_start">हर बार ऐप शुरू होने पर</string>
+    <string name="upd_daily">दिन में एक बार</string>
+    <string name="upd_weekly">हफ़्ते में एक बार</string>
+    <string name="upd_monthly">महीने में एक बार</string>
+    <string name="about_check_now">अभी जाँचें</string>
+    <string name="upd_never">अभी तक जाँच नहीं हुई।</string>
+    <string name="upd_checking">अपडेट की जाँच हो रही है…</string>
+    <string name="upd_latest">आपके पास सबसे नया वर्शन है (पिछली जाँच: %1$s)।</string>
+    <string name="upd_available">वर्शन %1$s उपलब्ध है।</string>
+    <string name="upd_failed">अपडेट की जाँच नहीं हो सकी: GitHub से कनेक्शन नहीं है।</string>
+    <string name="upd_rate_limited">GitHub अभी अनुरोधों को सीमित कर रहा है – कृपया बाद में फिर से कोशिश करें।</string>
+    <string name="upd_no_release">अभी तक कोई रिलीज़ प्रकाशित नहीं हुई है।</string>
+    <string name="upd_bad_answer">अपडेट की जाँच नहीं हो सकी: GitHub का जवाब पढ़ा नहीं जा सका।</string>
+    <string name="upd_download">%1$s डाउनलोड करें</string>
+    <string name="upd_whats_new">नया क्या है?</string>
+    <string name="about_update_privacy">जाँच में GitHub से सिर्फ़ सबसे नई रिलीज़ के बारे में पूछा जाता है – और कुछ नहीं भेजा जाता।</string>
+    <string name="about_credits_title">आभार</string>
+    <string name="about_credit_poweramp">Poweramp API: Max MP</string>
+    <string name="about_credit_discord">Discord Social SDK RPC इंटरफ़ेस: Nightdavisao का antisocialcord-kt (MIT लाइसेंस)</string>
+    <string name="about_credit_covers">कवर: x0.at, catbox.moe, Imgur, Spotify, Deezer, Apple Music / iTunes, Bandcamp, Discogs, MusicBrainz और Cover Art Archive</string>
+    <string name="about_credit_aimp">उसी लेखक के “Discord Rich Presence for AIMP” का Android साथी</string>
+    <string name="about_changelog_title">बदलावों की सूची</string>
+    <string name="about_changelog_version">वर्शन %1$s</string>
+    <string name="about_installed">(इंस्टॉल है)</string>
+    <string name="about_translation_note">ध्यान दें: हिन्दी अनुवाद AI की मदद से किया गया है और इसमें गलतियाँ हो सकती हैं – GitHub पर सुधार का स्वागत है (“समस्या की रिपोर्ट करें”)।</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">ठीक है</string>
+    <string name="cd_info">नोट</string>
+    <string name="cd_warning">चेतावनी</string>
+    <string name="cd_error">समस्या</string>
+    <string name="field_show">दिखाएँ</string>
+    <string name="field_hide">छिपाएँ</string>
+    <string name="field_range">अनुमत: %1$d से %2$d</string>
+</resources>

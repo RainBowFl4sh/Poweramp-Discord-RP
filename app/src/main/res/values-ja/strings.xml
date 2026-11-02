@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the settings / status screen (UI). The background part has its own file, strings_runtime.xml. -->
+<resources>
+
+    <!-- Tabs -->
+    <string name="tab_status">ステータス</string>
+    <string name="tab_display">表示</string>
+    <string name="tab_cover">カバーアート</string>
+    <string name="tab_sources">ソース</string>
+    <string name="tab_advanced">詳細</string>
+    <string name="tab_about">アプリについて</string>
+
+    <!-- Top bar menu: app settings (how the app looks) -->
+    <string name="menu_more">その他のオプション</string>
+    <string name="app_settings_title">アプリの設定</string>
+    <string name="app_settings_theme">テーマ</string>
+    <string name="theme_system">システムに従う</string>
+    <string name="theme_light">ライト</string>
+    <string name="theme_dark">ダーク</string>
+    <string name="app_settings_amoled">AMOLEDブラック</string>
+    <string name="app_settings_amoled_on">ダークモードで背景を真っ黒にします – OLED画面では電池を節約できます。</string>
+    <string name="app_settings_amoled_needs_dark">ダークモードでのみ有効です – 「ダーク」を選ぶか、Androidをダークモードにしてください。</string>
+    <string name="app_settings_dynamic">ダイナミックカラー（Material You）</string>
+    <string name="app_settings_dynamic_sub">壁紙に合わせた配色です。オフ: アプリ独自のDiscord風の配色。</string>
+    <string name="app_settings_language">言語</string>
+    <string name="language_system">システムのデフォルト</string>
+    <string name="language_ai">AI翻訳</string>
+    <string name="app_settings_language_note">Androidの設定からも変更できます: アプリ → Poweramp Discord RP → 言語。</string>
+    <string name="common_close">閉じる</string>
+
+    <!-- Status tab: master switch -->
+    <string name="master_title">Discord Rich Presence</string>
+    <string name="master_on">DiscordのステータスにPowerampで再生中の曲を表示します</string>
+    <string name="master_off">オフ – Discordには何も表示されません</string>
+
+    <!-- Status tab: connection card -->
+    <string name="conn_title">接続</string>
+    <string name="conn_idle">待機中 – 今は表示するものがありません</string>
+    <string name="conn_disabled">オフ</string>
+    <string name="conn_no_app_id">DiscordアプリケーションIDが設定されていません</string>
+    <string name="conn_connecting">Discordに接続しています…</string>
+    <string name="conn_connected">Discordに接続済み</string>
+    <string name="conn_testing">テスト用プレゼンスを表示中です。</string>
+    <string name="conn_test_waiting">テスト用プレゼンスをDiscordに送信しています…</string>
+    <string name="conn_activity_error">Discordが最後の更新を受け付けませんでした: %1$s</string>
+    <string name="conn_detail">詳細: %1$s</string>
+    <string name="conn_user">Discordアカウント</string>
+    <string name="conn_app_id">アプリケーションID</string>
+    <string name="conn_app_builtin">%1$s（内蔵）</string>
+    <string name="conn_app_own">%1$s（独自）</string>
+    <string name="conn_none">–</string>
+    <string name="conn_last_update">最終更新</string>
+    <string name="conn_never">まだありません</string>
+    <string name="conn_connections">接続回数</string>
+    <string name="conn_service">バックグラウンドサービス</string>
+    <string name="conn_service_running">実行中</string>
+    <string name="conn_service_stopped">停止中</string>
+    <string name="conn_service_start">開始</string>
+    <string name="conn_service_stop">停止</string>
+
+    <!-- Status tab: the linked Discord account (OAuth2, name and picture only) -->
+    <string name="acc_not_linked">未連携</string>
+    <string name="acc_hint">Discordアカウントを連携すると、ライブプレビューとこの画面に名前とプロフィール画像が表示されます。</string>
+    <string name="acc_link">Discordアカウントを連携</string>
+    <string name="acc_refresh">更新</string>
+    <string name="acc_restart">やり直す</string>
+    <string name="acc_unlink">連携を解除</string>
+    <string name="acc_waiting">Discordを待っています – Discordでアクセスを許可してから、このアプリに戻ってください。</string>
+    <string name="acc_working">Discordからプロフィールを読み込んでいます…</string>
+    <string name="acc_privacy">読み取るのは名前とプロフィール画像だけです（Discordの「identify」アクセス）。アクセス権はすぐに取り消され、アプリはトークンを保存しません。</string>
+    <string name="acc_redirect_hint">Discordに「Invalid OAuth2 redirect_uri」と表示されましたか？ Discordアプリケーションの所有者が、Developer Portalの OAuth2 → Redirects に %1$s を追加する必要があります。</string>
+    <string name="acc_no_app_id">DiscordアプリケーションIDが必要です（「詳細」タブ）。</string>
+    <string name="acc_err_cancelled">連携がキャンセルされました – Discordでプロフィールの共有が許可されませんでした。</string>
+    <string name="acc_err_redirect">Discordアプリケーションにこのアプリの戻り先アドレスが登録されていません。所有者がDeveloper Portalの OAuth2 → Redirects に %1$s を追加する必要があります。</string>
+    <string name="acc_err_public_client">Discordがクライアントシークレットを要求しています: Discordアプリケーションで「Public Client」がオンになっていません（Developer Portal → OAuth2）。</string>
+    <string name="acc_err_expired">ログインに時間がかかりすぎたか、すでに使用済みです – もう一度お試しください。</string>
+    <string name="acc_err_network">Discordに接続できませんでした – インターネット接続を確認して、もう一度お試しください。</string>
+    <string name="acc_err_discord">Discordがログインを拒否しました – しばらくしてからもう一度お試しください。</string>
+    <string name="acc_err_bad_answer">Discordから予期しない応答がありました – しばらくしてからもう一度お試しください。</string>
+
+    <!-- Connection errors (TransportError) -->
+    <string name="err_none">Discordに接続されていません – 再試行しています</string>
+    <string name="err_discord_missing">Discordアプリがインストールされていません</string>
+    <string name="err_bind_failed">DiscordアプリがRich Presenceサービスを提供していません – Discordを更新してください</string>
+    <string name="err_connect_failed">Discordが接続を受け付けませんでした – 再試行しています</string>
+    <string name="err_closed">Discordが接続を切断しました – 再接続しています</string>
+    <string name="err_invalid_client_id">DiscordがアプリケーションIDを拒否しました – 「詳細」タブで確認してください</string>
+
+    <!-- Status tab: now playing, why nothing is shown (Hidden) -->
+    <string name="now_title">再生中の曲</string>
+    <string name="now_nothing">Powerampでは何も再生していません。</string>
+    <string name="word_playing">再生中</string>
+    <string name="word_paused">一時停止中</string>
+    <string name="hidden_no">Discordにこの曲が表示されています。</string>
+    <string name="hidden_disabled">Rich Presenceはオフです – Discordには何も表示されません。</string>
+    <string name="hidden_stopped">何も再生していません – Discordには何も表示されません。</string>
+    <string name="hidden_stream">ネットラジオ / ストリームは非表示に設定されています（「表示」タブ） – Discordには何も表示されません。</string>
+    <string name="hidden_path">このファイルはパスフィルターで非表示になっています（「表示」タブ） – Discordには何も表示されません。</string>
+    <string name="hidden_paused">一時停止中で「非表示」が選択されています（「表示」タブ）: Discordにはほかのアクティビティが表示されます。</string>
+    <string name="hidden_timeout">「表示」タブで設定した時間を超えて一時停止しているため、プレゼンスを削除しました。</string>
+    <string name="now_user_stopped">手動で停止しました – Powerampが再び再生するまでDiscordには何も表示されません。</string>
+    <string name="now_rejected">Discordがこのプレゼンスを受け付けませんでした – 「接続」を参照してください。</string>
+    <string name="now_after_test">現在Discordにはテスト用プレゼンスが表示されています – この曲はその後に表示されます。</string>
+    <string name="now_test_shown">現在Discordにはテスト用プレゼンスが表示されています。</string>
+    <string name="now_sending">Discordに送信しています…</string>
+    <string name="now_not_connected">まだDiscordに表示されていません – 「接続」を参照してください。</string>
+
+    <!-- Status tab: buttons -->
+    <string name="btn_test">テスト用プレゼンスを送信</string>
+    <string name="btn_reconnect">再接続</string>
+    <string name="btn_open_poweramp">Powerampを開く</string>
+    <string name="btn_open_discord">Discordを開く</string>
+
+    <!-- Status tab: setup checklist -->
+    <string name="check_title">セットアップ</string>
+    <string name="check_checking">確認しています…</string>
+    <string name="check_poweramp_title">Poweramp</string>
+    <string name="check_poweramp_ok">バージョン %1$s（ビルド %2$d）</string>
+    <string name="check_poweramp_ok_nobuild">バージョン %1$s</string>
+    <string name="check_poweramp_old">バージョン %1$s（ビルド %2$d）は古すぎます – このアプリにはビルド %3$d 以降が必要です。</string>
+    <string name="check_poweramp_missing">Powerampがインストールされていません。</string>
+    <string name="check_poweramp_get">Powerampを入手</string>
+    <string name="check_poweramp_update">Powerampを更新</string>
+    <string name="check_discord_title">Discord</string>
+    <string name="check_discord_ok">インストール済み – Rich Presenceサービスを利用できます</string>
+    <string name="check_discord_no_rpc">このバージョンのDiscordは、ほかのアプリにRich Presenceサービスを提供していません。Discordを更新してください。</string>
+    <string name="check_discord_missing">Discordアプリがインストールされていません。</string>
+    <string name="check_discord_get">Discordを入手</string>
+    <string name="check_discord_update">Discordを更新</string>
+    <string name="check_appid_title">Discordアプリケーション</string>
+    <string name="check_appid_own">独自のアプリケーション（ID %1$s）</string>
+    <string name="check_appid_missing">このビルドにはアプリケーションIDが内蔵されていません。独自のDiscordアプリケーションを作成し、そのIDを「詳細」タブで入力してください。</string>
+    <string name="check_appid_invalid">独自のアプリケーションIDが無効で（17～20桁）、このビルドにも内蔵されていません。</string>
+    <string name="check_appid_invalid_fallback">独自のアプリケーションIDが無効です（17～20桁） – 内蔵のアプリケーション（ID %1$s）を使用します。</string>
+    <string name="check_appid_builtin_invalid">このビルドに内蔵されたアプリケーションID（%1$s）が無効です（17～20桁）。独自のDiscordアプリケーションを作成し、そのIDを「詳細」タブで入力してください。</string>
+    <string name="check_appid_both_invalid">独自のアプリケーションIDが無効で（17～20桁）、このビルドに内蔵されたID（%1$s）も無効です。</string>
+    <string name="check_appid_fix">設定</string>
+    <string name="check_battery_title">電池の最適化</string>
+    <string name="check_battery_ok">このアプリでは無効です – Powerampの再生開始時にバックグラウンドで起動できます。</string>
+    <string name="check_battery_bad">Powerampの再生開始時にAndroidがアプリの起動を許可しないか、後で停止する可能性があります。電池の最適化の対象から除外してください。</string>
+    <string name="check_battery_fix">許可</string>
+    <string name="check_notif_title">通知</string>
+    <string name="check_notif_ok">許可済み – ステータス通知で、Discordに表示される内容を確認できます。</string>
+    <string name="check_notif_bad">許可されていません – プレゼンスを更新している間、アプリはステータス通知を表示できません。</string>
+    <string name="check_notif_fix">許可</string>
+
+    <!-- Status tab: hints -->
+    <string name="hints_title">ヒント</string>
+    <string name="hint_privacy_title">Discordでアクティビティを共有する</string>
+    <string name="hint_privacy">Discordで: 設定 → アクティビティのプライバシー → 「アクティビティを共有」をオンにしてください。オフのままでは、聴いている曲が誰にも表示されません。</string>
+    <string name="hint_poweramp_title">初回起動</string>
+    <string name="hint_poweramp">このアプリをインストールしたら、Powerampで一度一時停止して再生してください。Powerampがこのアプリを認識し、曲の情報を送るようになります。</string>
+
+    <!-- Snackbar / toast messages -->
+    <string name="msg_test_sent">テスト用プレゼンスを送信しています – %1$d 秒間表示されます。</string>
+    <string name="msg_reconnecting">再接続しています…</string>
+    <string name="msg_stop_ended">停止が解除されました – Discordに再びPowerampが表示されます。</string>
+    <string name="msg_start_blocked">Androidがバックグラウンドでの起動を許可しませんでした – 「電池の最適化」で許可してください。</string>
+    <string name="msg_service_started">バックグラウンドサービスを開始しました。</string>
+    <string name="msg_service_stopped">Powerampが再び再生するまで停止しました。</string>
+    <string name="msg_cannot_open">これを開けるアプリが見つかりません。</string>
+    <string name="msg_cover_cleared">カバーのキャッシュを消去しました。</string>
+    <string name="msg_exported">設定を保存しました。</string>
+    <string name="msg_export_failed">設定を保存できませんでした。</string>
+    <string name="msg_imported">設定をインポートしました。</string>
+    <string name="msg_import_failed">このファイルにはこのアプリの設定が含まれていません。</string>
+    <string name="msg_reset">すべての設定をデフォルトに戻しました。</string>
+    <string name="msg_log_copied">ログをコピーしました。</string>
+    <string name="msg_up_to_date">最新バージョンを使用しています。</string>
+    <string name="msg_account_linked">Discordアカウントを連携しました: %1$s</string>
+    <string name="msg_account_failed">Discordアカウントを連携できませんでした – 詳細は「ステータス」タブをご覧ください。</string>
+    <string name="msg_account_unlinked">Discordアカウントの連携を解除しました。</string>
+
+    <!-- Display tab: live preview (drawn like Discord) -->
+    <string name="disp_preview_title">ライブプレビュー</string>
+    <string name="prev_listening">%1$s を聴いています</string>
+    <string name="prev_playing">%1$s をプレイ中</string>
+    <string name="prev_app_own">独自のアプリ</string>
+    <string name="prev_you">あなた</string>
+    <string name="prev_elapsed">%1$s 経過</string>
+    <string name="prev_example">例 – 現在は何も再生していません。</string>
+    <string name="prev_example_title">曲名の例</string>
+    <string name="prev_example_artist">アーティストの例</string>
+    <string name="prev_example_album">アルバムの例</string>
+    <string name="prev_icon_tip">アイコン: %1$s</string>
+    <string name="prev_link">リンク: %1$s</string>
+    <string name="prev_no_link">リンクなしのタイトル</string>
+    <string name="prev_link_account">Discordアカウントを連携すると、ここに名前とプロフィール画像が表示されます</string>
+
+    <!-- Display tab: activity -->
+    <string name="disp_activity_title">アクティビティ</string>
+    <string name="disp_type">アクティビティの種類</string>
+    <string name="disp_type_listening">「聴いています」（プログレスバーを表示）</string>
+    <string name="disp_type_playing">「プレイ中」（経過時間のみ）</string>
+    <string name="disp_status_display">Discordのステータステキストに表示する内容</string>
+    <string name="disp_status_name">アプリケーション名（Poweramp）</string>
+    <string name="disp_status_state">2行目（アーティスト）</string>
+    <string name="disp_status_details">1行目（曲名）</string>
+    <string name="disp_timestamps">プログレスバー / 経過時間を表示</string>
+
+    <!-- Display tab: texts and placeholders -->
+    <string name="disp_texts_title">テキスト</string>
+    <string name="disp_details">1行目</string>
+    <string name="disp_state">2行目</string>
+    <string name="disp_large_text">カバーのツールチップ</string>
+    <string name="disp_small_text">アイコンのツールチップ</string>
+    <string name="disp_insert_into">プレースホルダーをタップすると「%1$s」に挿入されます:</string>
+    <string name="disp_placeholders_help">プレースホルダーの意味</string>
+    <string name="disp_rotation_help" formatted="false">テキストの間に || を入れると交互に表示されます。例: %artist% || %title%（切り替え間隔は下で設定）。</string>
+    <string name="ph_title">曲名</string>
+    <string name="ph_artist">アーティスト</string>
+    <string name="ph_album">アルバム</string>
+    <string name="ph_filename">拡張子なしのファイル名</string>
+    <string name="ph_ext">ファイル拡張子（flac、mp3 …）</string>
+    <string name="ph_pos">現在の再生位置（1:23）</string>
+    <string name="ph_dur">長さ（3:45）</string>
+    <string name="ph_percent">進行状況（パーセント）</string>
+    <string name="ph_bar">テキストのプログレスバー ▰▰▰▱▱▱</string>
+    <string name="ph_status">再生中 / 一時停止中</string>
+    <string name="ph_codec">コーデック（FLAC、MP3 …）</string>
+    <string name="ph_bitrate">ビットレート（320 kbps）</string>
+    <string name="ph_samplerate">サンプルレート（44.1 kHz）</string>
+    <string name="ph_bits">ビット深度（24ビット）</string>
+    <string name="ph_track">現在のリスト内の位置</string>
+    <string name="ph_listsize">リスト内の曲数</string>
+    <string name="ph_rating">評価 ★★★★☆</string>
+    <string name="ph_rotation" formatted="false">交互に表示する候補の区切り。例: %artist% || %title%</string>
+    <string name="disp_small_icon">再生 / 一時停止アイコンを表示（小さい画像）</string>
+    <string name="disp_bar_length" formatted="false">%bar% の長さ</string>
+    <string name="disp_bar_length_value">%1$d 文字</string>
+    <string name="disp_refresh">更新間隔</string>
+    <string name="disp_refresh_value">%1$d 秒</string>
+    <string name="disp_refresh_note" formatted="false">テキストに %pos%、%bar%、%percent% が含まれる場合にのみ使用されます。Discordが受け付ける更新は1分間に数回までです。</string>
+    <string name="disp_rotation">切り替え間隔</string>
+    <string name="disp_rotation_value">%1$d 秒</string>
+    <string name="disp_rotation_note">テキストに || が含まれる場合にのみ使用されます。どの曲も最初の候補から始まり、空の候補はスキップされます。Discordが受け付ける更新は20秒間に5回までなので、5秒以上にしてください。</string>
+
+    <!-- Display tab: clickable title -->
+    <string name="disp_link_title">クリック可能なタイトル</string>
+    <string name="disp_title_link">曲名をクリック可能にする（アーティスト + 曲名でYouTubeを検索）</string>
+    <string name="disp_own_link">独自のリンク</string>
+    <string name="disp_own_link_url">リンク</string>
+    <string name="disp_own_link_hint" formatted="false">ここでもプレースホルダーを使えます。例: https://www.last.fm/search?q=%artist%+%title%</string>
+    <string name="disp_link_invalid">リンクは http:// または https:// で始まる必要があります</string>
+
+    <!-- Display tab: pause and filters -->
+    <string name="disp_paused_title">一時停止</string>
+    <string name="disp_paused">一時停止中の動作</string>
+    <string name="disp_paused_show">「一時停止中」ステータスを表示</string>
+    <string name="disp_paused_hide">非表示（ほかのアクティビティを表示）</string>
+    <string name="disp_clear_after">一時停止後に削除するまでの時間（分）</string>
+    <string name="disp_clear_after_hint">0 = 削除しない（「一時停止中」を表示する場合のみ）</string>
+    <string name="disp_filters_title">フィルター</string>
+    <string name="disp_hide_streams">ネットラジオ / ストリームではプレゼンスを非表示</string>
+    <string name="disp_exclude_paths">ファイルパスに次を含む場合は非表示</string>
+    <string name="disp_exclude_paths_hint">例: Audiobooks;Podcasts</string>
+    <string name="disp_exclude_paths_note">複数指定する場合は ; で区切ります（大文字 / 小文字は区別しません）</string>
+
+    <!-- Cover art tab -->
+    <string name="cov_enable">アルバムカバーをDiscordに表示</string>
+    <string name="cov_info">Discordに表示されるのは公開リンクのあるカバーだけです。Powerampで表示されているカバーをアップロードするか（x0.at はアカウント不要）、オンラインで検索できます（「ソース」を参照）。各カバーは一度だけ取得され、キャッシュされます。</string>
+    <string name="cov_local_title">Powerampのカバー</string>
+    <string name="cov_local">Powerampで表示されているカバーを使用</string>
+    <string name="cov_local_sub">ファイルに埋め込まれた画像、フォルダ内の画像、Powerampがダウンロードした画像 – アップロードして公開リンクを取得します</string>
+    <string name="cov_upload">カバーのアップロード先</string>
+    <string name="cov_upload_x0">x0.at（アカウント不要）</string>
+    <string name="cov_upload_catbox">catbox.moe（アカウント不要）</string>
+    <string name="cov_upload_imgur">Imgur（Client-ID）</string>
+    <string name="cov_upload_off">オフ（オンライン検索のみ）</string>
+    <string name="cov_imgur_id">Imgur Client-ID</string>
+    <string name="cov_imgur_missing">ImgurにはClient-IDが必要です – ない場合は別のホストを使用します。</string>
+    <string name="cov_imgur_get">Client-IDを取得</string>
+    <string name="cov_prefer_local">Powerampのカバーを優先</string>
+    <string name="cov_prefer_local_sub">カバーのない曲だけオンラインで検索します</string>
+    <string name="cov_size">アップロードするカバーのサイズ</string>
+    <string name="cov_size_px">%1$d × %1$d px</string>
+    <string name="cov_public_note">アップロードしたカバーは、リンクを知っている人なら誰でも見られます。</string>
+    <string name="cov_current_title">現在のカバー</string>
+    <string name="cov_off">カバーはオフです – Discordにはアプリのロゴが表示されます。</string>
+    <string name="cov_nothing">何も再生していません。</string>
+    <string name="cov_searching">カバーを検索しています…</string>
+    <string name="cov_not_yet">Discordにこの曲が表示されたらカバーを検索します。</string>
+    <string name="cov_none">Discordにはアプリのロゴが表示されています: カバーが見つからなかったか、Discordが読み込めませんでした。</string>
+    <string name="cov_source">ソース: %1$s</string>
+    <string name="cov_src_cache">カバーのキャッシュ</string>
+    <string name="cov_src_online">%1$s で見つかりました</string>
+    <string name="cov_src_poweramp">Powerampのカバー</string>
+    <string name="cov_src_uploaded">%1$s、%2$s にアップロード済み</string>
+    <string name="cov_open">画像を開く</string>
+    <string name="cov_clear">カバーのキャッシュを消去</string>
+    <string name="cov_image_desc">アルバムカバー</string>
+
+    <!-- Sources tab -->
+    <string name="src_info">オンライン検索ではアーティスト / アルバムを検索し、公開されている画像リンクをそのまま使用します – 何もアップロードされません。ソースは上から順に試され、最初に見つかったものが使われます。</string>
+    <string name="src_covers_off">カバーはオフです – 検索は行われません。</string>
+    <string name="src_open_cover_tab">カバーアートの設定</string>
+    <string name="src_prefer_local_note">「Powerampのカバーを優先」がオンです: 検索はカバーのない曲にのみ使用されます。</string>
+    <string name="src_list_title">オンラインソース</string>
+    <string name="src_spotify">Spotify</string>
+    <string name="src_spotify_sub">無料の開発者アプリが必要です（Client ID + Secret）</string>
+    <string name="src_client_id">Client ID</string>
+    <string name="src_client_secret">Client Secret</string>
+    <string name="src_spotify_missing">Client ID と Secret を入力してください。入力しないとSpotifyはスキップされます。</string>
+    <string name="src_create_app">アプリを作成</string>
+    <string name="src_deezer">Deezer</string>
+    <string name="src_itunes">Apple Music / iTunes</string>
+    <string name="src_bandcamp">Bandcamp</string>
+    <string name="src_bandcamp_sub">キー不要（非公式のインターフェース）</string>
+    <string name="src_discogs">Discogs</string>
+    <string name="src_discogs_sub">無料の個人用アクセストークンが必要です</string>
+    <string name="src_token">トークン</string>
+    <string name="src_discogs_missing">トークンを入力してください。入力しないとDiscogsはスキップされます。</string>
+    <string name="src_get_token">トークンを取得</string>
+    <string name="src_musicbrainz">MusicBrainz + Cover Art Archive</string>
+    <string name="src_no_key">キー不要</string>
+
+    <!-- Advanced tab -->
+    <string name="adv_app_title">Discordアプリケーション</string>
+    <string name="adv_custom_app">独自のDiscordアプリケーションを使用</string>
+    <string name="adv_custom_app_sub">Discordにそのアプリケーション名が表示されます（「… を聴いています」）</string>
+    <string name="adv_app_id">アプリケーションID</string>
+    <string name="adv_app_id_hint">Developer Portal → 自分のアプリケーション → General Information → Application ID</string>
+    <string name="adv_app_id_invalid">アプリケーションIDは17～20桁です。</string>
+    <string name="adv_portal">Developer Portalを開く</string>
+    <string name="adv_assets_note">Rich Presence → Art Assets で、「poweramp」（ロゴ）、「play」、「pause」という名前の画像をアップロードしてください。</string>
+    <string name="adv_effective">使用中のアプリケーションID</string>
+    <string name="adv_effective_none">なし – このビルドにはIDが内蔵されていません。独自のアプリケーションを使用してください</string>
+    <string name="adv_compat_title">互換性</string>
+    <string name="adv_seconds">タイムスタンプを秒単位で送信</string>
+    <string name="adv_seconds_sub">Discordで時間が正しく表示されない場合やプログレスバーが表示されない場合のみ</string>
+    <string name="adv_log_title">最近のログ</string>
+    <string name="adv_log_empty">ログはまだありません。</string>
+    <string name="adv_log_copy">コピー</string>
+    <string name="adv_log_share">共有</string>
+    <string name="adv_log_clear">消去</string>
+    <string name="adv_log_share_subject">Poweramp Discord RPのログ</string>
+    <string name="adv_settings_title">設定ファイル</string>
+    <string name="adv_settings_info">すべての設定をファイルに保存したり、ファイルから読み込んだりできます（新しいスマートフォンへの移行時など）。ファイルにはカバー用に入力したキー（Imgur、Spotify、Discogs）も含まれます。</string>
+    <string name="adv_export">エクスポート…</string>
+    <string name="adv_import">インポート…</string>
+    <string name="adv_reset">デフォルトに戻す</string>
+    <string name="adv_reset_confirm_title">すべての設定をリセットしますか？</string>
+    <string name="adv_reset_confirm_text">すべての設定がデフォルトに戻ります。残しておきたい場合は、先にエクスポートしてください。</string>
+    <string name="adv_reset_confirm">リセット</string>
+    <string name="adv_export_keys_title">キーを含めてエクスポートしますか？</string>
+    <string name="adv_export_keys_text">ファイルには %1$s のキーが平文で含まれます。自分だけで保管し、共有したりバグ報告に添付したりしないでください。</string>
+    <string name="adv_export_keys_confirm">エクスポート</string>
+    <string name="common_cancel">キャンセル</string>
+
+    <!-- About tab -->
+    <string name="about_title">Poweramp Discord Rich Presence</string>
+    <string name="about_version">バージョン %1$s</string>
+    <string name="about_by">作者: %1$s</string>
+    <string name="about_on_github">GitHubの %1$s</string>
+    <string name="cd_author_avatar">%1$s のGitHubプロフィール画像</string>
+    <string name="cd_account_avatar">%1$s のDiscordプロフィール画像</string>
+    <string name="about_github">GitHubページ</string>
+    <string name="about_releases">すべてのリリース</string>
+    <string name="about_issues">問題を報告</string>
+    <string name="about_disclaimer">独立したプロジェクトです – DiscordやPowerampとは提携しておらず、承認も受けていません。</string>
+    <string name="about_updates_title">アップデート</string>
+    <string name="about_update_check">アップデートを確認</string>
+    <string name="about_update_freq">確認の頻度</string>
+    <string name="upd_every_start">アプリの起動ごと</string>
+    <string name="upd_daily">1日1回</string>
+    <string name="upd_weekly">週1回</string>
+    <string name="upd_monthly">月1回</string>
+    <string name="about_check_now">今すぐ確認</string>
+    <string name="upd_never">まだ確認していません。</string>
+    <string name="upd_checking">アップデートを確認しています…</string>
+    <string name="upd_latest">最新バージョンを使用しています（最終確認: %1$s）。</string>
+    <string name="upd_available">バージョン %1$s が利用可能です。</string>
+    <string name="upd_failed">アップデートを確認できませんでした: GitHubに接続できません。</string>
+    <string name="upd_rate_limited">現在GitHubがリクエストを制限しています – しばらくしてからもう一度お試しください。</string>
+    <string name="upd_no_release">リリースはまだ公開されていません。</string>
+    <string name="upd_bad_answer">アップデートを確認できませんでした: GitHubの応答を読み取れませんでした。</string>
+    <string name="upd_download">%1$s をダウンロード</string>
+    <string name="upd_whats_new">新機能</string>
+    <string name="about_update_privacy">確認時はGitHubに最新リリースを問い合わせるだけで、それ以外は何も送信しません。</string>
+    <string name="about_credits_title">クレジット</string>
+    <string name="about_credit_poweramp">Poweramp API（Max MP 作）</string>
+    <string name="about_credit_discord">Discord Social SDK RPC インターフェース: antisocialcord-kt（Nightdavisao 作、MITライセンス）</string>
+    <string name="about_credit_covers">カバー: x0.at、catbox.moe、Imgur、Spotify、Deezer、Apple Music / iTunes、Bandcamp、Discogs、MusicBrainz、Cover Art Archive</string>
+    <string name="about_credit_aimp">同じ作者による「Discord Rich Presence for AIMP」のAndroid版</string>
+    <string name="about_changelog_title">変更履歴</string>
+    <string name="about_changelog_version">バージョン %1$s</string>
+    <string name="about_installed">（インストール済み）</string>
+    <string name="about_translation_note">この翻訳はAIによるもので、誤りが含まれている可能性があります。修正は「問題を報告」からGitHubでお寄せください。</string>
+
+    <!-- Accessibility and form fields -->
+    <string name="cd_ok">OK</string>
+    <string name="cd_info">情報</string>
+    <string name="cd_warning">警告</string>
+    <string name="cd_error">問題</string>
+    <string name="field_show">表示</string>
+    <string name="field_hide">非表示</string>
+    <string name="field_range">入力できる範囲: %1$d～%2$d</string>
+</resources>

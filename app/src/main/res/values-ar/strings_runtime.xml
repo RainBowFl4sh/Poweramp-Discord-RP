@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the background part (presence service, notifications, %status% in the presence). -->
+<resources>
+    <!-- %status% placeholder / small image text in Discord -->
+    <string name="status_playing">قيد التشغيل</string>
+    <string name="status_paused">متوقّف مؤقتًا</string>
+    <string name="status_test_line">الاتصال يعمل!</string>
+
+    <!-- Notification channels -->
+    <string name="svc_channel_name">حالة Discord</string>
+    <string name="svc_channel_desc">يظهر أثناء مزامنة التطبيق لحالتك في Discord مع Poweramp</string>
+    <string name="svc_alert_channel_name">التنبيهات</string>
+    <string name="svc_alert_channel_desc">مشكلات تحتاج إلى انتباهك، مثلًا عندما يمنع Android البدء في الخلفية</string>
+
+    <!-- Presence service notification: title = what plays, text = what Discord shows / the connection state -->
+    <string name="svc_track">%1$s – %2$s</string>
+    <string name="svc_showing">معروض على Discord</string>
+    <string name="svc_showing_paused">متوقّف مؤقتًا – معروض على Discord</string>
+    <string name="svc_hidden_paused">متوقّف مؤقتًا – مخفيّ على Discord</string>
+    <string name="svc_hidden">لا شيء معروض على Discord</string>
+    <string name="svc_testing">الحالة التجريبية معروضة على Discord</string>
+    <string name="svc_sending">جارٍ الإرسال إلى Discord…</string>
+    <string name="svc_update_rejected">لم يقبل Discord الحالة – التفاصيل في التطبيق</string>
+    <string name="svc_connecting">جارٍ الاتصال بـ Discord…</string>
+    <string name="svc_waiting">في انتظار Poweramp…</string>
+    <string name="svc_not_connected">غير متصل بـ Discord – جارٍ إعادة المحاولة</string>
+    <string name="svc_discord_missing">تطبيق Discord غير مثبّت</string>
+    <string name="svc_rejected">رفض Discord معرّف التطبيق</string>
+    <string name="svc_no_app_id">لم يُعيَّن معرّف تطبيق Discord</string>
+    <string name="svc_disabled">تم إيقاف Discord Rich Presence</string>
+    <string name="svc_action_stop">إيقاف</string>
+
+    <!-- Android refused to start the service in the background -->
+    <string name="svc_bg_blocked_title">تعذّر بدء حالة Discord</string>
+    <string name="svc_bg_blocked_text">لا يسمح Android للتطبيق بالبدء في الخلفية. اضغط لفتح التطبيق والسماح له بالعمل في الخلفية (تحسين البطارية).</string>
+</resources>
