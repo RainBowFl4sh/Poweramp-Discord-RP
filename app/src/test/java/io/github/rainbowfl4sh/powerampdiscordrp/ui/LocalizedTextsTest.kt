@@ -133,7 +133,7 @@ class LocalizedTextsTest {
             firstItems[lang] = item.spans.joinToString("") { it.text }
             // newest version first, the older ones stay
             val versions = blocks.filterIsInstance<ChangelogBlock.Version>().map { it.version }
-            assertEquals(lang, listOf("1.2.0", "1.1.0", "1.0.0"), versions.take(3))
+            assertEquals(lang, listOf("1.2.1", "1.2.0", "1.1.0", "1.0.0"), versions.take(4))
             // 1.1.0 tells about the rotating texts, with their example
             val v110 = blocks.dropWhile { it != ChangelogBlock.Version("1.1.0") }.drop(1)
                 .takeWhile { it !is ChangelogBlock.Version }.filterIsInstance<ChangelogBlock.Item>()
@@ -141,7 +141,7 @@ class LocalizedTextsTest {
         }
         // each language has its own changelog
         assertEquals(AppLanguages.ALL.size, firstItems.values.toSet().size)
-        assertTrue(firstItems.getValue("de").startsWith("Discord-Konto verknüpfen"))
+        assertTrue(firstItems.getValue("de").startsWith("Hintergrunddienst"))
     }
 
     @Test
