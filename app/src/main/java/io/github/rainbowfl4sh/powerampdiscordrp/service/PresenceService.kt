@@ -101,6 +101,10 @@ class PresenceService : Service() {
                 }.distinctUntilChanged().collect { showContent(it) }
             }
             launch {
+                // The engine's timers stand still in deep sleep: an alarm keeps the paused timeout and idle grace on time
+                engine.wakeupAt.collect { WakeupAlarm.set(this@PresenceService, it) }
+            }
+            launch {
                 // An application ID Discord rejected keeps Poweramp's broadcasts from starting the service again
                 engine.status.collect { rejectedAppId.onStatus(it) }
             }
@@ -113,6 +117,7 @@ class PresenceService : Service() {
         _running.value = false
         observers?.cancel()
         observers = null
+        WakeupAlarm.cancel(this)
         unregisterPowerampReceiver()
         Graph.engine.stop()   // clears the presence and disconnects
     }

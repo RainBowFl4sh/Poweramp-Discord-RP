@@ -2,6 +2,8 @@ package io.github.rainbowfl4sh.powerampdiscordrp.ui
 
 import android.net.Uri
 import androidx.compose.ui.graphics.ImageBitmap
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkState
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkedAccount
 import io.github.rainbowfl4sh.powerampdiscordrp.core.assets.AppInfoSource
 import io.github.rainbowfl4sh.powerampdiscordrp.core.engine.EngineStatus
 import io.github.rainbowfl4sh.powerampdiscordrp.core.model.Config
@@ -11,6 +13,7 @@ import io.github.rainbowfl4sh.powerampdiscordrp.settings.EnvState
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.ConfigEditor
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UiText
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UpdateCheckState
+import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.AppLanguage
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.theme.Appearance
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
@@ -72,6 +75,32 @@ interface AppModel {
 
     /** Saved at once; the theme follows while the settings dialog is still open. */
     fun setAppearance(appearance: Appearance)
+
+    /** The app's own language (App settings), null = the system's. Not part of [config] either. */
+    val language: StateFlow<AppLanguage?>
+
+    /** Chooses the language. True: the caller recreates its activity to show it (Android 8-12; later the system does). */
+    fun setLanguage(language: AppLanguage?): Boolean
+
+    /**
+     * The Discord account linked through OAuth2 (name and picture only), null = none. The live preview and the status
+     * page show it; the user the Discord app reports to the presence connection is a placeholder.
+     */
+    val account: StateFlow<LinkedAccount?>
+
+    /** Where linking the Discord account stands. */
+    val accountLink: StateFlow<LinkState>
+
+    /**
+     * Starts linking the Discord account (a new login is saved first): Discord's authorization page to open, null
+     * without an application ID.
+     */
+    suspend fun startAccountLink(): String?
+
+    /** Stops waiting for Discord's answer. */
+    fun cancelAccountLink()
+
+    fun unlinkAccount()
 
     /** A picture from the web that is in memory already (e.g. the author's avatar on the About tab), else null. */
     fun cachedPicture(url: String): ImageBitmap?

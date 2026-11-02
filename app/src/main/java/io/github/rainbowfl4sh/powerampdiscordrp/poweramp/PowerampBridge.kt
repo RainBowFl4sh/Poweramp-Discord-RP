@@ -1,8 +1,10 @@
 package io.github.rainbowfl4sh.powerampdiscordrp.poweramp
 
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.os.Handler
 import android.os.Looper
 import androidx.core.content.ContextCompat
@@ -16,6 +18,7 @@ import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.PresenceTexts
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.StatusStrings
 import io.github.rainbowfl4sh.powerampdiscordrp.service.Notifications
 import io.github.rainbowfl4sh.powerampdiscordrp.service.PresenceService
+import io.github.rainbowfl4sh.powerampdiscordrp.settings.EnvironmentCheck
 
 /** Glue between Poweramp's broadcasts and the presence engine. */
 object PowerampBridge {
@@ -23,6 +26,9 @@ object PowerampBridge {
 
     @Volatile
     private var backgroundStartBlocked = false
+
+    @Volatile
+    private var discordMissing = false
 
     private var processChecked = false   // guarded by this
 
@@ -72,7 +78,30 @@ object PowerampBridge {
         if (old.effectiveClientId(Graph.defaultClientId) != new.effectiveClientId(Graph.defaultClientId)) {
             PresenceService.rejectedAppId.clear()
         }
+        if (old.enabled != new.enabled) syncReceiverComponent(context.applicationContext)
         ensureService(context.applicationContext, tracker.snapshot, new)
+    }
+
+    /**
+     * Enables the manifest receiver only while the presence is switched on: switched off, Poweramp's broadcasts would
+     * start a killed process for nothing with every song. Follows the current settings (whoever calls last writes the
+     * right state); called when the switch changes and once per process start (a process killed in between). The
+     * service's receiver, registered at runtime, is not affected. Any thread.
+     */
+    @Synchronized
+    fun syncReceiverComponent(context: Context) {
+        try {
+            val pm = context.packageManager
+            val component = ComponentName(context, PowerampReceiver::class.java)
+            // DEFAULT = as the manifest says (enabled); only written when it differs
+            val wanted = if (Graph.settings.config.value.enabled) PackageManager.COMPONENT_ENABLED_STATE_DEFAULT
+            else PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+            if (pm.getComponentEnabledSetting(component) != wanted) {
+                pm.setComponentEnabledSetting(component, wanted, PackageManager.DONT_KILL_APP)
+            }
+        } catch (e: RuntimeException) {
+            Graph.log.log("Poweramp: could not switch the broadcast receiver: $e")
+        }
     }
 
     /**
@@ -102,6 +131,7 @@ object PowerampBridge {
      */
     private fun publish(context: Context) {
         val snapshot = synchronized(publishLock) { tracker.snapshot.also { Graph.engine.submit(it) } }
+        PresenceService.userStop.noteState(snapshot.state)   // for a stop from Android's task manager (next process)
         ensureService(context, snapshot, Graph.settings.config.value)
         scheduleTrackEndCheck()
     }
@@ -115,6 +145,14 @@ object PowerampBridge {
     private fun ensureService(context: Context, snapshot: PlaybackSnapshot, config: Config) {
         if (PresenceService.running.value || PresenceService.userStop.active.value) return
         if (!wantsPresence(config, snapshot, AndroidClock.nowMs()) || !canConnect(config)) return
+        // Without Discord's RPC service every song would start the service just to fail and retry (the status page
+        // shows the problem); checked on every start, so a Discord installed meanwhile works with the next track
+        val available = EnvironmentCheck.discordRpcAvailable(context)
+        if (available == discordMissing) {
+            discordMissing = !available
+            if (!available) Graph.log.log("The Discord app (or its RPC service) is missing - the presence service waits for it")
+        }
+        if (!available) return
         if (PresenceService.launch(context)) {
             if (backgroundStartBlocked) {
                 backgroundStartBlocked = false
@@ -139,7 +177,8 @@ object PowerampBridge {
         processChecked = true
         if (PresenceService.taskManagerStop.check(startedByPoweramp)) {
             Graph.log.log("Presence service: stopped from Android's active apps - no presence until playback starts again")
-            PresenceService.userStop.stop(PlayState.PLAYING)
+            // the state the stopped process saw last: stopped while paused, pressing play brings the presence back
+            PresenceService.userStop.stopAtLastKnownState()
         }
     }
 

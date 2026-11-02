@@ -1,5 +1,6 @@
 package io.github.rainbowfl4sh.powerampdiscordrp.ui
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,6 +9,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import io.github.rainbowfl4sh.powerampdiscordrp.locale.AppLocale
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.theme.AppTheme
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.theme.AppearanceStore
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.theme.ResolvedTheme
@@ -21,6 +23,11 @@ class MainActivity : ComponentActivity() {
 
     /** The theme the window (background, system bar icons) shows now. */
     private var windowTheme: ResolvedTheme? = null
+
+    // Android 8-12: the language chosen in the app (Android 13+ applies it by itself)
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(AppLocale.wrap(newBase))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // The chosen theme is known before the first frame (a tiny preferences file): window and system bars match it
@@ -50,6 +57,8 @@ class MainActivity : ComponentActivity() {
         super.onResume()
         // Poweramp may be playing already: its sticky broadcasts give the current track even if this app missed them
         viewModel.syncPoweramp()
+        // back from Discord's authorization page without an answer: a login older than 10 minutes ends
+        viewModel.expireAccountLogin()
     }
 
     override fun onStop() {

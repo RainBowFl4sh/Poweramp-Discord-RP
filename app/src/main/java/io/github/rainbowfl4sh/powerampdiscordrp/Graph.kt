@@ -4,6 +4,9 @@ import android.app.Application
 import android.os.Process
 import android.os.SystemClock
 import android.util.Log
+import io.github.rainbowfl4sh.powerampdiscordrp.account.AccountStore
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.AccountLinker
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.DiscordOAuth
 import io.github.rainbowfl4sh.powerampdiscordrp.core.assets.AppInfo
 import io.github.rainbowfl4sh.powerampdiscordrp.core.assets.AppInfoSource
 import io.github.rainbowfl4sh.powerampdiscordrp.core.assets.DiscordAppInfo
@@ -21,12 +24,15 @@ import io.github.rainbowfl4sh.powerampdiscordrp.core.util.RingLog
 import io.github.rainbowfl4sh.powerampdiscordrp.cover.AndroidLocalCover
 import io.github.rainbowfl4sh.powerampdiscordrp.cover.BitmapJpegEncoder
 import io.github.rainbowfl4sh.powerampdiscordrp.discord.DiscordBinderTransport
+import io.github.rainbowfl4sh.powerampdiscordrp.locale.AppLocale
+import io.github.rainbowfl4sh.powerampdiscordrp.poweramp.PowerampBridge
 import io.github.rainbowfl4sh.powerampdiscordrp.service.PresenceService
 import io.github.rainbowfl4sh.powerampdiscordrp.settings.SettingsStore
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import java.io.File
@@ -52,6 +58,9 @@ object Graph {
     val covers: CoverResolver get() = deps().covers
     val engine: PresenceEngine get() = deps().engine
     val updates: UpdateChecker get() = deps().updates
+
+    /** The optional link to the user's Discord account (OAuth2): its name and picture for the screens. */
+    val account: AccountLinker get() = deps().account
 
     /** Name and art asset pictures of the Discord application (presence and live preview). */
     val appInfo: DiscordAppInfo get() = deps().appInfo
@@ -80,6 +89,15 @@ object Graph {
     fun warmUp() {
         val d = deps ?: return
         thread(name = "Warm-up", isDaemon = true) { d.warmUp() }
+    }
+
+    /**
+     * Discord came back to the OAuth2 redirect URI ([io.github.rainbowfl4sh.powerampdiscordrp.account.AuthRedirectActivity]):
+     * handled in the background - creating the linker reads its file, the answer is checked and exchanged there.
+     */
+    fun onAccountRedirect(uri: String) {
+        val d = deps()
+        d.accountScope.launch { d.account.handleRedirect(uri) }
     }
 
     /** The engine if something created it already, else null - for callers that must not create it (settings). */
@@ -155,6 +173,20 @@ object Graph {
 
         val updates by lazy { UpdateChecker(http, BuildConfig.GITHUB_REPO) }
 
+        // Linking the Discord account: the store is read at once (warm-up), the HTTP client only for an exchange
+        val accountScope = CoroutineScope(
+            SupervisorJob() + Dispatchers.IO + CoroutineExceptionHandler { _, e -> log.log("Discord account error: $e") },
+        )
+        val account by lazy {
+            AccountLinker(
+                storage = AccountStore(app),
+                oauth = { DiscordOAuth(http, log) },
+                scope = accountScope,
+                clock = AndroidClock,
+                log = log,
+            )
+        }
+
         private val appInfoLazy = lazy { DiscordAppInfo(http, AndroidClock, log) }
         val appInfo: DiscordAppInfo by appInfoLazy
 
@@ -170,17 +202,22 @@ object Graph {
                 settings
                 engine
                 PresenceService.loadSavedState()
+                PowerampBridge.syncReceiverComponent(app)   // also fixes a state a killed process left behind
+                account
+                AppLocale.migrate(app)
             } catch (e: Exception) {   // whoever needs it next creates it again (and gets the error there)
                 Log.w(LOG_TAG, "Warm-up failed", e)
             }
         }
 
         // Read on every use, so a language change applies without restarting the process
-        private fun statusStrings() = StatusStrings(
-            playing = app.getString(R.string.status_playing),
-            paused = app.getString(R.string.status_paused),
-            testLine = app.getString(R.string.status_test_line),
-        )
+        private fun statusStrings() = AppLocale.resources(app).let { res ->
+            StatusStrings(
+                playing = res.getString(R.string.status_playing),
+                paused = res.getString(R.string.status_paused),
+                testLine = res.getString(R.string.status_test_line),
+            )
+        }
     }
 
     const val LOG_TAG = "PowerampDiscordRP"

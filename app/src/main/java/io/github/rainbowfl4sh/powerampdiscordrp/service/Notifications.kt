@@ -8,11 +8,13 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
+import androidx.annotation.StringRes
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import io.github.rainbowfl4sh.powerampdiscordrp.R
+import io.github.rainbowfl4sh.powerampdiscordrp.locale.AppLocale
 import io.github.rainbowfl4sh.powerampdiscordrp.core.engine.EngineStatus
 import io.github.rainbowfl4sh.powerampdiscordrp.core.model.PlayState
 import io.github.rainbowfl4sh.powerampdiscordrp.core.model.PlaybackSnapshot
@@ -42,13 +44,13 @@ object Notifications {
         NotificationManagerCompat.from(context).createNotificationChannelsCompat(
             listOf(
                 NotificationChannelCompat.Builder(CHANNEL_PRESENCE, NotificationManagerCompat.IMPORTANCE_LOW)
-                    .setName(context.getString(R.string.svc_channel_name))
-                    .setDescription(context.getString(R.string.svc_channel_desc))
+                    .setName(context.text(R.string.svc_channel_name))
+                    .setDescription(context.text(R.string.svc_channel_desc))
                     .setShowBadge(false)
                     .build(),
                 NotificationChannelCompat.Builder(CHANNEL_ALERTS, NotificationManagerCompat.IMPORTANCE_DEFAULT)
-                    .setName(context.getString(R.string.svc_alert_channel_name))
-                    .setDescription(context.getString(R.string.svc_alert_channel_desc))
+                    .setName(context.text(R.string.svc_alert_channel_name))
+                    .setDescription(context.text(R.string.svc_alert_channel_desc))
                     .build(),
             ),
         )
@@ -59,12 +61,10 @@ object Notifications {
         val text = when (status.kind) {
             EngineStatus.Kind.DISABLED -> R.string.svc_disabled
             EngineStatus.Kind.NO_APP_ID -> R.string.svc_no_app_id
-            EngineStatus.Kind.CONNECTING -> R.string.svc_connecting
-            EngineStatus.Kind.NOT_CONNECTED -> when (status.error) {
-                TransportError.DISCORD_NOT_INSTALLED -> R.string.svc_discord_missing
-                TransportError.INVALID_CLIENT_ID -> R.string.svc_rejected
-                else -> R.string.svc_not_connected
-            }
+            // a retry keeps the last failure's text: the notification does not flip with every attempt
+            EngineStatus.Kind.CONNECTING ->
+                if (status.error == TransportError.NONE) R.string.svc_connecting else failureText(status.error)
+            EngineStatus.Kind.NOT_CONNECTED -> failureText(status.error)
             // IDLE = not connected because nothing is to be shown (yet): say why, like a connected engine would
             EngineStatus.Kind.CONNECTED, EngineStatus.Kind.IDLE -> when {
                 // "shown" only while Discord really shows it (visible): not after a rejection, nor before the first send
@@ -79,12 +79,18 @@ object Notifications {
                 else -> R.string.svc_hidden
             }
         }
-        return NotificationContent(trackLine(context, snapshot), context.getString(text))
+        return NotificationContent(trackLine(context, snapshot), context.text(text))
+    }
+
+    private fun failureText(error: TransportError): Int = when (error) {
+        TransportError.DISCORD_NOT_INSTALLED -> R.string.svc_discord_missing
+        TransportError.INVALID_CLIENT_ID -> R.string.svc_rejected
+        else -> R.string.svc_not_connected
     }
 
     /** Content before the engine reported anything (the service has to show a notification at once). */
     fun initialContent(context: Context, snapshot: PlaybackSnapshot) =
-        NotificationContent(trackLine(context, snapshot), context.getString(R.string.svc_connecting))
+        NotificationContent(trackLine(context, snapshot), context.text(R.string.svc_connecting))
 
     /** The service notification ([ensureChannels] must have run in this process). */
     fun presence(context: Context, content: NotificationContent): Notification {
@@ -98,7 +104,7 @@ object Notifications {
             .setContentTitle(content.title)
             .setContentText(content.text)
             .setContentIntent(openApp(context, REQUEST_OPEN))
-            .addAction(R.drawable.ic_notification_stop, context.getString(R.string.svc_action_stop), stop)
+            .addAction(R.drawable.ic_notification_stop, context.text(R.string.svc_action_stop), stop)
             .setOngoing(true)
             .setOnlyAlertOnce(true)
             .setSilent(true)
@@ -131,9 +137,9 @@ object Notifications {
         ensureChannels(context)
         val notification = NotificationCompat.Builder(context, CHANNEL_ALERTS)
             .setSmallIcon(R.drawable.ic_notification)
-            .setContentTitle(context.getString(R.string.svc_bg_blocked_title))
-            .setContentText(context.getString(R.string.svc_bg_blocked_text))
-            .setStyle(NotificationCompat.BigTextStyle().bigText(context.getString(R.string.svc_bg_blocked_text)))
+            .setContentTitle(context.text(R.string.svc_bg_blocked_title))
+            .setContentText(context.text(R.string.svc_bg_blocked_text))
+            .setStyle(NotificationCompat.BigTextStyle().bigText(context.text(R.string.svc_bg_blocked_text)))
             .setContentIntent(openApp(context, REQUEST_OPEN_BLOCKED))
             .setAutoCancel(true)
             .setOnlyAlertOnce(true)
@@ -176,9 +182,12 @@ object Notifications {
         val title = track.title.trim().ifEmpty { track.path.substringAfterLast('/').trim() }
         val artist = track.artist.trim()
         return when {
-            title.isEmpty() -> context.getString(R.string.app_name)
+            title.isEmpty() -> context.text(R.string.app_name)
             artist.isEmpty() -> title
-            else -> context.getString(R.string.svc_track, title, artist)
+            else -> context.text(R.string.svc_track, title, artist)
         }
     }
+
+    /** A text in the app's language (on Android 8-12 the service's own resources keep the system's). */
+    private fun Context.text(@StringRes id: Int, vararg args: Any): String = AppLocale.resources(this).getString(id, *args)
 }

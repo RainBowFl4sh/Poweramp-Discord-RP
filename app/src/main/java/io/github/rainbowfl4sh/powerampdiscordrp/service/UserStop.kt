@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.asStateFlow
 class UserStop(private val prefs: SharedPreferences) {
     private val _active = MutableStateFlow(prefs.getBoolean(KEY_ACTIVE, false))
     private var sawPause = prefs.getBoolean(KEY_SAW_PAUSE, false)   // guarded by this
+    private var lastState = prefs.getString(KEY_LAST_STATE, null)    // guarded by this, see noteState
 
     /** True while the user's stop is in effect. */
     val active: StateFlow<Boolean> = _active.asStateFlow()
@@ -23,6 +24,25 @@ class UserStop(private val prefs: SharedPreferences) {
     /** The user stopped the presence while Poweramp was in [current] state. */
     @Synchronized
     fun stop(current: PlayState) = set(active = true, sawPause = current != PlayState.PLAYING)
+
+    /**
+     * Android's task manager stopped the previous process: stopped in the play state that process saw last ([noteState]).
+     * Stopped while paused, the next "playing" ends the stop; the waking broadcast already says what Poweramp does now.
+     */
+    @Synchronized
+    fun stopAtLastKnownState() =
+        stop(PlayState.entries.firstOrNull { it.name == lastState } ?: PlayState.PLAYING)
+
+    /**
+     * Every play state the bridge hands the engine, also without a stop: kept for [stopAtLastKnownState] in the next
+     * process. Written only when it changes.
+     */
+    @Synchronized
+    fun noteState(state: PlayState) {
+        if (state.name == lastState) return
+        lastState = state.name
+        prefs.edit().putString(KEY_LAST_STATE, state.name).apply()
+    }
 
     /** Explicit start (or the presence was switched on again in the settings). */
     @Synchronized
@@ -56,5 +76,6 @@ class UserStop(private val prefs: SharedPreferences) {
         const val PREFS_NAME = "runtime"
         private const val KEY_ACTIVE = "userStop"
         private const val KEY_SAW_PAUSE = "userStopSawPause"
+        private const val KEY_LAST_STATE = "lastPlayState"
     }
 }

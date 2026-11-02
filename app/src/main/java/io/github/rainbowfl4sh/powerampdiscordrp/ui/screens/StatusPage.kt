@@ -67,7 +67,7 @@ import io.github.rainbowfl4sh.powerampdiscordrp.ui.openStorePage
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.rememberNotificationRequest
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.startSafely
 
-/** Status tab: master switch, connection, what plays, setup checklist and hints. */
+/** Status tab: master switch, connection, the linked Discord account, what plays, setup checklist and hints. */
 @Composable
 fun StatusPage(model: AppModel, openPage: (Page) -> Unit) {
     val config by model.config.collectAsStateWithLifecycle()
@@ -90,6 +90,7 @@ fun StatusPage(model: AppModel, openPage: (Page) -> Unit) {
         // something to fix: the checklist comes first, otherwise the connection does
         if (problems) Checklist(checks, model, openPage)
         ConnectionCard(status, config, defaultClientId, serviceRunning, model)
+        AccountCard(model, canLink = SetupChecks.hasUsableAppId(config, defaultClientId))
         NowPlayingCard(snapshot, nowPlaying, env)
         if (!problems) Checklist(checks, model, openPage)
         HintsCard()
@@ -163,8 +164,6 @@ private fun ConnectionCard(
         HorizontalDivider(Modifier.padding(vertical = 4.dp))
 
         val none = stringResource(R.string.conn_none)
-        val user = StatusTexts.userName(status.user)
-        if (user.isNotEmpty()) InfoRow(stringResource(R.string.conn_user), user)
         val appId = status.clientId.ifBlank { config.effectiveClientId(defaultClientId) }
         val own = config.useCustomApp && appId.isNotBlank() && appId == config.customClientId.trim()
         InfoRow(

@@ -99,6 +99,7 @@ object DiscordColors {
     val Track = Color(0xFF4E5058)
     val Green = Color(0xFF23A55A)
     val Blurple = Color(0xFF5865F2)
+    val Link = Color(0xFF00A8FC)
     val Orange = Color(0xFFF5A623)
     val LogoBackground = Color(0xFF2B2D31)
 }

@@ -43,6 +43,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.rainbowfl4sh.powerampdiscordrp.R
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkState
 import io.github.rainbowfl4sh.powerampdiscordrp.core.model.Config
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.TextRotation
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.AppModel
@@ -57,6 +58,7 @@ import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.ConfigEditor
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.FieldSync
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.Formats
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.Placeholders
+import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.SetupChecks
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.TextEdit
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.preview.PresencePreview
 
@@ -142,7 +144,16 @@ fun DisplayPage(model: AppModel) {
 private fun LivePreview(model: AppModel, config: Config) {
     val snapshot by model.snapshot.collectAsStateWithLifecycle()
     val status by model.status.collectAsStateWithLifecycle()
-    PresencePreview(config, snapshot, status, model.appInfo, model.defaultClientId)
+    val account by model.account.collectAsStateWithLifecycle()
+    val link by model.accountLink.collectAsStateWithLifecycle()
+    val startLink = rememberAccountLinkStarter(model)
+    // the hint links the account right from here - not while the profile is read, nor without an application ID. It
+    // stays while Discord's answer is awaited: a page left without an answer is opened again with a fresh login
+    val canLink = SetupChecks.hasUsableAppId(config, model.defaultClientId) && link != LinkState.Working
+    PresencePreview(
+        config, snapshot, status, model.appInfo, model.defaultClientId, account,
+        onLinkAccount = if (canLink) startLink else null,
+    )
 }
 
 @Composable
@@ -250,14 +261,14 @@ private fun TextsSection(c: TextSettings, editor: ConfigEditor) {
         SliderRow(
             label = stringResource(R.string.disp_bar_length),
             value = c.barLength,
-            range = 4..30,
+            range = Config.BAR_LENGTH_MIN..Config.BAR_LENGTH_MAX,
             onValueChange = { v -> editor.edit { it.copy(barLength = v) } },
             valueText = stringResource(R.string.disp_bar_length_value, c.barLength),
         )
         SliderRow(
             label = stringResource(R.string.disp_refresh),
             value = c.refreshSeconds,
-            range = 5..120,
+            range = Config.REFRESH_MIN_SECONDS..Config.REFRESH_MAX_SECONDS,
             step = 5,
             onValueChange = { v -> editor.edit { it.copy(refreshSeconds = v) } },
             valueText = stringResource(R.string.disp_refresh_value, c.refreshSeconds),
@@ -344,7 +355,7 @@ private fun PausedSection(pausedBehavior: Int, clearAfterPausedMin: Int, editor:
         NumberField(
             value = clearAfterPausedMin,
             onValueChange = { v -> editor.edit { it.copy(clearAfterPausedMin = v) } },
-            range = 0..1440,
+            range = 0..Config.CLEAR_AFTER_PAUSED_MAX_MIN,
             label = stringResource(R.string.disp_clear_after),
             supportingText = stringResource(R.string.disp_clear_after_hint),
             enabled = pausedBehavior == Config.PAUSED_SHOW,

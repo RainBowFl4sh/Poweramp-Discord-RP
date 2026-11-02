@@ -10,19 +10,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import io.github.rainbowfl4sh.powerampdiscordrp.Graph
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.sampleSizeFor
-import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.async
 import okhttp3.Request
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 
 /**
  * Pictures shown by the screens (current cover, Discord avatar): downloaded with the app's HTTP client off the main
- * thread and kept in a small in-memory cache, so switching tabs or rotating does not load them again.
+ * thread and kept in a small in-memory cache, so switching tabs or rotating does not load them again. The cache is
+ * dropped by [clear] when the UI is hidden: the process lives on with the presence service while nothing draws them.
  */
 object RemoteImages {
     private const val MAX_BYTES = 8 * 1024 * 1024
@@ -30,29 +34,67 @@ object RemoteImages {
     /** Edge of the squares the pictures are kept as: enough for the biggest one on screen (112 dp, the cover tab). */
     internal const val MAX_PX = 512
 
-    // at most 1 MB per picture (MAX_PX squared, 4 bytes per pixel)
-    private val cache = LruCache<String, ImageBitmap>(16)
+    /**
+     * Bytes the cache keeps: a few covers plus the small avatar / logo pictures - what one screen shows (at most 1 MB per
+     * picture: MAX_PX squared, 4 bytes per pixel). The process outlives the screens (the presence service), so this is
+     * also emptied when the UI is hidden ([clear]).
+     */
+    internal const val CACHE_BYTES = 4 * 1024 * 1024
+
+    private val cache = object : LruCache<String, ImageBitmap>(CACHE_BYTES) {
+        override fun sizeOf(key: String, value: ImageBitmap): Int = value.asAndroidBitmap().byteCount
+    }
 
     /** Failed URLs are not tried again for a while (a broken cover link would otherwise be fetched on every recomposition). */
     private val failed = LruCache<String, Long>(32)
     private const val RETRY_MS = 60_000L
 
+    /**
+     * Downloads run here, not in the caller: callers of the same URL share one download, and a caller that goes away
+     * (a page leaving the screen) does not throw away a download that is finished anyway, it still lands in the cache.
+     */
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private val inFlight = HashMap<String, Deferred<ImageBitmap?>>()
+
+    /** The bytes behind a URL, null = not there; replaceable by tests. */
+    internal var fetch: (String) -> ByteArray? = ::download
+
     fun peek(url: String): ImageBitmap? = cache.get(url)
+
+    /**
+     * Drops the cached pictures (the UI is hidden: nothing draws them until it comes back). Pictures still on screen keep
+     * their own reference and are not recycled; the garbage collector frees them once nothing draws them.
+     */
+    fun clear() = cache.evictAll()
+
+    /** Bytes of the cached pictures. */
+    internal fun cachedBytes(): Int = cache.size()
+
+    internal fun put(url: String, image: ImageBitmap) {
+        cache.put(url, image)
+    }
 
     suspend fun load(url: String): ImageBitmap? {
         cache.get(url)?.let { return it }
+        if (!Graph.isInitialized) return null   // the app's HTTP client (and log) are not there: screens drawn without the app
         failed.get(url)?.let { if (System.currentTimeMillis() - it < RETRY_MS) return null }
-        val image = withContext(Dispatchers.IO) {
-            try {
-                download(url)?.let(::decode)
-            } catch (e: CancellationException) {
-                throw e
-            } catch (e: Exception) {
-                Graph.log.log("Preview: could not load picture $url: $e")
-                null
+        val job = synchronized(inFlight) {
+            inFlight[url] ?: scope.async { loadNow(url) }.also { job ->
+                inFlight[url] = job
+                job.invokeOnCompletion { synchronized(inFlight) { if (inFlight[url] === job) inFlight.remove(url) } }
             }
         }
-        if (image != null) cache.put(url, image) else failed.put(url, System.currentTimeMillis())
+        return job.await()
+    }
+
+    private fun loadNow(url: String): ImageBitmap? {
+        val image = try {
+            fetch(url)?.let(::decode)
+        } catch (e: Exception) {
+            Graph.log.log("Preview: could not load picture $url: $e")
+            null
+        }
+        if (image != null) put(url, image) else failed.put(url, System.currentTimeMillis())
         return image
     }
 

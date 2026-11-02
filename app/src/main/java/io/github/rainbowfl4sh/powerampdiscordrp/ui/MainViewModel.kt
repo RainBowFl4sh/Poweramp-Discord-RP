@@ -9,6 +9,9 @@ import androidx.lifecycle.viewModelScope
 import io.github.rainbowfl4sh.powerampdiscordrp.BuildConfig
 import io.github.rainbowfl4sh.powerampdiscordrp.Graph
 import io.github.rainbowfl4sh.powerampdiscordrp.R
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkResult
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkState
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkedAccount
 import io.github.rainbowfl4sh.powerampdiscordrp.core.assets.AppInfoSource
 import io.github.rainbowfl4sh.powerampdiscordrp.core.engine.EngineStatus
 import io.github.rainbowfl4sh.powerampdiscordrp.core.engine.PresenceEngine
@@ -28,6 +31,9 @@ import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UiText
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UpdateCheckState
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UpdateSchedule
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UpdateView
+import io.github.rainbowfl4sh.powerampdiscordrp.locale.AppLocale
+import io.github.rainbowfl4sh.powerampdiscordrp.service.Notifications
+import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.AppLanguage
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.theme.Appearance
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.theme.AppearanceStore
 import kotlinx.coroutines.CancellationException
@@ -87,6 +93,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app), AppModel {
 
     init {
         checkForUpdatesIfDue()
+        reportAccountLinks()
     }
 
     override fun onCleared() {
@@ -269,12 +276,63 @@ class MainViewModel(app: Application) : AndroidViewModel(app), AppModel {
         if (due) checkForUpdates(manual = false)
     }
 
+    // ---- Discord account (status tab, live preview)
+
+    override val account: StateFlow<LinkedAccount?> get() = Graph.account.account
+    override val accountLink: StateFlow<LinkState> get() = Graph.account.state
+
+    override suspend fun startAccountLink(): String? {
+        val clientId = config.value.effectiveClientId(defaultClientId)
+        // writes the login to its file before Discord's page opens
+        return withContext(Dispatchers.IO) { guarded("Discord account link") { Graph.account.start(clientId) } }
+    }
+
+    override fun cancelAccountLink() = Graph.account.cancel()
+
+    override fun unlinkAccount() {
+        Graph.account.unlink()
+        _messages.trySend(UiText(R.string.msg_account_unlinked))
+    }
+
+    /** A login that got no answer within 10 minutes ends (on every resume; a timer does it as well). */
+    fun expireAccountLogin() {
+        viewModelScope.launch(Dispatchers.IO) { guarded("Discord account check") { Graph.account.expireStale() } }
+    }
+
+    /** A finished login is confirmed in the snackbar - also when it was started from the live preview. */
+    private fun reportAccountLinks() {
+        viewModelScope.launch {
+            val linker = withContext(Dispatchers.IO) { guarded("Discord account") { Graph.account } } ?: return@launch
+            linker.results.collect { result ->
+                _messages.trySend(
+                    when (result) {
+                        is LinkResult.Linked -> UiText(R.string.msg_account_linked, result.account.displayName)
+                        is LinkResult.Failed -> UiText(R.string.msg_account_failed)
+                    },
+                )
+            }
+        }
+    }
+
     // ---- app settings (top bar menu) and pictures of the screens
 
     private val appearanceStore = AppearanceStore.get(app)
     override val appearance: StateFlow<Appearance> get() = appearanceStore.appearance
 
     override fun setAppearance(appearance: Appearance) = appearanceStore.update { appearance }
+
+    private val _language = MutableStateFlow(AppLocale.current(app))
+    override val language: StateFlow<AppLanguage?> get() = _language
+
+    override fun setLanguage(language: AppLanguage?): Boolean {
+        if (language == _language.value) return false
+        val app = getApplication<Application>()
+        val recreate = AppLocale.set(app, language)
+        _language.value = language
+        // Android 8-12: the notification channels' names follow at once (the service's texts with its next update)
+        if (recreate) Notifications.ensureChannels(app)
+        return recreate
+    }
 
     override fun cachedPicture(url: String): ImageBitmap? = RemoteImages.peek(url)
 

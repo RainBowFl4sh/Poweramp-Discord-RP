@@ -32,11 +32,14 @@ class SettingsStore(context: Context) {
 
     val config: StateFlow<Config> = _config.asStateFlow()
 
-    /** Atomic read-modify-write; the engine is told to rebuild the presence. */
+    /**
+     * Atomic read-modify-write; the engine is told to rebuild the presence. Every writer goes through here: the result
+     * is [Config.sanitized], so the UI, the preview, the bridge and the engine all read the same values.
+     */
     fun update(change: (Config) -> Config) {
         val (old, new) = synchronized(lock) {
             val old = _config.value
-            val new = change(old)
+            val new = change(old).sanitized()
             if (new == old) return
             prefs.edit().putString(KEY_CONFIG, new.toJson()).apply()
             _config.value = new
@@ -71,13 +74,14 @@ class SettingsStore(context: Context) {
         } catch (_: Exception) {
             return false
         }
-        update { old -> imported.keepingUpdateStateOf(old) }
+        update { old -> imported.keepingUpdateStateOf(old) }   // sanitized by update
         return true
     }
 
     fun resetToDefaults() = update { old -> Config().keepingUpdateStateOf(old) }
 
-    private fun load(): Config = prefs.getString(KEY_CONFIG, null)?.let(Config::fromJson) ?: Config()
+    // Stored settings of an older / newer version may hold values this one does not know
+    private fun load(): Config = prefs.getString(KEY_CONFIG, null)?.let(Config::fromJson)?.sanitized() ?: Config()
 
     // The update bookkeeping belongs to this installation, not to the settings (an import must not hide an update)
     private fun Config.keepingUpdateStateOf(old: Config) =

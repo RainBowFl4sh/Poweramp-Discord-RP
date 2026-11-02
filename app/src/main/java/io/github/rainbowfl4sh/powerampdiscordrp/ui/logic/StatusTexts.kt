@@ -7,7 +7,6 @@ import io.github.rainbowfl4sh.powerampdiscordrp.core.model.Config
 import io.github.rainbowfl4sh.powerampdiscordrp.core.model.PlayState
 import io.github.rainbowfl4sh.powerampdiscordrp.core.model.PlaybackSnapshot
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.Hidden
-import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.DiscordUser
 import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.TransportError
 
 /** How a status line is drawn (icon / color). */
@@ -63,13 +62,8 @@ object StatusTexts {
         EngineStatus.Kind.DISABLED -> StatusLine(UiText(R.string.conn_disabled), Severity.INFO)
         EngineStatus.Kind.NO_APP_ID -> StatusLine(UiText(R.string.conn_no_app_id), Severity.ERROR)
         EngineStatus.Kind.CONNECTING -> StatusLine(UiText(R.string.conn_connecting), Severity.INFO)
-        EngineStatus.Kind.CONNECTED -> {
-            val name = userName(st.user)
-            StatusLine(
-                if (name.isEmpty()) UiText(R.string.conn_connected) else UiText(R.string.conn_connected_as, name),
-                Severity.OK,
-            )
-        }
+        // not "as <name>": the Discord app reports a placeholder user (the account card shows the linked account)
+        EngineStatus.Kind.CONNECTED -> StatusLine(UiText(R.string.conn_connected), Severity.OK)
         EngineStatus.Kind.NOT_CONNECTED -> StatusLine(
             UiText(transportError(st.error)),
             // a closed connection is retried by itself; the others need the user
@@ -112,12 +106,6 @@ object StatusTexts {
         st.visible -> StatusLine(UiText(R.string.hidden_no), Severity.OK)
         st.kind == EngineStatus.Kind.CONNECTED -> StatusLine(UiText(R.string.now_sending), Severity.INFO)
         else -> StatusLine(UiText(R.string.now_not_connected), Severity.INFO)
-    }
-
-    /** Display name of the Discord user ("" if Discord reported none). */
-    fun userName(user: DiscordUser?): String {
-        if (user == null) return ""
-        return user.globalName.trim().ifEmpty { user.username.trim() }
     }
 
     /** "poweramp|x0.at" -> "Poweramp's cover, uploaded to x0.at"; "Deezer" -> "found on Deezer"; "" -> "cover cache". */

@@ -41,16 +41,23 @@ object EnvironmentCheck {
             powerampVersion = poweramp?.let { it.versionName ?: "" },
             powerampBuild = poweramp?.let { powerampBuild(PackageInfoCompat.getLongVersionCode(it)) } ?: 0,
             discordInstalled = DISCORD_PACKAGES.any { packageInfo(pm, it) != null },
-            discordRpcAvailable = DISCORD_PACKAGES.any { pkg ->
-                runCatching { pm.resolveService(Intent(DiscordBinderTransport.SERVICE_ACTION).setPackage(pkg), 0) }
-                    .getOrNull() != null
-            },
+            discordRpcAvailable = discordRpcAvailable(context),
             batteryOptimizationIgnored = context.getSystemService(PowerManager::class.java)
                 ?.isIgnoringBatteryOptimizations(context.packageName) == true,
             notificationsAllowed = notificationsAllowed(context),
             clientIdConfigured = Graph.isInitialized &&
                 Graph.settings.config.value.effectiveClientId(Graph.defaultClientId).isNotBlank(),
         )
+    }
+
+    /**
+     * True if an installed Discord app exports the Social SDK RPC service (what the transport binds to). One
+     * PackageManager call per package, not cached: a Discord installed or updated meanwhile counts at once.
+     */
+    fun discordRpcAvailable(context: Context): Boolean = DISCORD_PACKAGES.any { pkg ->
+        runCatching {
+            context.packageManager.resolveService(Intent(DiscordBinderTransport.SERVICE_ACTION).setPackage(pkg), 0)
+        }.getOrNull() != null
     }
 
     /**

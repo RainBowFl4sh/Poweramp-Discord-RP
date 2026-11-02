@@ -4,6 +4,7 @@ import android.os.SystemClock
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,11 +36,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -47,6 +50,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import io.github.rainbowfl4sh.powerampdiscordrp.R
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkedAccount
 import io.github.rainbowfl4sh.powerampdiscordrp.core.assets.AppInfo
 import io.github.rainbowfl4sh.powerampdiscordrp.core.assets.AppInfoSource
 import io.github.rainbowfl4sh.powerampdiscordrp.core.engine.EngineStatus
@@ -54,7 +58,6 @@ import io.github.rainbowfl4sh.powerampdiscordrp.core.model.Config
 import io.github.rainbowfl4sh.powerampdiscordrp.core.model.PlaybackSnapshot
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.ActivityBuilder
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.StatusStrings
-import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.DiscordUser
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.components.AppLogo
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.components.rememberRemoteImage
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.Formats
@@ -67,6 +70,8 @@ import kotlinx.coroutines.withContext
 /**
  * What Discord will show for the settings being edited: the activity card of the profile and the member list entry,
  * drawn in Discord's dark colors. Follows the edits at once ([config] is the editor's draft) and the playback [clock].
+ * The member list entry shows the linked Discord [account] (name and picture); without one "You" and, if
+ * [onLinkAccount] is given, a hint that links it.
  */
 @Composable
 fun PresencePreview(
@@ -75,7 +80,9 @@ fun PresencePreview(
     status: EngineStatus,
     appInfo: AppInfoSource,
     defaultClientId: String,
+    account: LinkedAccount?,
     modifier: Modifier = Modifier,
+    onLinkAccount: (() -> Unit)? = null,
     clock: State<Long> = rememberPreviewClock(),
 ) {
     val example = ExampleTexts(
@@ -103,7 +110,7 @@ fun PresencePreview(
     val appName = info?.name?.takeIf { it.isNotBlank() }
         ?: if (ownApp) stringResource(R.string.prev_app_own) else ActivityBuilder.ACTIVITY_NAME
     val coverUrl = if (!preview.example && config.coverEnabled) status.coverUrl else ""
-    PresencePreviewContent(preview, appName, coverUrl, status.user, modifier, info?.images.orEmpty(), positionMs)
+    PresencePreviewContent(preview, appName, coverUrl, account, modifier, info?.images.orEmpty(), positionMs, onLinkAccount)
 }
 
 /**
@@ -129,16 +136,18 @@ internal val LocalPreviewTrace = staticCompositionLocalOf<(String) -> Unit> { {}
 /**
  * Draws a computed [Preview]: the profile's activity card, the member list entry and short notes below.
  * [positionMs]: the playing position for the progress line (read only there, so its ticking redraws nothing else).
+ * [account]: the linked Discord account for the member list entry (never the placeholder user of the RPC service).
  */
 @Composable
 fun PresencePreviewContent(
     preview: Preview,
     appName: String,
     coverUrl: String,
-    user: DiscordUser?,
+    account: LinkedAccount?,
     modifier: Modifier = Modifier,
     images: Map<String, String> = emptyMap(),   // art asset key -> picture URL (AppInfo.images)
     positionMs: () -> Long = { preview.texts.posMs },
+    onLinkAccount: (() -> Unit)? = null,
 ) {
     val headerFormat = if (preview.listening) R.string.prev_listening else R.string.prev_playing
     Column(
@@ -151,9 +160,10 @@ fun PresencePreviewContent(
     ) {
         ActivityCard(preview, stringResource(headerFormat, appName), coverUrl, images, positionMs)
         MemberRow(
-            user = user,
+            account = account,
             line = if (preview.hidden) "" else stringResource(headerFormat, preview.memberText.ifEmpty { appName }),
         )
+        if (account == null && onLinkAccount != null) LinkAccountHint(onLinkAccount)
         if (!preview.hidden) {
             val t = preview.texts
             if (preview.smallIcon && t.smallText.isNotEmpty()) Note(stringResource(R.string.prev_icon_tip, t.smallText))
@@ -268,7 +278,10 @@ private fun ProgressLine(positionMs: () -> Long, durMs: Long) {
             val r = CornerRadius(size.height / 2)
             drawRoundRect(DiscordColors.Track, cornerRadius = r)
             if (fraction > 0f) {
-                drawRoundRect(DiscordColors.White, size = Size(maxOf(size.height, size.width * fraction), size.height), cornerRadius = r)
+                val filled = Size(maxOf(size.height, size.width * fraction), size.height)
+                // right to left (Arabic): the row is mirrored, so the bar fills from the position on the right
+                val left = if (layoutDirection == LayoutDirection.Rtl) size.width - filled.width else 0f
+                drawRoundRect(DiscordColors.White, topLeft = Offset(left, 0f), size = filled, cornerRadius = r)
             }
         }
         Spacer(Modifier.width(8.dp))
@@ -336,8 +349,8 @@ private fun PlayPauseBadge(playing: Boolean, url: String, size: Dp) {
 
 /** Member list entry: avatar with the online dot, name and "Listening to ...". */
 @Composable
-private fun MemberRow(user: DiscordUser?, line: String) {
-    val name = StatusTexts.userName(user).ifEmpty { stringResource(R.string.prev_you) }
+private fun MemberRow(account: LinkedAccount?, line: String) {
+    val name = account?.displayName?.takeIf { it.isNotEmpty() } ?: stringResource(R.string.prev_you)
     Row(
         Modifier
             .fillMaxWidth()
@@ -347,7 +360,7 @@ private fun MemberRow(user: DiscordUser?, line: String) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(Modifier.size(40.dp)) {
-            Avatar(user, name)
+            Avatar(account?.avatarUrl.orEmpty(), name, linked = account != null)
             Box(
                 Modifier
                     .align(Alignment.BottomEnd)
@@ -379,39 +392,41 @@ private fun MemberRow(user: DiscordUser?, line: String) {
     }
 }
 
+/** The account's picture; its initial (or "You"'s) on Discord's blurple while it loads, offline or without an account. */
 @Composable
-private fun Avatar(user: DiscordUser?, name: String) {
-    val image = rememberRemoteImage(avatarUrl(user))
-    if (image != null) {
-        Image(
-            bitmap = image,
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(40.dp)
-                .clip(CircleShape),
-        )
-    } else {
-        Box(
-            Modifier
-                .size(40.dp)
-                .clip(CircleShape)
-                .background(DiscordColors.Blurple),
-            contentAlignment = Alignment.Center,
-        ) {
+private fun Avatar(url: String, name: String, linked: Boolean) {
+    val image = rememberRemoteImage(url)
+    val description = if (linked) stringResource(R.string.cd_account_avatar, name) else null
+    Box(
+        Modifier
+            .size(40.dp)
+            .clip(CircleShape)
+            .background(DiscordColors.Blurple)
+            // the linked account's picture is described; "You"'s initial says nothing the name does not
+            .semantics { if (description != null) contentDescription = description },
+        contentAlignment = Alignment.Center,
+    ) {
+        if (image != null) {
+            Image(bitmap = image, contentDescription = null, contentScale = ContentScale.Crop, modifier = Modifier.matchParentSize())
+        } else {
             Text(name.take(1).uppercase(), color = Color.White, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
         }
     }
 }
 
-/** Discord CDN link of the user's avatar, "" if Discord reported none (or something that is not an avatar hash). */
-fun avatarUrl(user: DiscordUser?): String {
-    if (user == null) return ""
-    val id = user.id.trim()
-    val hash = user.avatar.trim()
-    if (id.isEmpty() || !id.all { it.isDigit() }) return ""
-    if (hash.isEmpty() || !hash.all { it in '0'..'9' || it in 'a'..'f' || it == '_' }) return ""
-    return "https://cdn.discordapp.com/avatars/$id/$hash.png?size=64"
+/** "Link your Discord account to see your name and picture here" - in Discord's link color, starts linking. */
+@Composable
+private fun LinkAccountHint(onClick: () -> Unit) {
+    Text(
+        stringResource(R.string.prev_link_account),
+        color = DiscordColors.Link,
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        modifier = Modifier
+            .clip(RoundedCornerShape(4.dp))
+            .clickable(role = Role.Button, onClick = onClick)
+            .padding(vertical = 2.dp),
+    )
 }
 
 @Composable
