@@ -1,5 +1,13 @@
 # Registro modifiche
 
+## 1.2.1
+
+### Miglioramenti
+- **Servizio in background**: si avvia solo quando un brano viene davvero riprodotto, non già all’apertura di
+  Poweramp, e si chiude da solo quando non suona più nulla (dopo il limite di pausa)
+- **Caricamento copertine**: nomi di file casuali invece di «cover.jpg» – x0.at aveva iniziato a rifiutare i
+  caricamenti
+
 ## 1.2.0
 
 ### Novità

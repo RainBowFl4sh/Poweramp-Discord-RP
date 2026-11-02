@@ -1,5 +1,12 @@
 # Novidades
 
+## 1.2.1
+
+### Melhorado
+- **Serviço em segundo plano**: só inicia quando uma faixa realmente toca, não já ao abrir o Poweramp, e para sozinho
+  quando nada mais toca (após o limite de pausa)
+- **Envio de capas**: nomes de arquivo aleatórios em vez de "cover.jpg" – o x0.at começou a recusar os envios
+
 ## 1.2.0
 
 ### Novo

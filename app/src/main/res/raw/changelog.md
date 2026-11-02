@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.1
+
+### Improved
+- **Background service**: starts only when a track really plays, not already when Poweramp is opened, and stops itself
+  once nothing plays any more (after the paused timeout)
+- **Cover uploads**: random file names instead of "cover.jpg" – x0.at had started to refuse uploads
+
 ## 1.2.0
 
 ### New

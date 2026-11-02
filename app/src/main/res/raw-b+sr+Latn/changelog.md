@@ -1,5 +1,12 @@
 # Istorija promena
 
+## 1.2.1
+
+### Poboljšano
+- **Pozadinski servis**: pokreće se tek kada pesma zaista svira, a ne već pri otvaranju Powerampa, i sam se gasi kada
+  ništa više ne svira (posle vremenskog ograničenja pauze)
+- **Otpremanje omota**: nasumična imena fajlova umesto „cover.jpg“ – x0.at je počeo da odbija otpremanja
+
 ## 1.2.0
 
 ### Novo

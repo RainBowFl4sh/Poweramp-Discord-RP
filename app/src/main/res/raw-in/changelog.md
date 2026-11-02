@@ -1,5 +1,12 @@
 # Log perubahan
 
+## 1.2.1
+
+### Ditingkatkan
+- **Layanan latar belakang**: hanya dimulai saat lagu benar-benar diputar, bukan saat Poweramp dibuka, dan berhenti
+  sendiri saat tidak ada lagi yang diputar (setelah batas waktu jeda)
+- **Unggahan sampul**: nama file acak, bukan "cover.jpg" – x0.at mulai menolak unggahan
+
 ## 1.2.0
 
 ### Baru

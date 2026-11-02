@@ -1,5 +1,12 @@
 # Muutosloki
 
+## 1.2.1
+
+### Parannettu
+- **Taustapalvelu**: käynnistyy vasta, kun kappale todella soi, ei jo Powerampin avaamisesta, ja pysähtyy itsestään,
+  kun mitään ei enää soi (taukoajan jälkeen)
+- **Kansikuvien lataus**: satunnaiset tiedostonimet ”cover.jpg”:n sijaan – x0.at oli alkanut hylätä latauksia
+
 ## 1.2.0
 
 ### Uutta

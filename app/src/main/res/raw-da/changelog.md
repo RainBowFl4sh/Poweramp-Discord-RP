@@ -1,5 +1,12 @@
 # Ændringslog
 
+## 1.2.1
+
+### Forbedret
+- **Baggrundstjeneste**: starter først, når et nummer faktisk spiller, ikke allerede når Poweramp åbnes, og stopper
+  selv, når intet spiller længere (efter pausegrænsen)
+- **Upload af covers**: tilfældige filnavne i stedet for "cover.jpg" – x0.at var begyndt at afvise uploads
+
 ## 1.2.0
 
 ### Nyt
