@@ -5,6 +5,7 @@ import io.github.rainbowfl4sh.powerampdiscordrp.core.util.Logger
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import kotlin.random.Random
 
 /**
  * Public image hosts for local covers (AIMP: X0Upload / CatboxUpload / ImgurUpload). Each upload returns the picture's
@@ -35,7 +36,7 @@ internal class UploadHosts(
         MultipartBody.Builder()
             .setType(MultipartBody.FORM)
             .apply { fields.forEach { (k, v) -> addFormDataPart(k, v) } }
-            .addFormDataPart(fileField, "cover.${Images.extension(image)}", image.toRequestBody(Images.mimeType(image).toMediaType()))
+            .addFormDataPart(fileField, randomFileName(Images.extension(image)), image.toRequestBody(Images.mimeType(image).toMediaType()))
             .build()
 
     private fun post(url: String, body: MultipartBody, what: String, vararg headers: Pair<String, String>): Reply =
@@ -89,6 +90,15 @@ internal class UploadHosts(
     companion object {
         private val CATBOX_LOG_HEADERS = setOf("location", "server", "content-length", "content-type", "cf-ray", "retry-after")
         private val SINGLE_URL = Regex("""https://[^\s<>"]+""")
+        private const val NAME_CHARS = "abcdefghijklmnopqrstuvwxyz0123456789"
+        private const val NAME_LENGTH = 10
+
+        /**
+         * A random file name for an upload (like the AIMP plugin): x0.at refuses "cover.jpg" / "cover.png"
+         * ("403 File type not allowed.", October 2026), and the same name for every upload is easy to block anyway.
+         */
+        fun randomFileName(extension: String, random: Random = Random.Default): String =
+            CharArray(NAME_LENGTH) { NAME_CHARS[random.nextInt(NAME_CHARS.length)] }.concatToString() + "." + extension
 
         /**
          * The host's answer as https URL ("http://" is upgraded); null unless it is exactly one URL that Discord takes
