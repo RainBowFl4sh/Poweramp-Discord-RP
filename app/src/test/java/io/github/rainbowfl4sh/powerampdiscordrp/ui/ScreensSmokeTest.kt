@@ -13,10 +13,13 @@ import io.github.rainbowfl4sh.powerampdiscordrp.core.model.PlaybackSnapshot
 import io.github.rainbowfl4sh.powerampdiscordrp.core.model.TrackInfo
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.ActivityTexts
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.Hidden
-import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.DiscordUser
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkError
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkState
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkedAccount
 import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.TransportError
 import io.github.rainbowfl4sh.powerampdiscordrp.core.update.UpdateResult
 import io.github.rainbowfl4sh.powerampdiscordrp.settings.EnvState
+import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.AppLanguages
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UpdateCheckState
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.preview.MemberLine
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.preview.PresencePreviewContent
@@ -24,6 +27,7 @@ import io.github.rainbowfl4sh.powerampdiscordrp.ui.preview.Preview
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.screens.AboutPage
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.screens.AdvancedPage
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.screens.CoverPage
+import io.github.rainbowfl4sh.powerampdiscordrp.ui.screens.DisplayPage
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.screens.SourcesPage
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.screens.StatusPage
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.theme.AppTheme
@@ -32,6 +36,7 @@ import io.github.rainbowfl4sh.powerampdiscordrp.ui.theme.ThemeMode
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import org.junit.After
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -46,7 +51,7 @@ import org.robolectric.annotation.Config as RobolectricConfig
 import java.time.Duration
 
 /**
- * Every page composes and lays out with made-up state, in light / dark and in all four languages (catches crashes in
+ * Every page composes and lays out with made-up state, in light / dark and in every app language (catches crashes in
  * composition, e.g. a missing string argument). The Display tab's live preview is composed from a ready Preview:
  * computing it needs the core's PresenceTexts.
  */
@@ -59,19 +64,33 @@ class ScreensSmokeTest {
 
     @After
     fun tearDown() {
-        // No endless animation may outlive the test: a frame of it still on its way when Robolectric clears the main
-        // looper would leave Compose's dispatcher of the main thread waiting for it in every later test
-        activities.forEach { it.pause().stop().destroy() }
-        repeat(FRAMES) { shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(16)) }
+        closeActivities()
         scope.cancel()
         ShadowChoreographer.setPaused(false)
+    }
+
+    /**
+     * Destroys the activities rendered so far. No endless animation may outlive the test: a frame of it still on its
+     * way when Robolectric clears the main looper would leave Compose's dispatcher of the main thread waiting for it in
+     * every later test. Also called after each language, so 30 languages do not keep hundreds of activities in memory.
+     */
+    private fun closeActivities() {
+        activities.forEach { it.pause().stop().destroy() }
+        activities.clear()
+        repeat(FRAMES) { shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(16)) }
+    }
+
+    /** [inEveryAppLanguage], closing each language's activities before the next one. */
+    private fun everyLanguage(block: () -> Unit) = inEveryAppLanguage {
+        block()
+        closeActivities()
     }
 
     private val env = EnvState("build-1032-uni", 1032, true, true, false, true, true)
     private val track = TrackInfo(title = "Boogie Wonderland", artist = "Earth, Wind & Fire", album = "The Very Best", path = "/m/a.flac", durationMs = 287_000)
     private val playing = PlaybackSnapshot(PlayState.PLAYING, track, positionMs = 13_000)
     private val connected = EngineStatus(
-        kind = EngineStatus.Kind.CONNECTED, user = DiscordUser(id = "1", username = "flash", globalName = "Fl4sh"),
+        kind = EngineStatus.Kind.CONNECTED,
         clientId = "1555109720807702559", lastSentWallMs = 1_800_000_000_000, connects = 2, visible = true, hidden = Hidden.NO,
         coverUrl = "", coverSource = "poweramp|x0.at",
     )
@@ -94,8 +113,7 @@ class ScreensSmokeTest {
 
     @Test
     fun everyPageInEveryLanguage() {
-        for (lang in listOf("en", "de", "ru", "uk")) {
-            RuntimeEnvironment.setQualifiers(lang)
+        everyLanguage {
             val model = FakeAppModel(scope, env = env, status = connected, snapshot = playing)
             render { MainScreen(model) }
             render(dark = true) { StatusPage(model) {} }
@@ -127,8 +145,7 @@ class ScreensSmokeTest {
 
     @Test
     fun statusAndCoverWhileDiscordShowsNothing() {
-        for (lang in listOf("en", "de", "ru", "uk")) {
-            RuntimeEnvironment.setQualifiers(lang)
+        everyLanguage {
             // stopped by the user while Poweramp plays on
             val stopped = FakeAppModel(scope, env = env, status = EngineStatus(clientId = connected.clientId), snapshot = playing)
             stopped.stoppedByUser.value = true
@@ -151,11 +168,15 @@ class ScreensSmokeTest {
     @Test
     fun appSettingsAndThemesInEveryLanguage() {
         val amoled = Appearance(theme = ThemeMode.DARK, amoled = true, dynamicColor = false)
-        for (lang in listOf("en", "de", "ru", "uk")) {
-            RuntimeEnvironment.setQualifiers(lang)
+        everyLanguage {
             val model = FakeAppModel(scope, env = env, status = connected, snapshot = playing)
-            render { AppSettingsDialog(Appearance(), onChange = {}, onDismiss = {}) }
-            render(dark = true) { AppSettingsDialog(amoled, onChange = {}, onDismiss = {}, systemDark = false, dynamicColorAvailable = false) }
+            render { AppSettingsDialog(Appearance(), onChange = {}, onDismiss = {}, language = null, onLanguageChange = {}) }
+            render(dark = true) {
+                AppSettingsDialog(
+                    amoled, onChange = {}, onDismiss = {}, language = AppLanguages.byTag("de"), onLanguageChange = {},
+                    systemDark = false, dynamicColorAvailable = false, systemLanguageSetting = false,
+                )
+            }
             // AMOLED black with the app's own colors; light with them
             render { AppTheme(amoled) { MainScreen(model) } }
             render { AppTheme(amoled) { AboutPage(model) } }
@@ -170,15 +191,54 @@ class ScreensSmokeTest {
             largeText = "The Very Best", smallText = "Playing", detailsUrl = "https://www.youtube.com/results?search_query=a",
         )
         val preview = Preview(texts, false, true, true, false, MemberLine.STATE, "Earth, Wind & Fire", true)
-        for (lang in listOf("en", "ru")) {
-            RuntimeEnvironment.setQualifiers(lang)
+        for (qualifiers in listOf("en", "ru", "ar-ldrtl")) {
+            RuntimeEnvironment.setQualifiers(qualifiers)
             render {
-                PresencePreviewContent(preview, "Poweramp", "", DiscordUser(globalName = "Fl4sh"))
-                PresencePreviewContent(preview.copy(example = true, progress = false, elapsed = true), "Poweramp", "", null)
+                PresencePreviewContent(preview, "Poweramp", "", flash)
+                PresencePreviewContent(preview.copy(example = true, progress = false, elapsed = true), "Poweramp", "", null, onLinkAccount = {})
                 PresencePreviewContent(preview.copy(texts = texts.copy(hidden = Hidden.PAUSED_TIMEOUT)), "Poweramp", "", null)
             }
         }
     }
+
+    @Test
+    fun discordAccountInEveryState() {
+        // every failure, with Discord's own words where they are shown; the progress indicator of Working
+        val states = listOf(LinkState.Idle, LinkState.Waiting, LinkState.Working) +
+            LinkError.entries.map { LinkState.Failed(it, "HTTP 429: You are being rate limited.") }
+        everyLanguage {
+            for (state in states) {
+                // not linked yet, or a refresh of a linked account
+                val account = if (state == LinkState.Idle || state is LinkState.Failed && state.error.ordinal % 2 == 0) null else flash
+                val model = FakeAppModel(scope, env = env, status = connected, snapshot = playing, account = account)
+                model.accountLink.value = state
+                render { StatusPage(model) {} }
+            }
+            render { StatusPage(FakeAppModel(scope, env = env, status = connected, snapshot = playing, account = flash)) {} }
+            // no application ID to log in with; the live preview with and without an account
+            render { StatusPage(FakeAppModel(scope, env = env, defaultClientId = "")) {} }
+            render { DisplayPage(FakeAppModel(scope, env = env, status = connected, snapshot = playing, account = flash)) }
+            render { DisplayPage(FakeAppModel(scope, env = env, status = connected, snapshot = playing)) }
+        }
+    }
+
+    /** Right to left (Arabic): every page mirrored, the app settings and the live preview with an account. */
+    @Test
+    fun everyPageRightToLeft() {
+        RuntimeEnvironment.setQualifiers("ar-ldrtl")
+        val model = FakeAppModel(scope, env = env, status = connected, snapshot = playing, account = flash)
+        val root = render { MainScreen(model) }
+        assertEquals(View.LAYOUT_DIRECTION_RTL, root.layoutDirection)
+        render { StatusPage(model) {} }
+        render { DisplayPage(model) }
+        render { CoverPage(model) }
+        render { SourcesPage(model) {} }
+        render { AdvancedPage(model) }
+        render { AboutPage(model) }
+        render { AppSettingsDialog(Appearance(), onChange = {}, onDismiss = {}, language = AppLanguages.byTag("ar"), onLanguageChange = {}) }
+    }
+
+    private val flash = LinkedAccount("80351110224678912", "flash", "Fl4sh", "8342729096ea3675442027381ff50dfe")
 
     private companion object {
         /** Frames drawn per screen (each one 16 ms of the paused clock): layout, effects and short animations. */

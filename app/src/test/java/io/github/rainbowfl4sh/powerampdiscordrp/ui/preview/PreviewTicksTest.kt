@@ -46,7 +46,7 @@ class PreviewTicksTest {
         activity.setContent {
             AppTheme {
                 CompositionLocalProvider(LocalPreviewTrace provides { composed += it }) {
-                    PresencePreview(config, snapshot, EngineStatus(), AppInfoSource.NONE, "1555109720807702559", clock = clock)
+                    PresencePreview(config, snapshot, EngineStatus(), AppInfoSource.NONE, "1555109720807702559", account = null, clock = clock)
                 }
             }
         }

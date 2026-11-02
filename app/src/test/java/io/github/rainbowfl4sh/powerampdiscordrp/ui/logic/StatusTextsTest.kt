@@ -7,7 +7,6 @@ import io.github.rainbowfl4sh.powerampdiscordrp.core.model.PlayState
 import io.github.rainbowfl4sh.powerampdiscordrp.core.model.PlaybackSnapshot
 import io.github.rainbowfl4sh.powerampdiscordrp.core.model.TrackInfo
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.Hidden
-import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.DiscordUser
 import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.TransportError
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -38,14 +37,11 @@ class StatusTextsTest {
     }
 
     @Test
-    fun connectedShowsTheUserName() {
-        val st = EngineStatus(kind = EngineStatus.Kind.CONNECTED, user = DiscordUser(id = "1", username = "flash", globalName = "Fl4sh"))
-        assertEquals(StatusLine(UiText(R.string.conn_connected_as, "Fl4sh"), Severity.OK), StatusTexts.connection(st))
-        val noGlobal = st.copy(user = DiscordUser(username = "flash"))
-        assertEquals(UiText(R.string.conn_connected_as, "flash"), StatusTexts.connection(noGlobal).text)
-        val anonymous = st.copy(user = DiscordUser())
-        assertEquals(UiText(R.string.conn_connected), StatusTexts.connection(anonymous).text)
-        assertEquals(UiText(R.string.conn_connected), StatusTexts.connection(st.copy(user = null)).text)
+    fun connectedNamesNoUser() {
+        // the Discord app's READY user is a placeholder: the headline does not name it (the account card shows the
+        // linked account)
+        val st = EngineStatus(kind = EngineStatus.Kind.CONNECTED)
+        assertEquals(StatusLine(UiText(R.string.conn_connected), Severity.OK), StatusTexts.connection(st))
     }
 
     @Test

@@ -71,7 +71,7 @@ class ChangelogTest {
     @Test
     fun bundledChangelogsDescribeThisVersion() {
         val res = listOf(File("src/main/res"), File("app/src/main/res")).first { it.isDirectory }
-        for (folder in listOf("raw", "raw-de", "raw-ru", "raw-uk")) {
+        for (folder in AppLanguages.ALL.map { it.rawFolder }) {
             val blocks = Changelog.parse(File(res, "$folder/changelog.md").readText())
             val first = blocks.first()
             assertTrue("$folder: $first", first is ChangelogBlock.Version)

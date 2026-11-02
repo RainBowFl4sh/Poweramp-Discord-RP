@@ -140,8 +140,8 @@ class DisplayPageTest {
 
     @Test
     fun theTextsSectionInEveryLanguage() {
-        for (lang in listOf("en", "de", "ru", "uk")) {
-            RuntimeEnvironment.setQualifiers(lang)
+        inEveryAppLanguage { language ->
+            val lang = language.tag
             val screen = show(FakeAppModel(scope, config = Config(details = "%title% || %artist%", rotationSeconds = 25)))
             assertTrue(lang, string(R.string.disp_rotation_help) in screen)
             assertTrue(lang, string(R.string.disp_rotation_value, 25) in screen)

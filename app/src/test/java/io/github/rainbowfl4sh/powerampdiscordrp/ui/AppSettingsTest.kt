@@ -161,12 +161,30 @@ class AppSettingsTest {
     fun withoutDynamicColorThereIsNoSwitchForIt() {
         val activity = Robolectric.buildActivity(ComponentActivity::class.java).setup().get()
         activity.setContent {
-            AppTheme { AppSettingsDialog(Appearance(), onChange = {}, onDismiss = {}, dynamicColorAvailable = false) }
+            AppTheme { AppSettingsDialog(Appearance(), onChange = {}, onDismiss = {}, language = null, onLanguageChange = {}, dynamicColorAvailable = false) }
         }
         settle()
         val settings = ComposedTexts(ShadowDialog.getLatestDialog().window!!.decorView)
         assertTrue(string(R.string.app_settings_amoled) in settings)
         assertFalse(string(R.string.app_settings_dynamic) in settings)
+    }
+
+    @Test
+    fun theLanguageIsChosenFromTheList() {
+        val model = FakeAppModel(scope, env = env)
+        val (_, settings) = openAppSettings(showMainScreen(model))
+        assertTrue(string(R.string.app_settings_language) in settings)
+        // nothing chosen yet: the system's language
+        settings.click(string(R.string.language_system))
+        settle()
+        val list = ComposedTexts(ShadowDialog.getLatestDialog().window!!.decorView)
+        assertTrue(string(R.string.language_ai) in list)
+        list.click("Deutsch")
+        settle()
+        assertEquals(listOf("setLanguage de"), model.actions.filter { it.startsWith("setLanguage") })
+        assertEquals("de", model.language.value?.tag)
+        // the settings show the choice by its own name
+        assertTrue("Deutsch" in settings)
     }
 
     @Test

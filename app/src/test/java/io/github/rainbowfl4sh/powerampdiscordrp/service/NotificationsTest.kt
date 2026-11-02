@@ -74,6 +74,17 @@ class NotificationsTest {
     }
 
     @Test
+    fun aRetryKeepsTheLastFailureText() {
+        // CONNECTING after a failure must not flip the notification (two updates per retry otherwise)
+        for (error in listOf(TransportError.CLOSED, TransportError.CONNECT_FAILED, TransportError.DISCORD_NOT_INSTALLED)) {
+            assertEquals(
+                content(EngineStatus(kind = Kind.NOT_CONNECTED, error = error)),
+                content(EngineStatus(kind = Kind.CONNECTING, error = error, hidden = Hidden.NO)),
+            )
+        }
+    }
+
+    @Test
     fun idleEngine() {
         // Something to show, but not connected yet
         assertEquals("Connecting to Discord…", content(EngineStatus(kind = Kind.IDLE, hidden = Hidden.NO)).text)

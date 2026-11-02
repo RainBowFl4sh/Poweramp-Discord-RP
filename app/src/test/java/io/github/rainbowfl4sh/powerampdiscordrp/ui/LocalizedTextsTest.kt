@@ -5,10 +5,14 @@ import android.content.Context
 import androidx.core.content.ContextCompat
 import androidx.test.core.app.ApplicationProvider
 import io.github.rainbowfl4sh.powerampdiscordrp.R
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.DiscordOAuth
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkError
 import io.github.rainbowfl4sh.powerampdiscordrp.core.engine.EngineStatus
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.Hidden
 import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.TransportError
 import io.github.rainbowfl4sh.powerampdiscordrp.core.update.UpdateResult
+import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.AccountTexts
+import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.AppLanguages
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.Changelog
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.ChangelogBlock
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.Placeholders
@@ -30,12 +34,7 @@ import org.robolectric.annotation.Config
 class LocalizedTextsTest {
     private val context: Context get() = ApplicationProvider.getApplicationContext()
 
-    private fun inEveryLanguage(block: (lang: String) -> Unit) {
-        for (lang in listOf("en", "de", "ru", "uk")) {
-            RuntimeEnvironment.setQualifiers(lang)
-            block(lang)
-        }
-    }
+    private fun inEveryLanguage(block: (lang: String) -> Unit) = inEveryAppLanguage { block(it.tag) }
 
     @Test
     fun statusTextsResolve() = inEveryLanguage { lang ->
@@ -89,6 +88,22 @@ class LocalizedTextsTest {
     }
 
     @Test
+    fun accountTextsResolve() = inEveryLanguage { lang ->
+        val res = context.resources
+        LinkError.entries.forEach { assertTrue("$lang $it", AccountTexts.failure(it).text.resolve(res).isNotBlank()) }
+        // the redirect URI and Discord's setting appear as they are (to be typed into the Developer Portal)
+        assertTrue(lang, AccountTexts.redirectHint.resolve(res).contains(DiscordOAuth.REDIRECT_URI))
+        assertTrue(lang, AccountTexts.failure(LinkError.REDIRECT_NOT_ADDED).text.resolve(res).contains(DiscordOAuth.REDIRECT_URI))
+        assertTrue(lang, AccountTexts.failure(LinkError.NOT_PUBLIC_CLIENT).text.resolve(res).contains("Public Client"))
+        assertTrue(lang, UiText(R.string.msg_account_linked, "Fl4sh").resolve(res).contains("Fl4sh"))
+        assertTrue(lang, UiText(R.string.cd_account_avatar, "Fl4sh").resolve(res).contains("Fl4sh"))
+        listOf(R.string.acc_not_linked, R.string.acc_hint, R.string.acc_link, R.string.acc_refresh, R.string.acc_restart, R.string.acc_unlink,
+            R.string.acc_waiting, R.string.acc_working, R.string.acc_privacy, R.string.acc_no_app_id,
+            R.string.prev_link_account, R.string.msg_account_failed, R.string.msg_account_unlinked,
+        ).forEach { assertTrue("$lang $it", res.getString(it).isNotBlank()) }
+    }
+
+    @Test
     fun placeholderTextsAreNotFormatted() {
         RuntimeEnvironment.setQualifiers("en")
         assertEquals("Length of %bar%", context.getString(R.string.disp_bar_length))
@@ -102,7 +117,9 @@ class LocalizedTextsTest {
         assertTrue(lang, context.getString(R.string.ph_rotation).contains(example))
         assertTrue(lang, context.getString(R.string.disp_rotation_note).contains("||"))
         assertTrue(lang, context.getString(R.string.disp_rotation).isNotBlank())
-        assertTrue(lang, context.getString(R.string.disp_rotation_value, 15).contains("15"))
+        // the number in the language's own digits (Arabic: ١٥), as Android formats it
+        val fifteen = String.format(context.resources.configuration.locales[0], "%d", 15)
+        assertTrue(lang, context.getString(R.string.disp_rotation_value, 15).contains(fifteen))
     }
 
     @Test
@@ -116,13 +133,15 @@ class LocalizedTextsTest {
             firstItems[lang] = item.spans.joinToString("") { it.text }
             // newest version first, the older ones stay
             val versions = blocks.filterIsInstance<ChangelogBlock.Version>().map { it.version }
-            assertEquals(lang, listOf("1.1.0", "1.0.0"), versions.take(2))
+            assertEquals(lang, listOf("1.2.0", "1.1.0", "1.0.0"), versions.take(3))
             // 1.1.0 tells about the rotating texts, with their example
-            val newest = blocks.drop(1).takeWhile { it !is ChangelogBlock.Version }.filterIsInstance<ChangelogBlock.Item>()
-            assertTrue(lang, newest.any { item -> item.spans.joinToString("") { it.text }.contains("%artist% || %title%") })
+            val v110 = blocks.dropWhile { it != ChangelogBlock.Version("1.1.0") }.drop(1)
+                .takeWhile { it !is ChangelogBlock.Version }.filterIsInstance<ChangelogBlock.Item>()
+            assertTrue(lang, v110.any { item -> item.spans.joinToString("") { it.text }.contains("%artist% || %title%") })
         }
-        assertEquals(4, firstItems.values.toSet().size)
-        assertTrue(firstItems.getValue("de").startsWith("App-Einstellungen"))
+        // each language has its own changelog
+        assertEquals(AppLanguages.ALL.size, firstItems.values.toSet().size)
+        assertTrue(firstItems.getValue("de").startsWith("Discord-Konto verknüpfen"))
     }
 
     @Test
@@ -131,8 +150,7 @@ class LocalizedTextsTest {
         inEveryLanguage { lang -> notes[lang] = context.getString(R.string.about_translation_note) }
         assertEquals("", notes["en"])
         assertEquals("", notes["de"])
-        assertTrue(notes.getValue("ru").isNotBlank())
-        assertTrue(notes.getValue("uk").isNotBlank())
+        AppLanguages.ALL.forEach { assertEquals(it.tag, it.aiTranslation, notes.getValue(it.tag).isNotBlank()) }
     }
 
     @Test

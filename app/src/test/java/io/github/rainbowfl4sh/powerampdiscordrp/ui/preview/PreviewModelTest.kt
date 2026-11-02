@@ -7,7 +7,6 @@ import io.github.rainbowfl4sh.powerampdiscordrp.core.model.TrackInfo
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.ActivityTexts
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.Hidden
 import io.github.rainbowfl4sh.powerampdiscordrp.core.presence.StatusStrings
-import io.github.rainbowfl4sh.powerampdiscordrp.core.rpc.DiscordUser
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -254,17 +253,5 @@ class PreviewModelTest {
         assertEquals(0.5f, PreviewModel.fraction(50, 100))
         assertEquals(1f, PreviewModel.fraction(150, 100))
         assertEquals(0f, PreviewModel.fraction(-5, 100))
-    }
-
-    @Test
-    fun avatarLinks() {
-        assertEquals(
-            "https://cdn.discordapp.com/avatars/80351110224678912/a_1f2e3d.png?size=64",
-            avatarUrl(DiscordUser(id = "80351110224678912", avatar = "a_1f2e3d")),
-        )
-        assertEquals("", avatarUrl(null))
-        assertEquals("", avatarUrl(DiscordUser(id = "80351110224678912", avatar = "")))
-        assertEquals("", avatarUrl(DiscordUser(id = "x/../y", avatar = "abc")))
-        assertEquals("", avatarUrl(DiscordUser(id = "1", avatar = "../../evil")))
     }
 }

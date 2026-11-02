@@ -155,12 +155,64 @@ class SettingsStoreTest {
     }
 
     @Test
-    fun anImportedIntervalOutsideTheSliderIsKeptButClampedWhereItIsUsed() {
+    fun anImportedIntervalOutsideTheSliderIsClamped() {
         val s = store()
         val json = """{"app":"poweramp-discord-rp","version":1,"settings":{"rotationSeconds":1}}"""
         assertTrue(s.importJson(json))
-        assertEquals(1, s.config.value.rotationSeconds)
-        assertEquals(Config.ROTATION_MIN_SECONDS, s.config.value.effectiveRotationSeconds())
+        assertEquals(Config.ROTATION_MIN_SECONDS, s.config.value.rotationSeconds)
+    }
+
+    @Test
+    fun importedValuesOutsideTheChoicesFallBackToWhatTheUiShows() {
+        // a hand-edited file, or one of a newer version with more choices: the UI, the bridge and the engine must not
+        // each read such a value their own way
+        val s = store()
+        val json = """{"app":"poweramp-discord-rp","version":1,"settings":{"pausedBehavior":5,"activityType":4,
+            |"statusDisplay":7,"coverMaxPx":0,"uploadHost":9,"updateFrequency":-1,"clearAfterPausedMin":-3,
+            |"barLength":500,"refreshSeconds":0,"details":"kept"}}""".trimMargin()
+        assertTrue(s.importJson(json))
+        val c = s.config.value
+        assertEquals(Config.PAUSED_HIDE, c.pausedBehavior)
+        assertEquals(Config.ACTIVITY_LISTENING, c.activityType)
+        assertEquals(Config.STATUS_DISPLAY_DETAILS, c.statusDisplay)
+        assertEquals(Config.DEFAULT_COVER_PX, c.coverMaxPx)
+        assertEquals(Config.UPLOAD_X0, c.uploadHost)
+        assertEquals(Config.UPDATE_EVERY_START, c.updateFrequency)
+        assertEquals(0, c.clearAfterPausedMin)
+        assertEquals(Config.BAR_LENGTH_MAX, c.barLength)
+        assertEquals(Config.REFRESH_MIN_SECONDS, c.refreshSeconds)
+        assertEquals("kept", c.details)
+        // what is stored is what is used
+        assertEquals(c, SettingsStore(context).config.value)
+    }
+
+    @Test
+    fun storedValuesOutsideTheChoicesAreNormalizedOnLoad() {
+        context.getSharedPreferences(SettingsStore.PREFS_NAME, Context.MODE_PRIVATE).edit()
+            .putString(SettingsStore.KEY_CONFIG, Config(pausedBehavior = 5, activityType = 1, coverMaxPx = -1).toJson())
+            .commit()
+        val c = store().config.value
+        assertEquals(Config.PAUSED_HIDE, c.pausedBehavior)
+        assertEquals(Config.ACTIVITY_LISTENING, c.activityType)
+        assertEquals(Config.DEFAULT_COVER_PX, c.coverMaxPx)
+    }
+
+    @Test
+    fun validChoicesAreKept() {
+        val s = store()
+        s.update {
+            it.copy(
+                pausedBehavior = Config.PAUSED_SHOW, activityType = Config.ACTIVITY_PLAYING, uploadHost = Config.UPLOAD_OFF,
+                coverMaxPx = 1024, statusDisplay = Config.STATUS_DISPLAY_NAME, updateFrequency = Config.UPDATE_MONTHLY,
+                clearAfterPausedMin = 30, barLength = 4, refreshSeconds = 120,
+            )
+        }
+        val c = s.config.value
+        assertEquals(c, c.sanitized())
+        assertEquals(Config.PAUSED_SHOW, c.pausedBehavior)
+        assertEquals(Config.ACTIVITY_PLAYING, c.activityType)
+        assertEquals(1024, c.coverMaxPx)
+        assertEquals(Config(), Config().sanitized())
     }
 
     @Test
@@ -196,10 +248,10 @@ class SettingsStoreTest {
     fun concurrentUpdatesAreNotLost() {
         val s = store()
         val threads = List(8) {
-            Thread { repeat(50) { s.update { c -> c.copy(barLength = c.barLength + 1) } } }
+            Thread { repeat(50) { s.update { c -> c.copy(clearAfterPausedMin = c.clearAfterPausedMin + 1) } } }
         }
         threads.forEach(Thread::start)
         threads.forEach(Thread::join)
-        assertEquals(Config().barLength + 400, s.config.value.barLength)
+        assertEquals(Config().clearAfterPausedMin + 400, s.config.value.clearAfterPausedMin)
     }
 }

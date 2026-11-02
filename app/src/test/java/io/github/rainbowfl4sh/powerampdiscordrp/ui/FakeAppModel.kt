@@ -2,6 +2,8 @@ package io.github.rainbowfl4sh.powerampdiscordrp.ui
 
 import android.net.Uri
 import androidx.compose.ui.graphics.ImageBitmap
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkState
+import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkedAccount
 import io.github.rainbowfl4sh.powerampdiscordrp.core.assets.AppInfoSource
 import io.github.rainbowfl4sh.powerampdiscordrp.core.engine.EngineStatus
 import io.github.rainbowfl4sh.powerampdiscordrp.core.model.Config
@@ -12,6 +14,7 @@ import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.ConfigEditor
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.ConfigStore
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UiText
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UpdateCheckState
+import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.AppLanguage
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.theme.Appearance
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -28,6 +31,7 @@ class FakeAppModel(
     snapshot: PlaybackSnapshot = PlaybackSnapshot(),
     override val defaultClientId: String = "1555109720807702559",
     override val appInfo: AppInfoSource = AppInfoSource.NONE,
+    account: LinkedAccount? = null,
 ) : AppModel {
     val stored = MutableStateFlow(config)
     private val store = object : ConfigStore {
@@ -73,6 +77,30 @@ class FakeAppModel(
     override fun setAppearance(appearance: Appearance) {
         actions += "setAppearance $appearance"
         this.appearance.value = appearance
+    }
+
+    override val language = MutableStateFlow<AppLanguage?>(null)
+    override fun setLanguage(language: AppLanguage?): Boolean {
+        actions += "setLanguage ${language?.tag}"
+        this.language.value = language
+        return false
+    }
+
+    override val account = MutableStateFlow(account)
+    override val accountLink = MutableStateFlow<LinkState>(LinkState.Idle)
+
+    /** What startAccountLink() gives: Discord's page to open (null = no application ID). */
+    var authorizeUrl: String? = "https://discord.com/oauth2/authorize?client_id=$defaultClientId"
+
+    override suspend fun startAccountLink(): String? {
+        actions += "startAccountLink"
+        if (authorizeUrl != null) accountLink.value = LinkState.Waiting
+        return authorizeUrl
+    }
+    override fun cancelAccountLink() { actions += "cancelAccountLink" }
+    override fun unlinkAccount() {
+        actions += "unlinkAccount"
+        account.value = null
     }
 
     /** Pictures "on the web" by URL (none: every picture fails to load, like offline); [loadedPictures] records the requests. */

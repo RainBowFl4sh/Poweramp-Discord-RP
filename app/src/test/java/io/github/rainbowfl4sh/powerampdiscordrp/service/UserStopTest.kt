@@ -67,4 +67,39 @@ class UserStopTest {
         assertFalse(stop.active.value)
         assertFalse(UserStop(prefs).active.value)
     }
+
+    @Test
+    fun taskManagerStopWhilePausedEndsWithThePlayThatWakesTheNextProcess() {
+        // "show while paused": Poweramp paused, the presence shows "Paused", the old process noted it
+        UserStop(prefs).apply {
+            noteState(PlayState.PLAYING)
+            noteState(PlayState.PAUSED)
+        }
+        // stopped from Android's active apps; pressing play in Poweramp starts a new process with a PLAYING broadcast
+        val next = UserStop(prefs)
+        next.stopAtLastKnownState()
+        assertTrue(next.active.value)
+        next.noteState(PlayState.PLAYING)
+        assertTrue("one press of play brings the presence back", next.onPlayState(PlayState.PLAYING))
+        assertFalse(next.active.value)
+    }
+
+    @Test
+    fun taskManagerStopWhilePlayingStillNeedsAPause() {
+        UserStop(prefs).noteState(PlayState.PLAYING)
+        val next = UserStop(prefs)
+        next.stopAtLastKnownState()
+        assertFalse("the next track", next.onPlayState(PlayState.PLAYING))
+        assertTrue(next.active.value)
+        assertFalse(next.onPlayState(PlayState.PAUSED))
+        assertTrue(next.onPlayState(PlayState.PLAYING))
+    }
+
+    @Test
+    fun taskManagerStopWithoutKnownStateCountsAsPlaying() {
+        val stop = UserStop(prefs)
+        stop.stopAtLastKnownState()
+        assertFalse(stop.onPlayState(PlayState.PLAYING))
+        assertTrue(stop.active.value)
+    }
 }

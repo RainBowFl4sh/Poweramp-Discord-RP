@@ -102,8 +102,8 @@ class AboutPageTest {
 
     @Test
     fun theLinkButtonsAreCentered() {
-        for (lang in listOf("en", "de", "ru", "uk")) {
-            RuntimeEnvironment.setQualifiers(lang)
+        inEveryAppLanguage { language ->
+            val lang = language.tag
             assertCenteredLinkRows(lang)
         }
         // a phone: "Report a problem" alone in a second row, centered under the other two
