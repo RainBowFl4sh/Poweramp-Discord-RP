@@ -22,8 +22,8 @@ android {
         applicationId = "io.github.rainbowfl4sh.powerampdiscordrp"
         minSdk = 26
         targetSdk = 36
-        versionCode = 10100
-        versionName = "1.1.0"
+        versionCode = 10200
+        versionName = "1.2.0"
         buildConfigField("String", "DISCORD_APPLICATION_ID", "\"$discordApplicationId\"")
         buildConfigField("String", "GITHUB_REPO", "\"RainBowFl4sh/Poweramp-Discord-RP\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -74,6 +74,8 @@ android {
     testOptions {
         unitTests.isIncludeAndroidResources = true
         unitTests.isReturnDefaultValues = true
+        // Robolectric renders every screen in all 30 languages: more than the default 512 MB heap
+        unitTests.all { it.maxHeapSize = "2g" }
     }
 
     packaging {
