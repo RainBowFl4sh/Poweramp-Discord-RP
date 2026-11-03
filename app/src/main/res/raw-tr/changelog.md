@@ -1,5 +1,12 @@
 # Değişiklik günlüğü
 
+## 1.2.1
+
+### İyileştirmeler
+- **Arka plan hizmeti**: Poweramp açılır açılmaz değil, yalnızca bir parça gerçekten çaldığında başlar ve artık hiçbir
+  şey çalmadığında (duraklatma süresinden sonra) kendini kapatır
+- **Kapak yüklemeleri**: "cover.jpg" yerine rastgele dosya adları – x0.at yüklemeleri reddetmeye başlamıştı
+
 ## 1.2.0
 
 ### Yeni

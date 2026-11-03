@@ -1,5 +1,12 @@
 # Wijzigingen
 
+## 1.2.1
+
+### Verbeterd
+- **Achtergronddienst**: start pas als er echt een nummer speelt, niet al bij het openen van Poweramp, en stopt
+  vanzelf zodra er niets meer speelt (na de pauzelimiet)
+- **Hoesuploads**: willekeurige bestandsnamen in plaats van ‘cover.jpg’ – x0.at weigerde uploads
+
 ## 1.2.0
 
 ### Nieuw

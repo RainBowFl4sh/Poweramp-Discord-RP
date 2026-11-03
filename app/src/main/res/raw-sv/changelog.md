@@ -1,5 +1,12 @@
 # Ändringslogg
 
+## 1.2.1
+
+### Förbättrat
+- **Bakgrundstjänst**: startar först när ett spår faktiskt spelas, inte redan när Poweramp öppnas, och stoppar sig
+  själv när inget spelas längre (efter pausgränsen)
+- **Uppladdning av omslag**: slumpmässiga filnamn i stället för ”cover.jpg” – x0.at hade börjat neka uppladdningar
+
 ## 1.2.0
 
 ### Nytt

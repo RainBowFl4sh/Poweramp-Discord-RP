@@ -1,5 +1,12 @@
 # Istoricul modificărilor
 
+## 1.2.1
+
+### Îmbunătățit
+- **Serviciul din fundal**: pornește doar când chiar se redă o piesă, nu deja la deschiderea Poweramp, și se oprește
+  singur când nu mai rulează nimic (după limita de pauză)
+- **Încărcarea copertelor**: nume de fișiere aleatorii în loc de „cover.jpg” – x0.at începuse să refuze încărcările
+
 ## 1.2.0
 
 ### Nou

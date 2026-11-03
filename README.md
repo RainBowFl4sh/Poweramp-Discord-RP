@@ -1,4 +1,4 @@
-# Poweramp Discord Rich Presence 1.2.0 for Android
+# Poweramp Discord Rich Presence 1.2.1 for Android
 
 Shows the song [Poweramp](https://powerampapp.com) is playing on your phone as Discord Rich Presence -
 **"Listening to Poweramp"** with Discord's own progress bar, the album cover and a clickable song title. It works
@@ -13,8 +13,8 @@ same features, same cover sources, same settings where they make sense on a phon
 
 | File (on the [Releases](https://github.com/RainBowFl4sh/Poweramp-Discord-RP/releases) page) | |
 |---|---|
-| `PowerampDiscordRP-v1.2.0.apk` | the app - Android 8.0 or newer, any CPU |
-| `PowerampDiscordRP-v1.2.0.apk.sha256` | SHA-256 checksum of the APK |
+| `PowerampDiscordRP-v1.2.1.apk` | the app - Android 8.0 or newer, any CPU |
+| `PowerampDiscordRP-v1.2.1.apk.sha256` | SHA-256 checksum of the APK |
 
 Author: **Fl4sh**
 
@@ -325,7 +325,9 @@ The *Discord account* card on the *Status* tab says what went wrong:
 ### The notification
 
 Android requires a visible notification while an app runs a foreground service. It is only there while Poweramp
-plays and disappears a minute after nothing is shown any more. You can hide it in Android's notification settings
+plays: opening Poweramp or a paused track does not start it - only a track that really plays does. It disappears a
+minute after nothing is shown any more (stopped, hidden while paused, or after the paused timeout "hide after N
+minutes"); with "show Paused" and no timeout it stays while Poweramp is paused. You can hide it in Android's notification settings
 for the app - the presence keeps working.
 
 Its *Stop* button ends the presence until Poweramp starts playing again (or you press *Send test presence* /
@@ -458,6 +460,9 @@ the version comes from the tag or title, the download is the first attached `.ap
 
 The full list of changes is in [CHANGELOG.md](CHANGELOG.md) (also in [Deutsch](CHANGELOG.de.md)) and on the app's
 *About* tab.
+
+**1.2.1** - The background service starts only when a track really plays (not already when Poweramp is opened) and
+stops itself once nothing plays any more; cover uploads get random file names, because x0.at refused `cover.jpg`.
 
 **1.2.0** - Link your Discord account (your real name and picture in the live preview and on the *Status* tab),
 26 more languages (30 in all) with a language picker in *App settings* (also Android 13's per-app language), less

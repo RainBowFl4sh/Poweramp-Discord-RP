@@ -1,5 +1,13 @@
 # Változásnapló
 
+## 1.2.1
+
+### Fejlesztések
+- **Háttérszolgáltatás**: csak akkor indul, ha tényleg szól egy szám, nem már a Poweramp megnyitásakor, és magától
+  leáll, ha már semmi sem szól (a szüneteltetési időkorlát után)
+- **Borítók feltöltése**: véletlenszerű fájlnevek a „cover.jpg” helyett – az x0.at elkezdte elutasítani a
+  feltöltéseket
+
 ## 1.2.0
 
 ### Új

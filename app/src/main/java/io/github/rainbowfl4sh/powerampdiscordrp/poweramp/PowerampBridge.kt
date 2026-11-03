@@ -43,7 +43,7 @@ object PowerampBridge {
 
     /**
      * Reads Poweramp's sticky TRACK_CHANGED / STATUS_CHANGED broadcasts (current state even if this app was not running),
-     * submits the snapshot to the engine and starts the presence service if something is to be shown.
+     * submits the snapshot to the engine and starts the presence service if a track plays.
      * Called when the app is opened (on a background thread) and by the service on start. Any thread.
      */
     fun sync(context: Context) {
@@ -105,14 +105,14 @@ object PowerampBridge {
     }
 
     /**
-     * True if Discord is to show something for this snapshot (playing, or paused with "show paused" and not hidden by a
-     * filter or the paused timeout) - the presence service is only started then.
+     * True if the presence service is to be started for this snapshot: a track really plays and is not hidden by a
+     * filter. A paused track does not start it (Poweramp reports its last track as paused as soon as it is opened, and
+     * every TRACK_CHANGED while paused renews the pause's stamp - the service ran for nothing then); a running service
+     * still shows "Paused" and stops itself after the paused timeout.
      */
     fun wantsPresence(config: Config, snapshot: PlaybackSnapshot, nowMs: Long): Boolean {
-        if (!config.enabled || snapshot.state == PlayState.STOPPED || snapshot.track.isEmpty) return false
-        // While paused, the stamp is the time of the pause (good enough for the clearAfterPausedMin check)
-        val pausedForMs = if (snapshot.state == PlayState.PAUSED) (nowMs - snapshot.stampMs).coerceAtLeast(0) else 0
-        return PresenceTexts.compute(config, snapshot, nowMs, pausedForMs, StatusStrings()).hidden == Hidden.NO
+        if (!config.enabled || snapshot.state != PlayState.PLAYING || snapshot.track.isEmpty) return false
+        return PresenceTexts.compute(config, snapshot, nowMs, 0, StatusStrings()).hidden == Hidden.NO
     }
 
     /**
@@ -141,7 +141,7 @@ object PowerampBridge {
             if (resumed) Graph.log.log("Poweramp: playback started again, the presence is back")
         }
 
-    /** Starts the presence service when something is to be shown - unless it runs already or the user stopped it. */
+    /** Starts the presence service when a track plays - unless it runs already or the user stopped it. */
     private fun ensureService(context: Context, snapshot: PlaybackSnapshot, config: Config) {
         if (PresenceService.running.value || PresenceService.userStop.active.value) return
         if (!wantsPresence(config, snapshot, AndroidClock.nowMs()) || !canConnect(config)) return

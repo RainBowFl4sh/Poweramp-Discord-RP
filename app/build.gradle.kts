@@ -22,8 +22,8 @@ android {
         applicationId = "io.github.rainbowfl4sh.powerampdiscordrp"
         minSdk = 26
         targetSdk = 36
-        versionCode = 10200
-        versionName = "1.2.0"
+        versionCode = 10201
+        versionName = "1.2.1"
         buildConfigField("String", "DISCORD_APPLICATION_ID", "\"$discordApplicationId\"")
         buildConfigField("String", "GITHUB_REPO", "\"RainBowFl4sh/Poweramp-Discord-RP\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

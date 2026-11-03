@@ -1,5 +1,12 @@
 # Lista zmian
 
+## 1.2.1
+
+### Ulepszenia
+- **Usługa w tle**: uruchamia się dopiero, gdy utwór naprawdę gra, a nie już przy otwarciu Powerampa, i sama się
+  wyłącza, gdy nic już nie gra (po limicie pauzy)
+- **Wysyłanie okładek**: losowe nazwy plików zamiast „cover.jpg” – x0.at zaczął odrzucać wysyłki
+
 ## 1.2.0
 
 ### Nowości

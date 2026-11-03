@@ -1,5 +1,13 @@
 # Registro de cambios
 
+## 1.2.1
+
+### Mejoras
+- **Servicio en segundo plano**: solo se inicia cuando de verdad suena una pista, no ya al abrir Poweramp, y se
+  detiene solo cuando ya no suena nada (tras el límite de pausa)
+- **Subida de portadas**: nombres de archivo aleatorios en lugar de «cover.jpg»: x0.at había empezado a rechazar las
+  subidas
+
 ## 1.2.0
 
 ### Novedades

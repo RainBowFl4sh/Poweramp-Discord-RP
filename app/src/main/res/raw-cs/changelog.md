@@ -1,5 +1,12 @@
 # Seznam změn
 
+## 1.2.1
+
+### Vylepšeno
+- **Služba na pozadí**: spustí se, až když skladba opravdu hraje, ne už při otevření Powerampu, a sama se ukončí,
+  jakmile nic nehraje (po časovém limitu pauzy)
+- **Nahrávání obalů**: náhodné názvy souborů místo „cover.jpg“ – x0.at začal nahrávání odmítat
+
 ## 1.2.0
 
 ### Nové

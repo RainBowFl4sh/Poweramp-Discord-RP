@@ -1,5 +1,12 @@
 # Nhật ký thay đổi
 
+## 1.2.1
+
+### Cải thiện
+- **Dịch vụ nền**: chỉ khởi động khi thực sự có bài đang phát, không phải ngay khi mở Poweramp, và tự dừng khi không
+  còn gì phát (sau thời hạn tạm dừng)
+- **Tải ảnh bìa lên**: tên tệp ngẫu nhiên thay cho "cover.jpg" – x0.at đã bắt đầu từ chối tải lên
+
 ## 1.2.0
 
 ### Mới

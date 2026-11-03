@@ -1,5 +1,12 @@
 # Historique des versions
 
+## 1.2.1
+
+### Améliorations
+- **Service en arrière-plan** : ne démarre que lorsqu’un titre est vraiment lu, plus dès l’ouverture de Poweramp, et
+  s’arrête de lui-même quand plus rien ne joue (après le délai de pause)
+- **Envoi des pochettes** : noms de fichiers aléatoires au lieu de « cover.jpg » – x0.at refusait les envois
+
 ## 1.2.0
 
 ### Nouveautés

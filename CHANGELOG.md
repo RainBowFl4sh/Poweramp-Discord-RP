@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.1
+
+### Improved
+- **Background service only while a track plays**: the presence service now starts only when Poweramp really plays a
+  track. Opening Poweramp (it reports its last track as paused) or a track change while paused no longer starts it,
+  also with "show Paused" - before, the service could run in the background without a single song played. A running
+  service still shows "Paused" and stops itself a minute after nothing is shown any more, e.g. after the paused
+  timeout ("remove after a pause")
+- **Cover uploads**: every upload gets a random file name (10 letters / digits, like the AIMP plugin) instead of
+  `cover.jpg` / `cover.png` - x0.at had started to refuse files with that name ("403 File type not allowed.")
+
 ## 1.2.0
 
 ### New

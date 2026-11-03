@@ -72,7 +72,9 @@ class CoverUploadTest {
         assertTrue(r.isUploaded)
         assertEquals(listOf(300), encoderSizes)
         val body = bodyOf("/x0/")
-        assertTrue(body, body.contains("name=\"file\"; filename=\"cover.jpg\""))
+        // a random name: x0.at refuses "cover.jpg"
+        assertTrue(body, randomJpgName("file").containsMatchIn(body))
+        assertFalse(body, body.contains("filename=\"cover."))
         assertTrue(body.contains("Content-Type: image/jpeg"))
         assertTrue("the encoded JPEG is sent", net.last("/x0/").body!!.indexOf(okio.ByteString.of(*ENCODED_JPEG)) >= 0)
         // the uploaded picture was checked with a ranged GET
@@ -96,7 +98,7 @@ class CoverUploadTest {
         val body = req.body!!.utf8()
         assertTrue(body, Regex("name=\"reqtype\"\r\n(?:[^\r\n]+\r\n)*\r\nfileupload\r\n").containsMatchIn(body))
         assertTrue(body, Regex("name=\"userhash\"\r\n(?:[^\r\n]+\r\n)*\r\n\r\n").containsMatchIn(body))
-        assertTrue(body.contains("name=\"fileToUpload\"; filename=\"cover.jpg\""))
+        assertTrue(body, randomJpgName("fileToUpload").containsMatchIn(body))
         assertEquals(0, net.count("/x0/"))
     }
 
@@ -113,7 +115,7 @@ class CoverUploadTest {
         assertEquals("poweramp|Imgur", r.source)
         val req = net.last("/imgur/3/image")
         assertEquals("Client-ID abc123", req.headers["Authorization"])
-        assertTrue(req.body!!.utf8().contains("name=\"image\"; filename=\"cover.jpg\""))
+        assertTrue(randomJpgName("image").containsMatchIn(req.body!!.utf8()))
     }
 
     @Test
@@ -439,7 +441,7 @@ class CoverUploadTest {
 
         assertEquals("https://files.test/img/a.png", resolver().resolve(TRACK, UPLOAD_ONLY).url)
         val body = bodyOf("/x0/")
-        assertTrue(body.contains("filename=\"cover.png\""))
+        assertTrue(body, Regex("filename=\"[a-z0-9]{10}\\.png\"").containsMatchIn(body))
         assertTrue(body.contains("Content-Type: image/png"))
     }
 
@@ -542,5 +544,18 @@ class CoverUploadTest {
         }
         assertTrue("uploads ran at the same time", maxInside.get() > 1)
         assertFalse(log.has("failed"))
+    }
+
+    @Test
+    fun uploadNamesAreRandom() {
+        val names = (1..20).map { UploadHosts.randomFileName("jpg") }.toSet()
+        assertTrue(names.all { Regex("[a-z0-9]{10}\\.jpg").matches(it) })
+        assertTrue("different names", names.size > 1)
+        assertEquals("png", UploadHosts.randomFileName("png").substringAfterLast('.'))
+    }
+
+    private companion object {
+        /** The file part with a random 10-character name (x0.at refuses "cover.jpg"). */
+        fun randomJpgName(field: String) = Regex("name=\"$field\"; filename=\"[a-z0-9]{10}\\.jpg\"")
     }
 }

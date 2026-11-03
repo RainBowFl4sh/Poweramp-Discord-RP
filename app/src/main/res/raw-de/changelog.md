@@ -1,5 +1,12 @@
 # Änderungen
 
+## 1.2.1
+
+### Verbessert
+- **Hintergrunddienst**: startet erst, wenn wirklich ein Titel spielt, nicht schon beim Öffnen von Poweramp, und
+  beendet sich selbst, sobald nichts mehr spielt (nach der Pausen-Zeitgrenze)
+- **Cover-Uploads**: zufällige Dateinamen statt „cover.jpg“ – x0.at hatte Uploads abgelehnt
+
 ## 1.2.0
 
 ### Neu

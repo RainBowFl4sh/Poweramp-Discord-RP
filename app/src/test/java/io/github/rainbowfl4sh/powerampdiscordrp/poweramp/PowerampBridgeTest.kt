@@ -52,6 +52,22 @@ class PowerampBridgeTest {
         assertFalse(PowerampBridge.wantsPresence(Config(), PlaybackSnapshot(PlayState.PLAYING, TrackInfo()), 0))
     }
 
+    @Test
+    fun aPlayingTrackStartsTheService() {
+        assertTrue(PowerampBridge.wantsPresence(Config(), PlaybackSnapshot(PlayState.PLAYING, song), 0))
+    }
+
+    @Test
+    fun aPausedTrackDoesNotStartTheService() {
+        // Poweramp reports its last track as paused as soon as it is opened: no service until a track really plays,
+        // also with "show paused" and no paused timeout
+        val paused = PlaybackSnapshot(PlayState.PAUSED, song, stampMs = 1_000)
+        assertFalse(PowerampBridge.wantsPresence(Config(), paused, 1_000))
+        val showPaused = Config(pausedBehavior = Config.PAUSED_SHOW, clearAfterPausedMin = 0)
+        assertFalse(PowerampBridge.wantsPresence(showPaused, paused, 1_000))
+        assertFalse(PowerampBridge.wantsPresence(showPaused.copy(clearAfterPausedMin = 3), paused, 1_000))
+    }
+
     @After
     fun forgetRejection() = PresenceService.rejectedAppId.clear()
 

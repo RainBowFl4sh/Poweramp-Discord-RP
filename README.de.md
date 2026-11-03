@@ -1,4 +1,4 @@
-# Poweramp Discord Rich Presence 1.2.0 für Android
+# Poweramp Discord Rich Presence 1.2.1 für Android
 
 Zeigt den Song, den [Poweramp](https://powerampapp.com) auf deinem Handy spielt, als Discord Rich Presence an -
 **„Hört Poweramp“** mit Discords eigenem Fortschrittsbalken, dem Album-Cover und einem anklickbaren Songtitel.
@@ -14,8 +14,8 @@ dieselben Funktionen, dieselben Cover-Quellen, dieselben Einstellungen, soweit s
 
 | Datei (auf der Seite [Releases](https://github.com/RainBowFl4sh/Poweramp-Discord-RP/releases)) | |
 |---|---|
-| `PowerampDiscordRP-v1.2.0.apk` | die App - Android 8.0 oder neuer, jede CPU |
-| `PowerampDiscordRP-v1.2.0.apk.sha256` | SHA-256-Prüfsumme der APK |
+| `PowerampDiscordRP-v1.2.1.apk` | die App - Android 8.0 oder neuer, jede CPU |
+| `PowerampDiscordRP-v1.2.1.apk.sha256` | SHA-256-Prüfsumme der APK |
 
 Autor: **Fl4sh**
 
@@ -339,7 +339,10 @@ Die Karte *Discord-Konto* im Tab *Status* sagt, was schiefging:
 ### Die Benachrichtigung
 
 Android verlangt eine sichtbare Benachrichtigung, solange eine App einen Vordergrunddienst ausführt. Sie ist nur da,
-während Poweramp spielt, und verschwindet eine Minute, nachdem nichts mehr angezeigt wird. Du kannst sie in den
+während Poweramp spielt: das Öffnen von Poweramp oder ein pausierter Titel startet sie nicht, erst ein Titel, der
+wirklich spielt. Sie verschwindet eine Minute, nachdem nichts mehr angezeigt wird (gestoppt, in der Pause
+ausgeblendet oder nach der Zeitgrenze „nach N Minuten ausblenden“); mit „Pausiert“ anzeigen und ohne Zeitgrenze
+bleibt sie, solange Poweramp pausiert. Du kannst sie in den
 Android-Benachrichtigungseinstellungen der App ausblenden - die Presence funktioniert weiter.
 
 Mit ihrer Schaltfläche *Beenden* verschwindet die Presence, bis Poweramp wieder zu spielen beginnt (oder du in der App
@@ -488,6 +491,10 @@ angeboten): Die Version stammt aus dem Tag oder Titel, der Download ist die erst
 
 Alle Änderungen stehen in [CHANGELOG.de.md](CHANGELOG.de.md) (auch auf [English](CHANGELOG.md)) und im Tab *Über*
 der App.
+
+**1.2.1** - Der Hintergrunddienst startet erst, wenn wirklich ein Titel spielt (nicht schon beim Öffnen von
+Poweramp), und beendet sich selbst, sobald nichts mehr spielt; Cover-Uploads bekommen zufällige Dateinamen, weil
+x0.at `cover.jpg` abgelehnt hat.
 
 **1.2.0** - Discord-Konto verknüpfen (dein echter Name und dein Bild in der Live-Vorschau und im Tab *Status*),
 26 weitere Sprachen (insgesamt 30) mit Sprachauswahl in den *App-Einstellungen* (auch als App-Sprache von Android 13),
