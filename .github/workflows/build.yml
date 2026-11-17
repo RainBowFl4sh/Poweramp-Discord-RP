@@ -124,6 +124,7 @@ jobs:
               echo "::warning::No Discord application ID (secret DISCORD_APPLICATION_ID or gradle.properties) - users must enter their own"
             fi
           fi
+          # files uploaded through GitHub's web page lose the executable bit: run the wrapper through bash
           bash ./gradlew --stacktrace "${args[@]}" :core:test :app:testDebugUnitTest :app:assembleDebug :app:assembleRelease
 
       - name: Verify release signature
