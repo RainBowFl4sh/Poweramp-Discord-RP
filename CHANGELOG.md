@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.3.0
+
+### New
+- **Updates inside the app**: *Install <version>* on the *About* tab downloads the new version from GitHub, checks it against the
+  SHA-256 checksum GitHub publishes (or the `.sha256` file of the release) and its signature (same app, newer version,
+  same key) and hands it to Android's installer - no browser, no file manager. *Install updates automatically* (on by
+  default) does it by itself after a check; from Android 12 on Android stops asking once the app installed itself the
+  first time, before that it shows its confirmation (as a notification while the app is in the background). After the
+  update a notification tells the new version and a presence that was shown comes back at once
+- **Own texts for pause and radio / streams** (*Display* tab → *Texts for*: *Playback*, *Pause*, *Radio / stream*):
+  details, state and both image tooltips can differ while paused or for a stream; empty fields take the playback text.
+  The live preview shows the chosen case
+- **Support the app**: an optional PayPal donation link on the *About* tab
+
+### Improved
+- **Update check**: when GitHub's request limit is used up (VPN, shared address) the newest version is read from the
+  release feed instead
+- **Deezer covers**: a free-text search for artist + title when the exact searches find nothing
+- **No stuck "Paused" on Discord**: before, the last presence (e.g. "Paused" after the paused timeout) could stay on the
+  profile although the app had stopped - its clear was never confirmed, and the service left the foreground right
+  after the final clear, so Android could freeze the Discord app before it passed it on. Now Discord has to confirm
+  every clear; an unanswered or rejected clear is sent again (at most 3 times), and the service stops only after that.
+  On stop it waits up to 2 s for Discord's answer to the final clear before it disconnects
+
 ## 1.2.1
 
 ### Improved

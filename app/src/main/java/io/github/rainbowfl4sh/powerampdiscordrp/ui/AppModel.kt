@@ -13,6 +13,7 @@ import io.github.rainbowfl4sh.powerampdiscordrp.settings.EnvState
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.ConfigEditor
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UiText
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UpdateCheckState
+import io.github.rainbowfl4sh.powerampdiscordrp.update.InstallState
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.AppLanguage
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.theme.Appearance
 import kotlinx.coroutines.flow.Flow
@@ -40,6 +41,9 @@ interface AppModel {
     /** Result of the last environment check, null until the first one finished. */
     val env: StateFlow<EnvState?>
     val update: StateFlow<UpdateCheckState>
+
+    /** Progress of an update installed from the app. */
+    val install: StateFlow<InstallState>
 
     /** Short confirmations / errors for the snackbar. */
     val messages: Flow<UiText>
@@ -69,6 +73,9 @@ interface AppModel {
     fun importSettings(uri: Uri)
     fun resetToDefaults()
     fun checkForUpdates(manual: Boolean)
+
+    /** Downloads, checks and installs the newest version (the About tab's "Install"). */
+    fun installUpdate()
 
     /** How the app looks (top bar menu -> App settings): theme, AMOLED black, dynamic color. Not part of [config]. */
     val appearance: StateFlow<Appearance>

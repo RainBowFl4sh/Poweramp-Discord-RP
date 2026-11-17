@@ -1,5 +1,19 @@
 # Istorija promena
 
+## 1.3.0
+
+### Novo
+- **Ažuriranja u aplikaciji**: „Instaliraj“ na kartici „O aplikaciji“ preuzima, proverava (SHA-256, potpis) i
+  instalira novu verziju – bez pregledača. „Automatski instaliraj ažuriranja“ to radi samo; od Android-a 12 posle
+  prvog puta bez pitanja
+- **Sopstveni tekstovi za pauzu i radio** (kartica „Prikaz“ → „Tekstovi za“); prazna polja koriste tekst reprodukcije
+- **Podrži aplikaciju**: mali, dobrovoljni PayPal link na kartici „O aplikaciji“
+
+### Poboljšano
+- **Provera ažuriranja** radi i kad se potroši GitHub ograničenje zahteva (VPN, deljena adresa)
+- **Deezer omoti**: slobodna pretraga izvođač + naslov kad tačna pretraga ništa ne nađe
+- **Nema zaglavljenog „Pauzirano”**: Discord mora da potvrdi da je status uklonjen, inače se uklanja ponovo; usluga se zaustavlja tek posle toga
+
 ## 1.2.1
 
 ### Poboljšano

@@ -394,4 +394,32 @@
     <string name="field_show">Εμφάνιση</string>
     <string name="field_hide">Απόκρυψη</string>
     <string name="field_range">Επιτρέπεται: %1$d έως %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Κείμενα για</string>
+    <string name="disp_texts_for_playing">Αναπαραγωγή</string>
+    <string name="disp_texts_for_paused">Παύση</string>
+    <string name="disp_texts_for_stream">Ραδιόφωνο / stream</string>
+    <string name="disp_texts_paused_note">Εμφανίζονται σε παύση – μόνο αν εμφανίζεται το «Σε παύση» (δείτε Παύση παρακάτω). Τα κενά πεδία παίρνουν το κείμενο της αναπαραγωγής.</string>
+    <string name="disp_texts_stream_note">Εμφανίζονται για διαδικτυακό ραδιόφωνο και άλλα streams. Τα κενά πεδία παίρνουν το κείμενο της αναπαραγωγής.</string>
+    <string name="about_update_auto">Αυτόματη εγκατάσταση ενημερώσεων</string>
+    <string name="about_update_auto_note">Η εφαρμογή κατεβάζει τις νέες εκδόσεις από το GitHub, τις ελέγχει (SHA-256 και υπογραφή) και τις εγκαθιστά. Την πρώτη φορά το Android ζητά άδεια εγκατάστασης από αυτή την εφαρμογή· από το Android 12 οι επόμενες ενημερώσεις εγκαθίστανται χωρίς ερώτηση.</string>
+    <string name="upd_install">Εγκατάσταση %1$s</string>
+    <string name="upd_downloading">Λήψη %1$s…</string>
+    <string name="upd_downloading_percent">Λήψη %1$s… %2$d %%</string>
+    <string name="upd_installing">Εγκατάσταση %1$s…</string>
+    <string name="upd_confirm">Επιβεβαιώστε την εγκατάσταση της %1$s στο παράθυρο του Android (ή πατήστε την ειδοποίηση).</string>
+    <string name="upd_fail_no_apk">Η έκδοση δεν έχει APK – κατεβάστε την από το GitHub.</string>
+    <string name="upd_fail_no_checksum">Η έκδοση δεν έχει άθροισμα ελέγχου – η εφαρμογή δεν εγκαθιστά τίποτα που δεν μπορεί να ελέγξει. Κατεβάστε την από το GitHub.</string>
+    <string name="upd_fail_offline">Η λήψη απέτυχε: καμία σύνδεση με το GitHub.</string>
+    <string name="upd_fail_damaged">Η λήψη είναι κατεστραμμένη (το άθροισμα ελέγχου δεν ταιριάζει) – δοκιμάστε ξανά.</string>
+    <string name="upd_fail_wrong_app">Η λήψη δεν είναι νεότερη έκδοση αυτής της εφαρμογής με την ίδια υπογραφή – δεν εγκαταστάθηκε.</string>
+    <string name="upd_fail_storage">Η λήψη δεν αποθηκεύτηκε (γεμάτος χώρος;).</string>
+    <string name="upd_fail_aborted">Η εγκατάσταση ακυρώθηκε.</string>
+    <string name="upd_fail_install">Το Android δεν μπόρεσε να εγκαταστήσει την ενημέρωση.</string>
+    <string name="upd_notif_confirm_title">Η ενημέρωση %1$s είναι έτοιμη</string>
+    <string name="upd_notif_confirm_text">Πατήστε για εγκατάσταση.</string>
+    <string name="upd_notif_updated_title">Ενημερώθηκε σε %1$s</string>
+    <string name="upd_notif_updated_text">Η καρτέλα Σχετικά δείχνει τι νέο υπάρχει.</string>
+    <string name="about_donate">Στηρίξτε την εφαρμογή (PayPal)</string>
+    <string name="about_donate_note">Εντελώς προαιρετικό – όλα λειτουργούν και χωρίς αυτό.</string>
 </resources>

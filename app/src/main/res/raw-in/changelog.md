@@ -1,5 +1,19 @@
 # Log perubahan
 
+## 1.3.0
+
+### Baru
+- **Pembaruan di dalam aplikasi**: *Pasang* di tab *Tentang* mengunduh, memeriksa (SHA-256, tanda tangan), dan
+  memasang versi baru – tanpa browser. *Pasang pembaruan secara otomatis* melakukannya sendiri; mulai Android 12 tanpa
+  bertanya setelah pertama kali
+- **Teks sendiri untuk jeda dan radio** (tab *Tampilan* → *Teks untuk*); kolom kosong memakai teks pemutaran
+- **Dukung aplikasi**: tautan PayPal kecil dan opsional di tab *Tentang*
+
+### Ditingkatkan
+- **Pemeriksaan pembaruan** tetap berjalan saat batas permintaan GitHub habis (VPN, alamat bersama)
+- **Sampul Deezer**: pencarian bebas artis + judul saat pencarian persis tidak menemukan apa pun
+- **Tidak ada lagi "Dijeda" yang macet**: Discord harus mengonfirmasi bahwa status sudah dihapus, jika tidak status dihapus lagi; layanan baru berhenti setelah itu
+
 ## 1.2.1
 
 ### Ditingkatkan

@@ -395,4 +395,32 @@
     <string name="field_show">Megjelenítés</string>
     <string name="field_hide">Elrejtés</string>
     <string name="field_range">Megengedett: %1$d–%2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Szövegek ehhez</string>
+    <string name="disp_texts_for_playing">Lejátszás</string>
+    <string name="disp_texts_for_paused">Szünet</string>
+    <string name="disp_texts_for_stream">Rádió / stream</string>
+    <string name="disp_texts_paused_note">Szünetben jelenik meg – csak ha a „Szüneteltetve” látható (lásd lent: Szünet). Az üres mezők a lejátszás szövegét használják.</string>
+    <string name="disp_texts_stream_note">Internetes rádiónál és más streameknél jelenik meg. Az üres mezők a lejátszás szövegét használják.</string>
+    <string name="about_update_auto">Frissítések automatikus telepítése</string>
+    <string name="about_update_auto_note">Az app letölti az új verziókat a GitHubról, ellenőrzi őket (SHA-256 és aláírás), és telepíti. Először az Android engedélyt kér az appból való telepítéshez; Android 12-től a későbbi frissítések kérdés nélkül települnek.</string>
+    <string name="upd_install">%1$s telepítése</string>
+    <string name="upd_downloading">%1$s letöltése…</string>
+    <string name="upd_downloading_percent">%1$s letöltése… %2$d %%</string>
+    <string name="upd_installing">%1$s telepítése folyamatban…</string>
+    <string name="upd_confirm">Erősítsd meg a(z) %1$s telepítését az Android ablakában (vagy koppints az értesítésre).</string>
+    <string name="upd_fail_no_apk">A kiadásnak nincs APK-ja – töltsd le a GitHubról.</string>
+    <string name="upd_fail_no_checksum">A kiadásnak nincs ellenőrzőösszege – az app nem telepít semmit, amit nem tud ellenőrizni. Töltsd le a GitHubról.</string>
+    <string name="upd_fail_offline">Sikertelen letöltés: nincs kapcsolat a GitHubbal.</string>
+    <string name="upd_fail_damaged">A letöltés sérült (az ellenőrzőösszeg nem egyezik) – próbáld újra.</string>
+    <string name="upd_fail_wrong_app">A letöltés nem ennek az appnak egy újabb, azonos aláírású verziója – nincs telepítve.</string>
+    <string name="upd_fail_storage">A letöltést nem sikerült menteni (megtelt a tárhely?).</string>
+    <string name="upd_fail_aborted">Telepítés megszakítva.</string>
+    <string name="upd_fail_install">Az Android nem tudta telepíteni a frissítést.</string>
+    <string name="upd_notif_confirm_title">A(z) %1$s frissítés kész</string>
+    <string name="upd_notif_confirm_text">Koppints a telepítéshez.</string>
+    <string name="upd_notif_updated_title">Frissítve erre: %1$s</string>
+    <string name="upd_notif_updated_text">A Névjegy fül mutatja az újdonságokat.</string>
+    <string name="about_donate">Az app támogatása (PayPal)</string>
+    <string name="about_donate_note">Teljesen önkéntes – nélküle is minden működik.</string>
 </resources>

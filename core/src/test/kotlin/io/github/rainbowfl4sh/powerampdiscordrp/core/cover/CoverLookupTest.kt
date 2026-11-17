@@ -178,7 +178,25 @@ class CoverLookupTest {
         val r = resolver().resolve(TRACK, NO_SOURCES.copy(srcDeezer = true))
 
         assertTrue(r.isEmpty)
-        assertEquals("album, track and free text were asked", 3, net.requests.size)
+        assertEquals("album, track and both free texts were asked", 4, net.requests.size)
+    }
+
+    @Test
+    fun deezerTrackFreeTextWhenTheFieldSearchesFindNothing() {
+        // October 2026: artist:"Adele" track:"Hello" -> total 0, "Adele Hello" -> the track
+        var trackCalls = 0
+        net.on("/deezer/search/album") { json("""{"data":[],"total":0}""") }
+        net.on("/deezer/search/track") {
+            trackCalls++
+            if (trackCalls == 1) json("""{"data":[],"total":0}""")
+            else json(deezerTrack("https://cdn-images.dzcdn.net/images/cover/t2/1000x1000.jpg"))
+        }
+
+        val r = resolver().resolve(TRACK, NO_SOURCES.copy(srcDeezer = true))
+
+        assertEquals("https://cdn-images.dzcdn.net/images/cover/t2/1000x1000.jpg", r.url)
+        assertEquals("Daft Punk One More Time", net.last("/deezer/search/track").url.queryParameter("q"))
+        assertEquals(4, net.requests.size)
     }
 
     @Test
@@ -559,7 +577,7 @@ class CoverLookupTest {
         val r = resolver().resolve(TRACK, UPLOAD_ONLY.copy(srcDeezer = true, preferLocal = false))
 
         assertEquals("poweramp|x0.at", r.source)
-        assertEquals(3, net.requests.count { it.url.encodedPath.startsWith("/deezer/") })
+        assertEquals(4, net.requests.count { it.url.encodedPath.startsWith("/deezer/") })
     }
 
     @Test

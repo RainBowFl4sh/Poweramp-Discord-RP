@@ -395,4 +395,32 @@
     <string name="field_show">表示</string>
     <string name="field_hide">非表示</string>
     <string name="field_range">入力できる範囲: %1$d～%2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">テキストの対象</string>
+    <string name="disp_texts_for_playing">再生中</string>
+    <string name="disp_texts_for_paused">一時停止</string>
+    <string name="disp_texts_for_stream">ラジオ / ストリーム</string>
+    <string name="disp_texts_paused_note">一時停止中に表示 –「一時停止中」を表示する設定のときだけ（下の一時停止を参照）。空の欄は再生中のテキストを使います。</string>
+    <string name="disp_texts_stream_note">インターネットラジオなどのストリームで表示。空の欄は再生中のテキストを使います。</string>
+    <string name="about_update_auto">アップデートを自動でインストール</string>
+    <string name="about_update_auto_note">新しいバージョンを GitHub からダウンロードし、確認（SHA-256 と署名）してインストールします。初回は Android がこのアプリからのインストールの許可を求めます。Android 12 以降、次回からは確認なしでインストールされます。</string>
+    <string name="upd_install">%1$s をインストール</string>
+    <string name="upd_downloading">%1$s をダウンロード中…</string>
+    <string name="upd_downloading_percent">%1$s をダウンロード中… %2$d %%</string>
+    <string name="upd_installing">%1$s をインストール中…</string>
+    <string name="upd_confirm">Android のダイアログで %1$s のインストールを確認してください（または通知をタップ）。</string>
+    <string name="upd_fail_no_apk">このリリースには APK がありません – GitHub からダウンロードしてください。</string>
+    <string name="upd_fail_no_checksum">このリリースにはチェックサムがありません – 確認できないものはインストールしません。GitHub からダウンロードしてください。</string>
+    <string name="upd_fail_offline">ダウンロードに失敗しました: GitHub に接続できません。</string>
+    <string name="upd_fail_damaged">ダウンロードが破損しています（チェックサム不一致）– もう一度お試しください。</string>
+    <string name="upd_fail_wrong_app">このアプリの同じ署名の新しいバージョンではありません – インストールしませんでした。</string>
+    <string name="upd_fail_storage">ダウンロードを保存できませんでした（容量不足?）。</string>
+    <string name="upd_fail_aborted">インストールがキャンセルされました。</string>
+    <string name="upd_fail_install">Android がアップデートをインストールできませんでした。</string>
+    <string name="upd_notif_confirm_title">アップデート %1$s の準備完了</string>
+    <string name="upd_notif_confirm_text">タップしてインストール。</string>
+    <string name="upd_notif_updated_title">%1$s に更新しました</string>
+    <string name="upd_notif_updated_text">新機能は「情報」タブに。</string>
+    <string name="about_donate">アプリを支援（PayPal）</string>
+    <string name="about_donate_note">完全に任意です – なくてもすべて動作します。</string>
 </resources>

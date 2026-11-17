@@ -394,4 +394,32 @@
     <string name="field_show">Mostrar</string>
     <string name="field_hide">Ocultar</string>
     <string name="field_range">Permitido: %1$d a %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Textos para</string>
+    <string name="disp_texts_for_playing">Reprodução</string>
+    <string name="disp_texts_for_paused">Pausa</string>
+    <string name="disp_texts_for_stream">Rádio / stream</string>
+    <string name="disp_texts_paused_note">Exibidos em pausa – só se “Pausado” for exibido (veja Pausa abaixo). Campos vazios usam o texto da reprodução.</string>
+    <string name="disp_texts_stream_note">Exibidos para rádio online e outros streams. Campos vazios usam o texto da reprodução.</string>
+    <string name="about_update_auto">Instalar atualizações automaticamente</string>
+    <string name="about_update_auto_note">O app baixa novas versões do GitHub, verifica-as (SHA-256 e assinatura) e as instala. Na primeira vez o Android pede para permitir instalar apps a partir deste app; a partir do Android 12 as próximas são instaladas sem perguntar.</string>
+    <string name="upd_install">Instalar %1$s</string>
+    <string name="upd_downloading">Baixando %1$s…</string>
+    <string name="upd_downloading_percent">Baixando %1$s… %2$d %%</string>
+    <string name="upd_installing">Instalando %1$s…</string>
+    <string name="upd_confirm">Confirme a instalação de %1$s na caixa de diálogo do Android (ou toque na notificação).</string>
+    <string name="upd_fail_no_apk">A versão não tem APK – baixe-a do GitHub.</string>
+    <string name="upd_fail_no_checksum">A versão não tem checksum – o app não instala nada que não possa verificar. Baixe-a do GitHub.</string>
+    <string name="upd_fail_offline">Falha no download: sem conexão com o GitHub.</string>
+    <string name="upd_fail_damaged">O download está danificado (checksum não confere) – tente de novo.</string>
+    <string name="upd_fail_wrong_app">O download não é uma versão mais nova deste app com a mesma assinatura – não instalado.</string>
+    <string name="upd_fail_storage">Não foi possível salvar o download (armazenamento cheio?).</string>
+    <string name="upd_fail_aborted">Instalação cancelada.</string>
+    <string name="upd_fail_install">O Android não conseguiu instalar a atualização.</string>
+    <string name="upd_notif_confirm_title">Atualização %1$s pronta</string>
+    <string name="upd_notif_confirm_text">Toque para instalar.</string>
+    <string name="upd_notif_updated_title">Atualizado para %1$s</string>
+    <string name="upd_notif_updated_text">A aba Sobre mostra as novidades.</string>
+    <string name="about_donate">Apoiar o app (PayPal)</string>
+    <string name="about_donate_note">Totalmente opcional – tudo continua funcionando sem isso.</string>
 </resources>

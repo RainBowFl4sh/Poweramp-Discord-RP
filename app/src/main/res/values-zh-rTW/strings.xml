@@ -394,4 +394,32 @@
     <string name="field_show">顯示</string>
     <string name="field_hide">隱藏</string>
     <string name="field_range">允許範圍：%1$d 到 %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">文字用於</string>
+    <string name="disp_texts_for_playing">播放</string>
+    <string name="disp_texts_for_paused">暫停</string>
+    <string name="disp_texts_for_stream">電台 / 串流</string>
+    <string name="disp_texts_paused_note">暫停時顯示 – 僅在顯示「已暫停」時（見下方暫停）。空白欄位使用播放時的文字。</string>
+    <string name="disp_texts_stream_note">用於網路電台和其他串流。空白欄位使用播放時的文字。</string>
+    <string name="about_update_auto">自動安裝更新</string>
+    <string name="about_update_auto_note">應用程式會從 GitHub 下載新版本，進行檢查（SHA-256 與簽章）並安裝。第一次 Android 會要求允許從此應用程式安裝；從 Android 12 起，之後的更新會直接安裝不再詢問。</string>
+    <string name="upd_install">安裝 %1$s</string>
+    <string name="upd_downloading">正在下載 %1$s…</string>
+    <string name="upd_downloading_percent">正在下載 %1$s… %2$d%%</string>
+    <string name="upd_installing">正在安裝 %1$s…</string>
+    <string name="upd_confirm">請在 Android 對話框中確認安裝 %1$s（或輕觸通知）。</string>
+    <string name="upd_fail_no_apk">此版本沒有 APK – 請從 GitHub 下載。</string>
+    <string name="upd_fail_no_checksum">此版本沒有檢查碼 – 應用程式不會安裝無法檢查的內容。請從 GitHub 下載。</string>
+    <string name="upd_fail_offline">下載失敗：無法連線到 GitHub。</string>
+    <string name="upd_fail_damaged">下載已損毀（檢查碼不符）– 請再試一次。</string>
+    <string name="upd_fail_wrong_app">下載的檔案不是此應用程式相同簽章的較新版本 – 未安裝。</string>
+    <string name="upd_fail_storage">無法儲存下載的檔案（儲存空間已滿？）。</string>
+    <string name="upd_fail_aborted">已取消安裝。</string>
+    <string name="upd_fail_install">Android 無法安裝此更新。</string>
+    <string name="upd_notif_confirm_title">更新 %1$s 已就緒</string>
+    <string name="upd_notif_confirm_text">輕觸即可安裝。</string>
+    <string name="upd_notif_updated_title">已更新至 %1$s</string>
+    <string name="upd_notif_updated_text">「關於」分頁列出了新功能。</string>
+    <string name="about_donate">支持此應用程式（PayPal）</string>
+    <string name="about_donate_note">完全自由 – 不支持也一切正常。</string>
 </resources>

@@ -84,6 +84,7 @@ fun PresencePreview(
     modifier: Modifier = Modifier,
     onLinkAccount: (() -> Unit)? = null,
     clock: State<Long> = rememberPreviewClock(),
+    textCase: TextCase = TextCase.PLAYING,
 ) {
     val example = ExampleTexts(
         title = stringResource(R.string.prev_example_title),
@@ -93,8 +94,8 @@ fun PresencePreview(
     val strings = StatusStrings(playing = stringResource(R.string.word_playing), paused = stringResource(R.string.word_paused))
     // Built again with every tick of the clock (cheap), but a tick only reaches what it changes: the card is drawn again
     // when its texts change (%pos% / %bar% / %percent%, the paused timeout), the progress line follows the position
-    val built = remember(config, snapshot, example, strings, clock) {
-        derivedStateOf { PreviewModel.build(config, snapshot, clock.value, example, strings) }
+    val built = remember(config, snapshot, example, strings, clock, textCase) {
+        derivedStateOf { PreviewModel.build(config, snapshot, clock.value, example, strings, case = textCase) }
     }
     val still = remember(built) { derivedStateOf { PreviewModel.withoutPosition(built.value) } }
     val position = remember(built) { derivedStateOf { built.value.texts.posMs } }

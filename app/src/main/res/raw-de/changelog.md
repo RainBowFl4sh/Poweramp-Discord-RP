@@ -1,5 +1,19 @@
 # Änderungen
 
+## 1.3.0
+
+### Neu
+- **Updates in der App**: *Installieren* im Tab *Über* lädt die neue Version herunter, prüft sie (SHA-256, Signatur)
+  und installiert sie – ohne Browser. *Updates automatisch installieren* erledigt das von selbst; ab Android 12 nach
+  dem ersten Mal ohne Nachfrage
+- **Eigene Texte für Pause und Radio** (Tab *Anzeige* → *Texte für*); leere Felder nehmen den Text der Wiedergabe
+- **Die App unterstützen**: ein kleiner, freiwilliger PayPal-Link im Tab *Über*
+
+### Verbessert
+- **Update-Prüfung** klappt auch, wenn GitHubs Anfragelimit aufgebraucht ist (VPN, geteilte Adresse)
+- **Deezer-Cover**: eine Freitextsuche nach Künstler + Titel, wenn die genaue Suche nichts findet
+- **Kein hängendes „Pausiert“ mehr**: Discord muss bestätigen, dass der Status entfernt wurde, sonst wird er erneut entfernt; erst danach beendet sich der Dienst
+
 ## 1.2.1
 
 ### Verbessert

@@ -77,10 +77,11 @@ object PresenceTexts {
         val vars = variables(c, track, playing, posMs, durMs, strings)
         // one step counter for all fields: alternatives with the same count change together
         val step = TextRotation.step(s.trackSinceMs, nowMs, TextRotation.intervalMs(c))
-        var details = text(c.details, vars, step)
-        val state = text(c.state, vars, step)
-        val largeText = text(c.largeText, vars, step)
-        val smallText = if (c.showSmallIcon) text(c.smallText, vars, step) else ""
+        val t = c.templatesFor(playing, track.isStream)
+        var details = text(t.details, vars, step)
+        val state = text(t.state, vars, step)
+        val largeText = text(t.largeText, vars, step)
+        val smallText = if (c.showSmallIcon) text(t.smallText, vars, step) else ""
         // Discord needs at least one line: fall back to the file name
         if (details.isEmpty() && state.isEmpty()) details = Templates.field(vars.getValue("filename"))
 
@@ -101,9 +102,14 @@ object PresenceTexts {
      * True if a shown text template rotates ("||" between two or more alternatives that are not blank): the presence
      * changes every [Config.effectiveRotationSeconds].
      */
-    fun needsRotation(c: Config): Boolean =
-        TextRotation.rotates(c.details) || TextRotation.rotates(c.state) || TextRotation.rotates(c.largeText) ||
-            (c.showSmallIcon && TextRotation.rotates(c.smallText))
+    fun needsRotation(c: Config, playing: Boolean = true, stream: Boolean = false): Boolean =
+        shownTemplates(c, playing, stream).any { TextRotation.rotates(it) }
+
+    /** The templates shown for this play state / kind of track (the small icon's only while it is shown). */
+    private fun shownTemplates(c: Config, playing: Boolean, stream: Boolean): List<String> {
+        val t = c.templatesFor(playing, stream)
+        return listOfNotNull(t.details, t.state, t.largeText, t.smallText.takeIf { c.showSmallIcon })
+    }
 
     /**
      * One text field: every alternative expanded and made a Discord field on its own, the one of [step] among those that
@@ -118,8 +124,8 @@ object PresenceTexts {
      * True if a shown template uses %pos%, %bar% or %percent% (presence must be refreshed every refreshSeconds); the small
      * icon's text counts only while the small icon is shown, as in [needsRotation].
      */
-    fun needsPeriodicRefresh(c: Config): Boolean =
-        listOfNotNull(c.details, c.state, c.largeText, c.smallText.takeIf { c.showSmallIcon }).any { template ->
+    fun needsPeriodicRefresh(c: Config, playing: Boolean = true, stream: Boolean = false): Boolean =
+        shownTemplates(c, playing, stream).any { template ->
             val l = template.lowercase(Locale.ROOT)
             "%pos%" in l || "%bar%" in l || "%percent%" in l
         }

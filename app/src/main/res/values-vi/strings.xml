@@ -395,4 +395,32 @@
     <string name="field_show">Hiện</string>
     <string name="field_hide">Ẩn</string>
     <string name="field_range">Cho phép: %1$d đến %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Văn bản cho</string>
+    <string name="disp_texts_for_playing">Phát</string>
+    <string name="disp_texts_for_paused">Tạm dừng</string>
+    <string name="disp_texts_for_stream">Radio / luồng</string>
+    <string name="disp_texts_paused_note">Hiển thị khi tạm dừng – chỉ khi “Đã tạm dừng” được hiển thị (xem Tạm dừng bên dưới). Ô trống dùng văn bản khi phát.</string>
+    <string name="disp_texts_stream_note">Hiển thị cho radio Internet và các luồng khác. Ô trống dùng văn bản khi phát.</string>
+    <string name="about_update_auto">Tự động cài đặt bản cập nhật</string>
+    <string name="about_update_auto_note">Ứng dụng tải phiên bản mới từ GitHub, kiểm tra (SHA-256 và chữ ký) rồi cài đặt. Lần đầu Android yêu cầu cho phép cài đặt từ ứng dụng này; từ Android 12 các bản cập nhật sau được cài mà không cần hỏi.</string>
+    <string name="upd_install">Cài đặt %1$s</string>
+    <string name="upd_downloading">Đang tải %1$s…</string>
+    <string name="upd_downloading_percent">Đang tải %1$s… %2$d %%</string>
+    <string name="upd_installing">Đang cài đặt %1$s…</string>
+    <string name="upd_confirm">Xác nhận cài đặt %1$s trong hộp thoại của Android (hoặc chạm vào thông báo).</string>
+    <string name="upd_fail_no_apk">Bản phát hành không có APK – hãy tải từ GitHub.</string>
+    <string name="upd_fail_no_checksum">Bản phát hành không có checksum – ứng dụng không cài thứ gì nó không kiểm tra được. Hãy tải từ GitHub.</string>
+    <string name="upd_fail_offline">Tải xuống thất bại: không có kết nối tới GitHub.</string>
+    <string name="upd_fail_damaged">Tệp tải về bị hỏng (checksum không khớp) – hãy thử lại.</string>
+    <string name="upd_fail_wrong_app">Tệp tải về không phải phiên bản mới hơn của ứng dụng này với cùng chữ ký – không cài đặt.</string>
+    <string name="upd_fail_storage">Không thể lưu tệp tải về (bộ nhớ đầy?).</string>
+    <string name="upd_fail_aborted">Đã hủy cài đặt.</string>
+    <string name="upd_fail_install">Android không thể cài đặt bản cập nhật.</string>
+    <string name="upd_notif_confirm_title">Bản cập nhật %1$s đã sẵn sàng</string>
+    <string name="upd_notif_confirm_text">Chạm để cài đặt.</string>
+    <string name="upd_notif_updated_title">Đã cập nhật lên %1$s</string>
+    <string name="upd_notif_updated_text">Thẻ Giới thiệu liệt kê những điểm mới.</string>
+    <string name="about_donate">Ủng hộ ứng dụng (PayPal)</string>
+    <string name="about_donate_note">Hoàn toàn tùy ý – mọi thứ vẫn hoạt động mà không cần.</string>
 </resources>

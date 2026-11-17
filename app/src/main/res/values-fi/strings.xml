@@ -395,4 +395,32 @@
     <string name="field_show">Näytä</string>
     <string name="field_hide">Piilota</string>
     <string name="field_range">Sallittu: %1$d–%2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Tekstit tilanteessa</string>
+    <string name="disp_texts_for_playing">Toisto</string>
+    <string name="disp_texts_for_paused">Tauko</string>
+    <string name="disp_texts_for_stream">Radio / stream</string>
+    <string name="disp_texts_paused_note">Näytetään tauon aikana – vain jos ”Tauotettu” näytetään (ks. Tauko alempana). Tyhjät kentät käyttävät toiston tekstiä.</string>
+    <string name="disp_texts_stream_note">Näytetään nettiradiossa ja muissa streameissa. Tyhjät kentät käyttävät toiston tekstiä.</string>
+    <string name="about_update_auto">Asenna päivitykset automaattisesti</string>
+    <string name="about_update_auto_note">Sovellus lataa uudet versiot GitHubista, tarkistaa ne (SHA-256 ja allekirjoitus) ja asentaa ne. Ensimmäisellä kerralla Android pyytää sallimaan asennukset tästä sovelluksesta; Android 12:sta alkaen myöhemmät päivitykset asentuvat kysymättä.</string>
+    <string name="upd_install">Asenna %1$s</string>
+    <string name="upd_downloading">Ladataan %1$s…</string>
+    <string name="upd_downloading_percent">Ladataan %1$s… %2$d %%</string>
+    <string name="upd_installing">Asennetaan %1$s…</string>
+    <string name="upd_confirm">Vahvista version %1$s asennus Androidin ikkunassa (tai napauta ilmoitusta).</string>
+    <string name="upd_fail_no_apk">Julkaisussa ei ole APK:ta – lataa se GitHubista.</string>
+    <string name="upd_fail_no_checksum">Julkaisussa ei ole tarkistussummaa – sovellus ei asenna mitään, mitä se ei voi tarkistaa. Lataa se GitHubista.</string>
+    <string name="upd_fail_offline">Lataus epäonnistui: ei yhteyttä GitHubiin.</string>
+    <string name="upd_fail_damaged">Lataus on vioittunut (tarkistussumma ei täsmää) – yritä uudelleen.</string>
+    <string name="upd_fail_wrong_app">Lataus ei ole tämän sovelluksen uudempi versio samalla allekirjoituksella – ei asennettu.</string>
+    <string name="upd_fail_storage">Latausta ei voitu tallentaa (tallennustila täynnä?).</string>
+    <string name="upd_fail_aborted">Asennus peruttiin.</string>
+    <string name="upd_fail_install">Android ei voinut asentaa päivitystä.</string>
+    <string name="upd_notif_confirm_title">Päivitys %1$s valmis</string>
+    <string name="upd_notif_confirm_text">Asenna napauttamalla.</string>
+    <string name="upd_notif_updated_title">Päivitetty versioon %1$s</string>
+    <string name="upd_notif_updated_text">Tietoja-välilehti kertoo, mitä uutta on.</string>
+    <string name="about_donate">Tue sovellusta (PayPal)</string>
+    <string name="about_donate_note">Täysin vapaaehtoista – kaikki toimii myös ilman.</string>
 </resources>

@@ -1,5 +1,20 @@
 # Muutosloki
 
+## 1.3.0
+
+### Uutta
+- **Päivitykset sovelluksessa**: *Asenna* *Tietoja*-välilehdellä lataa, tarkistaa (SHA-256, allekirjoitus) ja asentaa
+  uuden version – ilman selainta. *Asenna päivitykset automaattisesti* tekee sen itse; Android 12:sta alkaen
+  ensimmäisen kerran jälkeen kysymättä
+- **Omat tekstit tauolle ja radiolle** (*Näyttö*-välilehti → *Tekstit tilanteessa*); tyhjät kentät käyttävät toiston
+  tekstiä
+- **Tue sovellusta**: pieni, vapaaehtoinen PayPal-linkki *Tietoja*-välilehdellä
+
+### Parannettu
+- **Päivitysten tarkistus** toimii myös, kun GitHubin pyyntöraja on täynnä (VPN, jaettu osoite)
+- **Deezer-kannet**: vapaa haku esittäjä + kappale, kun tarkka haku ei löydä mitään
+- **Ei jumiutunutta ”Tauolla”-tilaa**: Discordin on vahvistettava tilan poisto, muuten se poistetaan uudelleen; palvelu pysähtyy vasta sen jälkeen
+
 ## 1.2.1
 
 ### Parannettu

@@ -395,4 +395,32 @@
     <string name="field_show">إظهار</string>
     <string name="field_hide">إخفاء</string>
     <string name="field_range">المسموح: من %1$d إلى %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">نصوص لـ</string>
+    <string name="disp_texts_for_playing">التشغيل</string>
+    <string name="disp_texts_for_paused">الإيقاف المؤقت</string>
+    <string name="disp_texts_for_stream">راديو / بث</string>
+    <string name="disp_texts_paused_note">تظهر أثناء الإيقاف المؤقت – فقط إذا كان «متوقف مؤقتًا» معروضًا (انظر الإيقاف المؤقت أدناه). الحقول الفارغة تستخدم نص التشغيل.</string>
+    <string name="disp_texts_stream_note">تظهر لراديو الإنترنت وأنواع البث الأخرى. الحقول الفارغة تستخدم نص التشغيل.</string>
+    <string name="about_update_auto">تثبيت التحديثات تلقائيًا</string>
+    <string name="about_update_auto_note">ينزّل التطبيق الإصدارات الجديدة من GitHub ويتحقق منها (SHA-256 والتوقيع) ويثبّتها. في المرة الأولى يطلب Android السماح بالتثبيت من هذا التطبيق؛ ومن Android 12 فصاعدًا تُثبَّت التحديثات اللاحقة دون سؤال.</string>
+    <string name="upd_install">تثبيت %1$s</string>
+    <string name="upd_downloading">جارٍ تنزيل %1$s…</string>
+    <string name="upd_downloading_percent">جارٍ تنزيل %1$s… ‏%2$d%%</string>
+    <string name="upd_installing">جارٍ تثبيت %1$s…</string>
+    <string name="upd_confirm">أكّد تثبيت %1$s في نافذة Android (أو انقر على الإشعار).</string>
+    <string name="upd_fail_no_apk">لا يحتوي الإصدار على APK – نزّله من GitHub.</string>
+    <string name="upd_fail_no_checksum">لا يحتوي الإصدار على مجموع اختباري – لا يثبّت التطبيق شيئًا لا يستطيع التحقق منه. نزّله من GitHub.</string>
+    <string name="upd_fail_offline">فشل التنزيل: لا يوجد اتصال بـ GitHub.</string>
+    <string name="upd_fail_damaged">الملف المنزَّل تالف (المجموع الاختباري غير مطابق) – حاول مرة أخرى.</string>
+    <string name="upd_fail_wrong_app">الملف المنزَّل ليس إصدارًا أحدث من هذا التطبيق بالتوقيع نفسه – لم يُثبَّت.</string>
+    <string name="upd_fail_storage">تعذّر حفظ الملف المنزَّل (هل التخزين ممتلئ؟).</string>
+    <string name="upd_fail_aborted">أُلغي التثبيت.</string>
+    <string name="upd_fail_install">تعذّر على Android تثبيت التحديث.</string>
+    <string name="upd_notif_confirm_title">التحديث %1$s جاهز</string>
+    <string name="upd_notif_confirm_text">انقر لتثبيته.</string>
+    <string name="upd_notif_updated_title">تم التحديث إلى %1$s</string>
+    <string name="upd_notif_updated_text">تعرض علامة التبويب «حول» الجديد.</string>
+    <string name="about_donate">ادعم التطبيق (PayPal)</string>
+    <string name="about_donate_note">اختياري تمامًا – كل شيء يعمل بدونه أيضًا.</string>
 </resources>

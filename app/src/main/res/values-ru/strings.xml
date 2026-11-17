@@ -394,4 +394,32 @@
     <string name="field_show">Показать</string>
     <string name="field_hide">Скрыть</string>
     <string name="field_range">Допустимо: от %1$d до %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Тексты для</string>
+    <string name="disp_texts_for_playing">Воспроизведение</string>
+    <string name="disp_texts_for_paused">Пауза</string>
+    <string name="disp_texts_for_stream">Радио / поток</string>
+    <string name="disp_texts_paused_note">Показываются на паузе – только если показывается «На паузе» (см. Пауза ниже). Пустые поля берут текст воспроизведения.</string>
+    <string name="disp_texts_stream_note">Показываются для интернет-радио и других потоков. Пустые поля берут текст воспроизведения.</string>
+    <string name="about_update_auto">Устанавливать обновления автоматически</string>
+    <string name="about_update_auto_note">Приложение скачивает новые версии с GitHub, проверяет их (SHA-256 и подпись) и устанавливает. В первый раз Android попросит разрешить установку из этого приложения; начиная с Android 12 следующие обновления устанавливаются без вопросов.</string>
+    <string name="upd_install">Установить %1$s</string>
+    <string name="upd_downloading">Загрузка %1$s…</string>
+    <string name="upd_downloading_percent">Загрузка %1$s… %2$d %%</string>
+    <string name="upd_installing">Установка %1$s…</string>
+    <string name="upd_confirm">Подтвердите установку %1$s в окне Android (или нажмите на уведомление).</string>
+    <string name="upd_fail_no_apk">В релизе нет APK – скачайте его с GitHub.</string>
+    <string name="upd_fail_no_checksum">У релиза нет контрольной суммы – приложение не устанавливает то, что не может проверить. Скачайте его с GitHub.</string>
+    <string name="upd_fail_offline">Ошибка загрузки: нет связи с GitHub.</string>
+    <string name="upd_fail_damaged">Файл повреждён (контрольная сумма не совпадает) – попробуйте ещё раз.</string>
+    <string name="upd_fail_wrong_app">Файл не является более новой версией этого приложения с той же подписью – не установлено.</string>
+    <string name="upd_fail_storage">Не удалось сохранить файл (память заполнена?).</string>
+    <string name="upd_fail_aborted">Установка отменена.</string>
+    <string name="upd_fail_install">Android не смог установить обновление.</string>
+    <string name="upd_notif_confirm_title">Обновление %1$s готово</string>
+    <string name="upd_notif_confirm_text">Нажмите, чтобы установить.</string>
+    <string name="upd_notif_updated_title">Обновлено до %1$s</string>
+    <string name="upd_notif_updated_text">Что нового – на вкладке «О приложении».</string>
+    <string name="about_donate">Поддержать приложение (PayPal)</string>
+    <string name="about_donate_note">Совершенно необязательно – всё работает и без этого.</string>
 </resources>

@@ -57,6 +57,7 @@ class PresenceEngineTest {
         defaultClientId: String = CLIENT_ID,
         idleGraceMs: Long = 60_000,
         appInfo: AppInfoSource = AppInfoSource.NONE,
+        stopClearWaitMs: Long = 0,   // the fake transport does not answer on its own: no wait unless a test wants one
     ) = PresenceEngine(
         transport = transport,
         covers = covers,
@@ -79,6 +80,8 @@ class PresenceEngineTest {
         minSendIntervalMs = 2_000,
         idleGraceMs = idleGraceMs,
         appInfo = appInfo,
+        clearConfirmMs = 5_000,
+        stopClearWaitMs = stopClearWaitMs,
     )
 
     private fun TestScope.now() = testScheduler.currentTime
@@ -1430,6 +1433,129 @@ class PresenceEngineTest {
         advance(1)
         assertTrue(engine.idle.value)
         assertEquals("connection kept while it was not idle", 1, transport.connects.size)
+    }
+
+    // ------------------------------------------------------------------------------------------- confirmed clear
+
+    /** Paused with clearAfterPausedMin = 3: the presence is cleared at 3 min. Returns the clear frame. */
+    private fun TestScope.pausedUntilCleared(engine: PresenceEngine): String {
+        engine.submit(paused())
+        runCurrent()
+        transport.accept(transport.frames.last())
+        advance(3 * 60_000L)
+        assertNull("cleared after the paused timeout", transport.lastActivity)
+        return transport.frames.last()
+    }
+
+    @Test
+    fun `a confirmed clear is not sent again and the engine goes idle`() = runTest {
+        config = Config(clearAfterPausedMin = 3, pausedBehavior = Config.PAUSED_SHOW)
+        val engine = connectedEngine()
+        val frames = transport.frames.size
+        pausedUntilCleared(engine)   // the fake transport confirms it at once
+        advance(60_000)
+        assertTrue(engine.idle.value)
+        assertEquals("one clear only", frames + 2, transport.frames.size)
+        assertTrue(logLines.any { "Discord confirmed: presence cleared" in it })
+    }
+
+    @Test
+    fun `an unanswered clear is sent again and keeps the engine from going idle`() = runTest {
+        transport.acceptClears = false
+        config = Config(clearAfterPausedMin = 3, pausedBehavior = Config.PAUSED_SHOW)
+        val engine = connectedEngine(idleGraceMs = 1_000)
+        val before = transport.frames.size
+        pausedUntilCleared(engine)
+        val afterClear = transport.frames.size
+        advance(2_000)
+        assertFalse("not idle while the clear is unconfirmed", engine.idle.value)
+        advance(3_000)   // 5 s without an answer: cleared again
+        assertEquals(afterClear + 1, transport.frames.size)
+        assertNull(transport.lastActivity)
+        transport.accept(transport.frames.last())
+        runCurrent()
+        assertTrue("idle once Discord confirmed it", engine.idle.value)
+        advance(60_000)
+        assertEquals("no further clears", afterClear + 1, transport.frames.size)
+        assertTrue(before < afterClear)
+    }
+
+    @Test
+    fun `a rejected clear is sent again`() = runTest {
+        transport.acceptClears = false
+        config = Config(clearAfterPausedMin = 3, pausedBehavior = Config.PAUSED_SHOW)
+        val engine = connectedEngine()
+        val clear = pausedUntilCleared(engine)
+        val afterClear = transport.frames.size
+        transport.reject(clear, "rate limited")
+        advance(2_000)
+        assertEquals(afterClear + 1, transport.frames.size)
+        assertNull(transport.lastActivity)
+        assertFalse(engine.idle.value)
+    }
+
+    @Test
+    fun `clearing is given up after the last attempt - the engine still goes idle`() = runTest {
+        transport.acceptClears = false
+        config = Config(clearAfterPausedMin = 3, pausedBehavior = Config.PAUSED_SHOW)
+        val engine = connectedEngine(idleGraceMs = 1_000)
+        pausedUntilCleared(engine)
+        val afterClear = transport.frames.size
+        advance(60_000)
+        assertEquals("${PresenceEngine.CLEAR_ATTEMPTS} clears in all", afterClear + PresenceEngine.CLEAR_ATTEMPTS - 1, transport.frames.size)
+        assertTrue(engine.idle.value)
+        assertTrue(logLines.any { "giving up" in it })
+    }
+
+    @Test
+    fun `playing again ends the wait for a clear`() = runTest {
+        config = Config(clearAfterPausedMin = 3, pausedBehavior = Config.PAUSED_SHOW)
+        val engine = connectedEngine()
+        pausedUntilCleared(engine)
+        engine.submit(playing())
+        advance(2_000)
+        val frames = transport.frames.size
+        assertTrue(transport.lastActivity != null)
+        advance(30_000)
+        assertTrue("no clear after the new presence", transport.frames.drop(frames).all { transport.activityOf(it) != null })
+    }
+
+    @Test
+    fun `stop waits for Discord to confirm the final clear before disconnecting`() = runTest {
+        transport.acceptClears = false
+        val engine = newEngine(stopClearWaitMs = 2_000)
+        engine.submit(playing())
+        engine.start()
+        runCurrent()
+        transport.ready()
+        runCurrent()
+        val stopping = engine.stop()!!
+        runCurrent()
+        assertNull("cleared first", transport.lastActivity)
+        assertEquals("still connected until Discord answered", 0, transport.disconnects)
+        assertFalse(stopping.isCompleted)
+        transport.accept(transport.frames.last())
+        runCurrent()
+        assertEquals(1, transport.disconnects)
+        assertTrue(stopping.isCompleted)
+    }
+
+    @Test
+    fun `stop disconnects after the wait when Discord does not answer`() = runTest {
+        transport.acceptClears = false
+        val engine = newEngine(stopClearWaitMs = 2_000)
+        engine.submit(playing())
+        engine.start()
+        runCurrent()
+        transport.ready()
+        runCurrent()
+        val stopping = engine.stop()!!
+        advance(1_999)
+        assertEquals(0, transport.disconnects)
+        advance(1)
+        assertEquals(1, transport.disconnects)
+        assertTrue(stopping.isCompleted)
+        assertNull(engine.stop())
     }
 
     // ------------------------------------------------------------------------------------------- covers

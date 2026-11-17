@@ -237,4 +237,42 @@ class PresenceTextsTest {
         assertEquals("", t.details)
         assertEquals("", t.detailsUrl)
     }
+
+    @Test
+    fun `own texts for pause and streams, empty fields from playback`() {
+        val c = Config(
+            pausedBehavior = Config.PAUSED_SHOW,
+            details = "%title%", state = "%artist%", largeText = "%album%", smallText = "%status%",
+            pausedDetails = "Paused: %title%", pausedSmallText = "zzz",
+            streamDetails = "Radio: %title%", streamState = "on air",
+        )
+        val playing = compute(c)
+        assertEquals("Song", playing.details)
+        assertEquals("Artist", playing.state)
+
+        val paused = compute(c, snap(PlayState.PAUSED))
+        assertEquals("Paused: Song", paused.details)
+        assertEquals("Artist", paused.state)        // empty pause field: the playback text
+        assertEquals("Album", paused.largeText)
+        assertEquals("zzz", paused.smallText)
+
+        val radio = compute(c, snap(t = track.copy(isStream = true)))
+        assertEquals("Radio: Song", radio.details)
+        assertEquals("on air", radio.state)
+        assertEquals("Album", radio.largeText)
+
+        // a paused stream: the pause texts first, then the radio texts
+        val pausedRadio = compute(c, snap(PlayState.PAUSED, track.copy(isStream = true)))
+        assertEquals("Paused: Song", pausedRadio.details)
+        assertEquals("on air", pausedRadio.state)
+    }
+
+    @Test
+    fun `rotation and refresh follow the texts shown`() {
+        val c = Config(details = "%title%", state = "%artist%", pausedDetails = "%title% || %album%", streamState = "%pos%")
+        assertFalse(PresenceTexts.needsRotation(c, playing = true))
+        assertTrue(PresenceTexts.needsRotation(c, playing = false))
+        assertFalse(PresenceTexts.needsPeriodicRefresh(c, playing = true, stream = false))
+        assertTrue(PresenceTexts.needsPeriodicRefresh(c, playing = true, stream = true))
+    }
 }

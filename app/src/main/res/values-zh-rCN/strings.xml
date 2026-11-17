@@ -395,4 +395,32 @@
     <string name="field_show">显示</string>
     <string name="field_hide">隐藏</string>
     <string name="field_range">允许范围：%1$d 到 %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">文本用于</string>
+    <string name="disp_texts_for_playing">播放</string>
+    <string name="disp_texts_for_paused">暂停</string>
+    <string name="disp_texts_for_stream">电台 / 流媒体</string>
+    <string name="disp_texts_paused_note">暂停时显示 – 仅当显示“已暂停”时（见下方暂停）。空白字段使用播放时的文本。</string>
+    <string name="disp_texts_stream_note">用于网络电台和其他流媒体。空白字段使用播放时的文本。</string>
+    <string name="about_update_auto">自动安装更新</string>
+    <string name="about_update_auto_note">应用会从 GitHub 下载新版本，进行校验（SHA-256 和签名）并安装。首次安装时 Android 会请求允许从此应用安装；从 Android 12 起，之后的更新无需询问即可安装。</string>
+    <string name="upd_install">安装 %1$s</string>
+    <string name="upd_downloading">正在下载 %1$s…</string>
+    <string name="upd_downloading_percent">正在下载 %1$s… %2$d%%</string>
+    <string name="upd_installing">正在安装 %1$s…</string>
+    <string name="upd_confirm">请在 Android 对话框中确认安装 %1$s（或点按通知）。</string>
+    <string name="upd_fail_no_apk">该版本没有 APK – 请从 GitHub 下载。</string>
+    <string name="upd_fail_no_checksum">该版本没有校验和 – 应用不会安装无法校验的内容。请从 GitHub 下载。</string>
+    <string name="upd_fail_offline">下载失败：无法连接 GitHub。</string>
+    <string name="upd_fail_damaged">下载已损坏（校验和不匹配）– 请重试。</string>
+    <string name="upd_fail_wrong_app">下载的文件不是本应用同一签名的较新版本 – 未安装。</string>
+    <string name="upd_fail_storage">无法保存下载的文件（存储空间已满？）。</string>
+    <string name="upd_fail_aborted">已取消安装。</string>
+    <string name="upd_fail_install">Android 无法安装此更新。</string>
+    <string name="upd_notif_confirm_title">更新 %1$s 已就绪</string>
+    <string name="upd_notif_confirm_text">点按即可安装。</string>
+    <string name="upd_notif_updated_title">已更新到 %1$s</string>
+    <string name="upd_notif_updated_text">“关于”标签页列出了新内容。</string>
+    <string name="about_donate">支持本应用（PayPal）</string>
+    <string name="about_donate_note">完全自愿 – 不支持也一切照常。</string>
 </resources>

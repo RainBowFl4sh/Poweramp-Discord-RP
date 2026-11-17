@@ -394,4 +394,32 @@
     <string name="field_show">Zeigen</string>
     <string name="field_hide">Verbergen</string>
     <string name="field_range">Erlaubt: %1$d bis %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Texte für</string>
+    <string name="disp_texts_for_playing">Wiedergabe</string>
+    <string name="disp_texts_for_paused">Pause</string>
+    <string name="disp_texts_for_stream">Radio / Stream</string>
+    <string name="disp_texts_paused_note">Werden in der Pause angezeigt – nur wenn „Pausiert“ angezeigt wird (siehe Pause weiter unten). Leere Felder nehmen den Text der Wiedergabe.</string>
+    <string name="disp_texts_stream_note">Werden bei Internetradio und anderen Streams angezeigt. Leere Felder nehmen den Text der Wiedergabe.</string>
+    <string name="about_update_auto">Updates automatisch installieren</string>
+    <string name="about_update_auto_note">Neue Versionen lädt die App von GitHub herunter, prüft sie (SHA-256 und Signatur) und installiert sie. Beim ersten Mal fragt Android, ob die App Apps installieren darf; ab Android 12 werden spätere Updates ohne Nachfrage installiert.</string>
+    <string name="upd_install">%1$s installieren</string>
+    <string name="upd_downloading">%1$s wird heruntergeladen…</string>
+    <string name="upd_downloading_percent">%1$s wird heruntergeladen… %2$d %%</string>
+    <string name="upd_installing">%1$s wird installiert…</string>
+    <string name="upd_confirm">Bestätige die Installation von %1$s im Android-Dialog (oder tippe auf die Benachrichtigung).</string>
+    <string name="upd_fail_no_apk">Das Release hat keine APK – lade sie von GitHub herunter.</string>
+    <string name="upd_fail_no_checksum">Das Release hat keine Prüfsumme – die App installiert nichts, was sie nicht prüfen kann. Lade es von GitHub herunter.</string>
+    <string name="upd_fail_offline">Download fehlgeschlagen: keine Verbindung zu GitHub.</string>
+    <string name="upd_fail_damaged">Der Download ist beschädigt (Prüfsumme passt nicht) – bitte erneut versuchen.</string>
+    <string name="upd_fail_wrong_app">Der Download ist keine neuere Version dieser App mit derselben Signatur – nicht installiert.</string>
+    <string name="upd_fail_storage">Der Download konnte nicht gespeichert werden (Speicher voll?).</string>
+    <string name="upd_fail_aborted">Installation abgebrochen.</string>
+    <string name="upd_fail_install">Android konnte das Update nicht installieren.</string>
+    <string name="upd_notif_confirm_title">Update %1$s bereit</string>
+    <string name="upd_notif_confirm_text">Tippen zum Installieren.</string>
+    <string name="upd_notif_updated_title">Aktualisiert auf %1$s</string>
+    <string name="upd_notif_updated_text">Was neu ist, steht im Tab Über.</string>
+    <string name="about_donate">Die App unterstützen (PayPal)</string>
+    <string name="about_donate_note">Völlig freiwillig – alles funktioniert auch ohne.</string>
 </resources>

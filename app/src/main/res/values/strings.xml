@@ -397,4 +397,32 @@
     <string name="field_show">Show</string>
     <string name="field_hide">Hide</string>
     <string name="field_range">Allowed: %1$d to %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Texts for</string>
+    <string name="disp_texts_for_playing">Playback</string>
+    <string name="disp_texts_for_paused">Pause</string>
+    <string name="disp_texts_for_stream">Radio / stream</string>
+    <string name="disp_texts_paused_note">Shown while paused – only when “Paused” is shown (see Paused below). Empty fields use the playback text.</string>
+    <string name="disp_texts_stream_note">Shown for internet radio and other streams. Empty fields use the playback text.</string>
+    <string name="about_update_auto">Install updates automatically</string>
+    <string name="about_update_auto_note">New versions are downloaded from GitHub, checked (SHA-256 and signature) and installed by the app. The first time Android asks you to allow installing apps from this app; from Android 12 on later updates install without asking.</string>
+    <string name="upd_install">Install %1$s</string>
+    <string name="upd_downloading">Downloading %1$s…</string>
+    <string name="upd_downloading_percent">Downloading %1$s… %2$d %%</string>
+    <string name="upd_installing">Installing %1$s…</string>
+    <string name="upd_confirm">Confirm the installation of %1$s in Android’s dialog (or tap the notification).</string>
+    <string name="upd_fail_no_apk">The release has no APK – download it from GitHub.</string>
+    <string name="upd_fail_no_checksum">The release has no checksum – the app installs nothing it cannot check. Download it from GitHub.</string>
+    <string name="upd_fail_offline">Download failed: no connection to GitHub.</string>
+    <string name="upd_fail_damaged">The download is damaged (checksum does not match) – please try again.</string>
+    <string name="upd_fail_wrong_app">The download is not a newer version of this app with the same signature – not installed.</string>
+    <string name="upd_fail_storage">The download could not be saved (storage full?).</string>
+    <string name="upd_fail_aborted">Installation cancelled.</string>
+    <string name="upd_fail_install">Android could not install the update.</string>
+    <string name="upd_notif_confirm_title">Update %1$s ready</string>
+    <string name="upd_notif_confirm_text">Tap to install it.</string>
+    <string name="upd_notif_updated_title">Updated to %1$s</string>
+    <string name="upd_notif_updated_text">The About tab lists what’s new.</string>
+    <string name="about_donate">Support the app (PayPal)</string>
+    <string name="about_donate_note">Completely optional – everything keeps working without it.</string>
 </resources>

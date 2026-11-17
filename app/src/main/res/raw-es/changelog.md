@@ -1,5 +1,21 @@
 # Registro de cambios
 
+## 1.3.0
+
+### Novedades
+- **Actualizaciones dentro de la app**: *Instalar* en la pestaña *Acerca de* descarga, comprueba (SHA-256, firma) e
+  instala la nueva versión, sin navegador. *Instalar actualizaciones automáticamente* lo hace solo; desde Android 12,
+  sin preguntar tras la primera vez
+- **Textos propios para pausa y radio** (pestaña *Visualización* → *Textos para*); los campos vacíos usan el texto de
+  reproducción
+- **Apoyar la app**: un pequeño enlace opcional de PayPal en la pestaña *Acerca de*
+
+### Mejoras
+- **La búsqueda de actualizaciones** funciona también cuando se agota el límite de solicitudes de GitHub (VPN,
+  dirección compartida)
+- **Portadas de Deezer**: búsqueda libre de artista + título cuando la búsqueda exacta no encuentra nada
+- **Sin «En pausa» atascado**: Discord tiene que confirmar que se quitó el estado; si no, se quita otra vez. El servicio se detiene solo después
+
 ## 1.2.1
 
 ### Mejoras

@@ -77,15 +77,16 @@ object PreviewModel {
      * Discord gets.
      */
     fun build(
-        c: Config,
+        config: Config,
         live: PlaybackSnapshot,
         nowMs: Long,
         example: ExampleTexts,
         strings: StatusStrings,
         compute: TextsComputer = PresenceTexts::compute,
+        case: TextCase = TextCase.PLAYING,
     ): Preview {
         val useExample = needsExample(live)
-        val s = if (useExample) exampleSnapshot(example, nowMs) else live
+        val (c, s) = case.apply(config, if (useExample) exampleSnapshot(example, nowMs) else live, nowMs)
         val pausedFor = pausedForMs(s, nowMs)
         val t = compute(c, s, nowMs, pausedFor, strings)
 

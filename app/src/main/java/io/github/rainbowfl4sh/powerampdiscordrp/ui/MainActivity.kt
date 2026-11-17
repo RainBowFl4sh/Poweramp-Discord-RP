@@ -1,5 +1,6 @@
 package io.github.rainbowfl4sh.powerampdiscordrp.ui
 
+import io.github.rainbowfl4sh.powerampdiscordrp.update.AppUpdater
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -61,7 +62,13 @@ class MainActivity : ComponentActivity() {
         viewModel.expireAccountLogin()
     }
 
+    override fun onStart() {
+        super.onStart()
+        AppUpdater.uiVisible = true
+    }
+
     override fun onStop() {
+        AppUpdater.uiVisible = false
         // typed text is saved debounced - leaving the app must not lose the last keystrokes
         viewModel.editor.flush()
         super.onStop()

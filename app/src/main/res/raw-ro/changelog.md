@@ -1,5 +1,19 @@
 # Istoricul modificărilor
 
+## 1.3.0
+
+### Nou
+- **Actualizări în aplicație**: *Instalează* din fila *Despre* descarcă, verifică (SHA-256, semnătură) și instalează
+  noua versiune – fără browser. *Instalează automat actualizările* face asta singur; de la Android 12, fără întrebare
+  după prima dată
+- **Texte proprii pentru pauză și radio** (fila *Afișare* → *Texte pentru*); câmpurile goale folosesc textul de redare
+- **Susține aplicația**: un mic link PayPal opțional în fila *Despre*
+
+### Îmbunătățit
+- **Verificarea actualizărilor** merge și când limita de cereri GitHub e epuizată (VPN, adresă comună)
+- **Coperți Deezer**: căutare liberă artist + titlu când căutarea exactă nu găsește nimic
+- **Fără „În pauză” blocat**: Discord trebuie să confirme că statusul a fost eliminat, altfel e eliminat din nou; serviciul se oprește abia după aceea
+
 ## 1.2.1
 
 ### Îmbunătățit

@@ -125,8 +125,12 @@ internal class OnlineLookups(
         if (url.isEmpty() && q.title.isNotEmpty() && q.trackArtist.isNotEmpty()) {
             url = deezerQuery("track", "artist:\"${q.trackArtist}\" track:\"${q.title}\"", q.trackArtist)
         }
+        // since October 2026 the field searches often find nothing at all - the free text still works
         if (url.isEmpty() && q.album.isNotEmpty() && q.artist.isNotEmpty()) {
             url = deezerQuery("album", "${q.artist} ${q.album}", q.artist)
+        }
+        if (url.isEmpty() && q.title.isNotEmpty() && q.trackArtist.isNotEmpty()) {
+            url = deezerQuery("track", "${q.trackArtist} ${q.title}", q.trackArtist)
         }
         return url
     }

@@ -35,6 +35,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.selects.SelectBuilder
 import kotlinx.coroutines.selects.onTimeout
 import kotlinx.coroutines.selects.select
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
@@ -97,11 +98,16 @@ data class EngineStatus(
  *   [reconnect] / [sendTest]; TransportError.DISCORD_NOT_INSTALLED -> no automatic retries in this session until the
  *   settings change or [reconnect] / [sendTest] (not remembered across [stop] / [start]: a new session tries again)
  * - [idle] becomes true when nothing has been shown for [idleGraceMs] (and no test runs): the Android service may stop then.
+ *   A clear Discord has not confirmed yet keeps it from becoming idle: an unanswered clear (no answer within
+ *   [clearConfirmMs]) or a rejected one is sent again, at most [CLEAR_ATTEMPTS] times in all - otherwise a presence that
+ *   Discord missed to remove would stay on the profile after the service stopped.
  *   "Nothing to show" includes a missing / rejected application ID and a missing Discord app: that only changes with the
  *   settings or a user action (or, for the Discord app, with the next start).
  *   A rejected ID is remembered across [stop] / [start], so a restarted service does not knock on Discord's door again,
  *   and is reported as NOT_CONNECTED + INVALID_CLIENT_ID all that time.
- * - [stop] clears the presence, disconnects and cancels all jobs
+ * - [stop] clears the presence, waits up to [stopClearWaitMs] for Discord to confirm that clear (the Discord app may be
+ *   frozen by Android once our binding and foreground service are gone), then disconnects and cancels all jobs. It
+ *   returns the stopping run: the Android service keeps its foreground state until that run has finished.
  *
  * Threading: every public method may be called from any thread. All connection / presence state lives in one actor
  * coroutine per [start] (a [Session]) on [scope]; the public methods only set request flags and wake it, transport
@@ -123,6 +129,8 @@ class PresenceEngine(
     private val minSendIntervalMs: Long = 2_000,
     private val idleGraceMs: Long = 60_000,
     private val appInfo: AppInfoSource = AppInfoSource.NONE,
+    private val clearConfirmMs: Long = 5_000,
+    private val stopClearWaitMs: Long = 2_000,
 ) {
     private val _status = MutableStateFlow(EngineStatus())
     private val _snapshot = MutableStateFlow(PlaybackSnapshot())
@@ -203,13 +211,19 @@ class PresenceEngine(
         job.start()   // outside the lock: an immediate dispatcher may run the session right here
     }
 
-    fun stop() {
-        synchronized(lifecycleLock) {
-            val flag = stopFlag ?: return
+    /**
+     * Ends the running session: clears the presence (waiting a moment for Discord to confirm it) and disconnects.
+     * Returns the stopping session's job (null = none was running); join it to know the clear went out.
+     */
+    fun stop(): Job? {
+        val job = synchronized(lifecycleLock) {
+            val flag = stopFlag ?: return null
             stopFlag = null
             flag.set(true)
+            sessionJob
         }
         wake.trySend(Unit)
+        return job
     }
 
     /** New state from Poweramp (track / play state / position). Its [PlaybackSnapshot.trackSinceMs] is set here. */
@@ -425,6 +439,11 @@ class PresenceEngine(
         private var testUntil = 0L
         private var testShown = false
         private var inactiveSince: Long? = null
+        // A clear sent while hidden that Discord has not confirmed yet: sent again when unanswered / rejected
+        private var clearNonce: String? = null
+        private var clearSentAt = 0L
+        private var clearAttempts = 0
+        private var clearFailed = false     // Discord answered the clear with an error: send it again (rate limit permitting)
         private var loggedTrack: TrackKey? = null
 
         // ---- cover
@@ -588,7 +607,7 @@ class PresenceEngine(
                 retryAt = now
                 st = st.copy(error = TransportError.NONE, errorDetail = "")
             }
-            trackIdle(now, active = wanted && !invalidId && !discordMissing)
+            trackIdle(now, active = wanted && !invalidId && !discordMissing, clearing = conn == Conn.READY && clearNonce != null)
 
             if (conn == Conn.CONNECTING && now >= connectDeadline) {
                 connectionLost(TransportError.CONNECT_FAILED, -1, "Discord did not answer", now)
@@ -641,7 +660,8 @@ class PresenceEngine(
             return retry
         }
 
-        private fun trackIdle(now: Long, active: Boolean) {
+        /** [clearing]: a clear is not confirmed yet - the grace runs on, but the service must not stop before it is. */
+        private fun trackIdle(now: Long, active: Boolean, clearing: Boolean = false) {
             if (active) {
                 inactiveSince = null
                 _idle.value = false
@@ -650,6 +670,8 @@ class PresenceEngine(
             val since = inactiveSince ?: now.also { inactiveSince = it }
             if (now - since < idleGraceMs) {
                 scheduleWakeup(since + idleGraceMs)
+            } else if (clearing) {
+                _idle.value = false   // woken again by the clear's confirmation, its retry or the giving up
             } else if (!_idle.value) {
                 _idle.value = true
                 log.log("Nothing to show for ${idleGraceMs / 1000} s - idle")
@@ -707,6 +729,8 @@ class PresenceEngine(
             testShown = false
             awaited = null
             proxyCheck = null
+            clearNonce = null
+            clearFailed = false
             backoffMs = FIRST_RETRY_MS
             st = st.copy(
                 kind = EngineStatus.Kind.CONNECTED, error = TransportError.NONE, errorDetail = "", activityError = "",
@@ -758,13 +782,23 @@ class PresenceEngine(
          * disconnect() is called; the transport delivers what was queued before it disconnects.
          */
         private fun dropConnection() {
-            if (conn == Conn.READY) {
-                try {
-                    transport.send(RpcProtocol.setActivity(null, pid, newNonce()))
-                } catch (e: Exception) {
-                    log.log("Clearing the presence failed: $e")
-                }
+            sendFinalClear()
+            disconnectNow()
+        }
+
+        /** The clear before a deliberate disconnect; its nonce, null if not connected / not sent. */
+        private fun sendFinalClear(): String? {
+            if (conn != Conn.READY) return null
+            val nonce = newNonce()
+            return try {
+                if (transport.send(RpcProtocol.setActivity(null, pid, nonce))) nonce else null
+            } catch (e: Exception) {
+                log.log("Clearing the presence failed: $e")
+                null
             }
+        }
+
+        private fun disconnectNow() {
             try {
                 transport.disconnect()
             } catch (e: Exception) {
@@ -785,10 +819,12 @@ class PresenceEngine(
             awaited = null
             proxyCheck = null
             loggedTrack = null
+            clearNonce = null   // a closed connection takes its presence with it
+            clearFailed = false
             st = st.copy(activityError = "")   // a new connection gets everything again
         }
 
-        private fun shutdown() {
+        private suspend fun shutdown() {
             try {
                 coverJob?.cancel()
                 proxyJob?.cancel()
@@ -798,7 +834,9 @@ class PresenceEngine(
                 appInfoJob = null
                 coverTrack = null
                 if (conn != Conn.NONE) {
-                    dropConnection()
+                    val nonce = sendFinalClear()
+                    if (nonce != null) awaitClearAnswer(nonce)
+                    disconnectNow()
                     log.log("Disconnected from Discord (stopped)")
                 }
                 transport.setListener(null)
@@ -816,6 +854,44 @@ class PresenceEngine(
                 st.copy(kind = EngineStatus.Kind.IDLE, testing = false)
             }
             publish()
+        }
+
+        /**
+         * Waits (at most [stopClearWaitMs]) for Discord's answer to the final clear before the binding goes: once the
+         * service left the foreground, Android may freeze the Discord app before it passed the clear on. Other events
+         * are dropped - the session ends anyway (the next run ignores what is left).
+         */
+        private suspend fun awaitClearAnswer(nonce: String) {
+            if (stopClearWaitMs <= 0) return
+            val answered = try {
+                withTimeoutOrNull(stopClearWaitMs) {
+                    var result: Boolean? = null
+                    while (result == null) {
+                        when (val event = events.receive()) {
+                            is Event.Frame -> if (event.connection == connection) {
+                                when (val m = RpcProtocol.parse(event.frame)) {
+                                    is RpcMessage.ActivitySet -> if (m.nonce == null || m.nonce == nonce) result = true
+                                    is RpcMessage.Error -> if (m.nonce == nonce) {
+                                        log.log("Discord error ${m.code} while clearing: ${m.message}")
+                                        result = false
+                                    }
+                                    else -> Unit
+                                }
+                            }
+                            is Event.Closed -> if (event.connection == connection) result = false
+                            else -> Unit
+                        }
+                    }
+                    result
+                }
+            } catch (_: CancellationException) {
+                null   // the scope is going away: disconnect right away
+            }
+            when (answered) {
+                true -> log.log("Discord confirmed: presence cleared")
+                null -> log.log("Discord did not confirm clearing the presence within ${stopClearWaitMs / 1000.0} s")
+                false -> Unit
+            }
         }
 
         // ------------------------------------------------------------------------------------------- events
@@ -837,6 +913,11 @@ class PresenceEngine(
         private fun onFrame(frame: String, now: Long) {
             when (val m = RpcProtocol.parse(frame)) {
                 is RpcMessage.ActivitySet -> {
+                    if (m.nonce != null && m.nonce == clearNonce) {
+                        clearNonce = null
+                        clearFailed = false
+                        log.log("Discord confirmed: presence cleared")
+                    }
                     // Discord took the latest update (an answer to an older one, or to the clear after a rejection, says
                     // nothing about it)
                     if (m.nonce == null || m.nonce == lastNonce) {
@@ -858,6 +939,7 @@ class PresenceEngine(
                 }
                 is RpcMessage.Error -> {
                     log.log("Discord error ${m.code}: ${m.message}")
+                    if (m.nonce != null && m.nonce == clearNonce) clearFailed = true   // still shown: cleared again
                     if (m.nonce != null && m.nonce == awaited?.nonce) awaited = null
                     if (m.nonce != null && m.nonce != lastNonce) return   // an older update: the latest may still be taken
                     // reported until Discord accepts an update
@@ -970,10 +1052,12 @@ class PresenceEngine(
 
             // ---- decide whether to (re)send
             // text rotation: the next alternatives at every step while shown (also paused), counted from the track's start
-            val rotationMs = if (texts.hidden == Hidden.NO && PresenceTexts.needsRotation(cfg)) TextRotation.intervalMs(cfg) else 0L
+            val playingNow = snap.state == PlayState.PLAYING
+            val stream = snap.track.isStream
+            val rotationMs = if (texts.hidden == Hidden.NO && PresenceTexts.needsRotation(cfg, playingNow, stream)) TextRotation.intervalMs(cfg) else 0L
             val since = snap.trackSinceMs
             val nextStep = if (rotationMs > 0) TextRotation.nextStepAt(since, now, rotationMs) else Long.MAX_VALUE
-            val periodic = snap.state == PlayState.PLAYING && texts.hidden == Hidden.NO && PresenceTexts.needsPeriodicRefresh(cfg)
+            val periodic = playingNow && texts.hidden == Hidden.NO && PresenceTexts.needsPeriodicRefresh(cfg, true, stream)
             // the %pos% refresh due at [at] - left to the next rotation step (which refreshes it as well) when that step
             // would follow it within ROTATION_GAP_MS: both together must keep to Discord's 5 updates per 20 s
             fun refreshes(at: Long) = periodic && nextStep - maxOf(at, now) >= ROTATION_GAP_MS
@@ -986,6 +1070,10 @@ class PresenceEngine(
             }
             if (dirty && mayCoalescedSend(now)) send(now, cfg, snap, texts)
             if (conn != Conn.READY) return   // sending failed and the connection is gone
+            if (!shown && clearNonce != null) {
+                confirmClear(now)
+                if (conn != Conn.READY) return
+            }
 
             resolveCoverIfNeeded(cfg, snap)
 
@@ -997,6 +1085,37 @@ class PresenceEngine(
                 if (refreshes(refreshAt)) schedule(refreshAt)
                 if (rotationMs > 0) schedule(nextStep)
             }
+        }
+
+        /**
+         * The last clear is not confirmed: Discord did not answer within [clearConfirmMs] or rejected it (e.g. rate
+         * limit). Sent again until [CLEAR_ATTEMPTS] are used up - then given up on (Discord's RPC service may simply not
+         * answer clears), so the service can still stop.
+         */
+        private fun confirmClear(now: Long) {
+            val dueAt = if (clearFailed) maxOf(clearSentAt, (lastSendAt ?: 0L) + minSendIntervalMs) else clearSentAt + clearConfirmMs
+            if (now < dueAt) {
+                schedule(dueAt)
+                return
+            }
+            if (clearAttempts >= CLEAR_ATTEMPTS) {
+                log.log("Discord did not confirm clearing the presence after $clearAttempts attempts - giving up")
+                clearNonce = null
+                clearFailed = false
+                schedule(now)   // the idle check runs before this: once more, so the service can stop
+                return
+            }
+            if (!mayCoalescedSend(now)) {
+                lastSendAt?.let { schedule(it + minSendIntervalMs) }
+                return
+            }
+            log.log(if (clearFailed) "Discord rejected clearing the presence - clearing again" else "Discord did not confirm clearing the presence - clearing again")
+            val nonce = sendFrame(null, now, decisive = false) ?: return
+            clearNonce = nonce
+            clearSentAt = now
+            clearAttempts++
+            clearFailed = false
+            schedule(now + clearConfirmMs)
         }
 
         private fun mayCoalescedSend(now: Long): Boolean {
@@ -1019,6 +1138,8 @@ class PresenceEngine(
                 if (sameActivity(activity, lastActivity, tolerance)) return
                 val nonce = sendFrame(activity, now) ?: return
                 shown = true
+                clearNonce = null   // a new presence replaces whatever was to be cleared
+                clearFailed = false
                 awaitProxyCopy(activity, nonce, key, cover != null)
                 if (key != loggedTrack) {
                     loggedTrack = key
@@ -1028,8 +1149,12 @@ class PresenceEngine(
                 // hidden - or Discord rejected what is to be shown and still shows an earlier presence of ours. That
                 // clear does not end the rejection: Discord taking it says nothing about the rejected presence.
                 val hidden = activity == null
-                sendFrame(null, now, decisive = hidden) ?: return
+                val nonce = sendFrame(null, now, decisive = hidden) ?: return
                 shown = false
+                clearNonce = nonce
+                clearSentAt = now
+                clearAttempts = 1
+                clearFailed = false
                 loggedTrack = null
                 log.log(if (hidden) "Presence cleared (${texts.hidden.name.lowercase()})" else "Presence cleared (Discord rejected the update)")
             }
@@ -1237,6 +1362,9 @@ class PresenceEngine(
         const val TEST_DURATION_MS = 15_000L
 
         private const val FIRST_RETRY_MS = 5_000L
+
+        /** Clears sent while hidden before giving up on Discord's confirmation (the first one included). */
+        internal const val CLEAR_ATTEMPTS = 3
         private const val MAX_RETRY_MS = 60_000L
 
         /**

@@ -1,5 +1,18 @@
 # Nhật ký thay đổi
 
+## 1.3.0
+
+### Mới
+- **Cập nhật ngay trong ứng dụng**: *Cài đặt* ở thẻ *Giới thiệu* tải, kiểm tra (SHA-256, chữ ký) và cài phiên bản mới
+  – không cần trình duyệt. *Tự động cài đặt bản cập nhật* tự làm việc này; từ Android 12 không hỏi lại sau lần đầu
+- **Văn bản riêng cho tạm dừng và radio** (thẻ *Hiển thị* → *Văn bản cho*); ô trống dùng văn bản khi phát
+- **Ủng hộ ứng dụng**: một liên kết PayPal nhỏ, tùy ý ở thẻ *Giới thiệu*
+
+### Cải thiện
+- **Kiểm tra cập nhật** vẫn hoạt động khi hết giới hạn yêu cầu của GitHub (VPN, địa chỉ dùng chung)
+- **Ảnh bìa Deezer**: tìm tự do theo nghệ sĩ + tên bài khi tìm chính xác không thấy gì
+- **Không còn "Tạm dừng" bị kẹt**: Discord phải xác nhận đã xóa trạng thái, nếu không sẽ xóa lại; dịch vụ chỉ dừng sau đó
+
 ## 1.2.1
 
 ### Cải thiện

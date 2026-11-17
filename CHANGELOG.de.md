@@ -1,5 +1,31 @@
 # Änderungen
 
+## 1.3.0
+
+### Neu
+- **Updates in der App**: *<Version> installieren* im Tab *Über* lädt die neue Version von GitHub, prüft sie gegen die
+  SHA-256-Prüfsumme, die GitHub veröffentlicht (oder die `.sha256`-Datei des Releases), und ihre Signatur (dieselbe
+  App, neuere Version, derselbe Schlüssel) und übergibt sie dem Installer von Android - ohne Browser, ohne
+  Dateimanager. *Updates automatisch installieren* (standardmäßig an) erledigt das nach einer Prüfung selbst; ab
+  Android 12 fragt Android nicht mehr, nachdem sich die App einmal selbst installiert hat, davor zeigt es seine
+  Bestätigung (als Benachrichtigung, solange die App im Hintergrund ist). Nach dem Update nennt eine Benachrichtigung
+  die neue Version, und eine angezeigte Presence ist sofort wieder da
+- **Eigene Texte für Pause und Radio / Streams** (Tab *Anzeige* → *Texte für*: *Wiedergabe*, *Pause*,
+  *Radio / Stream*): Details, Status und beide Bild-Tooltips können in der Pause oder bei einem Stream anders sein;
+  leere Felder nehmen den Wiedergabe-Text. Die Live-Vorschau zeigt den gewählten Fall
+- **Die App unterstützen**: ein optionaler PayPal-Spendenlink im Tab *Über*
+
+### Verbessert
+- **Update-Prüfung**: ist GitHubs Anfragelimit aufgebraucht (VPN, geteilte Adresse), wird die neueste Version
+  stattdessen aus dem Release-Feed gelesen
+- **Deezer-Cover**: eine Freitextsuche nach Künstler + Titel, wenn die genauen Suchen nichts finden
+- **Kein hängendes „Pausiert“ mehr in Discord**: bisher konnte die letzte Presence (z. B. „Pausiert“ nach dem
+  Pausen-Timeout) im Profil stehen bleiben, obwohl die App sich beendet hatte - das Entfernen wurde nie bestätigt, und
+  der Dienst verließ direkt nach dem letzten Entfernen den Vordergrund, sodass Android die Discord-App einfrieren
+  konnte, bevor sie es weitergab. Jetzt muss Discord jedes Entfernen bestätigen; ein unbeantwortetes oder abgelehntes
+  Entfernen wird erneut gesendet (höchstens 3-mal), und erst danach beendet sich der Dienst. Beim Stoppen wartet er
+  bis zu 2 s auf Discords Antwort, bevor er die Verbindung trennt
+
 ## 1.2.1
 
 ### Verbessert

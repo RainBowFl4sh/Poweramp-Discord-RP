@@ -1,5 +1,20 @@
 # Változásnapló
 
+## 1.3.0
+
+### Új
+- **Frissítés az appban**: a *Névjegy* fül *Telepítés* gombja letölti, ellenőrzi (SHA-256, aláírás) és telepíti az új
+  verziót – böngésző nélkül. A *Frissítések automatikus telepítése* ezt magától elvégzi; Android 12-től az első
+  alkalom után kérdés nélkül
+- **Saját szövegek szünethez és rádióhoz** (*Megjelenítés* fül → *Szövegek ehhez*); az üres mezők a lejátszás szövegét
+  használják
+- **Az app támogatása**: kis, önkéntes PayPal-link a *Névjegy* fülön
+
+### Fejlesztések
+- **A frissítéskeresés** akkor is működik, ha elfogyott a GitHub kéréskorlátja (VPN, közös cím)
+- **Deezer-borítók**: szabad keresés előadó + cím alapján, ha a pontos keresés nem talál semmit
+- **Nincs beragadt „Szüneteltetve”**: a Discordnak meg kell erősítenie, hogy az állapot eltűnt, különben újra törlődik; a szolgáltatás csak ezután áll le
+
 ## 1.2.1
 
 ### Fejlesztések

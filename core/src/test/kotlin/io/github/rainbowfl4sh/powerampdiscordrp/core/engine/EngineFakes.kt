@@ -65,6 +65,9 @@ class FakeTransport : RpcTransport {
     var now: () -> Long = { 0L }
     var failSends = false
 
+    /** Discord answers a clear (SET_ACTIVITY without activity) right away, like the real app does. */
+    var acceptClears = true
+
     override fun setListener(listener: RpcTransport.Listener?) {
         this.listener = listener
     }
@@ -82,6 +85,7 @@ class FakeTransport : RpcTransport {
         if (!isReady || failSends) return false
         frames += frame
         frameTimes += now()
+        if (acceptClears && activityOf(frame) == null) listener?.onFrame("""{"cmd":"SET_ACTIVITY","data":null,"evt":null,"nonce":"${nonceOf(frame)}"}""")
         return true
     }
 

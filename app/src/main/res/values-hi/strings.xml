@@ -395,4 +395,32 @@
     <string name="field_show">दिखाएँ</string>
     <string name="field_hide">छिपाएँ</string>
     <string name="field_range">अनुमत: %1$d से %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">इसके लिए टेक्स्ट</string>
+    <string name="disp_texts_for_playing">प्लेबैक</string>
+    <string name="disp_texts_for_paused">पॉज़</string>
+    <string name="disp_texts_for_stream">रेडियो / स्ट्रीम</string>
+    <string name="disp_texts_paused_note">पॉज़ के दौरान दिखते हैं – सिर्फ़ तब जब “पॉज़ है” दिखाया जाता है (नीचे पॉज़ देखें)। खाली फ़ील्ड प्लेबैक का टेक्स्ट लेते हैं।</string>
+    <string name="disp_texts_stream_note">इंटरनेट रेडियो और दूसरी स्ट्रीम के लिए दिखते हैं। खाली फ़ील्ड प्लेबैक का टेक्स्ट लेते हैं।</string>
+    <string name="about_update_auto">अपडेट अपने-आप इंस्टॉल करें</string>
+    <string name="about_update_auto_note">ऐप नए वर्ज़न GitHub से डाउनलोड करता है, उन्हें जाँचता है (SHA-256 और सिग्नेचर) और इंस्टॉल करता है। पहली बार Android इस ऐप से इंस्टॉल करने की अनुमति माँगता है; Android 12 से आगे के अपडेट बिना पूछे इंस्टॉल होते हैं।</string>
+    <string name="upd_install">%1$s इंस्टॉल करें</string>
+    <string name="upd_downloading">%1$s डाउनलोड हो रहा है…</string>
+    <string name="upd_downloading_percent">%1$s डाउनलोड हो रहा है… %2$d %%</string>
+    <string name="upd_installing">%1$s इंस्टॉल हो रहा है…</string>
+    <string name="upd_confirm">Android के डायलॉग में %1$s की इंस्टॉलेशन की पुष्टि करें (या सूचना पर टैप करें)।</string>
+    <string name="upd_fail_no_apk">रिलीज़ में कोई APK नहीं है – इसे GitHub से डाउनलोड करें।</string>
+    <string name="upd_fail_no_checksum">रिलीज़ में कोई चेकसम नहीं है – ऐप ऐसा कुछ इंस्टॉल नहीं करता जिसे वह जाँच न सके। इसे GitHub से डाउनलोड करें।</string>
+    <string name="upd_fail_offline">डाउनलोड विफल: GitHub से कनेक्शन नहीं।</string>
+    <string name="upd_fail_damaged">डाउनलोड खराब है (चेकसम मेल नहीं खाता) – फिर से कोशिश करें।</string>
+    <string name="upd_fail_wrong_app">डाउनलोड इस ऐप का उसी सिग्नेचर वाला नया वर्ज़न नहीं है – इंस्टॉल नहीं किया गया।</string>
+    <string name="upd_fail_storage">डाउनलोड सेव नहीं हो सका (स्टोरेज भरा है?)।</string>
+    <string name="upd_fail_aborted">इंस्टॉलेशन रद्द किया गया।</string>
+    <string name="upd_fail_install">Android अपडेट इंस्टॉल नहीं कर सका।</string>
+    <string name="upd_notif_confirm_title">अपडेट %1$s तैयार है</string>
+    <string name="upd_notif_confirm_text">इंस्टॉल करने के लिए टैप करें।</string>
+    <string name="upd_notif_updated_title">%1$s पर अपडेट हुआ</string>
+    <string name="upd_notif_updated_text">क्या नया है, यह ‘परिचय’ टैब में है।</string>
+    <string name="about_donate">ऐप को सपोर्ट करें (PayPal)</string>
+    <string name="about_donate_note">पूरी तरह वैकल्पिक – इसके बिना भी सब कुछ काम करता है।</string>
 </resources>

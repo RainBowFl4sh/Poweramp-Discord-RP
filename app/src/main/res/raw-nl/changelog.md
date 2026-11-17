@@ -1,5 +1,19 @@
 # Wijzigingen
 
+## 1.3.0
+
+### Nieuw
+- **Updates in de app**: *Installeren* op het tabblad *Over* downloadt, controleert (SHA-256, handtekening) en
+  installeert de nieuwe versie – zonder browser. *Updates automatisch installeren* doet het vanzelf; vanaf Android 12
+  na de eerste keer zonder vragen
+- **Eigen teksten voor pauze en radio** (tabblad *Weergave* → *Teksten voor*); lege velden gebruiken de afspeeltekst
+- **Steun de app**: een kleine, vrijwillige PayPal-link op het tabblad *Over*
+
+### Verbeterd
+- **De updatecontrole** werkt ook als de verzoeklimiet van GitHub op is (VPN, gedeeld adres)
+- **Deezer-hoezen**: vrij zoeken op artiest + titel als de exacte zoekopdracht niets vindt
+- **Geen vastzittend "Gepauzeerd" meer**: Discord moet bevestigen dat de status is verwijderd, anders wordt hij opnieuw verwijderd; pas daarna stopt de dienst
+
 ## 1.2.1
 
 ### Verbeterd

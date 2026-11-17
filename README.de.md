@@ -1,4 +1,4 @@
-# Poweramp Discord Rich Presence 1.2.1 für Android
+# Poweramp Discord Rich Presence 1.3.0 für Android
 
 Zeigt den Song, den [Poweramp](https://powerampapp.com) auf deinem Handy spielt, als Discord Rich Presence an -
 **„Hört Poweramp“** mit Discords eigenem Fortschrittsbalken, dem Album-Cover und einem anklickbaren Songtitel.
@@ -14,8 +14,8 @@ dieselben Funktionen, dieselben Cover-Quellen, dieselben Einstellungen, soweit s
 
 | Datei (auf der Seite [Releases](https://github.com/RainBowFl4sh/Poweramp-Discord-RP/releases)) | |
 |---|---|
-| `PowerampDiscordRP-v1.2.1.apk` | die App - Android 8.0 oder neuer, jede CPU |
-| `PowerampDiscordRP-v1.2.1.apk.sha256` | SHA-256-Prüfsumme der APK |
+| `PowerampDiscordRP-v1.3.0.apk` | die App - Android 8.0 oder neuer, jede CPU |
+| `PowerampDiscordRP-v1.3.0.apk.sha256` | SHA-256-Prüfsumme der APK |
 
 Autor: **Fl4sh**
 
@@ -78,7 +78,10 @@ gewählten.
   (optional, siehe [Discord-Konto verknüpfen](#discord-konto-verknüpfen-optional)). Gelesen werden nur Name und
   Bild, der Zugriff wird sofort widerrufen - die App speichert kein Token
 - **Status-Seite** mit Einrichtungs-Checkliste, Verbindungsstatus, *Test-Presence senden* und *Neu verbinden*
-- **Update-Check** über die GitHub-Releases (abschaltbar)
+- **Updates in der App**: prüft die GitHub-Releases (abschaltbar), lädt eine neue Version herunter, prüft SHA-256 und
+  Signatur und installiert sie - mit *Updates automatisch installieren* von selbst, ganz ohne Browser
+- **Eigene Texte in der Pause und für Radio / Streams** (Tab *Anzeige* → *Texte für*)
+- Optionaler **Spendenlink** (PayPal) im Tab *Über*
 - **30 Sprachen** (siehe [Sprachen](#sprachen)) - folgt der Sprache des Handys, oder du wählst eine in den
   *App-Einstellungen* (ab Android 13 auch unter *Einstellungen → Apps → Poweramp Discord RP → Sprache*). Arabisch
   wird von rechts nach links angezeigt
@@ -195,7 +198,8 @@ Benachrichtigungen, Akku-Optimierung, ID der Discord-Anwendung), der Verbindungs
 
 **Anzeige** - Aktivitätstyp (*Hört* mit Fortschrittsbalken / *Spielt*), was dein Status in der Mitgliederliste
 zeigt (Name der Anwendung, Interpret - der Standard - oder Songtitel), die Textvorlagen für beide Zeilen und die
-Tooltips von Cover und kleinem Symbol, das Wechselintervall für Texte mit `||`, Play-/Pause-Symbol,
+Tooltips von Cover und kleinem Symbol (für *Wiedergabe* und auf Wunsch eigene für *Pause* und *Radio / Stream* -
+leere Felder nehmen den Wiedergabe-Text), das Wechselintervall für Texte mit `||`, Play-/Pause-Symbol,
 Fortschrittsbalken / verstrichene Zeit, anklickbarer Songtitel (YouTube-Suche oder eigener Link), Verhalten bei Pause
 („Pausiert“ anzeigen / ausblenden / nach N Minuten ausblenden), Streams und Pfade ausblenden - und die
 **Live-Vorschau** der Discord-Karte, die sich beim Tippen aktualisiert. Ist die Presence ausgeblendet (pausiert,
@@ -211,7 +215,15 @@ Archive
 das aktuelle Log, Export / Import aller Einstellungen und Zurücksetzen auf die Standardwerte
 
 **Über** - Version, Autor mit GitHub-Bild, Links (GitHub, Releases, Problem melden), Update-Check (bei jedem
-Start, täglich, wöchentlich, monatlich oder aus; *Jetzt suchen*) und der Changelog
+Start, täglich, wöchentlich, monatlich oder aus; *Jetzt suchen*), *<Version> installieren* und *Updates automatisch
+installieren*, der Spendenlink und der Changelog.
+Das Update in der App lädt die APK des Releases von GitHub, prüft sie gegen die SHA-256-Prüfsumme, die GitHub für die
+Datei veröffentlicht (oder die `.sha256`-Datei des Releases), und prüft, dass es diese App ist, neuer und mit demselben
+Schlüssel signiert - dann installiert sie der Installer von Android. Beim ersten Mal (und unter Android 8-11 immer)
+fragt Android nach; ist die App im Hintergrund, kommt die Frage als Benachrichtigung. Ab Android 12 fragt es nicht
+mehr, sobald sich die App einmal selbst installiert hat. Erlaube der App *Unbekannte Apps installieren*, wenn Android
+danach fragt. Ist GitHubs Anfragelimit aufgebraucht (VPN, geteilte Adresse), liest der Check stattdessen den
+Release-Feed (`github.com/<repo>/releases.atom`)
 
 **App-Einstellungen** (Drei-Punkte-Menü oben rechts) - **Sprache** (*Systemstandard* oder eine der 30 Sprachen
 unter ihrem eigenen Namen; ab Android 13 dieselbe Einstellung wie die App-Sprache von Android), Design *Wie im System* / *Hell* / *Dunkel*, **AMOLED-Schwarz**
@@ -377,7 +389,10 @@ am Tag) - siehe *Akku-Optimierung* oben.
   - nur, wenn du dein Discord-Konto verknüpfst: Discords Autorisierungsseite `discord.com/oauth2/authorize` (in der
     Discord-App oder im Browser), dann `discord.com/api` - `oauth2/token` (Code -> Token), `users/@me` (dein
     öffentliches Profil) und `oauth2/token/revoke` (das Token wird sofort widerrufen)
-  - `api.github.com` für den Update-Check (im Tab *Über* abschaltbar)
+  - `api.github.com` für den Update-Check (im Tab *Über* abschaltbar); ist GitHubs Anfragelimit aufgebraucht,
+    stattdessen `github.com/RainBowFl4sh/Poweramp-Discord-RP/releases.atom`
+  - für ein Update: die APK und ihre `.sha256`-Datei von `github.com` (GitHub liefert sie über
+    `objects.githubusercontent.com` / `release-assets.githubusercontent.com`)
   - `avatars.githubusercontent.com`: das GitHub-Bild des Autors, nur solange der Tab *Über* angezeigt wird (im
     Speicher gehalten)
 - **Hochgeladene Cover sind öffentlich**: Jeder mit dem Link kann sie öffnen. Der Upload lässt sich im Tab *Cover*
@@ -451,13 +466,6 @@ Tests fehl, hängen stattdessen die Testberichte daran.
 
 ## Ein Release veröffentlichen
 
-> **Hinweis für den Maintainer:** Das GitHub-Repository ist zurzeit **privat**. Solange es nicht öffentlich ist,
-> liefern die Links auf *Releases* und Issues in dieser README und in der App sowie der Update-Check der App (eine
-> anonyme Anfrage an `api.github.com`) *404 Not Found* - die App zeigt dann „Es wurde noch keine Version
-> veröffentlicht.“ und betrachtet die Prüfung bis zur nächsten planmäßigen als erledigt. Releases eines privaten
-> Repositorys sind ebenfalls privat: Um nur die Releases zu veröffentlichen, müssten sie aus einem eigenen öffentlichen
-> Repository kommen, und `GITHUB_REPO` in `app/build.gradle.kts` (sowie die Links in dieser README) müssten es nennen.
-
 1. Einmalig: die [Discord-Anwendung](docs/discord-application.de.md) anlegen und einen Signaturschlüssel erzeugen,
    z. B.
 
@@ -485,12 +493,18 @@ wird. Dann führt er die Tests aus, baut und signiert die APK und legt das GitHu
 `PowerampDiscordRP-v1.0.0.apk`, der `.sha256`-Datei und dem Abschnitt der Version aus `CHANGELOG.md` als Text an.
 Tags mit `-` (z. B. `v1.1.0-beta1`) werden zu Vorab-Releases. Der Update-Check der App liest
 `https://api.github.com/repos/RainBowFl4sh/Poweramp-Discord-RP/releases/latest` (Vorab-Releases werden nicht
-angeboten): Die Version stammt aus dem Tag oder Titel, der Download ist die erste angehängte `.apk`.
+angeboten): Die Version stammt aus dem Tag oder Titel, der Download ist die erste angehängte `.apk`, geprüft gegen den
+SHA-256-Digest des Assets (oder die `.sha256`-Datei). Updates in der App klappen nur mit APKs, die mit demselben
+Schlüssel signiert sind wie die installierte App.
 
 ## Änderungen
 
 Alle Änderungen stehen in [CHANGELOG.de.md](CHANGELOG.de.md) (auch auf [English](CHANGELOG.md)) und im Tab *Über*
 der App.
+
+**1.3.0** - Updates in der App (Download, Prüfung von SHA-256 und Signatur, Installation - auf Wunsch automatisch),
+eigene Texte in der Pause und für Radio / Streams, ein Update-Check, der auch bei aufgebrauchtem GitHub-Anfragelimit
+klappt, eine Deezer-Freitextsuche für Cover und ein optionaler Spendenlink.
 
 **1.2.1** - Der Hintergrunddienst startet erst, wenn wirklich ein Titel spielt (nicht schon beim Öffnen von
 Poweramp), und beendet sich selbst, sobald nichts mehr spielt; Cover-Uploads bekommen zufällige Dateinamen, weil

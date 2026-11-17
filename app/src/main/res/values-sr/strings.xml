@@ -395,4 +395,32 @@
     <string name="field_show">Прикажи</string>
     <string name="field_hide">Сакриј</string>
     <string name="field_range">Дозвољено: од %1$d до %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Текстови за</string>
+    <string name="disp_texts_for_playing">Репродукција</string>
+    <string name="disp_texts_for_paused">Пауза</string>
+    <string name="disp_texts_for_stream">Радио / стрим</string>
+    <string name="disp_texts_paused_note">Приказују се током паузе – само ако се приказује „Паузирано“ (види Пауза ниже). Празна поља користе текст репродукције.</string>
+    <string name="disp_texts_stream_note">Приказују се за интернет радио и друге стримове. Празна поља користе текст репродукције.</string>
+    <string name="about_update_auto">Аутоматски инсталирај ажурирања</string>
+    <string name="about_update_auto_note">Апликација преузима нове верзије са GitHub-а, проверава их (SHA-256 и потпис) и инсталира. Први пут Android тражи дозволу за инсталирање из ове апликације; од Android-а 12 наредна ажурирања се инсталирају без питања.</string>
+    <string name="upd_install">Инсталирај %1$s</string>
+    <string name="upd_downloading">Преузимање %1$s…</string>
+    <string name="upd_downloading_percent">Преузимање %1$s… %2$d %%</string>
+    <string name="upd_installing">Инсталирање %1$s…</string>
+    <string name="upd_confirm">Потврди инсталирање %1$s у Android дијалогу (или додирни обавештење).</string>
+    <string name="upd_fail_no_apk">Издање нема APK – преузми га са GitHub-а.</string>
+    <string name="upd_fail_no_checksum">Издање нема контролни збир – апликација не инсталира ништа што не може да провери. Преузми га са GitHub-а.</string>
+    <string name="upd_fail_offline">Преузимање није успело: нема везе са GitHub-ом.</string>
+    <string name="upd_fail_damaged">Преузета датотека је оштећена (контролни збир се не поклапа) – покушај поново.</string>
+    <string name="upd_fail_wrong_app">Преузета датотека није новија верзија ове апликације са истим потписом – није инсталирано.</string>
+    <string name="upd_fail_storage">Преузета датотека није сачувана (пун простор?).</string>
+    <string name="upd_fail_aborted">Инсталирање је отказано.</string>
+    <string name="upd_fail_install">Android није могао да инсталира ажурирање.</string>
+    <string name="upd_notif_confirm_title">Ажурирање %1$s је спремно</string>
+    <string name="upd_notif_confirm_text">Додирни за инсталирање.</string>
+    <string name="upd_notif_updated_title">Ажурирано на %1$s</string>
+    <string name="upd_notif_updated_text">Картица О апликацији приказује новине.</string>
+    <string name="about_donate">Подржи апликацију (PayPal)</string>
+    <string name="about_donate_note">Потпуно добровољно – све ради и без тога.</string>
 </resources>

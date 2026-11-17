@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <!-- In-app updates: the app installs its own new versions (Android asks the user unless it allows otherwise) -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />
 
     <!-- Package visibility (Android 11+): Poweramp (version, launch, album art provider) and the Discord app (RPC service) -->
     <queries>
@@ -88,6 +91,20 @@
                 <action android:name="com.maxmpz.audioplayer.STATUS_CHANGED_EXPLICIT" />
                 <action android:name="com.maxmpz.audioplayer.TRACK_CHANGED" />
                 <action android:name="com.maxmpz.audioplayer.STATUS_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- In-app update: the installer session's outcome (sent through this app's own PendingIntent) -->
+        <receiver
+            android:name=".update.UpdateStatusReceiver"
+            android:exported="false" />
+
+        <!-- After an update (MY_PACKAGE_REPLACED is sent by the system only): the presence comes back at once -->
+        <receiver
+            android:name=".update.PackageReplacedReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
     </application>

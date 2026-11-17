@@ -1,5 +1,7 @@
 package io.github.rainbowfl4sh.powerampdiscordrp.ui.screens
 
+import io.github.rainbowfl4sh.powerampdiscordrp.core.model.TextTemplates
+import io.github.rainbowfl4sh.powerampdiscordrp.ui.preview.TextCase
 import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
@@ -68,38 +70,89 @@ private data class TextSettings(
     val state: String,
     val largeText: String,
     val smallText: String,
+    val paused: TextTemplates,
+    val stream: TextTemplates,
     val showSmallIcon: Boolean,
     val barLength: Int,
     val refreshSeconds: Int,
     val rotationSeconds: Int,
 ) {
     constructor(c: Config) : this(
-        c.details, c.state, c.largeText, c.smallText, c.showSmallIcon, c.barLength, c.refreshSeconds,
+        c.details, c.state, c.largeText, c.smallText,
+        TextTemplates(c.pausedDetails, c.pausedState, c.pausedLargeText, c.pausedSmallText),
+        TextTemplates(c.streamDetails, c.streamState, c.streamLargeText, c.streamSmallText),
+        c.showSmallIcon, c.barLength, c.refreshSeconds,
         c.effectiveRotationSeconds(),
     )
 }
 
-/** The four text templates of the presence. */
-private enum class Template(@StringRes val label: Int, val read: (TextSettings) -> String, val write: (Config, String) -> Config) {
-    DETAILS(R.string.disp_details, { it.details }, { c, v -> c.copy(details = v) }),
-    STATE(R.string.disp_state, { it.state }, { c, v -> c.copy(state = v) }),
-    LARGE_TEXT(R.string.disp_large_text, { it.largeText }, { c, v -> c.copy(largeText = v) }),
-    SMALL_TEXT(R.string.disp_small_text, { it.smallText }, { c, v -> c.copy(smallText = v) }),
+/** The four text templates of the presence, in each [TextCase]. */
+private enum class Template(@StringRes val label: Int) {
+    DETAILS(R.string.disp_details),
+    STATE(R.string.disp_state),
+    LARGE_TEXT(R.string.disp_large_text),
+    SMALL_TEXT(R.string.disp_small_text),
+}
+
+/** One template field: a [Template] of a [TextCase]. */
+private data class FieldKey(val case: TextCase, val template: Template) {
+    fun read(s: TextSettings): String = when (case) {
+        TextCase.PLAYING -> when (template) {
+            Template.DETAILS -> s.details
+            Template.STATE -> s.state
+            Template.LARGE_TEXT -> s.largeText
+            Template.SMALL_TEXT -> s.smallText
+        }
+        TextCase.PAUSED -> s.paused.of(template)
+        TextCase.STREAM -> s.stream.of(template)
+    }
+
+    fun write(c: Config, v: String): Config = when (case) {
+        TextCase.PLAYING -> when (template) {
+            Template.DETAILS -> c.copy(details = v)
+            Template.STATE -> c.copy(state = v)
+            Template.LARGE_TEXT -> c.copy(largeText = v)
+            Template.SMALL_TEXT -> c.copy(smallText = v)
+        }
+        TextCase.PAUSED -> when (template) {
+            Template.DETAILS -> c.copy(pausedDetails = v)
+            Template.STATE -> c.copy(pausedState = v)
+            Template.LARGE_TEXT -> c.copy(pausedLargeText = v)
+            Template.SMALL_TEXT -> c.copy(pausedSmallText = v)
+        }
+        TextCase.STREAM -> when (template) {
+            Template.DETAILS -> c.copy(streamDetails = v)
+            Template.STATE -> c.copy(streamState = v)
+            Template.LARGE_TEXT -> c.copy(streamLargeText = v)
+            Template.SMALL_TEXT -> c.copy(streamSmallText = v)
+        }
+    }
+
+    companion object {
+        val ALL = TextCase.entries.flatMap { case -> Template.entries.map { FieldKey(case, it) } }
+    }
+}
+
+private fun TextTemplates.of(t: Template): String = when (t) {
+    Template.DETAILS -> details
+    Template.STATE -> state
+    Template.LARGE_TEXT -> largeText
+    Template.SMALL_TEXT -> smallText
 }
 
 /** Text, cursor and focus of the template fields; the placeholder chips (and "||") insert into the field used last. */
 @Stable
 private class TemplateFields(initial: TextSettings) {
-    val values: Map<Template, MutableState<TextFieldValue>> = Template.entries.associateWith { t ->
+    val values: Map<FieldKey, MutableState<TextFieldValue>> = FieldKey.ALL.associateWith { t ->
         val text = t.read(initial)
         mutableStateOf(TextFieldValue(text, TextRange(text.length)))
     }
-    val sync: Map<Template, FieldSync<String>> = Template.entries.associateWith { FieldSync() }
-    val focus: Map<Template, FocusRequester> = Template.entries.associateWith { FocusRequester() }
-    var target by mutableStateOf(Template.DETAILS)
+    val sync: Map<FieldKey, FieldSync<String>> = FieldKey.ALL.associateWith { FieldSync() }
+    val focus: Map<FieldKey, FocusRequester> = FieldKey.ALL.associateWith { FocusRequester() }
+    var target by mutableStateOf(FieldKey(TextCase.PLAYING, Template.DETAILS))
 
     /** The user changed [t]'s text (typing, a placeholder chip): shown at once, saved through the editor. */
-    fun edit(t: Template, value: TextFieldValue, editor: ConfigEditor) {
+    fun edit(t: FieldKey, value: TextFieldValue, editor: ConfigEditor) {
         val changed = value.text != values.getValue(t).value.text
         values.getValue(t).value = value
         if (changed) {
@@ -129,11 +182,13 @@ fun DisplayPage(model: AppModel) {
     val editor = model.editor
 
     PageColumn {
+        // the texts being edited (playback / pause / radio) are the case the live preview shows
+        var textCase by rememberSaveable { mutableStateOf(TextCase.PLAYING) }
         SectionCard(title = stringResource(R.string.disp_preview_title)) {
-            LivePreview(model, c)
+            LivePreview(model, c, textCase)
         }
         ActivitySection(c.activityType, c.statusDisplay, c.showTimestamps, editor)
-        TextsSection(TextSettings(c), editor)
+        TextsSection(TextSettings(c), editor, textCase) { textCase = it }
         TitleLinkSection(c.titleLink, c.titleLinkCustom, c.titleLinkUrl, editor)
         PausedSection(c.pausedBehavior, c.clearAfterPausedMin, editor)
         FiltersSection(c.hideStreams, c.excludePaths, editor)
@@ -141,7 +196,7 @@ fun DisplayPage(model: AppModel) {
 }
 
 @Composable
-private fun LivePreview(model: AppModel, config: Config) {
+private fun LivePreview(model: AppModel, config: Config, textCase: TextCase) {
     val snapshot by model.snapshot.collectAsStateWithLifecycle()
     val status by model.status.collectAsStateWithLifecycle()
     val account by model.account.collectAsStateWithLifecycle()
@@ -153,6 +208,7 @@ private fun LivePreview(model: AppModel, config: Config) {
     PresencePreview(
         config, snapshot, status, model.appInfo, model.defaultClientId, account,
         onLinkAccount = if (canLink) startLink else null,
+        textCase = textCase,
     )
 }
 
@@ -188,10 +244,10 @@ private fun ActivitySection(activityType: Int, statusDisplay: Int, showTimestamp
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun TextsSection(c: TextSettings, editor: ConfigEditor) {
+private fun TextsSection(c: TextSettings, editor: ConfigEditor, textCase: TextCase, onTextCase: (TextCase) -> Unit) {
     val fields = remember { TemplateFields(c) }
     // changed elsewhere (import, reset): show the new text - an echo of the field's own typing is not that
-    Template.entries.forEach { t ->
+    FieldKey.ALL.forEach { t ->
         val stored = t.read(c)
         LaunchedEffect(t, stored) {
             val state = fields.values.getValue(t)
@@ -203,12 +259,29 @@ private fun TextsSection(c: TextSettings, editor: ConfigEditor) {
     var showHelp by rememberSaveable { mutableStateOf(false) }
 
     SectionCard(title = stringResource(R.string.disp_texts_title)) {
-        Template.entries.forEach { t ->
+        DropdownField(
+            label = stringResource(R.string.disp_texts_for),
+            options = TextCase.entries.map { it to stringResource(it.label) },
+            selected = textCase,
+            onSelect = onTextCase,
+        )
+        if (textCase != TextCase.PLAYING) {
+            Text(
+                stringResource(if (textCase == TextCase.PAUSED) R.string.disp_texts_paused_note else R.string.disp_texts_stream_note),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        Template.entries.forEach { template ->
+            val t = FieldKey(textCase, template)
             val state = fields.values.getValue(t)
+            // an empty pause / radio field shows the playback text it falls back to
+            val fallback = if (textCase == TextCase.PLAYING) "" else FieldKey(TextCase.PLAYING, template).read(c)
             OutlinedTextField(
                 value = state.value,
                 onValueChange = { v -> fields.edit(t, v, editor) },
-                label = { Text(stringResource(t.label)) },
+                label = { Text(stringResource(template.label)) },
+                placeholder = if (fallback.isEmpty()) null else { { Text(fallback) } },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(autoCorrectEnabled = false),
                 modifier = Modifier
@@ -219,7 +292,7 @@ private fun TextsSection(c: TextSettings, editor: ConfigEditor) {
         }
 
         Text(
-            stringResource(R.string.disp_insert_into, stringResource(fields.target.label)),
+            stringResource(R.string.disp_insert_into, stringResource(fields.target.template.label)),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )

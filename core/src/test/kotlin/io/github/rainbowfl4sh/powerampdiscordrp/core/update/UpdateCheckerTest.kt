@@ -15,7 +15,7 @@ class UpdateCheckerTest {
     private val server = MockWebServer().apply { start() }
     private val http = OkHttpClient.Builder().proxy(Proxy.NO_PROXY).build()
     private val repo = "RainBowFl4sh/Poweramp-Discord-RP"
-    private val checker = UpdateChecker(http, repo, apiBase = server.url("/").toString())
+    private val checker = UpdateChecker(http, repo, apiBase = server.url("/").toString(), webBase = server.url("/web").toString())
 
     @After
     fun tearDown() = server.close()
@@ -167,11 +167,14 @@ class UpdateCheckerTest {
             MockResponse.Builder().code(403).addHeader("X-RateLimit-Remaining", "0")
                 .body("""{"message":"API rate limit exceeded for 203.0.113.7."}""").build(),
         )
+        answer(404, "")   // the release feed does not help either
         assertEquals(UpdateResult.Reason.RATE_LIMITED, reasonOf(checker.check()))
         // secondary limit
         server.enqueue(MockResponse.Builder().code(403).addHeader("Retry-After", "60").body("{}").build())
+        answer(404, "")
         assertEquals(UpdateResult.Reason.RATE_LIMITED, reasonOf(checker.check()))
         server.enqueue(MockResponse.Builder().code(429).body("{}").build())
+        answer(200, "<feed></feed>")
         assertEquals(UpdateResult.Reason.RATE_LIMITED, reasonOf(checker.check()))
         // a 403 for something else
         server.enqueue(MockResponse.Builder().code(403).addHeader("X-RateLimit-Remaining", "42").body("{}").build())
@@ -218,5 +221,57 @@ class UpdateCheckerTest {
         assertFalse(UpdateChecker.isNewer("1.1.0+7", "1.1.0"))
         assertFalse(UpdateChecker.isNewer("1.1.0", "1.1.0+7"))
         assertTrue(UpdateChecker.isNewer("1.1.0+7", "1.1.0-beta1+3"))
+    }
+
+    @Test
+    fun rateLimitAsksTheReleaseFeed() {
+        server.enqueue(MockResponse.Builder().code(403).addHeader("X-RateLimit-Remaining", "0").body("{}").build())
+        answer(
+            200,
+            """<?xml version="1.0" encoding="UTF-8"?>
+            <feed xmlns="http://www.w3.org/2005/Atom">
+              <id>tag:github.com,2008:https://github.com/$repo/releases</id>
+              <entry><id>tag:github.com,2008:Repository/1/v1.4.0-beta1</id>
+                <link rel="alternate" type="text/html" href="https://github.com/$repo/releases/tag/v1.4.0-beta1"/></entry>
+              <entry><id>tag:github.com,2008:Repository/1/v1.3.0</id>
+                <link rel="alternate" type="text/html" href="https://github.com/$repo/releases/tag/v1.3.0"/>
+                <title>Poweramp Discord RP v1.3.0</title></entry>
+              <entry><link rel="alternate" type="text/html" href="https://github.com/$repo/releases/tag/v1.2.1"/></entry>
+            </feed>""",
+        )
+
+        val r = (checker.check() as UpdateResult.Found).release
+
+        assertEquals("1.3.0", r.version)   // the pre-release above it is skipped
+        assertEquals("https://github.com/$repo/releases/tag/v1.3.0", r.pageUrl)
+        assertEquals("https://github.com/$repo/releases/download/v1.3.0/PowerampDiscordRP-v1.3.0.apk", r.apkUrl)
+        assertEquals(r.apkUrl + ".sha256", r.checksumUrl)
+        assertEquals("", r.apkSha256)
+        server.takeRequest()
+        val feed = server.takeRequest()
+        assertEquals("/web/$repo/releases.atom", feed.url.encodedPath)
+    }
+
+    @Test
+    fun checksumFromTheDigestOrTheChecksumFile() {
+        val hex = "a".repeat(64)
+        answer(
+            200,
+            release(
+                assets = """
+                {"name":"PowerampDiscordRP-v1.2.3.apk","digest":"sha256:${hex.uppercase()}",
+                 "browser_download_url":"https://github.com/$repo/releases/download/v1.2.3/PowerampDiscordRP-v1.2.3.apk"},
+                {"name":"PowerampDiscordRP-v1.2.3.apk.sha256",
+                 "browser_download_url":"https://github.com/$repo/releases/download/v1.2.3/PowerampDiscordRP-v1.2.3.apk.sha256"}
+                """,
+            ),
+        )
+        val r = checker.latest()!!
+        assertEquals(hex, r.apkSha256)
+        assertEquals("https://github.com/$repo/releases/download/v1.2.3/PowerampDiscordRP-v1.2.3.apk.sha256", r.checksumUrl)
+
+        assertEquals(hex, UpdateChecker.sha256Of("$hex  PowerampDiscordRP-v1.2.3.apk\n"))
+        assertEquals("", UpdateChecker.sha256Of("sha256:0123"))
+        assertEquals("", UpdateChecker.sha256Of("<html>"))
     }
 }

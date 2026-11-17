@@ -29,7 +29,8 @@ import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.ConfigEditor
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.ConfigStore
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UiText
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UpdateCheckState
-import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UpdateSchedule
+import io.github.rainbowfl4sh.powerampdiscordrp.update.AppUpdater
+import io.github.rainbowfl4sh.powerampdiscordrp.update.InstallState
 import io.github.rainbowfl4sh.powerampdiscordrp.ui.logic.UpdateView
 import io.github.rainbowfl4sh.powerampdiscordrp.locale.AppLocale
 import io.github.rainbowfl4sh.powerampdiscordrp.service.Notifications
@@ -83,8 +84,8 @@ class MainViewModel(app: Application) : AndroidViewModel(app), AppModel {
     /** Result of the last environment check (null until the first one finished). */
     override val env: StateFlow<EnvState?> = _env.asStateFlow()
 
-    private val _update = MutableStateFlow<UpdateCheckState>(UpdateCheckState.Idle)
-    override val update: StateFlow<UpdateCheckState> = _update.asStateFlow()
+    override val update: StateFlow<UpdateCheckState> get() = AppUpdater.check
+    override val install: StateFlow<InstallState> get() = AppUpdater.install
 
     private val _messages = Channel<UiText>(Channel.BUFFERED)
 
@@ -244,37 +245,21 @@ class MainViewModel(app: Application) : AndroidViewModel(app), AppModel {
 
     /** Asks GitHub for the newest release; [manual] = "Check now" (the result is also reported in the snackbar). */
     override fun checkForUpdates(manual: Boolean) {
-        if (_update.value == UpdateCheckState.Checking) return
-        checkedThisSession = true
-        _update.value = UpdateCheckState.Checking
-        viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { guarded("update check") { Graph.updates.check() } }
-                ?: UpdateResult.Failed(UpdateResult.Reason.BAD_ANSWER, "error")
-            if (result is UpdateResult.Failed) {
-                // "no release published yet" is GitHub's answer: the check is done until the next one is due
-                if (result.reason == UpdateResult.Reason.NO_RELEASE) {
-                    editor.set { it.copy(updateLastCheckMs = System.currentTimeMillis()) }
-                }
-                _update.value = UpdateCheckState.Failed(result.reason)
-                Graph.log.log("Update check failed (${result.reason.name.lowercase()}: ${result.detail})")
-                if (manual) _messages.trySend(UpdateView.failureLine(result.reason).text)
-                return@launch
+        AppUpdater.checkNow(getApplication()) { result ->
+            if (!manual) return@checkNow
+            when (result) {
+                is UpdateResult.Failed -> _messages.trySend(UpdateView.failureLine(result.reason).text)
+                is UpdateResult.Found ->
+                    if (!UpdateChecker.isNewer(result.release.version, BuildConfig.VERSION_NAME)) {
+                        _messages.trySend(UiText(R.string.msg_up_to_date))
+                    }
             }
-            val release = (result as UpdateResult.Found).release
-            editor.set { it.copy(updateLastCheckMs = System.currentTimeMillis(), updateLatest = release.version) }
-            _update.value = UpdateCheckState.Done(release)
-            val newer = UpdateChecker.isNewer(release.version, BuildConfig.VERSION_NAME)
-            Graph.log.log("Update check: newest release ${release.version}" + if (newer) " - an update is available" else "")
-            if (manual && !newer) _messages.trySend(UiText(R.string.msg_up_to_date))
         }
     }
 
-    private fun checkForUpdatesIfDue() {
-        val due = guarded("update schedule") {
-            UpdateSchedule.isDue(store.config.value, System.currentTimeMillis(), checkedThisSession)
-        } ?: false
-        if (due) checkForUpdates(manual = false)
-    }
+    override fun installUpdate() = AppUpdater.installLatest(getApplication())
+
+    private fun checkForUpdatesIfDue() = AppUpdater.checkIfDue(getApplication())
 
     // ---- Discord account (status tab, live preview)
 
@@ -385,9 +370,5 @@ class MainViewModel(app: Application) : AndroidViewModel(app), AppModel {
 
         /** Poweramp syncs run in order (a later one must not overtake an earlier one). */
         private val syncDispatcher = Dispatchers.IO.limitedParallelism(1)
-
-        /** "Check at every start" means once per process (like the AIMP plugin's once per AIMP session). */
-        @Volatile
-        private var checkedThisSession = false
     }
 }

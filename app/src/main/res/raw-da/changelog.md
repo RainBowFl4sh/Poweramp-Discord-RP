@@ -1,5 +1,19 @@
 # Ændringslog
 
+## 1.3.0
+
+### Nyt
+- **Opdateringer i appen**: *Installér* på fanen *Om* henter, kontrollerer (SHA-256, signatur) og installerer den nye
+  version – uden browser. *Installér opdateringer automatisk* gør det selv; fra Android 12 uden at spørge efter første
+  gang
+- **Egne tekster til pause og radio** (fanen *Visning* → *Tekster for*); tomme felter bruger afspilningsteksten
+- **Støt appen**: et lille, frivilligt PayPal-link på fanen *Om*
+
+### Forbedret
+- **Opdateringstjek** virker også, når GitHubs grænse for forespørgsler er brugt op (VPN, delt adresse)
+- **Deezer-covers**: fritekstsøgning på kunstner + titel, når den præcise søgning intet finder
+- **Ingen fastlåst "Sat på pause"**: Discord skal bekræfte, at statussen er fjernet, ellers fjernes den igen; tjenesten stopper først derefter
+
 ## 1.2.1
 
 ### Forbedret

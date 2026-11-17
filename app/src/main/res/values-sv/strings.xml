@@ -394,4 +394,32 @@
     <string name="field_show">Visa</string>
     <string name="field_hide">Dölj</string>
     <string name="field_range">Tillåtet: %1$d till %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Texter för</string>
+    <string name="disp_texts_for_playing">Uppspelning</string>
+    <string name="disp_texts_for_paused">Paus</string>
+    <string name="disp_texts_for_stream">Radio / ström</string>
+    <string name="disp_texts_paused_note">Visas under paus – bara när ”Pausad” visas (se Paus längre ner). Tomma fält använder uppspelningstexten.</string>
+    <string name="disp_texts_stream_note">Visas för internetradio och andra strömmar. Tomma fält använder uppspelningstexten.</string>
+    <string name="about_update_auto">Installera uppdateringar automatiskt</string>
+    <string name="about_update_auto_note">Appen hämtar nya versioner från GitHub, kontrollerar dem (SHA-256 och signatur) och installerar dem. Första gången ber Android dig tillåta installation från den här appen; från Android 12 installeras senare uppdateringar utan att fråga.</string>
+    <string name="upd_install">Installera %1$s</string>
+    <string name="upd_downloading">Hämtar %1$s…</string>
+    <string name="upd_downloading_percent">Hämtar %1$s… %2$d %%</string>
+    <string name="upd_installing">Installerar %1$s…</string>
+    <string name="upd_confirm">Bekräfta installationen av %1$s i Androids dialog (eller tryck på aviseringen).</string>
+    <string name="upd_fail_no_apk">Versionen har ingen APK – hämta den från GitHub.</string>
+    <string name="upd_fail_no_checksum">Versionen har ingen kontrollsumma – appen installerar inget den inte kan kontrollera. Hämta den från GitHub.</string>
+    <string name="upd_fail_offline">Hämtningen misslyckades: ingen anslutning till GitHub.</string>
+    <string name="upd_fail_damaged">Hämtningen är skadad (kontrollsumman stämmer inte) – försök igen.</string>
+    <string name="upd_fail_wrong_app">Hämtningen är inte en nyare version av den här appen med samma signatur – inte installerad.</string>
+    <string name="upd_fail_storage">Hämtningen kunde inte sparas (fullt lagringsutrymme?).</string>
+    <string name="upd_fail_aborted">Installationen avbröts.</string>
+    <string name="upd_fail_install">Android kunde inte installera uppdateringen.</string>
+    <string name="upd_notif_confirm_title">Uppdatering %1$s klar</string>
+    <string name="upd_notif_confirm_text">Tryck för att installera.</string>
+    <string name="upd_notif_updated_title">Uppdaterad till %1$s</string>
+    <string name="upd_notif_updated_text">Fliken Om visar vad som är nytt.</string>
+    <string name="about_donate">Stöd appen (PayPal)</string>
+    <string name="about_donate_note">Helt frivilligt – allt fungerar även utan.</string>
 </resources>

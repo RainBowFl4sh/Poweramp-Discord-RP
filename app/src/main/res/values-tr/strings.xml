@@ -395,4 +395,32 @@
     <string name="field_show">Göster</string>
     <string name="field_hide">Gizle</string>
     <string name="field_range">İzin verilen: %1$d ile %2$d arası</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Metinler</string>
+    <string name="disp_texts_for_playing">Oynatma</string>
+    <string name="disp_texts_for_paused">Duraklatma</string>
+    <string name="disp_texts_for_stream">Radyo / yayın</string>
+    <string name="disp_texts_paused_note">Duraklatıldığında gösterilir – yalnızca “Duraklatıldı” gösteriliyorsa (aşağıda Duraklatma’ya bakın). Boş alanlar oynatma metnini kullanır.</string>
+    <string name="disp_texts_stream_note">İnternet radyosu ve diğer yayınlarda gösterilir. Boş alanlar oynatma metnini kullanır.</string>
+    <string name="about_update_auto">Güncellemeleri otomatik yükle</string>
+    <string name="about_update_auto_note">Uygulama yeni sürümleri GitHub’dan indirir, denetler (SHA-256 ve imza) ve yükler. İlk seferde Android bu uygulamadan yüklemeye izin vermenizi ister; Android 12’den itibaren sonraki güncellemeler sormadan yüklenir.</string>
+    <string name="upd_install">%1$s sürümünü yükle</string>
+    <string name="upd_downloading">%1$s indiriliyor…</string>
+    <string name="upd_downloading_percent">%1$s indiriliyor… %%%2$d</string>
+    <string name="upd_installing">%1$s yükleniyor…</string>
+    <string name="upd_confirm">%1$s yüklemesini Android penceresinde onaylayın (veya bildirime dokunun).</string>
+    <string name="upd_fail_no_apk">Sürümde APK yok – GitHub’dan indirin.</string>
+    <string name="upd_fail_no_checksum">Sürümde sağlama toplamı yok – uygulama denetleyemediği hiçbir şeyi yüklemez. GitHub’dan indirin.</string>
+    <string name="upd_fail_offline">İndirme başarısız: GitHub bağlantısı yok.</string>
+    <string name="upd_fail_damaged">İndirilen dosya bozuk (sağlama toplamı uyuşmuyor) – yeniden deneyin.</string>
+    <string name="upd_fail_wrong_app">İndirilen dosya bu uygulamanın aynı imzalı daha yeni bir sürümü değil – yüklenmedi.</string>
+    <string name="upd_fail_storage">İndirilen dosya kaydedilemedi (depolama dolu mu?).</string>
+    <string name="upd_fail_aborted">Yükleme iptal edildi.</string>
+    <string name="upd_fail_install">Android güncellemeyi yükleyemedi.</string>
+    <string name="upd_notif_confirm_title">%1$s güncellemesi hazır</string>
+    <string name="upd_notif_confirm_text">Yüklemek için dokunun.</string>
+    <string name="upd_notif_updated_title">%1$s sürümüne güncellendi</string>
+    <string name="upd_notif_updated_text">Yenilikler Hakkında sekmesinde.</string>
+    <string name="about_donate">Uygulamayı destekle (PayPal)</string>
+    <string name="about_donate_note">Tamamen isteğe bağlı – her şey onsuz da çalışır.</string>
 </resources>

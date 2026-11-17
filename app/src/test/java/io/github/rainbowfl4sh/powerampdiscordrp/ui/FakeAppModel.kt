@@ -1,5 +1,6 @@
 package io.github.rainbowfl4sh.powerampdiscordrp.ui
 
+import io.github.rainbowfl4sh.powerampdiscordrp.update.InstallState
 import android.net.Uri
 import androidx.compose.ui.graphics.ImageBitmap
 import io.github.rainbowfl4sh.powerampdiscordrp.core.account.LinkState
@@ -52,6 +53,7 @@ class FakeAppModel(
     override val logLines = MutableStateFlow(listOf("12:00:01  Presence service: started", "12:00:02  Discord: READY"))
     override val env = MutableStateFlow(env)
     override val update = MutableStateFlow<UpdateCheckState>(UpdateCheckState.Idle)
+    override val install = MutableStateFlow<InstallState>(InstallState.Idle)
     override val messages: Flow<UiText> = emptyFlow()
 
     /** Application ID Discord rejected in an earlier process ("" = none). */
@@ -72,6 +74,7 @@ class FakeAppModel(
     override fun importSettings(uri: Uri) { actions += "import" }
     override fun resetToDefaults() { actions += "reset" }
     override fun checkForUpdates(manual: Boolean) { actions += "checkForUpdates $manual" }
+    override fun installUpdate() { actions += "installUpdate" }
 
     override val appearance = MutableStateFlow(Appearance())
     override fun setAppearance(appearance: Appearance) {

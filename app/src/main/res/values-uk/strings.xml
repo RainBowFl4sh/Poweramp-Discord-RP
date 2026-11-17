@@ -394,4 +394,32 @@
     <string name="field_show">Показати</string>
     <string name="field_hide">Сховати</string>
     <string name="field_range">Допустимо: від %1$d до %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Тексти для</string>
+    <string name="disp_texts_for_playing">Відтворення</string>
+    <string name="disp_texts_for_paused">Пауза</string>
+    <string name="disp_texts_for_stream">Радіо / потік</string>
+    <string name="disp_texts_paused_note">Показуються на паузі – лише якщо показується «На паузі» (див. Пауза нижче). Порожні поля беруть текст відтворення.</string>
+    <string name="disp_texts_stream_note">Показуються для інтернет-радіо та інших потоків. Порожні поля беруть текст відтворення.</string>
+    <string name="about_update_auto">Встановлювати оновлення автоматично</string>
+    <string name="about_update_auto_note">Застосунок завантажує нові версії з GitHub, перевіряє їх (SHA-256 і підпис) і встановлює. Першого разу Android попросить дозволити встановлення з цього застосунку; з Android 12 наступні оновлення встановлюються без запитань.</string>
+    <string name="upd_install">Встановити %1$s</string>
+    <string name="upd_downloading">Завантаження %1$s…</string>
+    <string name="upd_downloading_percent">Завантаження %1$s… %2$d %%</string>
+    <string name="upd_installing">Встановлення %1$s…</string>
+    <string name="upd_confirm">Підтвердьте встановлення %1$s у вікні Android (або натисніть сповіщення).</string>
+    <string name="upd_fail_no_apk">У релізі немає APK – завантажте його з GitHub.</string>
+    <string name="upd_fail_no_checksum">У релізу немає контрольної суми – застосунок не встановлює те, що не може перевірити. Завантажте його з GitHub.</string>
+    <string name="upd_fail_offline">Помилка завантаження: немає з’єднання з GitHub.</string>
+    <string name="upd_fail_damaged">Файл пошкоджено (контрольна сума не збігається) – спробуйте ще раз.</string>
+    <string name="upd_fail_wrong_app">Файл не є новішою версією цього застосунку з тим самим підписом – не встановлено.</string>
+    <string name="upd_fail_storage">Не вдалося зберегти файл (пам’ять заповнена?).</string>
+    <string name="upd_fail_aborted">Встановлення скасовано.</string>
+    <string name="upd_fail_install">Android не зміг встановити оновлення.</string>
+    <string name="upd_notif_confirm_title">Оновлення %1$s готове</string>
+    <string name="upd_notif_confirm_text">Натисніть, щоб встановити.</string>
+    <string name="upd_notif_updated_title">Оновлено до %1$s</string>
+    <string name="upd_notif_updated_text">Що нового – на вкладці «Про застосунок».</string>
+    <string name="about_donate">Підтримати застосунок (PayPal)</string>
+    <string name="about_donate_note">Цілком необов’язково – усе працює і без цього.</string>
 </resources>

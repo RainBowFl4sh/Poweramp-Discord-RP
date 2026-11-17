@@ -1,5 +1,19 @@
 # Değişiklik günlüğü
 
+## 1.3.0
+
+### Yeni
+- **Uygulama içinden güncelleme**: *Hakkında* sekmesindeki *Yükle* yeni sürümü indirir, denetler (SHA-256, imza) ve
+  yükler – tarayıcı gerekmez. *Güncellemeleri otomatik yükle* bunu kendisi yapar; Android 12’den itibaren ilk seferden
+  sonra sormadan
+- **Duraklatma ve radyo için ayrı metinler** (*Görünüm* sekmesi → *Metinler*); boş alanlar oynatma metnini kullanır
+- **Uygulamayı destekle**: *Hakkında* sekmesinde küçük, isteğe bağlı bir PayPal bağlantısı
+
+### İyileştirmeler
+- **Güncelleme denetimi** GitHub’ın istek sınırı dolduğunda da çalışır (VPN, ortak adres)
+- **Deezer kapakları**: tam arama sonuç vermezse sanatçı + başlık için serbest arama
+- **Takılı kalan "Duraklatıldı" yok**: Discord durumun kaldırıldığını onaylamalı, yoksa yeniden kaldırılır; hizmet ancak bundan sonra durur
+
 ## 1.2.1
 
 ### İyileştirmeler

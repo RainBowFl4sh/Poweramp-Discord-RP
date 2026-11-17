@@ -1,5 +1,18 @@
 # Seznam změn
 
+## 1.3.0
+
+### Nové
+- **Aktualizace v aplikaci**: *Instalovat* na kartě *O aplikaci* stáhne, ověří (SHA-256, podpis) a nainstaluje novou
+  verzi – bez prohlížeče. *Instalovat aktualizace automaticky* to udělá samo; od Androidu 12 po prvním razu bez dotazu
+- **Vlastní texty pro pauzu a rádio** (karta *Zobrazení* → *Texty pro*); prázdná pole použijí text přehrávání
+- **Podpořit aplikaci**: malý, dobrovolný odkaz PayPal na kartě *O aplikaci*
+
+### Vylepšeno
+- **Kontrola aktualizací** funguje i po vyčerpání limitu požadavků GitHubu (VPN, sdílená adresa)
+- **Obaly z Deezeru**: volné hledání interpret + název, když přesné hledání nic nenajde
+- **Žádné zaseknuté „Pozastaveno“**: Discord musí potvrdit odstranění stavu, jinak se odstraní znovu; služba se ukončí až potom
+
 ## 1.2.1
 
 ### Vylepšeno

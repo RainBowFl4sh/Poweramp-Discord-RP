@@ -394,4 +394,32 @@
     <string name="field_show">Mostra</string>
     <string name="field_hide">Nascondi</string>
     <string name="field_range">Valori consentiti: da %1$d a %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Testi per</string>
+    <string name="disp_texts_for_playing">Riproduzione</string>
+    <string name="disp_texts_for_paused">Pausa</string>
+    <string name="disp_texts_for_stream">Radio / stream</string>
+    <string name="disp_texts_paused_note">Mostrati in pausa – solo se viene mostrato «In pausa» (vedi Pausa più sotto). I campi vuoti usano il testo della riproduzione.</string>
+    <string name="disp_texts_stream_note">Mostrati per radio Internet e altri stream. I campi vuoti usano il testo della riproduzione.</string>
+    <string name="about_update_auto">Installa gli aggiornamenti automaticamente</string>
+    <string name="about_update_auto_note">L’app scarica le nuove versioni da GitHub, le verifica (SHA-256 e firma) e le installa. La prima volta Android chiede di consentire l’installazione di app da questa app; da Android 12 i successivi aggiornamenti si installano senza chiedere.</string>
+    <string name="upd_install">Installa %1$s</string>
+    <string name="upd_downloading">Download di %1$s…</string>
+    <string name="upd_downloading_percent">Download di %1$s… %2$d %%</string>
+    <string name="upd_installing">Installazione di %1$s…</string>
+    <string name="upd_confirm">Conferma l’installazione di %1$s nella finestra di Android (o tocca la notifica).</string>
+    <string name="upd_fail_no_apk">La release non ha un APK – scaricala da GitHub.</string>
+    <string name="upd_fail_no_checksum">La release non ha un checksum – l’app non installa nulla che non possa verificare. Scaricala da GitHub.</string>
+    <string name="upd_fail_offline">Download non riuscito: nessuna connessione a GitHub.</string>
+    <string name="upd_fail_damaged">Il download è danneggiato (il checksum non corrisponde) – riprova.</string>
+    <string name="upd_fail_wrong_app">Il download non è una versione più recente di questa app con la stessa firma – non installato.</string>
+    <string name="upd_fail_storage">Impossibile salvare il download (memoria piena?).</string>
+    <string name="upd_fail_aborted">Installazione annullata.</string>
+    <string name="upd_fail_install">Android non è riuscito a installare l’aggiornamento.</string>
+    <string name="upd_notif_confirm_title">Aggiornamento %1$s pronto</string>
+    <string name="upd_notif_confirm_text">Tocca per installarlo.</string>
+    <string name="upd_notif_updated_title">Aggiornata alla %1$s</string>
+    <string name="upd_notif_updated_text">La scheda Informazioni elenca le novità.</string>
+    <string name="about_donate">Sostieni l’app (PayPal)</string>
+    <string name="about_donate_note">Del tutto facoltativo – tutto funziona anche senza.</string>
 </resources>

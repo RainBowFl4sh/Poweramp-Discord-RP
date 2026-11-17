@@ -25,6 +25,15 @@ data class Config(
     val state: String = "%artist%",
     val largeText: String = "%album%",
     val smallText: String = "%status%",
+    // own texts while paused / for internet radio and other streams; "" = the text above (like the AIMP plugin)
+    val pausedDetails: String = "",
+    val pausedState: String = "",
+    val pausedLargeText: String = "",
+    val pausedSmallText: String = "",
+    val streamDetails: String = "",
+    val streamState: String = "",
+    val streamLargeText: String = "",
+    val streamSmallText: String = "",
     val showSmallIcon: Boolean = true,
     val barLength: Int = 12,                        // characters for %bar%
     val refreshSeconds: Int = 15,                   // refresh interval when %pos% / %bar% / %percent% are used
@@ -60,7 +69,22 @@ data class Config(
     val updateFrequency: Int = UPDATE_DAILY,        // 0 = every app start, 1 = daily, 2 = weekly, 3 = monthly
     @SerialName("updateLastCheck") val updateLastCheckMs: Long = 0,
     val updateLatest: String = "",                  // newest version found by the last check
+    val updateAutoInstall: Boolean = true,          // download, check and install a new version by itself
 ) {
+    /**
+     * The four templates for a track: while paused the pause texts, for a stream the radio texts, each field that is
+     * empty there taken from the playback texts. A paused stream takes the pause texts first.
+     */
+    fun templatesFor(playing: Boolean, stream: Boolean): TextTemplates {
+        val base = TextTemplates(details, state, largeText, smallText)
+        val paused = TextTemplates(pausedDetails, pausedState, pausedLargeText, pausedSmallText)
+        val radio = TextTemplates(streamDetails, streamState, streamLargeText, streamSmallText)
+        var t = base
+        if (stream) t = radio.over(t)
+        if (!playing) t = paused.over(t)
+        return t
+    }
+
     /** Application ID to use: the own one if enabled and valid, otherwise [defaultClientId] (may be blank = not configured). */
     fun effectiveClientId(defaultClientId: String): String {
         val own = customClientId.trim()

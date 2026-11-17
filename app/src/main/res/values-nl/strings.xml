@@ -395,4 +395,32 @@
     <string name="field_show">Tonen</string>
     <string name="field_hide">Verbergen</string>
     <string name="field_range">Toegestaan: %1$d tot %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Teksten voor</string>
+    <string name="disp_texts_for_playing">Afspelen</string>
+    <string name="disp_texts_for_paused">Pauze</string>
+    <string name="disp_texts_for_stream">Radio / stream</string>
+    <string name="disp_texts_paused_note">Getoond tijdens pauze – alleen als ‘Gepauzeerd’ wordt getoond (zie Pauze hieronder). Lege velden gebruiken de afspeeltekst.</string>
+    <string name="disp_texts_stream_note">Getoond bij internetradio en andere streams. Lege velden gebruiken de afspeeltekst.</string>
+    <string name="about_update_auto">Updates automatisch installeren</string>
+    <string name="about_update_auto_note">De app downloadt nieuwe versies van GitHub, controleert ze (SHA-256 en handtekening) en installeert ze. De eerste keer vraagt Android om installeren vanuit deze app toe te staan; vanaf Android 12 worden latere updates zonder vragen geïnstalleerd.</string>
+    <string name="upd_install">%1$s installeren</string>
+    <string name="upd_downloading">%1$s downloaden…</string>
+    <string name="upd_downloading_percent">%1$s downloaden… %2$d %%</string>
+    <string name="upd_installing">%1$s installeren…</string>
+    <string name="upd_confirm">Bevestig de installatie van %1$s in het venster van Android (of tik op de melding).</string>
+    <string name="upd_fail_no_apk">De release heeft geen APK – download deze via GitHub.</string>
+    <string name="upd_fail_no_checksum">De release heeft geen checksum – de app installeert niets wat ze niet kan controleren. Download deze via GitHub.</string>
+    <string name="upd_fail_offline">Download mislukt: geen verbinding met GitHub.</string>
+    <string name="upd_fail_damaged">De download is beschadigd (checksum klopt niet) – probeer het opnieuw.</string>
+    <string name="upd_fail_wrong_app">De download is geen nieuwere versie van deze app met dezelfde handtekening – niet geïnstalleerd.</string>
+    <string name="upd_fail_storage">De download kon niet worden opgeslagen (opslag vol?).</string>
+    <string name="upd_fail_aborted">Installatie geannuleerd.</string>
+    <string name="upd_fail_install">Android kon de update niet installeren.</string>
+    <string name="upd_notif_confirm_title">Update %1$s klaar</string>
+    <string name="upd_notif_confirm_text">Tik om te installeren.</string>
+    <string name="upd_notif_updated_title">Bijgewerkt naar %1$s</string>
+    <string name="upd_notif_updated_text">Het tabblad Over toont wat er nieuw is.</string>
+    <string name="about_donate">Steun de app (PayPal)</string>
+    <string name="about_donate_note">Helemaal vrijwillig – alles werkt ook zonder.</string>
 </resources>

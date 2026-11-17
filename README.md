@@ -1,4 +1,4 @@
-# Poweramp Discord Rich Presence 1.2.1 for Android
+# Poweramp Discord Rich Presence 1.3.0 for Android
 
 Shows the song [Poweramp](https://powerampapp.com) is playing on your phone as Discord Rich Presence -
 **"Listening to Poweramp"** with Discord's own progress bar, the album cover and a clickable song title. It works
@@ -13,8 +13,8 @@ same features, same cover sources, same settings where they make sense on a phon
 
 | File (on the [Releases](https://github.com/RainBowFl4sh/Poweramp-Discord-RP/releases) page) | |
 |---|---|
-| `PowerampDiscordRP-v1.2.1.apk` | the app - Android 8.0 or newer, any CPU |
-| `PowerampDiscordRP-v1.2.1.apk.sha256` | SHA-256 checksum of the APK |
+| `PowerampDiscordRP-v1.3.0.apk` | the app - Android 8.0 or newer, any CPU |
+| `PowerampDiscordRP-v1.3.0.apk.sha256` | SHA-256 checksum of the APK |
 
 Author: **Fl4sh**
 
@@ -73,7 +73,10 @@ The app follows the phone's language (here: English) or the one chosen in its *A
   once (optional, see [Linking your Discord account](#linking-your-discord-account-optional)). Only name and picture
   are read, the access is revoked right away - the app keeps no token
 - **Status page** with a setup checklist, the connection state, *Send test presence* and *Reconnect*
-- **Update check** against the GitHub releases (can be switched off)
+- **Updates inside the app**: checks the GitHub releases (can be switched off), downloads a new version, checks its
+  SHA-256 and signature and installs it - by itself with *Install updates automatically*, no browser needed
+- **Own texts while paused and for radio / streams** (*Display* tab → *Texts for*)
+- Optional **donation link** (PayPal) on the *About* tab
 - **30 languages** (see [Languages](#languages)), following the phone's language - or pick one in *App settings*
   (on Android 13+ also under *Settings → Apps → Poweramp Discord RP → Language*). Arabic is shown right to left
 - Light: runs as a small foreground service (with a notification) **only while Poweramp plays** and stops by itself
@@ -187,7 +190,8 @@ or *Link Discord account*)
 
 **Display** - activity type (*Listening* with progress bar / *Playing*), what your status in the member list shows
 (application name, artist - the default - or song title), the text templates for the two lines and the tooltips of
-the cover and the small icon, the rotation interval for texts with `||`, play / pause icon, progress bar / elapsed
+the cover and the small icon (for *Playback*, and optionally own ones for *Pause* and *Radio / stream* - empty fields
+take the playback text), the rotation interval for texts with `||`, play / pause icon, progress bar / elapsed
 time, clickable song title (YouTube search or your own link), paused behaviour (show "Paused" / hide / hide after N
 minutes), hiding streams and paths - and the **live preview** of the Discord card, updated while you type. When the
 presence is hidden (paused, filtered, ...) the preview says why
@@ -202,7 +206,14 @@ Art Archive
 recent log, export / import of all settings and reset to defaults
 
 **About** - version, author with GitHub picture, links (GitHub, releases, report a problem), update check (at
-every start, daily, weekly, monthly or off; *Check now*) and the changelog
+every start, daily, weekly, monthly or off; *Check now*), *Install <version>* and *Install updates automatically*,
+the donation link and the changelog.
+The in-app update downloads the release's APK from GitHub, checks it against the SHA-256 checksum GitHub publishes
+for the file (or the release's `.sha256` file) and checks that it is this app, newer and signed with the same key -
+then Android's installer installs it. The first time (and always on Android 8-11) Android asks for confirmation;
+while the app is in the background that comes as a notification. From Android 12 on it no longer asks once the app
+installed itself. Allow *Install unknown apps* for the app when Android asks. When GitHub's request limit is used up
+(VPN, shared address) the check reads the release feed (`github.com/<repo>/releases.atom`) instead
 
 **App settings** (three-dot menu at the top right) - **language** (*System default* or one of the 30 languages by
 its own name; on Android 13+ the same setting as Android's per-app language), theme *Follow system* / *Light* / *Dark*, **AMOLED black** (pure
@@ -359,7 +370,10 @@ background, a notification says so (at most once a day) - see *Battery optimizat
   - only when you link your Discord account: Discord's authorization page `discord.com/oauth2/authorize` (in the
     Discord app or the browser), then `discord.com/api` - `oauth2/token` (code -> token), `users/@me` (your public
     profile) and `oauth2/token/revoke` (the token is revoked at once)
-  - `api.github.com` for the update check (can be switched off on the *About* tab)
+  - `api.github.com` for the update check (can be switched off on the *About* tab); if GitHub's request limit is
+    used up, `github.com/RainBowFl4sh/Poweramp-Discord-RP/releases.atom` instead
+  - for an update: the APK and its `.sha256` file from `github.com` (GitHub serves them from
+    `objects.githubusercontent.com` / `release-assets.githubusercontent.com`)
   - `avatars.githubusercontent.com`: the author's GitHub picture, only while the *About* tab is shown (kept in memory)
 - **Uploaded covers are public**: anyone with the link can open them. Uploading can be turned off on the *Cover art*
   tab
@@ -454,12 +468,18 @@ runs the tests, builds and signs the APK and creates the GitHub release with `Po
 `.sha256` file and the version's section of `CHANGELOG.md` as text. Tags with a `-` (e.g. `v1.1.0-beta1`) become
 pre-releases. The app's update check reads
 `https://api.github.com/repos/RainBowFl4sh/Poweramp-Discord-RP/releases/latest` (pre-releases are not offered):
-the version comes from the tag or title, the download is the first attached `.apk`.
+the version comes from the tag or title, the download is the first attached `.apk`, checked against the asset's
+SHA-256 digest (or the `.sha256` file). In-app updates only work for APKs signed with the same key as the installed
+app.
 
 ## Changelog
 
 The full list of changes is in [CHANGELOG.md](CHANGELOG.md) (also in [Deutsch](CHANGELOG.de.md)) and on the app's
 *About* tab.
+
+**1.3.0** - Updates inside the app (download, SHA-256 and signature check, install - automatically if wanted), own
+texts while paused and for radio / streams, an update check that also works when GitHub's request limit is used up,
+a Deezer free-text search for covers and an optional donation link.
 
 **1.2.1** - The background service starts only when a track really plays (not already when Poweramp is opened) and
 stops itself once nothing plays any more; cover uploads get random file names, because x0.at refused `cover.jpg`.

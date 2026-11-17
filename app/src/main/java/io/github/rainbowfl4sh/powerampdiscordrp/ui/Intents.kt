@@ -48,6 +48,7 @@ object Links {
     const val LATEST_RELEASE = "$REPO/releases/latest"
     const val ISSUES = "$REPO/issues"
     const val AUTHOR = "https://github.com/RainBowFl4sh"
+    const val DONATE = "https://www.paypal.com/donate/?hosted_button_id=TNTR6BR72JZ6E"
     const val DISCORD_PORTAL = "https://discord.com/developers/applications"
     const val IMGUR_ADD_CLIENT = "https://api.imgur.com/oauth2/addclient"
     const val SPOTIFY_DASHBOARD = "https://developer.spotify.com/dashboard"

@@ -394,4 +394,32 @@
     <string name="field_show">แสดง</string>
     <string name="field_hide">ซ่อน</string>
     <string name="field_range">ค่าที่ใช้ได้: %1$d ถึง %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">ข้อความสำหรับ</string>
+    <string name="disp_texts_for_playing">การเล่น</string>
+    <string name="disp_texts_for_paused">หยุดชั่วคราว</string>
+    <string name="disp_texts_for_stream">วิทยุ / สตรีม</string>
+    <string name="disp_texts_paused_note">แสดงขณะหยุดชั่วคราว – เฉพาะเมื่อแสดง “หยุดชั่วคราว” (ดูหยุดชั่วคราวด้านล่าง) ช่องว่างจะใช้ข้อความของการเล่น</string>
+    <string name="disp_texts_stream_note">แสดงสำหรับวิทยุอินเทอร์เน็ตและสตรีมอื่น ช่องว่างจะใช้ข้อความของการเล่น</string>
+    <string name="about_update_auto">ติดตั้งอัปเดตอัตโนมัติ</string>
+    <string name="about_update_auto_note">แอปจะดาวน์โหลดเวอร์ชันใหม่จาก GitHub ตรวจสอบ (SHA-256 และลายเซ็น) แล้วติดตั้ง ครั้งแรก Android จะขอให้อนุญาตการติดตั้งจากแอปนี้ ตั้งแต่ Android 12 อัปเดตครั้งต่อไปจะติดตั้งโดยไม่ถาม</string>
+    <string name="upd_install">ติดตั้ง %1$s</string>
+    <string name="upd_downloading">กำลังดาวน์โหลด %1$s…</string>
+    <string name="upd_downloading_percent">กำลังดาวน์โหลด %1$s… %2$d %%</string>
+    <string name="upd_installing">กำลังติดตั้ง %1$s…</string>
+    <string name="upd_confirm">ยืนยันการติดตั้ง %1$s ในหน้าต่างของ Android (หรือแตะการแจ้งเตือน)</string>
+    <string name="upd_fail_no_apk">รุ่นที่เผยแพร่ไม่มี APK – ดาวน์โหลดจาก GitHub</string>
+    <string name="upd_fail_no_checksum">รุ่นที่เผยแพร่ไม่มีเช็กซัม – แอปจะไม่ติดตั้งสิ่งที่ตรวจสอบไม่ได้ ดาวน์โหลดจาก GitHub</string>
+    <string name="upd_fail_offline">ดาวน์โหลดไม่สำเร็จ: ไม่มีการเชื่อมต่อกับ GitHub</string>
+    <string name="upd_fail_damaged">ไฟล์ที่ดาวน์โหลดเสียหาย (เช็กซัมไม่ตรง) – ลองอีกครั้ง</string>
+    <string name="upd_fail_wrong_app">ไฟล์ที่ดาวน์โหลดไม่ใช่เวอร์ชันใหม่กว่าของแอปนี้ที่มีลายเซ็นเดียวกัน – ไม่ได้ติดตั้ง</string>
+    <string name="upd_fail_storage">บันทึกไฟล์ที่ดาวน์โหลดไม่ได้ (พื้นที่เต็ม?)</string>
+    <string name="upd_fail_aborted">ยกเลิกการติดตั้งแล้ว</string>
+    <string name="upd_fail_install">Android ติดตั้งอัปเดตไม่ได้</string>
+    <string name="upd_notif_confirm_title">อัปเดต %1$s พร้อมแล้ว</string>
+    <string name="upd_notif_confirm_text">แตะเพื่อติดตั้ง</string>
+    <string name="upd_notif_updated_title">อัปเดตเป็น %1$s แล้ว</string>
+    <string name="upd_notif_updated_text">ดูสิ่งใหม่ได้ในแท็บเกี่ยวกับ</string>
+    <string name="about_donate">สนับสนุนแอป (PayPal)</string>
+    <string name="about_donate_note">ไม่บังคับเลย – ทุกอย่างยังใช้งานได้แม้ไม่สนับสนุน</string>
 </resources>

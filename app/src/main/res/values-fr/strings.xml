@@ -395,4 +395,32 @@
     <string name="field_show">Afficher</string>
     <string name="field_hide">Masquer</string>
     <string name="field_range">Plage autorisée : %1$d à %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Textes pour</string>
+    <string name="disp_texts_for_playing">Lecture</string>
+    <string name="disp_texts_for_paused">Pause</string>
+    <string name="disp_texts_for_stream">Radio / flux</string>
+    <string name="disp_texts_paused_note">Affichés en pause – seulement si « En pause » est affiché (voir Pause plus bas). Les champs vides reprennent le texte de lecture.</string>
+    <string name="disp_texts_stream_note">Affichés pour la radio Internet et les autres flux. Les champs vides reprennent le texte de lecture.</string>
+    <string name="about_update_auto">Installer les mises à jour automatiquement</string>
+    <string name="about_update_auto_note">L’app télécharge les nouvelles versions depuis GitHub, les vérifie (SHA-256 et signature) et les installe. La première fois, Android demande d’autoriser l’installation d’apps depuis cette app ; à partir d’Android 12, les mises à jour suivantes s’installent sans demander.</string>
+    <string name="upd_install">Installer %1$s</string>
+    <string name="upd_downloading">Téléchargement de %1$s…</string>
+    <string name="upd_downloading_percent">Téléchargement de %1$s… %2$d %%</string>
+    <string name="upd_installing">Installation de %1$s…</string>
+    <string name="upd_confirm">Confirmez l’installation de %1$s dans la boîte de dialogue d’Android (ou touchez la notification).</string>
+    <string name="upd_fail_no_apk">La version publiée n’a pas d’APK – téléchargez-la depuis GitHub.</string>
+    <string name="upd_fail_no_checksum">La version publiée n’a pas de somme de contrôle – l’app n’installe rien qu’elle ne peut vérifier. Téléchargez-la depuis GitHub.</string>
+    <string name="upd_fail_offline">Échec du téléchargement : pas de connexion à GitHub.</string>
+    <string name="upd_fail_damaged">Le téléchargement est endommagé (somme de contrôle incorrecte) – réessayez.</string>
+    <string name="upd_fail_wrong_app">Le fichier n’est pas une version plus récente de cette app avec la même signature – non installé.</string>
+    <string name="upd_fail_storage">Le téléchargement n’a pas pu être enregistré (stockage plein ?).</string>
+    <string name="upd_fail_aborted">Installation annulée.</string>
+    <string name="upd_fail_install">Android n’a pas pu installer la mise à jour.</string>
+    <string name="upd_notif_confirm_title">Mise à jour %1$s prête</string>
+    <string name="upd_notif_confirm_text">Touchez pour l’installer.</string>
+    <string name="upd_notif_updated_title">Mis à jour vers %1$s</string>
+    <string name="upd_notif_updated_text">L’onglet À propos indique les nouveautés.</string>
+    <string name="about_donate">Soutenir l’app (PayPal)</string>
+    <string name="about_donate_note">Entièrement facultatif – tout fonctionne aussi sans.</string>
 </resources>

@@ -12,12 +12,18 @@ import okio.Buffer
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
-/** Newest GitHub release of this project. [apkUrl] = first attached .apk ("" if none). */
+/**
+ * Newest GitHub release of this project. [apkUrl] = first attached .apk ("" if none); its SHA-256 checksum is
+ * [apkSha256] (GitHub's "digest" of the asset, lower-case hex) or else in the file at [checksumUrl] (the release's
+ * "<apk>.sha256", written by the build workflow) - both "" if unknown.
+ */
 data class ReleaseInfo(
     val version: String,
     val pageUrl: String,
     val apkUrl: String,
     val notes: String,
+    val apkSha256: String = "",
+    val checksumUrl: String = "",
 )
 
 /** Outcome of [UpdateChecker.check]. */
@@ -35,11 +41,16 @@ sealed interface UpdateResult {
     }
 }
 
-/** Asks GitHub for the newest release (api.github.com/repos/<repo>/releases/latest). Nothing else is sent. */
+/**
+ * Asks GitHub for the newest release (api.github.com/repos/<repo>/releases/latest). Nothing else is sent. When GitHub's
+ * limit for requests without an account is used up (60 an hour per address - VPN, carrier NAT), the release feed of
+ * github.com ([webBase]/<repo>/releases.atom, no such limit) names the newest release instead (like the AIMP plugin).
+ */
 class UpdateChecker(
     private val http: OkHttpClient,
     private val repo: String,
     private val apiBase: String = "https://api.github.com",
+    private val webBase: String = "https://github.com",
 ) {
     /** Blocking; null on any error. The version is taken from the tag / title ("v1.2.3" -> "1.2.3"). */
     fun latest(): ReleaseInfo? = (check() as? UpdateResult.Found)?.release
@@ -57,7 +68,11 @@ class UpdateChecker(
             call.timeout().timeout(TIMEOUT_SEC, TimeUnit.SECONDS)
             call.execute().use { response ->
                 code = response.code
-                if (code != 200) return failure(code, response.header("X-RateLimit-Remaining"), response.header("Retry-After"))
+                if (code != 200) {
+                    val failed = failure(code, response.header("X-RateLimit-Remaining"), response.header("Retry-After"))
+                    if (failed.reason != UpdateResult.Reason.RATE_LIMITED) return failed
+                    return fromFeed()?.let { UpdateResult.Found(it) } ?: failed
+                }
                 val body = readLimited(response.body.source(), MAX_ANSWER_BYTES)
                     ?: return UpdateResult.Failed(UpdateResult.Reason.BAD_ANSWER, "HTTP 200, answer too large")
                 parseRelease(body, repo)?.let { UpdateResult.Found(it) }
@@ -70,8 +85,60 @@ class UpdateChecker(
         }
     }
 
+    /** The newest release named by the release feed; null if the feed did not answer with one. */
+    private fun fromFeed(): ReleaseInfo? = try {
+        val request = Request.Builder()
+            .url("${webBase.trimEnd('/')}/$repo/releases.atom")
+            .header("Accept", "application/atom+xml")
+            .get()
+            .build()
+        val call = http.newCall(request)
+        call.timeout().timeout(TIMEOUT_SEC, TimeUnit.SECONDS)
+        call.execute().use { response ->
+            if (response.code != 200) return null
+            val body = readLimited(response.body.source(), MAX_ANSWER_BYTES) ?: return null
+            parseFeed(body, repo)
+        }
+    } catch (e: Exception) {   // offline, malformed answer: the API's own failure is reported
+        null
+    }
+
     companion object {
         private const val TIMEOUT_SEC = 15L
+
+        /** The APK name the build workflow gives a release ("PowerampDiscordRP-v1.3.0.apk"). */
+        fun apkName(tag: String): String = "PowerampDiscordRP-$tag.apk"
+
+        private val FEED_TAG = Regex("""/releases/tag/([0-9A-Za-z._-]{1,64})""")
+        private val HEX64 = Regex("""^[0-9a-fA-F]{64}$""")
+
+        /**
+         * The newest release of the release feed (entries come newest first; a tag with "-" is a pre-release, which the
+         * build workflow publishes as such and the API's "latest" never names). The feed has no assets: the APK and its
+         * checksum file are named like the build workflow names them.
+         */
+        internal fun parseFeed(xml: String, repo: String): ReleaseInfo? {
+            for (entry in xml.split("<entry").drop(1)) {
+                val tag = FEED_TAG.find(entry)?.groupValues?.get(1) ?: continue
+                if ('-' in tag) continue
+                val version = DOTTED_VERSION.find(tag)?.value ?: PLAIN_VERSION.find(tag)?.groupValues?.get(1) ?: continue
+                val apk = "https://github.com/$repo/releases/download/$tag/${apkName(tag)}"
+                return ReleaseInfo(
+                    version = version,
+                    pageUrl = "https://github.com/$repo/releases/tag/$tag",
+                    apkUrl = apk,
+                    notes = "",
+                    checksumUrl = "$apk.sha256",
+                )
+            }
+            return null
+        }
+
+        /** The SHA-256 in GitHub's asset digest ("sha256:<hex>") or a checksum file ("<hex>  name"); "" if none. */
+        fun sha256Of(text: String): String {
+            val t = text.trim().removePrefix("sha256:").substringBefore(' ').substringBefore('\t').trim()
+            return if (HEX64.matches(t)) t.lowercase() else ""
+        }
         private const val MAX_ANSWER_BYTES = 2L shl 20
         private val JSON = Json { isLenient = true; ignoreUnknownKeys = true }
 
@@ -179,11 +246,21 @@ class UpdateChecker(
                         asset.str("browser_download_url").lowercase().startsWith(prefix)
                 }
             val page = root.str("html_url").ifEmpty { "https://github.com/$repo/releases/latest" }
+            val apkUrl = apk?.str("browser_download_url").orEmpty()
+            // "<apk>.sha256" next to it (the build workflow's checksum file)
+            val checksum = if (apk == null) null else assets
+                .mapNotNull { it as? JsonObject }
+                .firstOrNull { asset ->
+                    asset.str("name").equals(apk.str("name") + ".sha256", ignoreCase = true) &&
+                        asset.str("browser_download_url").lowercase().startsWith(prefix)
+                }
             return ReleaseInfo(
                 version = version,
                 pageUrl = page,
-                apkUrl = apk?.str("browser_download_url").orEmpty(),
+                apkUrl = apkUrl,
                 notes = root.str("body").replace("\r\n", "\n").trim(),
+                apkSha256 = apk?.let { sha256Of(it.str("digest")) }.orEmpty(),
+                checksumUrl = checksum?.str("browser_download_url").orEmpty(),
             )
         }
 

@@ -395,4 +395,32 @@
     <string name="field_show">Vis</string>
     <string name="field_hide">Skjul</string>
     <string name="field_range">Tilladt: %1$d til %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Tekster for</string>
+    <string name="disp_texts_for_playing">Afspilning</string>
+    <string name="disp_texts_for_paused">Pause</string>
+    <string name="disp_texts_for_stream">Radio / stream</string>
+    <string name="disp_texts_paused_note">Vises under pause – kun når “Sat på pause” vises (se Pause længere nede). Tomme felter bruger afspilningsteksten.</string>
+    <string name="disp_texts_stream_note">Vises ved internetradio og andre streams. Tomme felter bruger afspilningsteksten.</string>
+    <string name="about_update_auto">Installér opdateringer automatisk</string>
+    <string name="about_update_auto_note">Appen henter nye versioner fra GitHub, kontrollerer dem (SHA-256 og signatur) og installerer dem. Første gang beder Android dig tillade installation fra denne app; fra Android 12 installeres senere opdateringer uden at spørge.</string>
+    <string name="upd_install">Installér %1$s</string>
+    <string name="upd_downloading">Henter %1$s…</string>
+    <string name="upd_downloading_percent">Henter %1$s… %2$d %%</string>
+    <string name="upd_installing">Installerer %1$s…</string>
+    <string name="upd_confirm">Bekræft installationen af %1$s i Androids dialog (eller tryk på notifikationen).</string>
+    <string name="upd_fail_no_apk">Udgivelsen har ingen APK – hent den fra GitHub.</string>
+    <string name="upd_fail_no_checksum">Udgivelsen har ingen kontrolsum – appen installerer intet, den ikke kan kontrollere. Hent den fra GitHub.</string>
+    <string name="upd_fail_offline">Download mislykkedes: ingen forbindelse til GitHub.</string>
+    <string name="upd_fail_damaged">Downloadet er beskadiget (kontrolsummen passer ikke) – prøv igen.</string>
+    <string name="upd_fail_wrong_app">Downloadet er ikke en nyere version af denne app med samme signatur – ikke installeret.</string>
+    <string name="upd_fail_storage">Downloadet kunne ikke gemmes (lager fuldt?).</string>
+    <string name="upd_fail_aborted">Installation annulleret.</string>
+    <string name="upd_fail_install">Android kunne ikke installere opdateringen.</string>
+    <string name="upd_notif_confirm_title">Opdatering %1$s klar</string>
+    <string name="upd_notif_confirm_text">Tryk for at installere.</string>
+    <string name="upd_notif_updated_title">Opdateret til %1$s</string>
+    <string name="upd_notif_updated_text">Fanen Om viser, hvad der er nyt.</string>
+    <string name="about_donate">Støt appen (PayPal)</string>
+    <string name="about_donate_note">Helt frivilligt – alt virker også uden.</string>
 </resources>

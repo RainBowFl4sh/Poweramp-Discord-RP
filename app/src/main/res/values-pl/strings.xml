@@ -395,4 +395,32 @@
     <string name="field_show">Pokaż</string>
     <string name="field_hide">Ukryj</string>
     <string name="field_range">Dozwolone: od %1$d do %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Teksty dla</string>
+    <string name="disp_texts_for_playing">Odtwarzanie</string>
+    <string name="disp_texts_for_paused">Pauza</string>
+    <string name="disp_texts_for_stream">Radio / stream</string>
+    <string name="disp_texts_paused_note">Wyświetlane podczas pauzy – tylko gdy wyświetlane jest „Wstrzymano” (patrz Pauza niżej). Puste pola używają tekstu odtwarzania.</string>
+    <string name="disp_texts_stream_note">Wyświetlane dla radia internetowego i innych streamów. Puste pola używają tekstu odtwarzania.</string>
+    <string name="about_update_auto">Instaluj aktualizacje automatycznie</string>
+    <string name="about_update_auto_note">Aplikacja pobiera nowe wersje z GitHuba, sprawdza je (SHA-256 i podpis) i instaluje. Za pierwszym razem Android prosi o zgodę na instalowanie z tej aplikacji; od Androida 12 kolejne aktualizacje instalują się bez pytania.</string>
+    <string name="upd_install">Zainstaluj %1$s</string>
+    <string name="upd_downloading">Pobieranie %1$s…</string>
+    <string name="upd_downloading_percent">Pobieranie %1$s… %2$d %%</string>
+    <string name="upd_installing">Instalowanie %1$s…</string>
+    <string name="upd_confirm">Potwierdź instalację %1$s w oknie Androida (lub dotknij powiadomienia).</string>
+    <string name="upd_fail_no_apk">Wydanie nie ma pliku APK – pobierz je z GitHuba.</string>
+    <string name="upd_fail_no_checksum">Wydanie nie ma sumy kontrolnej – aplikacja nie instaluje niczego, czego nie może sprawdzić. Pobierz je z GitHuba.</string>
+    <string name="upd_fail_offline">Pobieranie nie powiodło się: brak połączenia z GitHubem.</string>
+    <string name="upd_fail_damaged">Pobrany plik jest uszkodzony (suma kontrolna się nie zgadza) – spróbuj ponownie.</string>
+    <string name="upd_fail_wrong_app">Pobrany plik nie jest nowszą wersją tej aplikacji z tym samym podpisem – nie zainstalowano.</string>
+    <string name="upd_fail_storage">Nie udało się zapisać pobranego pliku (pełna pamięć?).</string>
+    <string name="upd_fail_aborted">Instalacja anulowana.</string>
+    <string name="upd_fail_install">Android nie mógł zainstalować aktualizacji.</string>
+    <string name="upd_notif_confirm_title">Aktualizacja %1$s gotowa</string>
+    <string name="upd_notif_confirm_text">Dotknij, aby zainstalować.</string>
+    <string name="upd_notif_updated_title">Zaktualizowano do %1$s</string>
+    <string name="upd_notif_updated_text">Zakładka Informacje pokazuje nowości.</string>
+    <string name="about_donate">Wesprzyj aplikację (PayPal)</string>
+    <string name="about_donate_note">Całkowicie dobrowolne – wszystko działa również bez tego.</string>
 </resources>

@@ -395,4 +395,32 @@
     <string name="field_show">Zobrazit</string>
     <string name="field_hide">Skrýt</string>
     <string name="field_range">Povoleno: %1$d až %2$d</string>
+    <!-- 1.3.0: texts for pause / radio, in-app update, donation link -->
+    <string name="disp_texts_for">Texty pro</string>
+    <string name="disp_texts_for_playing">Přehrávání</string>
+    <string name="disp_texts_for_paused">Pauza</string>
+    <string name="disp_texts_for_stream">Rádio / stream</string>
+    <string name="disp_texts_paused_note">Zobrazí se při pauze – jen když se zobrazuje „Pozastaveno“ (viz Pauza níže). Prázdná pole použijí text přehrávání.</string>
+    <string name="disp_texts_stream_note">Zobrazí se u internetového rádia a jiných streamů. Prázdná pole použijí text přehrávání.</string>
+    <string name="about_update_auto">Instalovat aktualizace automaticky</string>
+    <string name="about_update_auto_note">Aplikace stáhne nové verze z GitHubu, zkontroluje je (SHA-256 a podpis) a nainstaluje. Poprvé Android požádá o povolení instalace z této aplikace; od Androidu 12 se další aktualizace instalují bez dotazu.</string>
+    <string name="upd_install">Instalovat %1$s</string>
+    <string name="upd_downloading">Stahování %1$s…</string>
+    <string name="upd_downloading_percent">Stahování %1$s… %2$d %%</string>
+    <string name="upd_installing">Instalace %1$s…</string>
+    <string name="upd_confirm">Potvrďte instalaci %1$s v dialogu Androidu (nebo klepněte na oznámení).</string>
+    <string name="upd_fail_no_apk">Vydání nemá APK – stáhněte ho z GitHubu.</string>
+    <string name="upd_fail_no_checksum">Vydání nemá kontrolní součet – aplikace neinstaluje nic, co nemůže ověřit. Stáhněte ho z GitHubu.</string>
+    <string name="upd_fail_offline">Stahování selhalo: žádné spojení s GitHubem.</string>
+    <string name="upd_fail_damaged">Stažený soubor je poškozený (kontrolní součet nesouhlasí) – zkuste to znovu.</string>
+    <string name="upd_fail_wrong_app">Stažený soubor není novější verze této aplikace se stejným podpisem – nenainstalováno.</string>
+    <string name="upd_fail_storage">Stažený soubor nelze uložit (plné úložiště?).</string>
+    <string name="upd_fail_aborted">Instalace zrušena.</string>
+    <string name="upd_fail_install">Android nemohl aktualizaci nainstalovat.</string>
+    <string name="upd_notif_confirm_title">Aktualizace %1$s připravena</string>
+    <string name="upd_notif_confirm_text">Klepnutím nainstalujete.</string>
+    <string name="upd_notif_updated_title">Aktualizováno na %1$s</string>
+    <string name="upd_notif_updated_text">Karta O aplikaci uvádí novinky.</string>
+    <string name="about_donate">Podpořit aplikaci (PayPal)</string>
+    <string name="about_donate_note">Zcela dobrovolné – vše funguje i bez toho.</string>
 </resources>

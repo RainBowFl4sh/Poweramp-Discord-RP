@@ -1,5 +1,19 @@
 # Lista zmian
 
+## 1.3.0
+
+### Nowości
+- **Aktualizacje w aplikacji**: *Zainstaluj* na karcie *Informacje* pobiera, sprawdza (SHA-256, podpis) i instaluje
+  nową wersję – bez przeglądarki. *Instaluj aktualizacje automatycznie* robi to samo; od Androida 12 bez pytania po
+  pierwszym razie
+- **Własne teksty dla pauzy i radia** (karta *Wyświetlanie* → *Teksty dla*); puste pola używają tekstu odtwarzania
+- **Wesprzyj aplikację**: mały, dobrowolny link PayPal na karcie *Informacje*
+
+### Ulepszenia
+- **Sprawdzanie aktualizacji** działa też, gdy limit zapytań GitHuba się wyczerpie (VPN, wspólny adres)
+- **Okładki z Deezera**: wyszukiwanie swobodne wykonawca + tytuł, gdy dokładne nic nie znajduje
+- **Koniec z zawieszonym „Wstrzymano”**: Discord musi potwierdzić usunięcie statusu, inaczej jest usuwany ponownie; usługa kończy się dopiero potem
+
 ## 1.2.1
 
 ### Ulepszenia

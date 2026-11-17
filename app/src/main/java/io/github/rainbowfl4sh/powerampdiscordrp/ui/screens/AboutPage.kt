@@ -1,5 +1,7 @@
 package io.github.rainbowfl4sh.powerampdiscordrp.ui.screens
 
+import io.github.rainbowfl4sh.powerampdiscordrp.update.InstallState
+import androidx.compose.material3.LinearProgressIndicator
 import android.content.res.Resources
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -122,6 +124,17 @@ private fun HeaderSection(model: AppModel) {
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
         )
+        // completely optional, like in the AIMP plugin: a small link, nothing depends on it
+        val context = LocalContext.current
+        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+            TextButton(onClick = { context.openUrl(Links.DONATE) }) { Text(stringResource(R.string.about_donate)) }
+            Text(
+                stringResource(R.string.about_donate_note),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+            )
+        }
     }
 }
 
@@ -195,6 +208,8 @@ private fun rememberPicture(model: AppModel, url: String): ImageBitmap? {
 private fun UpdateSection(model: AppModel) {
     val c by model.config.collectAsStateWithLifecycle()
     val state by model.update.collectAsStateWithLifecycle()
+    val install by model.install.collectAsStateWithLifecycle()
+    val installing = install is InstallState.Downloading || install is InstallState.Installing
     val context = LocalContext.current
     val view = UpdateView.of(state, c, BuildConfig.VERSION_NAME, Links.LATEST_RELEASE) { a, b -> UpdateChecker.isNewer(a, b) }
 
@@ -241,18 +256,32 @@ private fun UpdateSection(model: AppModel) {
                 style = MaterialTheme.typography.bodyMedium,
             )
         }
+        InstallLine(install)
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             if (view.kind == UpdateView.Kind.AVAILABLE) {
-                Button(onClick = { context.openUrl(view.downloadUrl) }) {
-                    Text(stringResource(R.string.upd_download, view.version))
+                Button(onClick = { model.installUpdate() }, enabled = !installing) {
+                    Text(stringResource(R.string.upd_install, view.version))
                 }
                 TextButton(onClick = { context.openUrl(view.pageUrl) }) { Text(stringResource(R.string.upd_whats_new)) }
             }
             FilledTonalButton(
                 onClick = { model.checkForUpdates(manual = true) },
-                enabled = state != UpdateCheckState.Checking,
+                enabled = state != UpdateCheckState.Checking && !installing,
             ) { Text(stringResource(R.string.about_check_now)) }
+            // the way it always worked: when the app cannot install it, the browser downloads the APK
+            if (view.kind == UpdateView.Kind.AVAILABLE && install is InstallState.Failed) {
+                TextButton(onClick = { context.openUrl(view.downloadUrl) }) {
+                    Text(stringResource(R.string.upd_download, view.version))
+                }
+            }
         }
+        SwitchRow(
+            title = stringResource(R.string.about_update_auto),
+            checked = c.updateAutoInstall,
+            onCheckedChange = { v -> model.editor.set { it.copy(updateAutoInstall = v) } },
+            enabled = c.updateCheck,
+        )
+        Note(stringResource(R.string.about_update_auto_note))
         Note(stringResource(R.string.about_update_privacy))
     }
 }
@@ -334,5 +363,49 @@ private fun readChangelog(resources: Resources): String =
 private fun annotated(spans: List<Span>): AnnotatedString = buildAnnotatedString {
     spans.forEach { span ->
         if (span.bold) withStyle(SpanStyle(fontWeight = FontWeight.SemiBold)) { append(span.text) } else append(span.text)
+    }
+}
+
+/** What the installation of an update does right now; nothing while there is none. */
+@Composable
+private fun InstallLine(install: InstallState) {
+    val text = when (install) {
+        InstallState.Idle -> return
+        is InstallState.Downloading ->
+            if (install.percent >= 0) stringResource(R.string.upd_downloading_percent, install.version, install.percent)
+            else stringResource(R.string.upd_downloading, install.version)
+        is InstallState.Installing -> stringResource(R.string.upd_installing, install.version)
+        is InstallState.Confirm -> stringResource(R.string.upd_confirm, install.version)
+        is InstallState.Failed -> stringResource(
+            when (install.reason) {
+                InstallState.Reason.NO_APK -> R.string.upd_fail_no_apk
+                InstallState.Reason.NO_CHECKSUM -> R.string.upd_fail_no_checksum
+                InstallState.Reason.OFFLINE -> R.string.upd_fail_offline
+                InstallState.Reason.DAMAGED -> R.string.upd_fail_damaged
+                InstallState.Reason.WRONG_APP -> R.string.upd_fail_wrong_app
+                InstallState.Reason.STORAGE -> R.string.upd_fail_storage
+                InstallState.Reason.ABORTED -> R.string.upd_fail_aborted
+                InstallState.Reason.INSTALL -> R.string.upd_fail_install
+            },
+        )
+    }
+    Column(Modifier.padding(vertical = 4.dp)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            SeverityIcon(
+                when (install) {
+                    is InstallState.Failed ->
+                        if (install.reason == InstallState.Reason.ABORTED) Severity.WARNING else Severity.ERROR
+                    is InstallState.Confirm -> Severity.WARNING
+                    else -> Severity.INFO
+                },
+            )
+            Spacer(Modifier.width(12.dp))
+            Text(text, style = MaterialTheme.typography.bodyMedium)
+        }
+        if (install is InstallState.Downloading) {
+            Spacer(Modifier.height(6.dp))
+            if (install.percent >= 0) LinearProgressIndicator(progress = { install.percent / 100f }, modifier = Modifier.fillMaxWidth())
+            else LinearProgressIndicator(Modifier.fillMaxWidth())
+        }
     }
 }

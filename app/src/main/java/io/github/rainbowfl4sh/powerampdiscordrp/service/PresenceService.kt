@@ -1,5 +1,6 @@
 package io.github.rainbowfl4sh.powerampdiscordrp.service
 
+import io.github.rainbowfl4sh.powerampdiscordrp.update.AppUpdater
 import android.app.Service
 import android.content.Context
 import android.content.Intent
@@ -27,6 +28,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeoutOrNull
 
 /**
  * Foreground service that keeps the process (and the binding to the Discord app) alive while Poweramp plays.
@@ -35,6 +37,10 @@ import kotlinx.coroutines.launch
  * Runs the engine between activate() and deactivate(). Stopping uses stopSelfResult(lastStartId): if a new start
  * request is already queued, the service stays and that start activates it again - a plain stopSelf() would drop it,
  * and dropping a pending startForegroundService() crashes the app.
+ *
+ * Before it leaves the foreground, the service waits (at most [STOP_FLUSH_MS]) until the engine has cleared the presence
+ * and disconnected: once neither a foreground service nor our binding keeps it up, Android may freeze the Discord app
+ * before it passed the clear on - and the last presence (e.g. "Paused") would stay on the profile.
  */
 class PresenceService : Service() {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
@@ -43,6 +49,7 @@ class PresenceService : Service() {
     private var active = false
     private var lastStartId = 0
     private var content: NotificationContent? = null
+    private var pendingStop: Job? = null   // waiting for the engine's final clear before leaving the foreground
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -70,6 +77,8 @@ class PresenceService : Service() {
 
     private fun activate() {
         if (active) return
+        pendingStop?.cancel()   // started again while stopping: stays in the foreground
+        pendingStop = null
         active = true
         _running.value = true
         Graph.log.log("Presence service: started")
@@ -79,6 +88,9 @@ class PresenceService : Service() {
         engine.start()
         registerPowerampReceiver()
         PowerampBridge.sync(this)
+        // the update check is due also when the app's screen is never opened (with "install automatically" the update
+        // installs itself; the new version brings the presence back right away)
+        AppUpdater.checkIfDue(this)
 
         observers = scope.launch {
             launch {
@@ -111,20 +123,35 @@ class PresenceService : Service() {
         }
     }
 
-    private fun deactivate() {
-        if (!active) return
+    /** Returns the engine's stopping run (it clears the presence and disconnects), null if nothing was running. */
+    private fun deactivate(): Job? {
+        if (!active) return null
         active = false
         _running.value = false
         observers?.cancel()
         observers = null
         WakeupAlarm.cancel(this)
         unregisterPowerampReceiver()
-        Graph.engine.stop()   // clears the presence and disconnects
+        return Graph.engine.stop()   // clears the presence and disconnects
     }
 
     private fun shutDown(reason: String) {
         if (active) Graph.log.log("Presence service: stopping ($reason)")
-        deactivate()
+        val stopping = deactivate()
+        pendingStop?.cancel()
+        pendingStop = null
+        if (stopping == null || stopping.isCompleted) return leaveForeground()
+        pendingStop = scope.launch {
+            // still in the foreground (and bound to Discord) until Discord has the clear
+            if (withTimeoutOrNull(STOP_FLUSH_MS) { stopping.join() } == null) {
+                Graph.log.log("Presence service: the presence engine did not stop within ${STOP_FLUSH_MS / 1000} s")
+            }
+            pendingStop = null
+            if (!active) leaveForeground()
+        }
+    }
+
+    private fun leaveForeground() {
         ServiceCompat.stopForeground(this, ServiceCompat.STOP_FOREGROUND_REMOVE)
         stopSelfResult(lastStartId)   // false = a newer start is queued; its onStartCommand activates again
     }
@@ -180,6 +207,9 @@ class PresenceService : Service() {
         const val ACTION_STOP = "io.github.rainbowfl4sh.powerampdiscordrp.action.STOP"
 
         private const val IDLE_CONFIRM_MS = 3_000L
+
+        /** Longest wait for the engine's final clear + disconnect before the service leaves the foreground anyway. */
+        private const val STOP_FLUSH_MS = 5_000L
 
         private val _running = MutableStateFlow(false)
 
